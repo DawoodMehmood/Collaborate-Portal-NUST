@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+}
+.featured-faculty-heading{
+    width: 40%;
+    text-align: center;
+    font-size: 40px;
+    margin: 1% auto 1%;
+    border-bottom: 3px solid #6495ED;
+    color: #6495ED;
+}
+.featured-faculty{
+    width: 98%;
+    background-color: white;
+    height: 320px;
+    margin: 2% auto 2%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+.featured-faculty-header {
+    width: 100%;
+    height: 30%;
+    background-color: #6495ED;
+    border-radius: 20px 20px 0 0;
+}
+.featured-faculty-profile{
+    width: 100%;
+    height: 70%;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-left: 3%;
+}
+.featured-faculty-profile-image-div{
+        height: 100%;
+        flex: 25%;
+        display: flex;
+        flex-direction: column;
+}
+.profile_pic{
+    flex: 65%;
+    width: 55%;
+    margin: auto;
+    border-radius: 100%;
+    position: relative;
+    top: -25%;
+}
+.profile_pic > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 2px solid white;
+
+}
+.Profile_Name{
+    flex: 60%;
+    position: relative;
+    top: -25%;
+}
+.Profile_Name > h2{
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    color: #6495ED;
+
+}
+.faculty_personal_info{
+    flex: 75%;
+    padding-top: 1%;
+}
+.faculty_personal_info > h3{
+    margin: unset;
+    display: inline-block;
+    color: #6495ED;
+}
+.font{
+    display: inline-block;
+    margin-right: 2%;
+    color: #6495ED;
+}
+.featured-Icons{
+    margin-top: 1%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+}
+.scopus{
+    width: 150px;
+    height: 60px;
+}
+li img{
+    padding-bottom: 2%;
+    width: 100%;
+    height: 100%;
+}

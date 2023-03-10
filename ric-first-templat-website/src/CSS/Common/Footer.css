@@ -1,0 +1,81 @@
+a{
+    text-decoration: none !important;
+    color: white !important;
+}
+.Footer{
+    width: 100%;
+    height: max-content;
+    background-color:#6A0DAD;
+}
+.footer-data{
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+}
+.logo_portion{
+    width: 100%;
+    height: max-content;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+.footer-social-media{
+    width: 80%;
+    height: max-content;
+    border-bottom: 2px solid gray;
+    margin: auto;
+}
+.footer-social-media >ul{
+    width: 55%;
+    margin: auto;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+.footer-social-media>.icon{
+    border: none;
+    height: max-content;
+    padding: unset;
+    text-align: center;
+}
+.footer-social-media a{
+    margin: unset;
+    font-size: 50px;
+}
+.footer-copyright{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    height: max-content;
+    font-size: 15px;
+    color: white;
+}
+.Logo{
+    width: 100%;
+    border: unset;
+    margin: auto;
+    padding-top: 1%;
+}
+.Logo img{
+    width: 10%;
+    height: 10%;
+}
+.logo-name{
+    width: 80%;
+    margin: auto;
+    border-bottom: 2px solid gray;
+    font-size: 15px;
+}
+.logo-name h2{
+    width: 55%;
+    display: block;
+    margin: auto;
+    font-weight: normal;
+    padding : 1%;
+}
+.icon{
+    font-size: 45px;
+    color:  lightblue;
+}

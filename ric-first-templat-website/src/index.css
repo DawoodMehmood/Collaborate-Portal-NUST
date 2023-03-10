@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+  margin: 0;
+  font-family: 'Popins', serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(229, 228, 226, 0.3) !important;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.slick-prev{
+  left: 0.5% !important;
+
+}
+.slick-prev,.slick-next {
+  /*display: none !important;*/
+  z-index: 1;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 100%;
+}
+.slick-next {
+  right: 0.5% !important;
+ }
+.slick-arrow {
+  background-color: lightgray !important;
+}
+.slick-arrow:hover{
+  background-color:  #6495ED !important;
+}
+.card{
+  width: 100%;
+  height: max-content;
+  color: gray !important;
+  margin: 2% auto auto;
+  padding-bottom: 20px;
+}
+.Card-slider .slick-next{
+  display: none !important;
+  /*z-index: -1 !important;*/
+  right: unset !important;
+  /*visibility: unset !important;*/
+}

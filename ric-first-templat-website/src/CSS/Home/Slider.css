@@ -1,0 +1,260 @@
+/*
+Some Code is written in index.css for home slider, bring it here.
+ */
+.Image-Header{
+    margin-right: unset;
+    width: 100%;
+    height: 70vh;
+    background-size: 100% 100%;
+}
+.layer{
+    width: 100%;
+    background-color:unset;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    overflow: hidden;
+}
+.header-heading{
+    margin-top: 2.5%;
+    color: 		#1974D2;
+    flex: 25%;
+    text-align: center;
+    font-size: 4em;
+}
+
+.RankingDiv{
+    margin: 1.5% 2.5% 0 2.5%;
+    flex: 65%;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5%;
+}
+.rankings{
+    flex: 10%;
+    height: 150px;
+    color: #1974D2;
+}
+.rankings > h2, .rankings > h1{
+    margin: unset;
+    text-align: center;
+}
+.rankings > h2{
+    color: #1974D2;;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.rankings > h1{
+    font-size: 5em;
+    font-weight: bolder;
+    color: orange;
+}
+
+.Line{
+    height: 150px;
+    background-color: #1974D2;
+    width: 5px;
+    margin-right: 5%;
+}
+.collaboration-slide{
+    display: flex;
+    gap: 2.5%;
+    flex-direction: column;
+    margin: unset;
+}
+.collaboration-slide-heading{
+    flex: 2%;
+    /*height: 90vh;*/
+    margin: unset;
+    /*padding: 5% 1.5% 5% 1.5%;*/
+}
+.collaboration-slide-heading > h1{
+    color: #1974D2;
+    font-size: 4em;
+    text-align: center;
+    margin-top: 2.5%;
+}
+.collaboration-slide-images{
+    flex: 60%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    justify-content: center;
+    /*margin-top: 2.5%;*/
+}
+.image{
+    height: 100px;
+    width: 135px;
+    padding: unset;
+    /*border-radius: 100%;*/
+    margin: 0.5% 1% 1% 0;
+
+}
+.image > img{
+    height: 100%;
+    width: 100%;
+
+    /*border-radius: 100%;*/
+    border: unset;
+}
+.collaboration-slide-collab{
+    display: flex;
+    gap: 2%;
+    flex-direction: column;
+}
+.collaboration-slide-heading-collab{
+
+    flex: 10%;
+    /*padding: 1%;*/
+}
+.collaboration-slide-heading-collab > h1{
+    color: #1974D2;
+    text-align: center;
+    font-size: 4em;
+}
+.collaboration-slide-images-collab{
+    margin-top: 1%;
+    flex: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: unset;
+    margin-right: unset;
+    gap: 0.1%;
+}
+.image-collab{
+
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-top: 1%;
+    flex: 7%;
+    flex-grow: 0;
+    height: 100px;
+    width: 135px;
+}
+.image-collab > img{
+    height: 100%;
+    width: 100%;
+}
+.collaboration-faculty{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+.collaboration-slide-heading-faculty{
+    margin:  1.5%  2.5% auto 2.5%;
+    flex: 30%;
+}
+.collaboration-slide-heading-faculty > h1,
+.collaboration-slide-heading-faculty > h3,
+.collaboration-slide-research > h1,
+.collaboration-slide-publications > h1{
+    color: #1974D2;
+    text-align: center;
+    margin: auto;
+
+}
+.collaboration-slide-heading-faculty > h1, .collaboration-slide-research> h1{
+    font-size: 4em;
+    text-align: center;
+}
+.collaboration-slide-heading-faculty > h3{
+    font-size: 2.5em;
+}
+.collaboration-image-faculty{
+    flex: 80%;
+    display: flex;
+    flex-direction: row;
+}
+.image-faculty{
+    margin:0 2.5% 2.5% 2.5%;
+    width: 100%;
+    height: 270px;
+}
+.image-faculty > img{
+    width: 100%;
+    height: 100%;
+    border: unset;
+}
+.collaboration-research{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+.collaboration-slide-research{
+    margin:  1.5%  2.5% auto 2.5%;
+    flex: 45%;
+    padding: unset;
+}
+
+.collaboration-research-images{
+    flex: 65%;
+    display: flex;
+    flex-direction: row;
+
+}
+.image-research{
+    margin: 1% 2.5% 2.5% 2.5%;
+    width: 80%;
+    height: 250px;
+}
+.image-research > img{
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid rgba(108, 180, 238, 1);*/
+}
+.collaboration-slide-publications{
+    margin:  1.5%  2.5% auto 2.5%;
+    flex: 45%;
+    padding: unset;
+}
+.collaboration-publication-images{
+    flex: 65%;
+}
+.image-publication{
+    margin: auto;
+    width: 95%;
+    height: 35%;
+}
+.image-reward{
+    margin: auto;
+    width: 95%;
+    height: 40%;
+}
+.image-publication >img{
+    margin-top: 2.5%;
+    width: 100%;
+    height: 100%;
+}
+.image-reward > img{
+    width: 100%;
+    height: 100%;
+}
+.collaboration-slider{
+    /*width: 95% !important;*/
+    /*height: 330px !important;*/
+
+}
+.faculty-card{
+    width: 98%;
+    height: max-content;
+    margin: auto;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: fill;
+}

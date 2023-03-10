@@ -1,0 +1,61 @@
+.SearchBar{
+    /*background-color:  rgba(106, 13, 173, 0.4);*/
+    padding: 2% 10%;
+    margin: 1% 10%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+}
+.Form{
+    border: 1px solid #e1e4e8;
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 15%);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+.Searching{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    gap: unset;
+    flex:80%;
+}
+.searchButtonDiv{
+    flex: 5%;
+    height: max-content;
+}
+.searchButtonDiv > button{
+    width: 100%;
+    height: 100%;
+    font-size: 120%;
+    margin: 0 !important;
+    border-radius: 0 20px 20px 0;
+    border: none;
+    background-color: rgba(106, 13, 173, 1) !important;
+
+}
+.search{
+    flex: 90% !important;
+    border:unset;
+    color: rgba(106, 13, 173, 1) !important;
+    border-radius: unset;
+    height: 100%;
+}
+.option_selector{
+    flex: 30%;
+    height: 100%;
+    border: unset;
+    border-radius: 20px 0 0 20px;
+}
+.school_selector{
+    border-radius: unset;
+}
+.searchButtonDiv > button:hover{
+    background-color: rgba(106, 13, 173, 0.8) !important;
+}
+.searchButtonDiv > button:active{
+    background-color: rgba(106, 13, 173, 0.6) !important;
+}

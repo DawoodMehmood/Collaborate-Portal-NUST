@@ -1,0 +1,26 @@
+.address-div{
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    height: 130px;
+    box-shadow: 2px 2px 8px 2px #888888;
+    text-align: center;
+    /*height: max-content;*/
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.address-div h3{
+    border: 1px dashed rgba(106, 13, 173, 0.4);
+    border-radius: 100%;
+    width: 60px;
+    padding: 10px;
+}
+.address-div .address-icon{
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    color: rgba(106, 13, 173, 0.6);;
+}

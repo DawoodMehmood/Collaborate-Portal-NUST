@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.collaboration-slider{
+    text-decoration: none;
+    color: #282c34;
+    width: 260px;
+    height: max-content;
+    border-radius: 10px !important;
+
+}
+.Card{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    width: 260px;
+    margin: 4%;
+}
+.header_card{
+    width: 100%;
+    height: 30%;
+    background-color: #6495ED;
+    border-radius: 10px 10px 0 0;
+
+}
+.info_card{
+    width: 100%;
+    height: 70%;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+}
+.img_div{
+    width: 50%;
+    height: 60%;
+    position: relative;
+    top: -60px;
+    margin: auto;
+    border-radius: 50%;
+}
+.profile_img_card{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow:  0 0 0 2px white;
+}
+.card_name{
+    margin: auto;
+    width: 85%;
+    height: 50px;
+    position: relative;
+    top: -60px;
+    word-spacing: 5px;
+}
+.header_name{
+    width: 100%;
+    height: 100%;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+.faculty_type{
+    position: relative;
+    top: -75px;
+    width: 100%;
+    height: 50px;
+}
+.card_faculty{
+    width: 85%;
+    height: 100%;
+    font-weight: normal;
+    opacity: 0.6;
+    text-align: center;
+    color: black;
+    margin: auto !important;
+    font-size: 1.2em;
+}
+.card_collaborator{
+    opacity: 0.5;
+    position: relative;
+    top: -48px;
+    font-weight: inherit;
+    text-align: center;
+    color: black;
+    font-size: 1.2em;
+}
+.company-a{
+    text-decoration: none;
+}
+.industry-collab{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    padding: 5%;
+    /*border: 1px solid #e1e4e8;*/
+    /*box-shadow: 2px 2px 5px rgb(0 0 0 / 15%);*/
+}
+.industry-collab-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 2%;
+}

@@ -1,0 +1,34 @@
+.work_details{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr) ;
+    grid-gap: 2.5%;
+    height: max-content !important;
+
+}
+.detail_work_div{
+    height: 100% !important;
+    padding: 0 2%;
+    border-radius: 5px;
+    background-color: #FFFFFF !important;
+    color: rgba(106, 13, 173, 0.5);
+    border: 1px solid #e1e4e8;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.15);
+}
+.detail_work_div h6{
+    font-size: 20px;
+    font-weight: bolder;
+    text-decoration: underline;
+    padding: 2% 0;
+    margin: 0;
+    border-radius: 5px;
+    text-align: center;
+}
+.detail_work_div h1{
+    padding: unset;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.about_heading{
+    margin: 2.5% 0;
+}

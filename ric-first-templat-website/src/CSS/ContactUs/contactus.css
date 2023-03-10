@@ -1,0 +1,61 @@
+.ContactUs-div{
+    width: 75%;
+    margin: 2% auto;
+    justify-content: center;
+}
+.ContactUs-div > h1{
+    text-align: center;
+    margin: 2%;
+    padding: 0;
+    font-size: 2.5em;
+}
+.RIC-Map-Location{
+    width: 100%;
+    height: max-content;
+    margin: 0;
+    padding: 0;
+}
+.RIC-Map-Location  iframe{
+    width: 100%;
+    border: 0;
+}
+.contact-info {
+    margin:auto;
+    padding: 30px 0;
+    display: flex;
+}
+.formFields{
+    width: 70%;
+    margin: 1%;
+    padding: 0;
+}
+.required-symbol{
+    font-size: 1.5em;
+    font-weight: 600;
+    color: red;
+}
+.error-message{
+    color: red;
+    font-size: 1em;
+    font-weight: 400;
+}
+.contact-form-personal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.Form-Button{
+    width: 15%;
+    border: unset;
+    background-color: rgba(106, 13, 173, 1) !important;
+}
+.Form-Button:hover{
+    background-color: rgba(106, 13, 173, 0.8) !important;
+}
+.Form-Button:active{
+    background-color: rgba(106, 13, 173, 0.6) !important;
+}

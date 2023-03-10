@@ -1,0 +1,12 @@
+.Slider_Card{
+    width: 90%;
+    height: max-content;
+    margin: 1% auto;
+}
+.collaboration-slider{
+    height: 350px !important;
+}
+.slick-arrow{
+    display: none !important;
+}
+
