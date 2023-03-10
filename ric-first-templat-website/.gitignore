@@ -12,7 +12,8 @@
 /build
 
 #Assets
-/src/Background-Video/NUST Campus.mp4
+/src/Background-Video/*.*
+!/src/Background-Video/.gitkeep
 
 # misc
 .DS_Store
