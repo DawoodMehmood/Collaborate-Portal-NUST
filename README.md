@@ -65,25 +65,25 @@ Public folder has only one child folder which is named as “Images.” This ima
       This folder contains the video which is playing in the background of Slider. This video can be changed later because it is of very large size.
 10. Components
        This folder contains all the components on which this website is based on. Its sub-folder includes:
-       *	 ##### API_Calling
+       *	 API_Calling
        This folder contains ‘Calling_API.js’ file which is responsible for fetching data from the back end, using specified APIs. Then sending that data to ‘New_Profile’ component for displaying it on the screen.
-       *	 ##### Charts
+       *	 Charts
        This folder contains two files named, “Line_Chart.js” and “Pie_Chart.js”, these files are used to display charts on Profile.
-       *	 ##### Common
+       *	 Common
        This folder contains two files named, “Footer.js” and “Header.js”, these two files are common for all pages on website, as shown by the name of the folder. These two files, contain all code for “Header” and “Footer” of website.
-       *	 ##### Contact Us
+       *	 Contact Us
        This folder contains two files named, “AddressDiv.js” and “ContactUs.js”. AddressDiv.js is a separate component used in “Contact Us” page. It is used to display Address and E-Mail of RIC. ContactUs.js is contains all the code for “Contact Us” page. It also extends AddressDiv.js file.
-       *	 ##### Home
+       *	 Home
        This folder contains four files, named “QualitiesPortion_Home.js”, “SearchBar.js”, “Slider.js”, and “Themes.js”.
        QualitiesPortion_Home.js file contains code, about the section below “NUST Research Themes”.
        SearchBar.js file contains code for Search Bar used in website for searching the faculty members.
        Slider.js file contains code, for Slider which is displayed on the home page of the website.
        Themes.js file contains code, for “NUST Research Themes” which are being displayed on home page after search bar.
-       *	##### Middle_Pages
+       *	Middle_Pages
        Contains only one file “Middle_Page.js”, this file contains code showing search results. Whenever user do a search the page on which these results are being shown is managed by this file.
-       *	##### NotFoundFiles
+       *	NotFoundFiles
        This folder contains files which are used for displaying the error messages to user, whenever any in-correct data is entered. “ErrorMessage.js” is used in Middle_Page.js file, where it is used to display error message whenever any error occur in fetching the data. “PageNotFound.js” if any URL which is not stored in routes of website, user will be re-directed to this page of 404 Page Not Found.
-       *	##### Profile
+       *	Profile
        This folder contains only one file, named “New_Profile.js” which contains all code for rendering the Profile Page of any faculty member.
 11. CSS
        This folder contain all the CSS used in this website. All folders are named same as their corresponding Components. So, it is easy to understand which file is attached which component.
