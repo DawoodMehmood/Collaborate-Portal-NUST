@@ -1,3 +1,9 @@
+/*
+There is duplication of code in this file which is intended to be updated later in the beta version of this project.
+ */
+
+
+
 import {useNavigate, useParams} from "react-router-dom";
 import SearchBar from "../Home/SearchBar";
 import ErrorMessage from "../NotFoundFiles/ErrorMessage";
@@ -88,14 +94,14 @@ const Middle_Page = () => {
         });
     }
 
-    // Maintaining total number profiles being fetched so far and showing it to user, when research area option is being selected.
+    // Maintaining total number of profiles being fetched so far and showing it to user, when research area option is being selected.
     async function UpdateExpertCounter(){
         setExperts(prevState => {
             return prevState+1;
         })
     }
 
-    //
+    // Profiles are being fetched from Profile API then separating only PHD faculty members, to show as result to the user.
     async function separateProfiles(data){
         setProfileCounter(0);
         for(let j=0; j<data.length; j++){
@@ -117,6 +123,9 @@ const Middle_Page = () => {
             });
         }
     }
+
+    // In case when Profiles are being through research are option, then we need to fetch the profile of each faculty member based on
+    // their CMS ID, so this method is doing that work for us.
     async function fetchProfileWithID(cmsID){
         incrementProfileCounter().then();
         const profile = getProfileObject();
@@ -146,6 +155,7 @@ const Middle_Page = () => {
                 decrementProfileCounter();
             });
     }
+    // To shift the loading screen
     async function changeLoading (){
         setLoading(false);
     }
