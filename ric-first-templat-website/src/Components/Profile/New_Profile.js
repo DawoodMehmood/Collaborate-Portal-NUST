@@ -19,6 +19,7 @@ import Placeholder from "react-bootstrap/Placeholder";
 
 const New_Profile = ({publications, projects, conferences, supervisions, editorials,trainings, ips, profile, enable}) => {
 
+
     const research_settings = {
         className:"Slider_Card",
         slidesToShow: 3,
@@ -1645,10 +1646,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">
                             {`Authors: ${article.All_Authors.trim().substring(0, article.All_Authors.length-2)}`}
                             <br/>
-                            {`${article.Journal_Title} `}
-                            &nbsp;<strong style={{color:"black"}}>
-                                {`${Pub_Info(article.Journal_Info, article.Publication_year, index)}`}
-                            </strong>
+                            <i>{`${article.Journal_Title}, `}</i>&nbsp;<strong style={{color:"black"}}>{`${Pub_Info(article.Journal_Info, article.Publication_year, index)}`}</strong>
+                            <br/>
+                            Impact Factor: {article.IF===""?<strong>0</strong>:<strong style={{color:"black"}}>{`${article.IF} `}</strong>}  &nbsp; &nbsp; Citations: {article.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${article.Citations} `}</strong>} &nbsp; &nbsp;  Quartiles: {article.Quartiles===""?<strong>0</strong>:<strong style={{color:"black"}}>{`${article.Quartiles} `}</strong>}
                         </Card.Subtitle>
 
                         <Button variant="primary" onClick={()=>{
@@ -1680,7 +1680,10 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">
                             {`Authors: ${(chapter.All_Authors).trim().substring(0, chapter.All_Authors.length-2)}`}
                             <br/>
-                            {`${chapter.Journal_Title} ${'('+chapter.Journal_Info+')'} (${chapter.Publication_year})` }
+                            <i>{`${chapter.Journal_Title}: `}</i>
+                            <strong style={{color:"black"}}>{ `${'('+chapter.Journal_Info+')'} (${chapter.Publication_year})` }</strong>
+                            <br/>Citations: {chapter.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${chapter.Citations} `}</strong>}
+
                         </Card.Subtitle>
                         <Button variant="primary" onClick={()=>{
                             window.open(chapter.DOI, '_blank');
@@ -1706,6 +1709,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">{`${book.Journal_Title} ${'('+book.Journal_Info+')'}` }
                             <br/>
                             {`Authors: ${(book.All_Authors).trim().substring(0, book.All_Authors.length-2)}`}
+                            <br/>Citations: {book.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${book.Citations} `}</strong>}
+
                         </Card.Subtitle>
                         <Button variant="primary" onClick={()=>{
                             window.open(book.DOI, '_blank');
@@ -1732,7 +1737,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                             {"Authors: "+conference.Authors.join(", ")}
                             <br />
                             {conference.Conference_Name +" ("+conference.Year+")"}
-                            <br/>
+                            <br/>Citations: {conference.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${conference.Citations} `}</strong>}
+
                         </Card.Subtitle>
                         <Button variant="primary" onClick={()=>{
                             if(conference.DOI.includes("https://doi.org/")){
@@ -1902,7 +1908,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">
                             {editorial.Reviewer_Type}
                             <br />
-                            {"IF: "+editorial.Impact_Factor}
+                            IF: <strong style={{color:"black"}}>{editorial.Impact_Factor}</strong>
                         </Card.Subtitle>
                     </Card.Body>
                 </Card>
