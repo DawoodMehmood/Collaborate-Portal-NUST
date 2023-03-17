@@ -20,28 +20,38 @@ import Placeholder from "react-bootstrap/Placeholder";
 const New_Profile = ({publications, projects, conferences, supervisions, editorials,trainings, ips, profile, enable}) => {
 
 
+    // Define settings for a slider component
     const research_settings = {
-        className:"Slider_Card",
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite:true,
-        lazyLoad: true,
-        autoplay: true,
-        speed: 1000,
-        autoplaySpeed: 4000,
-        cssEase: "linear",
-        pauseOnHover: true,
-        rows: 1,
-    }
-    const [AmountGranted, setAmountGranted] = useState(0);
-    const [profileData, setProfileData] = useState({
+        className: "Slider_Card", // Class name for the slider component
+        slidesToShow: 3, // Number of slides to show at once
+        slidesToScroll: 3, // Number of slides to scroll at a time
+        infinite: true, // Whether the slider should loop infinitely
+        lazyLoad: true, // Whether to lazy-load images for better performance
+        autoplay: true, // Whether to autoplay the slider
+        speed: 1000, // Speed of the slider animation
+        autoplaySpeed: 4000, // Time between autoplay slides
+        cssEase: "linear", // Type of easing for slider animation
+        pauseOnHover: true, // Whether to pause the slider on hover
+        rows: 1, // Number of rows for the slider
+    };
+    // Define state variables with initial values using the useState hook
+    // This hook contains code for amount granted to projects, which is displayed on the home screen of profile
+    const [AmountGranted, setAmountGranted] = useState(0); // Amount granted for a project
+
+    // This hook is used for deciding, which Sub-Tabs of Profile Tab should be displayed
+    const [profileData, setProfileData] = useState({ // Data for a user profile
         Qualifications: false,
         Experience: false,
         Awards: false,
         Talks: false,
         Memberships: false,
     });
-    const [CollapseOptions, setOptions] = useState({
+
+    // Below Code is contain different states for showing different option Tabs on the left side of profile, below the image of Faculty Member.
+    // e.g, Tabs of Qualifications, Experiences, Publications, etc.
+    // Their usage can be seen in dive containing "Options" class. These states are being used for conditional rendering of different dives
+    // to give different options to user based on data returned by API.
+    const [CollapseOptions, setOptions] = useState({ // Options for collapsing sections
         project_options: false,
         research_project_options: false,
         industrial_project_options: false,
@@ -56,7 +66,12 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
         International_Industrial_options: false,
         Profile_options: false,
     });
-    const [TabOptions, setTabOptions] = useState({
+
+    // Below Code is contain different states for showing different windows on the right side of profile.
+    // e.g, List of Qualifications, Experiences, Publications, etc.
+    // Their usage can be seen in dive containing "Main_Body" class. These states are being used for conditional rendering of different dives
+    // based on options selected by the user.
+    const [TabOptions, setTabOptions] = useState({ // Options for different tabs
         profile_tab: false,
         analysis_tab: true,
         allProjects_tab: false,
@@ -80,37 +95,56 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
         Industrial_Design_tab: false,
         Trade_Marks_tab: false,
     });
-    const [Research_Images, setResearch_Images] = useState([]);
-    const [Project_Research, setProject_Research] = useState({
+
+    // This state array contains images of Universities, with whom faculty member has worked with.
+    // This is only visible when Google Cloud API Key is added in the "fetchData" function.
+    const [Research_Images, setResearch_Images] = useState([]); // Images for research projects
+
+    // There are two main types of Projects.
+    // 1. Research
+    // 2. Industry
+    //
+    // Below state is dividing Research Projects in two different groups, National and International
+    const [Project_Research, setProject_Research] = useState({ // Data for research projects
         National: [],
         International: [],
     });
-    const [Project_Industry, setProject_Industry] = useState({
+
+    // Below state is dividing Industry Projects in two different groups, National and International
+    const [Project_Industry, setProject_Industry] = useState({ // Data for industry projects
         National: [],
         International: [],
     });
-    const [Research_Articles, setResearch_Articles] = useState([]);
-    const [Book_Chapters, setBook_Chapters] = useState([]);
-    const [publications_data, setPublications] = useState({});
-    const [Project_Pie_Chart_Date, setProject_Pie_Chart_Date] = useState({});
-    const [Publications_Pie_Chart_Date, setPublications_Pie_Chart_Date] = useState({});
-    const [Books, setBooks] = useState([]);
+    const [Research_Articles, setResearch_Articles] = useState([]); // State Holding array of research articles
+    const [Book_Chapters, setBook_Chapters] = useState([]); // State Holding array of Book Chapter
+    const [publications_data, setPublications] = useState({}); // State Holding array of Publications
+    const [Books, setBooks] = useState([]); // State Holding array of Books
+
+    // This state holds different types of intellectual properties - Patents, Industrial Design, Copy Rights, and trademarks - as empty arrays.
     const [Intellectual_Property, setIntellectual_Property] = useState({
         Patents: [],
         Industrial_Design: [],
         Copy_Rights: [],
         Trade_Marks: [],
-    });
+    }); // State Holding different Types of IPs
+
+    // PhD and MS Supervisions are displayed on the portal and this state object is holding those arrays
     const [Supervision, setSupervision] = useState({
         PHD: [],
         Masters: [],
-    });
+    });// State Holding different Types of Supervisions
+
+    const [Project_Pie_Chart_Date, setProject_Pie_Chart_Date] = useState({}); // // State Holding data for Project Pie Chart
+    const [Publications_Pie_Chart_Date, setPublications_Pie_Chart_Date] = useState({}); // State Holding data for Publications Pie Chart
+    // Scopus ID is found on runtime, through DOI of Publications and this state is responsible for holding that ID
     const [ScopusID, setScopusID] = useState("");
+    // State to hold total Citations of Publications
     const [Citations, setCitations] = useState(0);
     const sliderInfo = useRef({
         "linksArray":[],
         "counter":0,
     });
+    // This state is not being used yet, but is intended to flag out if image fetch is complete or not, for slider.
     const [fetchedImagesComplete, setFetchedImages] = useState(false);
     let temp_amount = 0;
 
