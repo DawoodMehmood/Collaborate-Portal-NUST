@@ -121,6 +121,7 @@
       <path value="$PROJECT_DIR$/ric_server_APIs/vendor/laravel/tinker" />
       <path value="$PROJECT_DIR$/ric_server_APIs/vendor/laravel/serializable-closure" />
       <path value="$PROJECT_DIR$/ric_server_APIs/vendor/laravel/pint" />
+      <path value="$PROJECT_DIR$/ric_server_APIs/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

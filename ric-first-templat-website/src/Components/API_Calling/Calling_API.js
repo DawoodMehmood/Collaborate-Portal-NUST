@@ -45,7 +45,9 @@ const Calling_API = () =>{
             All_Authors: "",
             Publication_year: "",
             Co_Authors_Affiliations: [],
-            Citations: 0
+            Citations: 0,
+            IF:0,
+            Quartiles:""
         };
     };
 
@@ -191,6 +193,7 @@ const Calling_API = () =>{
             await fetch(`http://localhost:8000/api/Publications/${params.id}`,)
                 .then((response) => response.json()).then(
                     (data)=> {
+
                         for(let j=0; j<data.length; j++){
                             if(!All_Publications.hasOwnProperty(data[j]["type"])){
                                 All_Publications[data[j]["type"]] = [];
@@ -206,6 +209,8 @@ const Calling_API = () =>{
                             Each_Publication_Data['All_Authors'] = data[j]["all_author_compute"];
                             Each_Publication_Data['Publication_year'] = data[j]["publication_year_compute"];
                             Each_Publication_Data['Citations'] = data[j]["citation_count_scopus"];
+                            Each_Publication_Data['IF'] = data[j]["impact_factor"];
+                            Each_Publication_Data['Quartiles'] = data[j]["int_quartiles"];
                             const authors_affiliations = data[j]["author_ids"];
                             for(let i=0; i<authors_affiliations.length; i++){
                                 if(authors_affiliations[i]["affiliation"] !== "nust" && All_affiliations.includes(authors_affiliations[i]["institute"].trim()+", "+authors_affiliations[i]["country"].trim()) === false){
@@ -227,6 +232,7 @@ const Calling_API = () =>{
             await fetch(`http://localhost:8000/api/Projects/${params.id}`)
                 .then((response) => response.json()).then(
                     (data)=> {
+
                         for(let j=0; j<data.length; j++){
                             if (data[j]["project_status"].includes("Submitted") || data[j]["project_type"] === "Defence" || data[j]["application_sector"] === "Defence"|| data[j]["project_status"].includes("Cancelled/Rejected") ){
                                 continue;
@@ -263,7 +269,7 @@ const Calling_API = () =>{
                 await fetch(`http://localhost:8000/api/Conferences/${params.id}`)
                     .then((response) => response.json()).then(
                         (data)=> {
-                            // console.log("Conferences: ",data)
+
                             for(let j=0; j<data.length; j++){
                                 const Each_Conference_Data = getConferenceObject();
                                 Each_Conference_Data['Title'] = data[j]["title_of_paper"];
@@ -289,6 +295,7 @@ const Calling_API = () =>{
             await fetch(`http://localhost:8000/api/supervision/${params.id}`)
                 .then((response) => response.json()).then(
                     (data)=> {
+
                         for(let j=0; j<data.length; j++){
                             const supervision = getSupervisionsObject();
                             supervision["Title"] = data[j]["thesis_title"];
@@ -311,6 +318,7 @@ const Calling_API = () =>{
             await fetch(`http://localhost:8000/api/trainings/${params.id}`)
                 .then((response) => response.json()).then(
                     (data)=> {
+
                         for(let j=0; j<data.length; j++){
                             const training = getTrainingConObject();
                             training["Name"] = data[j]["title"];
@@ -333,7 +341,6 @@ const Calling_API = () =>{
             await fetch(`http://localhost:8000/api/Editorials/${params.id}`)
                 .then((response) => response.json()).then(
                     (data)=> {
-                        // console.log("Editorials: ",data);
                         for(let j=0; j<data.length; j++){
                             const Editorial = getEditorialObject();
                             Editorial["Title"] = data[j]["title"];
@@ -345,7 +352,7 @@ const Calling_API = () =>{
                     }
                 );
         }
-        fetchEditorials().then(  () => {
+        fetchEditorials().then(() => {
               setApiCallNo(prevState => prevState - 1)
             // setSupervisions(All_Supervisions.length);
         });
@@ -354,6 +361,7 @@ const Calling_API = () =>{
             await fetch(`http://localhost:8000/api/IP/${params.id}`)
                 .then((response) => response.json()).then(
                     (data)=> {
+
                         for(let j=0; j<data.length; j++){
                             const IP = getIPObject();
                             IP["Title"] = data[j]["title"];
@@ -380,7 +388,6 @@ const Calling_API = () =>{
             await fetch(`http://127.0.0.1:8000/api/Profile/${params.id}`,)
                 .then((response) => response.json()).then(
                     (data)=> {
-                        // console.log(data)
                         for(let j=0; j<data.length; j++){
                             const profile = getProfileObject();
                             profile["Name"] = data[j]["name"];

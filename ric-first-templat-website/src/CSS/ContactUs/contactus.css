@@ -59,3 +59,15 @@
 .Form-Button:active{
     background-color: rgba(106, 13, 173, 0.6) !important;
 }
+.email-sent-flag{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: x-large !important;
+    height: max-content;
+    font-weight: bolder;
+    color: limegreen;
+}
+.email-sent-flag-false{
+    color: red;
+}
