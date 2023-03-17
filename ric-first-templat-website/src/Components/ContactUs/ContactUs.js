@@ -12,7 +12,7 @@ export default function ContactUs() {
         email: "",
         subject: "",
         message: "",
-        file: ""
+        // file: ""
     });
     const [formErrors, setFormErrors] = useState({
         name: false,
@@ -21,8 +21,12 @@ export default function ContactUs() {
         message: false,
         fileError:false,
     });
+    const [emailSentFlags, setEmailSentFlags] = useState({
+        showDiv:false,
+        showOKMessage:false,
+        showErrorMessage:false
+    })
 
-    console.log("Form Values: ", formValues)
     const handleFileUpload = (e) =>{
         const upFile = e.target.files[0];
         if(!(upFile.type === 'application/pdf' || upFile.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
@@ -36,10 +40,11 @@ export default function ContactUs() {
         }
         else{
                 setFormErrors((prevState)=> ({...prevState,fileError: false}))
-                setFormValues(prevState => ({...prevState, file: upFile}))
+                setFormValues(prevState => ({...prevState, file: upFile.name}))
         }
     }
     const handleSubmit = async (event) => {
+        setEmailSentFlags({showDiv: true, showOKMessage: false, showErrorMessage: false})
         event.preventDefault();
         let errors = {
             name: false,
@@ -81,13 +86,19 @@ export default function ContactUs() {
                             "name":`${formValues.name}`,
                             "email":`${formValues.email}`,
                             "subject":`${formValues.subject}`,
-                            "message":`${formValues.subject}`,
-                            "file":`${formValues.file}`
+                            "message":`${formValues.message}`,
+                            // "file":`${formValues.file}`
                         }
                     )
                 }).then((response)=>response.json())
                 .then((data)=>{
-                    console.log("Value from Server Returned: ",data)
+                    console.log(data)
+                    if(data.Status === "OK"){
+                        setEmailSentFlags(prevState => ({...prevState, showOKMessage: true, showErrorMessage: false}))
+                    }
+                    else{
+                        setEmailSentFlags(prevState => ({...prevState, showOKMessage: false, showErrorMessage: true}))
+                    }
                 })
 
             alert('Everything is fine')
@@ -117,6 +128,10 @@ export default function ContactUs() {
                 <AddressDiv icon={faEnvelope} text={"collaborate@nust.edu.pk"}/>
             </div>
 
+            {emailSentFlags.showDiv?<div>
+                {emailSentFlags.showOKMessage?<h3 className={"email-sent-flag"}>Email Sent Successfully</h3>:""}
+                {emailSentFlags.showErrorMessage?<h3 className={"email-sent-flag email-sent-flag-false"}>Could Not Send Email. Try Again</h3>:""}
+            </div>:""}
             {/* Displays a contact form */}
             <div className={"contact-form"}>
                 <Form onSubmit={handleSubmit}>
