@@ -40,11 +40,11 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
 
     // This hook is used for deciding, which Sub-Tabs of Profile Tab should be displayed
     const [profileData, setProfileData] = useState({ // Data for a user profile
-        Qualifications: false,
-        Experience: false,
-        Awards: false,
-        Talks: false,
-        Memberships: false,
+        Qualifications: false, // For displaying Qualifications
+        Experience: false, // For Displaying Experience
+        Awards: false, // For Displaying Awards Section
+        Talks: false, // For Displaying Invited Speaker Section
+        Memberships: false, // For Displaying Memberships Section
     });
 
     // Below Code is contain different states for showing different option Tabs on the left side of profile, below the image of Faculty Member.
@@ -146,18 +146,25 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
     });
     // This state is not being used yet, but is intended to flag out if image fetch is complete or not, for slider.
     const [fetchedImagesComplete, setFetchedImages] = useState(false);
+
+    //Managing Projects for Displaying
+    const [projects_data, setProjects] = useState({});
+
     let temp_amount = 0;
 
-    const fetchImage = async (image_URL) => {
-        await fetch(image_URL)
+    // This function receives an image URL and retrieves that image from Internet
+    const fetchImage = async (
+        image_URL //Image URL Passed
+    ) => {
+        await fetch(image_URL) // Fetching Image from URL
             .then(async response => {
-                if (response.status === 200) {
-                    const imageBlob = await response.blob();
-                    const imageObjectURL = URL.createObjectURL(imageBlob);
-                    setResearch_Images(prevState => {return([...prevState,imageObjectURL,])});
+                if (response.status === 200) { // Checking Response Status
+                    const imageBlob = await response.blob(); // Converting Response to Blob
+                    const imageObjectURL = URL.createObjectURL(imageBlob); // Creating Image Object URL
+                    setResearch_Images(prevState => {return([...prevState,imageObjectURL,])}); //Updating State to, which will eventually show images on slider on profile Page.
                 }
                 else {
-                    return Promise.reject(response);
+                    return Promise.reject(response); // Error in fetching the image, so rejecting the response
                 }
             })
             .catch(error => {
@@ -166,27 +173,42 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
             );
 
     }
+
+    // This function is responsible for fetching google response from given keyword.
+    //  University names are passed to this function and this function is responsible for fetching the response from Google
     const fetchData = async (query) => {
-        const CSE_ID = 'd06601e240fe24053';
-        const API_KEY = 'AIzaSyDqZ7TrcdXktx2VglZAoBGdCSLlKDIeUVU';
+        const CSE_ID = 'd06601e240fe24053'; // Google Search Engine ID. This ID is unique with each user account, so it can't be used with any other account
+                                            // This should be changed when a new developer works on it. Otherwise, the slider will not work
+        const API_KEY = 'AIzaSyDqZ7TrcdXktx2VglZAoBGdCSLlKDIeUVU'; // This is the API key, this key enables and counts, how many requests have been sent to
+                                                                   // Without this key, google search will not happen. There are only 100 free requests against
+                                                                    // each API key, so whenever this count reaches new API key should be added.
+
+        // URL to search to google for given keyword
         await fetch(`https://customsearch.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${query} Logo&searchType=image`)
             .then(response=>{
+                // Extracting information from google response
                 if(response.status === 200){
                     return response.json()
                 }
                 return Promise.reject(response);
             })
             .then((data) => {
-                if(sliderInfo.current.linksArray.includes(data.items[0].link))
-                    return
+                // Checking if the current Image URL is already presesnt in fetched array, if not then add it otherwise don't do any action on it and just return.
+                // Taking only the first element of array
+                if(sliderInfo.current.linksArray.includes(data.items[0].link)) return
                 sliderInfo.current.linksArray.push(data.items[0].link);
+
+                // Passing URL to another function to fetch image from this URL
                 fetchImage(data.items[0].link)})
             .catch((error) => {
-                    console.log(error);
+                    // console.log(error);
                 })
     };
+    // This function is responsible for fetching the Scopus Link of am employee and it takes in Paper DOI
     const fetchScopusInfo = async (article_DOI)=>{
         // let returnValue=false;
+
+        // This link is calling the backend and that backend will fetch the Scopus ID of Faculty Member
         fetch("http://localhost:8000/api/Author",{
             method: 'post',
             headers: {
@@ -205,13 +227,20 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 return Promise.reject(response);
             }
         }).then(data=>{
+            // All authors if Paper found, now finding our faculty member
             const authors = data["abstracts-retrieval-response"]["authors"]["author"];
+
+            // Loop over all faculty members
             authors.map((author)=>{
                 let old_name = profile[0].Name.split(" ");
+
+                // Converting Faculty Name to Sentence Case.
                 let new_name = old_name.map(part=>{
                     return part.toLowerCase().charAt(0).toUpperCase() + part.slice(1).toLowerCase();
                 })
+                // Joining Parts of Name to create a new Name
                 new_name = new_name.join(' ')
+                // Matching Names to find the ID
                 if(new_name === author["ce:given-name"]+" "+author["ce:surname"]){
                     setScopusID(()=>{return(author["@auid"])})
                 }
@@ -222,7 +251,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
         })
     }
 
+    // THis function is responsible for updating the state variable, which holds data for Projects Pie Chart
     async function UpdateProjectPiData(type){
+        // If project type is "National", add it to National State Array
         if(type === "National"){
            await setProject_Pie_Chart_Date((prev) => {
                 if(prev['National Projects'] === undefined){
@@ -235,6 +266,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 )
             })
         }
+
+        // If project type is "International", add it to "International" State Array
         else{
             await setProject_Pie_Chart_Date((prev) => {
                 if(prev['International Projects'] === undefined){
@@ -248,7 +281,11 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
             })
         }
     }
+
+    // THis function is responsible for updating the state variable, which holds data for Publications Pie Chart
     async function UpdatePublicationPiData(type, length){
+        // Pie Chart data for Publications, there are four main types and there is a state array associated with each type
+        // whenever a type matches with any Type array, it is put in that array.
         if(type==="Conferences"){
             await setPublications_Pie_Chart_Date(prevState => {
                 if (length === 0)
@@ -274,10 +311,14 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
             } )
         }
     }
+
+    // This method is responsible for, separating the publications based on year, which will be shown on table on the Home Page of Profile
+    // This method also calculates total citations of all articles. This was the main reason, this method was separated, doing all work in single loop
     const separations_data = (publication)=>{
         let citations = 0;
         publication.map((article) => {
             citations = Number(article.Citations) + citations;
+            // If publicaion year exists, then increment it otherwise add it in state array and put its value to 1
             if (publications_data.hasOwnProperty(article.Publication_year)) {
                 publications_data[article.Publication_year] += 1;
                 setPublications({...publications_data});
@@ -288,12 +329,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
         });
         setCitations(prevState => prevState + citations);
     }
-
-    //Managing Projects for Displaying
-    const [projects_data, setProjects] = useState({});
-
-
     useEffect(() => {
+            // This is just mapping over the array of passed Supervisions, and separate separating the Master supervisions from PHD
             supervisions.map((supervision) => {
                 if(supervision.Degree === "Doctoral"){
                     setSupervision((prev) => ({
@@ -309,8 +346,11 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 }
             })
     }, [supervisions]);
+
     useEffect(() => {
+        // Sorting out the array of passed of IPs, before separating based on its categories
         ips.sort((a, b) => (a.Approval_Date < b.Approval_Date) ? 1 : -1);
+        // Mapping over the array of IPs, and separating based on the Type of IPs
         ips.map((ip) => {
                     if(ip.Type === "Patent"){
                         setIntellectual_Property((prev) => ({
@@ -336,18 +376,25 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         }));
                     }})
         } , [ips]);
+
     useEffect(() => {
+
+        // Sorting out Publications before further processing
         const values = Object.values(publications);
         for(let i=0; i<values.length; i++){
             values[i].sort((a, b) => (a.Publication_year < b.Publication_year) ? 1 : -1);
         }
+
+        // This loop is responsible for calling the function which finds the Scopus ID.
+        // Finding Articles Array
         if(publications.hasOwnProperty("Article")) {
             const article_array = publications["Article"];
             for (let i = article_array.length - 1; i > 0; i--) {
-                if (article_array[i]["Publication_year"] === "") continue
-                if (article_array[i]["Indexation"] === "HEC - W Cat") {
-                    const DOI = article_array[i]["DOI"].replace("DOI ", "").replace("DOI", "").replace("doi ", "").replace("doi", "")
-                    if (DOI.includes("https://") || DOI.includes("http://")) {
+                // looping over articles array and finding the proper article for searching on Scopus
+                if (article_array[i]["Publication_year"] === "") continue // If there is no publication year, then don't use this paper
+                if (article_array[i]["Indexation"] === "HEC - W Cat") { // If Paper has indexation type of "HEC - W Cat", then proceed
+                    const DOI = article_array[i]["DOI"].replace("DOI ", "").replace("DOI", "").replace("doi ", "").replace("doi", "") // Cleaning DOI
+                    if (DOI.includes("https://") || DOI.includes("http://")) { // Separating and creating a new DOI from existing one
                         const split = DOI.split("/");
                         let doi = "";
                         for (let j = 0; j < split.length; j++) {
@@ -363,17 +410,21 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                                 }
                             }
                         }
+                        // Passing the DOI to method to find its Scopus Link
                         fetchScopusInfo(doi).then();
                     }
                     else {
+                        // If DOI is already of in the required form, don't change it just pass it to fetch function and it will do the job for you.
                         fetchScopusInfo(DOI).then()
                     }
                     break;
                 }
             }
         }
-        // let counter  = 0;
+
+        // Publications array contains differnt types of objects, now separating these objects in separate State arrays.
         for (let prop in publications){
+
             if(prop === "Data Paper"){
                 continue;
             }
@@ -395,6 +446,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     }
               );
             }
+            // Finding Author's Universities and then sending those names to function responsible for fetching Image URLs of Co-Author Working Universities
             publications[prop].map((item) => {
             if(sliderInfo.current.counter<20){
                 if (item.Co_Authors_Affiliations.length !== 0) {
@@ -406,17 +458,32 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     })
                 }
             }});
-            setFetchedImages(true);
+            // setFetchedImages(true);
+            // Calling Method which separates the data based on Publication Year
             separations_data(publications[prop]);
         }
 
     }, [publications]);
+
     useEffect(() => {
+
+        // Sorting Out Projects Before further processing
         projects.sort((a, b) => (a.Approval_Date < b.Approval_Date) ? 1 : -1);
+
+        /*
+        There are two main categories of Projects:
+        1. Research Projects
+        2. Industry Projects
+         */
         async function separateProjects(){
+            // Mapping over all projects and separating Research and Industrial Projects
             await projects.map((project) => {
+                // This condition represents Industrial Projects
                 if (project.Sector === "Consultancy/Industrial/Sipi-Off") {
+                    // Now Checking if the project is International or Not.
+                    // Add it to appropriate state array based on value
                     if (project.Funding_From_Agency.trim().includes("International")) {
+                        // First passing the data to Pie Chart function, which retrieves data for Pie Chart from this Project Object and then updating the state array
                         UpdateProjectPiData("International").then(()=>{
                             setProject_Industry((prev) => ({
                                 ...prev,
@@ -425,6 +492,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         })
                     }
                     else {
+                        // First passing the data to Pie Chart function, which retrieves data for Pie Chart from this Project Object and then updating the state array
                         UpdateProjectPiData("National").then(()=>{
                         setProject_Industry((prev) => ({
                             ...prev,
@@ -434,9 +502,13 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
 
                     }
                 }
+                // Else it is a Research Project
                 else {
                     if (project.Funding_From_Agency.trim().includes("International")) {
+                        // Now Checking if the project is International or Not.
+                        // Add it to appropriate state array based on value
                         UpdateProjectPiData("International").then(()=>{
+                            // First passing the data to Pie Chart function, which retrieves data for Pie Chart from this Project Object and then updating the state array
                             setProject_Research((prev) => {
                                     return ({
                                         ...prev,
@@ -446,6 +518,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                             );})
                     }
                     else {
+                        // First passing the data to Pie Chart function, which retrieves data for Pie Chart from this Project Object and then updating the state array
                         UpdateProjectPiData("National").then(()=>{
                         setProject_Research((prev) => {
                             return({
@@ -455,6 +528,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         });})
                     }
                 }
+                // Now separating projects based on year, for displaying yearly projects on graph on home Page of profile
                 if(projects_data.hasOwnProperty(project.Approval_Date.substring(0,4))){
                     projects_data[project.Approval_Date.substring(0,4)] += 1;
                     setProjects({...projects_data});
@@ -463,20 +537,28 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     projects_data[project.Approval_Date.substring(0,4)] = 1;
                     setProjects({...projects_data});
                 }
+                // Calculating amount granted to faculty member
                 // eslint-disable-next-line react-hooks/exhaustive-deps
                 temp_amount = temp_amount+Number((project.Cost_in_PKR / 1000000).toFixed(2));
-
             });
         }
+
+        // Calling above method and then setting up the amount granted to faculty member
         separateProjects().then( ()=> {
             temp_amount = temp_amount.toFixed(1);
             setAmountGranted(temp_amount)
         } );
     }   , [projects]);
+
     useEffect(() => {
+        // Passing Conferences array to Publications Pie Chart function for adding it to Pie Chart
         UpdatePublicationPiData("Conferences", conferences.length).then()
         let citations = 0;
+
+        // Sorting out Conferences array before performing any functionalities over it.
         conferences.sort((a, b) => (a.Year < b.Year) ? 1 : -1);
+        // Mapping over the array and separating each conference based on year
+        // also calculating total citations by accumulating citations of each conference and adding it to total citations state variable
         conferences.map((conference) => {
             if (publications_data.hasOwnProperty(conference.Year)) {
                 publications_data[conference.Year] += 1;
@@ -490,6 +572,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
         setCitations(prevState => prevState + citations);
 
     }  , [conferences]);
+
+    // This useEffect is not complete yet.
     useEffect(() => {
         console.log("Fetched Images: ", fetchedImagesComplete);
         if (fetchedImagesComplete && Research_Images.length<3){
@@ -507,8 +591,12 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
 
         }
     }, [fetchedImagesComplete]);
+
+    // This method is called whenever "Download CV" button is clicked on Profile Page and it is also responsible for creating PDF for CV
     const openCV = ()=>{
+        // Creating PDF Object
         const doc = new jsPDF('p', 'pt', 'a4');
+        // X-Axis and Y-Axis Positions of To Blue Area of CV
         let rect1X = 0;
         const rect1Y = 0;
         const rect1Width = 595;
@@ -518,11 +606,17 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
         doc.rect(rect1X, rect1Y, rect1Width, rect1Height, 'F');
 
         // Fill the rectangle with text
-        // doc.setFont("helvetica", "bold");
+        // Now adding Text on Blue Rectangle
         doc.setFontSize(25);
         doc.setTextColor(255, 255, 255);
-        doc.text(`${profile[0].Name}`, 20, rect1Y + 40, {maxWidth:320});
+        doc.text(
+            `${profile[0].Name}`,  // Text to be Displayed
+            20,  // x-axis position
+            rect1Y + 40, // y-axis position
+            {maxWidth:320} // maximum width of text field box
+        );
         let y;
+        // Calculating how many lines text will take if we specify width size to 320
         if(doc.splitTextToSize(profile[0].Name,320).length ===1){
             y=60;
         }
@@ -530,9 +624,20 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
             y=doc.splitTextToSize(profile[0].Name,320).length*25+40;
         }
         doc.setFontSize(12);
-        doc.text(`${profile[0].Work_Position}`, 20, y,{maxWidth:320});
-        doc.text(`${profile[0].School}`, 20, y+20,{maxWidth:320});
+        doc.text(
+            `${profile[0].Work_Position}`, // Text to be Displayed
+                20, // x-axis position
+                y, // y-axis position
+                {maxWidth:320} // maximum width of text field box
+        );
+        doc.text(
+                `${profile[0].School}`, // Text to be Displayed
+                20, // x-axis position
+                y+20, // y-axis position
+                {maxWidth:320} // maximum width of text field box
+        );
 
+        // Loading Image from bas14 code provided by the NUST Server
         if(profile[0].Image_URL!=="") {
             const img = new Image();
             img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
@@ -550,8 +655,6 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
             y=doc.splitTextToSize(profile[0].School,320).length*20+y;
         }
 
-        // y = doc.splitTextToSize(profile[0].School,320).length*20+90;
-        //
         if(profile[0].e_mail.trim() !== "") {
             doc.addImage(Email, "JPEG", rect1X + 10, y, 40, 25);
             //write code to add text on the right side of this image
@@ -659,6 +762,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 })
             }
 
+            // Same procedure is repeated for below loops. This can be optimized based and duplicate can be moved to a single function performing the tasks
             if(profile[0].Experience.length>0) {
                 lastFieldHeight = lastFieldHeight + 10;
                 doc.setFontSize(15);
@@ -777,7 +881,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     else{
                         lastFieldHeight += ((doc.splitTextToSize(`${keyNotes.Title}`,450).length)*4)+18;
                     }
-                    
+
                 })
             }
 
@@ -1118,7 +1222,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     }
                 })
             }
-            
+
             if(editorials.length>0){
                 lastFieldHeight = lastFieldHeight+10;
                 doc.setFontSize(15);
@@ -1165,7 +1269,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     }
                 })
             }
-            
+
             if(Book_Chapters.length>0){
                 lastFieldHeight = lastFieldHeight+10;
                 doc.setFontSize(15);
@@ -1178,7 +1282,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 }
                 doc.text(title, rect1X + 20, lastFieldHeight);
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
-             
+
                 Book_Chapters.map((chapter, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
                     {
