@@ -12,8 +12,8 @@
 /build
 
 #Assets
-/src/Background-Video/*.*
-!/src/Background-Video/.gitkeep
+#/src/Background-Video/*.*
+#!/src/Background-Video/.gitkeep
 
 # misc
 .DS_Store
