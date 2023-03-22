@@ -20,11 +20,14 @@ NUST Faculty Dashboard for Industrial & Academic View is a collaborative website
 ## Procedure to Clone this repository
 
 1. Download and install `GIT` on your local machine.
-1. Go to the directory where you want to Clone the repository.
-2. To clone the repository open `Git Bash` in that folder.
-3. Then run this command `git clone "Repository URL"`. Replace `Repository URL` with `https://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@github.com/RICNUST/CollaborationPortal.git`.
-4. Make sure that you have the updated `Token` for cloning the repository otherwise it will give error because it is private repository and public.
-5. Then do the procedure as mentioned in `Installation` section.
+2. Go to the directory where you want to Clone the repository.
+3. To clone the repository open `Git Bash` in that folder.
+
+![img.png](img.png)
+
+4. Then run this command `git clone "Repository URL"`. Replace `Repository URL` with `https://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@github.com/RICNUST/CollaborationPortal.git`.
+5. Make sure that you have the updated `Token` for cloning the repository otherwise it will give error because it is private repository and public.
+6. Then do the procedure as mentioned in `Installation` section.
 
 ## Updating Cloned Repository
 If developer has added some functionalities and supervisor wants to look into it. Just run `git pull origin main` on Command Promt openned in the cloned folder.
