@@ -1,3 +1,9 @@
+/*
+This is the largest file of React.js in this project. It contains duplicate code which can be moved to separate components
+and can be rendered base on condition rendering. Its functions can be moved to separate file and that file will imported
+to implement the funcionaliteis.
+ */
+
 import React, {useEffect, useRef, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faGraduationCap, faMapMarkerAlt, faPhoneFlip,faAngleUp, faAngleDown, } from "@fortawesome/free-solid-svg-icons";
