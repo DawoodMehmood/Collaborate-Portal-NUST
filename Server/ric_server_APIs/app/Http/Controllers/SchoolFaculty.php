@@ -27,25 +27,27 @@ class SchoolFaculty extends Controller
             'faculty' => 'required',
         ]);
 
+//        https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=10&empid=abc&name=abc&qf=abc&acad_spec=abc&institute=abc
+
         // Check if the request is for all the faculties in the school
         if($request->input("faculty") == "Faculty"){
             // If the request is for all the faculties, call the API with the school name as the parameter
             $response =
                 Http::withoutVerifying()
-                    ->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=55&qf=Phd&&institute=".$request->input('school'));
+                    ->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=1000&qf=Phd&&institute=".$request->input('school'));
         }
         else{
             // If the request is for a specific faculty, call the API with the faculty name and school name as parameters
             $response =
                 Http::withoutVerifying()
-                    ->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=55&name=".$request->input('faculty')."&qf=Phd&&institute=".$request->input('school'));
+                    ->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=55&name=".$request->input('faculty')."&qf=Phd&&institute=".$request->input('school'));
         }
 
         // Decode the API response
         $decoded = $response->json();
 
         // Return the faculty data
-        return $decoded["ric_expert_portal_faculty_json_data"];
+        return $decoded["ric_expert_portal_faculty_cards_json_data"];
     }
 
 }

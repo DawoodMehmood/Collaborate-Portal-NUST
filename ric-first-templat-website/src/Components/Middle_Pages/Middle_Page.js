@@ -103,6 +103,7 @@ const Middle_Page = () => {
 
     // Profiles are being fetched from Profile API then separating only PHD faculty members, to show as result to the user.
     async function separateProfiles(data){
+        console.log("Data Passed in: ",data)
         setProfileCounter(0);
         for(let j=0; j<data.length; j++){
             incrementProfileCounter().then();

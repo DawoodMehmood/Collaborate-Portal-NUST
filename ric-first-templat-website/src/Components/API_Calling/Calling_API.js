@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import New_Profile from "../Profile/New_Profile";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Placeholder from 'react-bootstrap/Placeholder';
 
 const All_Publications = [];
@@ -435,22 +435,22 @@ const Calling_API = () =>{
                                     profile["Awards"].push(Award);
                                 }
                             }
-                            // for(let i=0; i<data[j]["experience_ids"].length; i++){
-                            //     // if(data[j]["experience_ids"][i]["miltray"] === "yes"){continue}
-                            //     const Experience = getExperienceObject();
-                            //     Experience["job_description"] = data[j]["experience_ids"][i]["designation"].trim()
-                            //         .replace("Prof", "Professor")
-                            //         .replace("TVF","Teaching Visiting Faculty")
-                            //         .replace("Assoc", "Associate")
-                            //         .replace("Asst", "Assistant")
-                            //         .replace("Lec", "Lecturer")
-                            //         .replace("LAB ENGR", "Lab Engineer")
-                            //         .replace("Fac", "Faculty");
-                            //     Experience["org_name"] = data[j]["experience_ids"][i]["org_name"]+",     "+data[j]["experience_ids"][i]["org_address"];
-                            //     Experience["Year_From"] = data[j]["experience_ids"][i]["date_from"].split("-")[0];
-                            //     Experience["Year_To"] = data[j]["experience_ids"][i]["date_to"].split("-")[0];
-                            //     profile["Experience"].push(Experience);
-                            // }
+                            for(let i=0; i<data[j]["experience_ids"].length; i++){
+                                // if(data[j]["experience_ids"][i]["miltray"] === "yes"){continue}
+                                const Experience = getExperienceObject();
+                                Experience["job_description"] = data[j]["experience_ids"][i]["designation"].trim()
+                                    .replace("Prof", "Professor")
+                                    .replace("TVF","Teaching Visiting Faculty")
+                                    .replace("Assoc", "Associate")
+                                    .replace("Asst", "Assistant")
+                                    .replace("Lec", "Lecturer")
+                                    .replace("LAB ENGR", "Lab Engineer")
+                                    .replace("Fac", "Faculty");
+                                Experience["org_name"] = data[j]["experience_ids"][i]["org_name"]+",     "+data[j]["experience_ids"][i]["org_address"];
+                                Experience["Year_From"] = data[j]["experience_ids"][i]["date_from"].split("-")[0];
+                                Experience["Year_To"] = data[j]["experience_ids"][i]["date_to"].split("-")[0];
+                                profile["Experience"].push(Experience);
+                            }
                             for(let i=0; i<data[j]["training_ids"].length; i++){
                                 const training = getTrainingsObject();
                                 training["Name"] = data[j]["training_ids"][i]["name"].trim();

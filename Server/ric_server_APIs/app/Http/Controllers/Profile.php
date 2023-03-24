@@ -16,7 +16,7 @@ class Profile extends Controller
     function getProfile(Request $request): array
     {
         //----------------------------------API Link------------------------------------------------------------
-        //        https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=10&empid=abc&name=abc
+        //        https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=10&empid=abc&name=abc&qf=abc&acad_spec=abc&institute=abc
         //------------------------------------------------------------------------------------------------------
 
         // Validate that the 'name' parameter is present in the request.
@@ -28,13 +28,13 @@ class Profile extends Controller
         $Name = $request->input('name');
 
         // Call the API to get the profile information.
-        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=1000&name=".$Name);
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=1000&name=".$Name);
 
         // Decode the JSON data returned by the API.
         $decoded = $response->json();
 
         // Return the decoded JSON data.
-        return $decoded["ric_expert_portal_faculty_json_data"];;
+        return $decoded["ric_expert_portal_faculty_cards_json_data"];;
     }
     /**
      * Get faculty profile from employee ID
@@ -55,4 +55,5 @@ class Profile extends Controller
         // Return the array of faculty profile information
         return $decoded["ric_expert_portal_faculty_json_data"];;
     }
+
 }
