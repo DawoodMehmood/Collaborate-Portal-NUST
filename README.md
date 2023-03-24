@@ -17,6 +17,42 @@ NUST Faculty Dashboard for Industrial & Academic View is a collaborative website
 *	To enable faculty members to keep track of their research projects and publications, and to facilitate the dissemination of their research outputs. 
 
 
+## Procedure to Clone this repository
+
+1. Download and install `GIT` on your local machine.
+2. Go to the directory where you want to Clone the repository.
+3. To clone the repository open `Git Bash` in that folder.
+
+![img.png](img.png)
+
+4. Then run this command `git clone "Repository URL"`. Replace `Repository URL` with `https://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@github.com/RICNUST/CollaborationPortal.git`.
+5. Make sure that you have the updated `Token` for cloning the repository otherwise it will give error because it is private repository and public.
+6. Then do the procedure as mentioned in `Installation` section.
+
+## Updating Cloned Repository
+If developer has added some functionalities and supervisor wants to look into it. Just run `git pull origin main` on Command Promt openned in the cloned folder.
+
+
+## Installation
+
+1. Clone or Download the .ZIP file from GitHub.
+2. Make sure you have `Node.js`, `XAMPP`, `GIT` and `COMPOSER` is already installed in your machine.
+2. There are two folders named as 
+   1. ric-first-template-website
+   2. Server
+3. These two folders containes all the files of front and back-end of this application
+4. After cloning go to `Server/ric_server_APIs` folder and open command prompt in this folder and run the following commands.
+   1. `npm install`
+   2. `composer install` or `composer update`.
+5. When these commands have been executed successfully. Run this command: `php artisan serve`
+6. Keep it running and come back to the main folder of application and go to `ric-first-template-website` folder and open command prompt.
+7. Here run this command: `npm install`
+8. After successfull execution of this command, run this: `npm start`
+9. You have a running application. Good Luck
+
+
+
+
 ## Technology Stack
 
 ### React
