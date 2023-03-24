@@ -103,7 +103,6 @@ const Middle_Page = () => {
 
     // Profiles are being fetched from Profile API then separating only PHD faculty members, to show as result to the user.
     async function separateProfiles(data){
-        console.log("Data Passed in: ",data)
         setProfileCounter(0);
         for(let j=0; j<data.length; j++){
             incrementProfileCounter().then();
@@ -454,15 +453,15 @@ const Middle_Page = () => {
                       </div>
                       {Parameter.option === "name" || Parameter.option === "school"? "": <><div className={"Card-Text"}>
                           {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                              <span>Publications: <h6
+                              <span><i>Publications</i>: <h6
                                   style={{display: "inline"}}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
                       </div>
                           <div className={"Card-Text"}>
-                      {AuthorIDs.current[profile.Code].Projects===0 || AuthorIDs.current[profile.Code].Projects===undefined? "":<span>Projects: <h6
-                          style={{display: "inline"}}>{AuthorIDs.current[profile.Code].Projects}</h6></span>}
+                              {AuthorIDs.current[profile.Code].Projects===0 || AuthorIDs.current[profile.Code].Projects===undefined? "":<span><i>Projects</i>: <strong
+                          style={{display: "inline"}}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
                           </div>
                           <div className={"Card-Text"}>
-                      {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "":<span>IPs: <h6 style={{display: "inline"}}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                              {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "":<span><i>IPs</i>: <h6 style={{display: "inline"}}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
                           </div></>}
                   </div>
               </div>

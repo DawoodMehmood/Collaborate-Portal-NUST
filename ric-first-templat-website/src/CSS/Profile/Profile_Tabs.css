@@ -12,7 +12,7 @@
     background-color: #FFFFFF !important;
     color: rgba(106, 13, 173, 0.5);
     border: 1px solid #e1e4e8;
-    box-shadow: 2px 2px 5px rgba(0,0,0,.15);
+    box-shadow: 8px 8px 5px rgba(0,0,0,.15);
 }
 .detail_work_div h6{
     font-size: 20px;

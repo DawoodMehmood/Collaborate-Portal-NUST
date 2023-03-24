@@ -117,7 +117,7 @@ margin: unset;
     box-shadow: 0 1px 3px rgba(0,0,0,.15);
     margin: 10px;
 }
-.result-stats  h6{
+.result-stats  h6, .Card-Text h6{
     display: inline-block;
     font-weight: bolder;
     margin: 0;

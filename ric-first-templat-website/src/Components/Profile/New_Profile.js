@@ -1790,9 +1790,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">
                             {`Authors: ${article.All_Authors.trim().substring(0, article.All_Authors.length-2)}`}
                             <br/>
-                            <i>{`${article.Journal_Title}, `}</i>&nbsp;<strong style={{color:"black"}}>{`${Pub_Info(article.Journal_Info, article.Publication_year, index)}`}</strong>
+                            <i>{`${article.Journal_Title}, `}</i>&nbsp;<strong className={"strong-color"}>{`${Pub_Info(article.Journal_Info, article.Publication_year, index)}`}</strong>
                             <br/>
-                            Impact Factor: {article.IF===""?<strong>0</strong>:<strong style={{color:"black"}}>{`${article.IF} `}</strong>}  &nbsp; &nbsp; Citations: {article.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${article.Citations} `}</strong>} &nbsp; &nbsp;  Quartiles: {article.Quartiles===""?<strong>0</strong>:<strong style={{color:"black"}}>{`${article.Quartiles} `}</strong>}
+                            Impact Factor: {article.IF===""?<strong className={"strong-color"}>0</strong>:<strong className={"strong-color"}>{`${article.IF} `}</strong>}  &nbsp; &nbsp; Citations: {article.Citations===""?<strong className={"strong-color"}>0</strong>: <strong className={"strong-color"}>{`${article.Citations} `}</strong>} &nbsp; &nbsp;  Quartiles: {article.Quartiles===""?<strong className={"strong-color"}>0</strong>:<strong className={"strong-color"}>{`${article.Quartiles} `}</strong>}
                         </Card.Subtitle>
 
                         <Button variant="primary" onClick={()=>{
@@ -1825,8 +1825,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                             {`Authors: ${(chapter.All_Authors).trim().substring(0, chapter.All_Authors.length-2)}`}
                             <br/>
                             <i>{`${chapter.Journal_Title}: `}</i>
-                            <strong style={{color:"black"}}>{ `${'('+chapter.Journal_Info+')'} (${chapter.Publication_year})` }</strong>
-                            <br/>Citations: {chapter.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${chapter.Citations} `}</strong>}
+                            <strong className={"strong-color"}>{ `${'('+chapter.Journal_Info+')'} (${chapter.Publication_year})` }</strong>
+                            <br/>Citations: {chapter.Citations===""?<strong className={"strong-color"}>0</strong>: <strong className={"strong-color"}>{`${chapter.Citations} `}</strong>}
 
                         </Card.Subtitle>
                         <Button variant="primary" onClick={()=>{
@@ -1853,7 +1853,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">{`${book.Journal_Title} ${'('+book.Journal_Info+')'}` }
                             <br/>
                             {`Authors: ${(book.All_Authors).trim().substring(0, book.All_Authors.length-2)}`}
-                            <br/>Citations: {book.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${book.Citations} `}</strong>}
+                            <br/>Citations: {book.Citations===""?<strong className={"strong-color"}>0</strong>: <strong className={"strong-color"}>{`${book.Citations} `}</strong>}
 
                         </Card.Subtitle>
                         <Button variant="primary" onClick={()=>{
@@ -1880,8 +1880,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">
                             {"Authors: "+conference.Authors.join(", ")}
                             <br />
-                            {conference.Conference_Name +" ("+conference.Year+")"}
-                            <br/>Citations: {conference.Citations===""?<strong>0</strong>: <strong style={{color:"black"}}>{`${conference.Citations} `}</strong>}
+                            <i>{conference.Conference_Name +" ("+conference.Year+")"}</i>
+                            <br/>Citations: {conference.Citations===""?<strong className={"strong-color"}>0</strong>: <strong className={"strong-color"}>{`${conference.Citations} `}</strong>}
 
                         </Card.Subtitle>
                         <Button variant="primary" onClick={()=>{
@@ -2052,7 +2052,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         <Card.Subtitle className="mb-2 text-muted">
                             {editorial.Reviewer_Type}
                             <br />
-                            IF: <strong style={{color:"black"}}>{editorial.Impact_Factor}</strong>
+                            IF: <strong className={"strong-color"}>{editorial.Impact_Factor}</strong>
                         </Card.Subtitle>
                     </Card.Body>
                 </Card>
@@ -2092,8 +2092,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     </Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
-                           <strong style={{color:"black"}}>Status: </strong> {`${ip.Status} `}
-                            &nbsp; &nbsp; &nbsp;<strong style={{color:"black"}}>Approval Date: </strong>
+                           <strong className={"strong-color"}>Status: </strong> {`${ip.Status} `}
+                            &nbsp; &nbsp; &nbsp;<strong className={"strong-color"}>Approval Date: </strong>
                             {`${ip.Approval_Date}`}
                             <br/>
                             {`${ip.Inventors.length ===1?ip.Inventors.map((inventor)=>{return inventor}):ip.Inventors.map((inventor)=>{return " "+inventor})} \n`}
@@ -2122,8 +2122,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     </Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
-                            <strong style={{color:"black"}}>Status: </strong> {`${ip.Status} `}
-                            &nbsp; &nbsp; &nbsp;<strong style={{color:"black"}}>Approval Date: </strong>
+                            <strong className={"strong-color"}>Status: </strong> {`${ip.Status} `}
+                            &nbsp; &nbsp; &nbsp;<strong className={"strong-color"}>Approval Date: </strong>
                             {`${ip.Approval_Date}`}
                             <br/>
                             {`${ip.Inventors.length ===1?ip.Inventors.map((inventor)=>{return inventor}):ip.Inventors.map((inventor)=>{return " "+inventor})} \n`}
@@ -2152,8 +2152,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     </Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
-                            <strong style={{color:"black"}}>Status: </strong> {`${ip.Status} `}
-                            &nbsp; &nbsp; &nbsp;<strong style={{color:"black"}}>Approval Date: </strong>
+                            <strong className={"strong-color"}>Status: </strong> {`${ip.Status} `}
+                            &nbsp; &nbsp; &nbsp;<strong className={"strong-color"}>Approval Date: </strong>
                             {`${ip.Approval_Date}`}
                             <br/>
                             {`${ip.Inventors.length ===1?ip.Inventors.map((inventor)=>{return inventor}):ip.Inventors.map((inventor)=>{return " "+inventor})} \n`}
@@ -2181,8 +2181,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     </Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
-                            <strong style={{color:"black"}}>Status: </strong> {`${ip.Status} `}
-                            &nbsp; &nbsp; &nbsp;<strong style={{color:"black"}}>Approval Date: </strong>
+                            <strong className={"strong-color"}>Status: </strong> {`${ip.Status} `}
+                            &nbsp; &nbsp; &nbsp;<strong className={"strong-color"}>Approval Date: </strong>
                             {`${ip.Approval_Date}`}
                             <br/>
                             {`${ip.Inventors.join(", ")}`}
@@ -2209,7 +2209,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     </Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
-                            {`${supervision.StudentName} - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}` }
+                            <i>{`${supervision.StudentName}`}</i>{` - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}` }
                         </Card.Subtitle>
                     </Card.Body>
                 </Card>
@@ -2228,7 +2228,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     </Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted">
-                            {`${supervision.StudentName} - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}` }
+                            <i>{`${supervision.StudentName}`}</i>{` - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}` }
                         </Card.Subtitle>
                     </Card.Body>
                 </Card>
@@ -3287,8 +3287,7 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                                 </h1>
                                 <h6 className={"introduction"}>
                                     <strong>Dr {profile[0].Name}</strong> is working as <strong>{profile[0].Work_Position}</strong> in the <strong>{profile[0].School}</strong>, NUST.
-                                    <br/>
-                                    <strong>Dr {profile[0].Name}</strong> has PhD <strong>{profile[0].Qualifications[0]["speciality"]}</strong>.
+                                    <strong>Dr {profile[0].Name}</strong> has a PhD in <strong>{profile[0].Qualifications[0]["speciality"]}</strong>.
                                     &nbsp;<strong>Dr {profile[0].Name}</strong> has published <strong>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length} </strong> research articles & conference papers having a citation count of <strong>{Citations}</strong>,
                                     carried out <strong>{(Project_Research.National.length + Project_Research.International.length)+Project_Industry.National.length + Project_Industry.International.length}</strong> projects and filed <strong>{IPS_Patent.length+IPS_Design.length+IPS_CopyRight.length+IPS_TradeMark.length}</strong> intellectual property. </h6>
                             </div>
