@@ -79,3 +79,8 @@ a{
     font-size: 45px;
     color:  lightblue;
 }
+
+/* changes */
+svg, .follow-us {
+    margin: 0 10px
+}

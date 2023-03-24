@@ -1,52 +1,32 @@
-/*
-This code defines a header section of a website. The header contains a logo of NUST,
-the name of the portal, and a navigation menu with links to Home, About and Contact Us pages.
-The header is divided into two portions - Logos-Portion and Links-Portion.
-The Logos-Portion contains the NUST logo and the name of the portal, while the Links-Portion contains
-the navigation menu. The navigation menu is defined using an unordered list (ul) with list items (li)
-that contain links to the different pages of the portal.
- */
 import React from "react";
-// import '../../CSS/Common/Header.css'
 const Header = () =>{
 
     return(
-        <div className={"Header"}>
-            <div className={"Logos-Portion"}>
-                {/* Logos and their links */}
-                <div className={"logo"}>
-                    {/* Link to NUST website */}
-                    <a href={"https://nust.edu.pk"} about={"_blank"}>
-                        {/* NUST Logo Image */}
-                        <img src={process.env.PUBLIC_URL+"/Images/Icons/NUSTLogo.png"}/>
-                    </a>
-                </div>
-                {/* Logo name */}
-                <div className={"logo-name-div"}>
-                    {/* Link to the portal's homepage */}
-                    <a href={"/"} about={"_blank"}>
-                        Research Collaboration Portal
-                    </a>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: "#6A0DAD" }}>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="https://nust.edu.pk">
+                    <img src={process.env.PUBLIC_URL + "/Images/Icons/NUSTLogo.png"} width="65" alt="NUST"/>
+                </a>
+                <a class="navbar-brand" href="/">Research Collaboration Portal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://research.nust.edu.pk/">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div className={"Links-Portion"}>
-                {/* Navigation Links */}
-                <ul className={'ul'}>
-                    <li className={'li'}>
-                        {/* Link to the portal's homepage */}
-                        <a href={"/"}>Home</a>
-                    </li>
-                    <li className={'li'}>
-                        {/* Link to the 'About' page of NUST Research Portal */}
-                        <a href={"https://research.nust.edu.pk/"}  about={"_blank"}>About</a>
-                    </li>
-                    <li className={'li'}>
-                        {/* Link to the portal's contact page */}
-                        <a href={"/contact"}>Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </nav>
+        
     )
 }
 export default Header;
