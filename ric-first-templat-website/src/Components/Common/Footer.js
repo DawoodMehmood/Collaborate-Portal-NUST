@@ -14,7 +14,7 @@ const Footer = () => {
                     <div class="row align-items-center" style={{ color: "white" }}>
                         <div class="col">
                             <span>
-                                <small>&#169; 2023 Research Directed. All Rights Reserved.</small>
+                                <small>&#169; 2023 Research Directorate. All Rights Reserved.</small>
                             </span>
                             <span>
                                 <small>&#169; 2023 Research Directorate. All Rights Reserved.</small>
