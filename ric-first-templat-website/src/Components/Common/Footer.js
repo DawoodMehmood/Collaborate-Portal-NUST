@@ -16,9 +16,6 @@ const Footer = () => {
                             <span>
                                 <small>&#169; 2023 Research Directorate. All Rights Reserved.</small>
                             </span>
-                            <span>
-                                <small>&#169; 2023 Research Directorate. All Rights Reserved.</small>
-                            </span>
                         </div>
                         {/* <div class="col"> */}
                         <div class="">
