@@ -22,6 +22,8 @@ import Linked from '../../Icons/linkedin.png';
 import Twitter from '../../Icons/twitter.png';
 import Phone from '../../Icons/phone.png';
 import Placeholder from "react-bootstrap/Placeholder";
+import nustLogo from '../../Icons/nustLogo.png'
+import nustLogo2 from '../../Icons/nustLogo2.png'
 
 const New_Profile = ({publications, projects, conferences, supervisions, editorials,trainings, ips, profile, enable}) => {
 
@@ -602,18 +604,53 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
     const openCV = ()=>{
         // Creating PDF Object
         const doc = new jsPDF('p', 'pt', 'a4');
+
+
+        //Working on waterMark of page
+        // for (let i = 1; i <= doc.getNumberOfPages(); i++) {
+        //     doc.setPage(i);
+        //     doc.addImage(nustLogo2, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
+        //   }
+
+ 
+        // Assume profile[0] contains user data including email and Twitter handle
+        let hasEmail = profile[0].e_mail.trim() !== "";
+        let hasTwitter = profile[0].twitter_URL.trim() !== "";
+        let hasLinkedin = profile[0].linkedin_URL.trim() !== "";
+        let hasPhone = profile[0].Work_Phone.trim() !== "";
+
+
+        let rect1Width = 100;
+        let rect1Height = 100;
+
+        // If the user has both an email and a Twitter handle, increase the dimensions of the blue area
+        if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+            rect1Width = 595;
+            rect1Height = 130;
+            
+        }else if(hasEmail && hasPhone && hasLinkedin && !hasTwitter){
+            rect1Width = 595
+            rect1Height = 180
+        }else if(hasEmail && hasPhone && !hasLinkedin && hasTwitter){
+            rect1Width = 595
+            rect1Height = 180
+        }else if(hasEmail && hasPhone && hasLinkedin && hasTwitter){
+            rect1Width = 595
+            rect1Height = 210
+        }
+
         // X-Axis and Y-Axis Positions of To Blue Area of CV
         let rect1X = 0;
         const rect1Y = 0;
-        const rect1Width = 595;
-        const rect1Height = 230;
+        // const rect1Width = 595;
+        // const rect1Height = 230;
         // Draw the Header Rectangle
         doc.setFillColor(91, 126, 222);
         doc.rect(rect1X, rect1Y, rect1Width, rect1Height, 'F');
 
         // Fill the rectangle with text
         // Now adding Text on Blue Rectangle
-        doc.setFontSize(25);
+        doc.setFontSize(30);
         doc.setTextColor(255, 255, 255);
         doc.text(
             `${profile[0].Name}`,  // Text to be Displayed
@@ -643,12 +680,94 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 {maxWidth:320} // maximum width of text field box
         );
 
-        // Loading Image from bas14 code provided by the NUST Server
+    
+       
+       
+     if(rect1Height == 130){
         if(profile[0].Image_URL!=="") {
+
             const img = new Image();
+            img.crossOrigin = "Anonymous";
             img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-            doc.addImage(img, 'jpeg', 400, 20, 150, 150, "Image of Faculty Member", "NUST");
-        }/*
+            doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
+        }
+     }else if(rect1Height == 180){
+        if(profile[0].Image_URL!=="") {
+
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+            doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
+        }
+     }else if(rect1Height == 210){
+        if(profile[0].Image_URL!=="") {
+
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+            doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
+        }
+     }
+       
+    //    if(profile[0].Image_URL!=="") {
+
+    //     const img = new Image();
+    //     img.crossOrigin = "Anonymous";
+    //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+    //     doc.addImage(img, "JPEG", 430, 50, 125, 125, "Image of Faculty Member", "NUST");
+       
+        // img.onload = function() {
+        //     // const canvas = document.createElement('canvas');
+        //     // const ctx = canvas.getContext('2d');
+
+        //     // canvas.width = 125;
+        //     // canvas.height = 125;
+
+        //     // ctx.drawImage(img, 0, 0,canvas.width,canvas.height);
+
+        //     // const canvasData = canvas.toDataURL("image/jpeg");
+
+
+            
+            
+
+            
+        // }
+        // img.onerror = function() {
+        //     console.log("Error loading image:", img.src);
+        // };
+        
+
+        // create a new canvas element
+
+    //}
+
+
+
+        // // add a red rectangle to the canvas
+        // ctx.fillStyle = 'red';
+        // ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+        // // add the canvas as an image to the PDF document
+        // const canvasData = canvas.toDataURL('image/jpeg');
+        // doc.addImage(canvasData, 'JPEG', 430, 50, 125, 125, "Image of Faculty Member", "NUST");
+     
+       
+       
+       
+       
+       
+       /* Original */
+        // Loading Image from bas14 code provided by the NUST Server
+        // if(profile[0].Image_URL!=="") {
+        //     const img = new Image();
+        //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+
+        //     doc.addImage(img, 'jpeg', 430, 50, 125, 125, "Image of Faculty Member", "NUST");
+        // }
+        
+        
+        /*
             Adding Contact Information and Social Media Links
          */
         // Code for adding Email with its logo
@@ -722,17 +841,20 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
             let title = "";
             let heading_x_axis = 0;
             let printing_string = "";
-
+            
             // Below is the procedure to write Qualifications, it is same for all other sections of CV
             /*
                 If qualifications are provided, then first add its heading, then find height of heading after that add '5'
                 pixels more to it and start adding fields of this section.
              */
             if (profile[0].Qualifications.length>0) {
+                
                 doc.setFontSize(15);
                 doc.setTextColor(0, 0, 0);
                 title = "Qualifications";
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 profile[0].Qualifications.map((qualification, index) => {
                     if((index+1) >= 10 ){
@@ -779,7 +901,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 profile[0].Experience.map((experience, index) => {
                         doc.setFontSize(11);
@@ -818,7 +942,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 profile[0].Awards.map((award, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -860,7 +986,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 profile[0].KeyNotes.map((keyNotes, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -901,7 +1029,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 doc.addPage('a4', 'portrait');
                 lastFieldHeight = 45;
             }
+            doc.setFont("helvetica", "bolditalic");
             doc.text(title, rect1X + 20, lastFieldHeight);
+            doc.setFont("helvetica", "normal");
             lastFieldHeight += doc.getTextDimensions(title).h+5;
             profile[0].Professional_Memberships_Registrations.map((memberships, index) => {
                 if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -942,7 +1072,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 common_index = 1;
             }
@@ -957,7 +1089,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
 
                 Project_Research.National.map((researchProject, index) => {
@@ -1000,7 +1134,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Project_Research.International.map((researchProject, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1045,7 +1181,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 doc.addPage('a4', 'portrait');
                 lastFieldHeight = 45;
             }
+            doc.setFont("helvetica", "bolditalic");
             doc.text(title, rect1X + 20, lastFieldHeight);
+            doc.setFont("helvetica", "normal");
             lastFieldHeight += doc.getTextDimensions(title).h+5;
             common_index = 1;
         }
@@ -1060,7 +1198,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Project_Industry.National.map((industryProject, index) => {
                 if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1104,7 +1244,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Project_Industry.International.map((industryProject, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1148,7 +1290,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
 
                 Research_Articles.map((article, index) => {
@@ -1193,7 +1337,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
 
                 conferences.map((conference, index) => {
@@ -1239,7 +1385,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
 
                 editorials.map((editorial, index) => {
@@ -1286,7 +1434,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
 
                 Book_Chapters.map((chapter, index) => {
@@ -1334,7 +1484,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Books.map((book, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1372,7 +1524,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 doc.addPage('a4', 'portrait');
                 lastFieldHeight = 45;
             }
+            doc.setFont("helvetica", "bolditalic");
             doc.text(title, rect1X + 20, lastFieldHeight);
+            doc.setFont("helvetica", "normal");
             lastFieldHeight += doc.getTextDimensions(title).h+5;
             // common_index = 1;
         }
@@ -1387,7 +1541,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 trainings.map((training, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1424,7 +1580,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 profile[0].Trainings_Attended.map((training, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1461,8 +1619,10 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            lastFieldHeight += doc.getTextDimensions(title).h+5;
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h+5;
 
                 Intellectual_Property.Patents.map((ip, index) => {
                 if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1509,7 +1669,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Intellectual_Property.Industrial_Design.map((ip, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1556,7 +1718,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
             doc.text(title, rect1X + 20, lastFieldHeight);
+            doc.setFont("helvetica", "normal");
             lastFieldHeight += doc.getTextDimensions(title).h+5;
             Intellectual_Property.Trade_Marks.map((ip, index) => {
                 if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1602,7 +1766,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Intellectual_Property.Copy_Rights.map((ip, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1647,7 +1813,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                 doc.addPage('a4', 'portrait');
                 lastFieldHeight = 45;
             }
+            doc.setFont("helvetica", "bolditalic");
             doc.text(title, rect1X + 20, lastFieldHeight);
+            doc.setFont("helvetica", "normal");
             lastFieldHeight += doc.getTextDimensions(title).h+5;
             Supervision.PHD.map((supervision, index) => {
                 if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -1690,7 +1858,9 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                     doc.addPage('a4', 'portrait');
                     lastFieldHeight = 45;
                 }
+                doc.setFont("helvetica", "bolditalic");
                 doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
                 lastFieldHeight += doc.getTextDimensions(title).h+5;
                 Supervision.Masters.map((supervision, index) => {
                     if(lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"]-100))
@@ -2367,7 +2537,8 @@ const New_Profile = ({publications, projects, conferences, supervisions, editori
                         src={profile[0].Image_URL.trim()===""?process.env.PUBLIC_URL+"/Images/Profile Images/Profile_Vector.jpg" :"data:image/png;base64,"+atob(profile[0].Image_URL)} alt={"Avatar"}
                         referrerPolicy={"no-referrer"}
                         className={'faculty_img'}
-                        alt={"Profile Image"}/>
+                        //alt={"Profile Image"}
+                        />
                 </div>
                 <div className={"faculty_personal_info"}>
                     <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
