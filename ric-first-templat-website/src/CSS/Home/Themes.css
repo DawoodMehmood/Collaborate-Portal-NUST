@@ -1,12 +1,13 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 *{
     box-sizing: border-box;
 }
 .SDG-heading{
-    width: 100%;
-    /*margin: auto;*/
-    border-bottom:  rgba(106, 13, 173, 1);
-
-
+    width: 60%;
 }
 .SDG-heading > h1{
     width: 45%;
@@ -14,7 +15,7 @@
     margin: 2% auto 2%;
     font-size: 29px;
     height: 100%;
-    border-bottom: rgba(106, 13, 173, 1);
+    border-bottom:1px solid rgba(106, 13, 173, 1);
     color:  rgba(106, 13, 173, 1);
 }
 .themes-div{
@@ -58,4 +59,17 @@
 .themes-div > div:hover{
     transform: scale(1.05, 1.05);
 }
-/**/
+/*changes*/
+@media screen and (max-width: 972px) {
+    .themes-div{
+        grid-template-columns: 0.8fr 0.8fr;
+        grid-template-rows: 0.8fr 0.8fr 0.8fr;
+    }
+}
+@media screen and (max-width: 500px) {
+    .themes-div{
+        text-align: center;
+        grid-template-columns: 0.8fr;
+        grid-template-rows: 0.8fr 0.8fr 0.8fr 0.8fr;
+    }
+}

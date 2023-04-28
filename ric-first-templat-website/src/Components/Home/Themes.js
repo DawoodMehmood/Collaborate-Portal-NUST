@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 
 const Themes = () =>{
     return(
-        <div>
+        <div className="main">
             {/* NUST Research Themes heading */}
             <div className={"SDG-heading"}>
                 <h1>NUST Research Themes</h1>

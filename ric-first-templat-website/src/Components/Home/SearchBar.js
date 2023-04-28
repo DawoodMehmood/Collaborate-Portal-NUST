@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "../../CSS/Home/SearchBar.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Form, Button} from "react-bootstrap";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import "aos/dist/aos.css";
-import Aos from "aos";
 import {useNavigate} from "react-router-dom";
-
 
 const SearchBar = ()=>{
     // useNavigate hook from react-router-dom library
@@ -89,42 +87,40 @@ const SearchBar = ()=>{
         }
     }
 
-
     const schoolNames = [
-        "School of Electrical Engineering and Computer Science (SEECS)",
-        "School of Mechanical & Manufacturing Engineering (SMME)",
-        "Atta-Ur-Rahman School of Applied Biosciences (ASAB)",
-        "Centre For International Peace & Stability (CIPS)",
-        "NUST Business School (NBS)",
-        "Research Centre for Modelling & Simulation (RCMS)",
-        "Research Institute For Microwave And Millimeter-Wave Studies (RIMMS)",
-        "School of Art, Design And Architecture (SADA)",
-        "School of Chemical & Materials Engineering (SCME)",
-        "School of Civil & Environmental Engineering (SCEE)",
-        "Institute of Geographical Information Systems (SCEE-IGIS)",
-        "Institute of Environmental Sciences & Engineering (SCEE-IESE)",
-        "NUST Institute of Civil Engineering (SCEE-NICE)",
-        "NUST Institute of Civil Engineering (SCEE-NICE PG)",
-        "School of Natural Sciences (SNS)",
-        "School of Social Sciences & Humanities (S3H)",
-        "U.S.-PAKISTAN Center For Advanced Studies In Energy (USPCASE)",
-        "College of Aeronautical Engineering (CAE)",
-        "College of Electrical & Mechanical Engineering (CEME)",
-        "Military College of Engineering (MCE)",
-        "Military College of Signals (MCS)",
-        "Pakistan Navy Engineering College (PNEC)",
-        "NUST Balochistan Campus (NBC-Quetta)",
-        "University Main Office (UMO)",
-        "Centre for Counseling and Career Advisory (C3A)",
-        "Centre for Energy Systems (CES)",
-        "NUST Institute of Peace and Conflict Studies (NIPCONS)",
-        "NUST School of Health Sciences (NSHS)",
-        "National Institute of Transportation (NIT-SCEE)",
-        "National Institute of Transportation (NIT-Risalpur)",
-        "School of Interdisciplinary Engineering & Sciences (SINES)"
-    ].sort().map((school,index)=>{
+            "School of Electrical Engineering and Computer Science (SEECS)",
+            "School of Mechanical & Manufacturing Engineering (SMME)",
+            "Atta-Ur-Rahman School of Applied Biosciences (ASAB)",
+            "Centre For International Peace & Stability (CIPS)",
+            "NUST Business School (NBS)",
+            "Research Centre for Modelling & Simulation (RCMS)",
+            "Research Institute For Microwave And Millimeter-Wave Studies (RIMMS)",
+            "School of Art, Design And Architecture (SADA)",
+            "School of Chemical & Materials Engineering (SCME)",
+            "School of Civil & Environmental Engineering (SCEE)",
+            "Institute of Geographical Information Systems (SCEE-IGIS)",
+            "Institute of Environmental Sciences & Engineering (SCEE-IESE)",
+            "NUST Institute of Civil Engineering (SCEE-NICE)",
+            "NUST Institute of Civil Engineering (SCEE-NICE PG)",
+            "School of Natural Sciences (SNS)",
+            "School of Social Sciences & Humanities (S3H)",
+            "U.S.-PAKISTAN Center For Advanced Studies In Energy (USPCASE)",
+            "College of Aeronautical Engineering (CAE)",
+            "College of Electrical & Mechanical Engineering (CEME)",
+            "Military College of Engineering (MCE)",
+            "Military College of Signals (MCS)",
+            "Pakistan Navy Engineering College (PNEC)",
+            "NUST Balochistan Campus (NBC-Quetta)",
+            "University Main Office (UMO)",
+            "Centre for Counseling and Career Advisory (C3A)",
+            "Centre for Energy Systems (CES)",
+            "NUST Institute of Peace and Conflict Studies (NIPCONS)",
+            "NUST School of Health Sciences (NSHS)",
+            "National Institute of Transportation (NIT-SCEE)",
+            "National Institute of Transportation (NIT-Risalpur)",
+            "School of Interdisciplinary Engineering & Sciences (SINES)"
+        ].sort().map((school,index)=>{
         return (
-
             <option className={"option"} value={school.split("(")[1].slice(0,-1)} key={index}>
                 {school}
             </option>
