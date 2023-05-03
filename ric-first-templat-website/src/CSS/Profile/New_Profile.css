@@ -7,18 +7,16 @@
     margin: unset;
     display: flex;
     flex-direction: row;
-    gap: 2%;
+    /* gap: 2%; */
 }
 .faculty_info{
     position: sticky;
     top: 0;
-    height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     width: 25%;
     background: linear-gradient(#9966cc,#6A0DAD);
-    overflow-y: scroll;
 }
 .faculty_img{
     width: 70%;
