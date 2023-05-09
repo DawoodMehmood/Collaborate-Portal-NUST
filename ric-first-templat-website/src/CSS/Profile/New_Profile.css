@@ -7,12 +7,11 @@
     margin: unset;
     display: flex;
     flex-direction: row;
-    /* gap: 2%; */
+    gap: 2%;
 }
 .faculty_info{
-    position: sticky;
+    /* position: sticky; */
     top: 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     width: 25%;
@@ -418,4 +417,86 @@ button > h5{
 .chart{
     margin: auto;
     width: 85% !important;
+}
+.info {
+    color: white;
+}
+
+@media screen and (max-width: 1300px){
+    .User_Profile{
+        flex-direction: column;
+    }
+    .faculty_info{
+        /* position: sticky; */
+        /* top: 0; */
+        flex-direction: row;
+        width: 100vw;
+        height: 40vh;
+        overflow: scroll;
+    }
+    .Main_Body{
+        width: 100vw;
+    }
+    .faculty_img{
+        width: 200px;
+        height: 75%;
+        display: block;
+    }
+    .Options{
+        width: 65%;
+        margin-top: 0;
+        
+    }
+    .faculty_personal_info{
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .faculty_personal_info div{
+        width: 70%;
+    }
+    .profile_links{
+        margin-top: 0;
+        width: 70%;
+    }
+
+}
+@media screen and (max-width: 970px){
+    .User_Profile{
+        flex-direction: column;
+    }
+    .faculty_info{
+        flex-direction: row;
+        width: 100vw;
+        height: 20vh;
+        overflow: scroll;
+    }
+    .Main_Body{
+        width: 100vw;
+    }
+    .faculty_img{
+        width: 200px;
+        height: 75%;
+        display: block;
+    }
+    .Options{
+        width: 65%;
+        margin-top: 0;
+        
+    }
+    .faculty_personal_info{
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .faculty_personal_info div{
+        width: 70%;
+    }
+    .profile_links{
+        margin-top: 0;
+        width: 70%;
+    }
+
 }

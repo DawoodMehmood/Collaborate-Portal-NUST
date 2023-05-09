@@ -2509,10 +2509,10 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 </div>
                 <div className={"faculty_personal_info"}>
                     <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
-                    <div  style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><span className={"designation"}>{profile[0].Work_Position}</span></div>
-                    <div  style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><span className={"department"}>{profile[0].School}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><span>{profile[0].e_mail}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><span> {profile[0].Work_Phone} </span></div>
+                    <div  style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><span className={"designation info"}>{profile[0].Work_Position}</span></div>
+                    <div  style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><span className={"department info"}>{profile[0].School}</span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><span className="info">{profile[0].e_mail}</span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><span className="info"> {profile[0].Work_Phone} </span></div>
                 </div>
                 <div className={"profile_links"}>
                     <div className={"links"}>
