@@ -620,6 +620,10 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
         //   }
 
 
+        // Calculate the width of the text field based on the length of the profile name
+        const nameTextWidth = doc.getTextWidth(profile[0].Name);
+        console.log("nameTextWidth:", nameTextWidth);
+
         // Assume profile[0] contains user data including email and Twitter handle
         let hasEmail = profile[0].e_mail.trim() !== "";
         let hasTwitter = profile[0].twitter_URL.trim() !== "";
@@ -630,21 +634,54 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
         let rect1Width = 100;
         let rect1Height = 100;
 
-        // If the user has both an email and a Twitter handle, increase the dimensions of the blue area
-        if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
-            rect1Width = 595;
-            rect1Height = 130;
 
-        } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
-            rect1Width = 595
-            rect1Height = 180
-        } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
-            rect1Width = 595
-            rect1Height = 180
-        } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
-            rect1Width = 595
-            rect1Height = 210
+        // Check if the name fits in one line
+        if (nameTextWidth <= 250) {
+            // Check for the presence of email, phone, twitter, and LinkedIn
+            if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 130;
+            } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 180;
+            } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 180;
+            } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 210;
+            }
+        } else {
+                // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
+            if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 161;
+            } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 160;
+            } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 160;
+            } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
+                rect1Width = 595;
+                rect1Height = 190;
+            }
         }
+        // // If the user has both an email and a Twitter handle, increase the dimensions of the blue area
+        // if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+        //     rect1Width = 595;
+        //     rect1Height = 130;
+
+        // } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
+        //     rect1Width = 595
+        //     rect1Height = 180
+        // } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
+        //     rect1Width = 595
+        //     rect1Height = 180
+        // } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
+        //     rect1Width = 595
+        //     rect1Height = 210
+        // }
 
         // X-Axis and Y-Axis Positions of To Blue Area of CV
         let rect1X = 0;
@@ -663,15 +700,15 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
             `${profile[0].Name}`,  // Text to be Displayed
             20,  // x-axis position
             rect1Y + 40, // y-axis position
-            { maxWidth: 320 } // maximum width of text field box
+            { maxWidth: 420 } // maximum width of text field box
         );
         let y;
         // Calculating how many lines text will take if we specify width size to 320
-        if (doc.splitTextToSize(profile[0].Name, 320).length === 1) {
+        if (doc.splitTextToSize(profile[0].Name, 420).length === 1) {
             y = 60;
         }
         else {
-            y = doc.splitTextToSize(profile[0].Name, 320).length * 25 + 40;
+            y = doc.splitTextToSize(profile[0].Name, 420).length * 25 + 40;
         }
         doc.setFontSize(12);
         doc.text(
@@ -696,7 +733,23 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 const img = new Image();
                 img.crossOrigin = "Anonymous";
                 img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
+                doc.addImage(img, "JPEG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
+            }
+        } else if (rect1Height == 230) {
+            if (profile[0].Image_URL !== "") {
+
+                const img = new Image();
+                img.crossOrigin = "Anonymous";
+                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+                doc.addImage(img, "JPEG", 460, 15, 100, 100, "Image of Faculty Member", "NUST");
+            }
+        } else if (rect1Height == 161) {
+            if (profile[0].Image_URL !== "") {
+
+                const img = new Image();
+                img.crossOrigin = "Anonymous";
+                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+                doc.addImage(img, "JPEG", 460, 30, 100, 100, "Image of Faculty Member", "NUST");
             }
         } else if (rect1Height == 180) {
             if (profile[0].Image_URL !== "") {
@@ -704,7 +757,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 const img = new Image();
                 img.crossOrigin = "Anonymous";
                 img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
+                doc.addImage(img, "JPEG", 440, 33, 115, 115, "Image of Faculty Member", "NUST");
             }
         } else if (rect1Height == 210) {
             if (profile[0].Image_URL !== "") {
@@ -2496,6 +2549,34 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
         );
     })
 
+
+    //Zain's Code
+    let divCount = 0;
+
+    if (Project_Research.National.length + Project_Research.International.length !== 0) {
+        divCount++;
+    }
+
+    if (Project_Industry.National.length + Project_Industry.International.length !== 0) {
+        divCount++;
+    }
+
+    if (AmountGranted != 0) {
+        divCount++;
+    }
+
+    if (Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length !== 0) {
+        divCount++;
+    }
+
+    if (Citations !== 0) {
+        divCount++;
+    }
+
+    if (IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length !== 0) {
+        divCount++;
+    }
+
     return (
         <div className={"User_Profile"}>
             <div className={"faculty_info"}>
@@ -2509,10 +2590,10 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 </div>
                 <div className={"faculty_personal_info"}>
                     <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
-                    <div  style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><span className={"designation info"}>{profile[0].Work_Position}</span></div>
-                    <div  style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><span className={"department info"}>{profile[0].School}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><span className="info">{profile[0].e_mail}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><span className="info"> {profile[0].Work_Phone} </span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><span className={"designation"}>{profile[0].Work_Position}</span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><span className={"department"}>{profile[0].School}</span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><span>{profile[0].e_mail}</span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><span> {profile[0].Work_Phone} </span></div>
                 </div>
                 <div className={"profile_links"}>
                     <div className={"links"}>
@@ -2967,7 +3048,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                             })}
                             aria-controls="Publications-options-area"
                             aria-expanded={CollapseOptions.publications_options}>
-                            Publications <span className={"number"}>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length + Editorials.length}</span>
+                            Publications <span className={"number"}>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</span>
                             <h5>{CollapseOptions.publications_options ?
                                 <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
                                 <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
@@ -3441,32 +3522,49 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                         </div>
                         <hr />
                     </div>
-                    <div className={"work_details"}>
-                        <div className={"detail_work_div"}>
-                            <h6>Research Projects</h6>
-                            <h1>{(Project_Research.National.length + Project_Research.International.length)}</h1>
-                        </div>
-                        <div className={"detail_work_div"}>
-                            <h6>Industry Projects</h6>
-                            <h1>{Project_Industry.National.length + Project_Industry.International.length}</h1>
-                        </div>
-                        <div className={"detail_work_div"}>
-                            <h6>Amount Granted</h6>
-                            <h1>{AmountGranted + 'M'}</h1>
-                        </div>
-                        <div className={"detail_work_div"}>
-                            <h6>Publications</h6>
-                            <h1>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</h1>
-                        </div>
-                        <div className={"detail_work_div"}>
-                            <h6>Citations</h6>
-                            <h1>{Citations}</h1>
-                        </div>
-                        <div className={"detail_work_div"}>
-                            <h6>Patents</h6>
-                            <h1>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</h1>
-                        </div>
+                    <div className={`work_details ${divCount === 1 ? "one" :
+                        divCount === 2 ? "two" :
+                            divCount === 3 ? "three" :
+                                divCount === 4 ? "four" :
+                                    divCount === 5 ? "five" : "six"}`}>
+                        {Project_Research.National.length + Project_Research.International.length !== 0 &&
+                            <div className={"detail_work_div"}>
+                                <h6>Research Projects</h6>
+                                <h1>{Project_Research.National.length + Project_Research.International.length}</h1>
+                            </div>
+                        }
+                        {Project_Industry.National.length + Project_Industry.International.length !== 0 &&
+                            <div className={"detail_work_div"}>
+                                <h6>Industry Projects</h6>
+                                <h1>{Project_Industry.National.length + Project_Industry.International.length}</h1>
+                            </div>
+                        }
+                        {AmountGranted != 0.0 &&
+                            <div className={"detail_work_div"}>
+                                <h6>Amount Granted</h6>
+                                <h1>{AmountGranted}M</h1>
+                            </div>
+                        }
+                        {Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length !== 0 &&
+                            <div className={"detail_work_div"}>
+                                <h6>Publications</h6>
+                                <h1>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</h1>
+                            </div>
+                        }
+                        {Citations !== 0 &&
+                            <div className={"detail_work_div"}>
+                                <h6>Citations</h6>
+                                <h1>{Citations}</h1>
+                            </div>
+                        }
+                        {IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length !== 0 &&
+                            <div className={"detail_work_div"}>
+                                <h6>Patents</h6>
+                                <h1>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</h1>
+                            </div>
+                        }
                     </div>
+
                     {enable ? <>
                         <div className={"profile-charts-div"}>
                             {Research_Articles.length + Books.length + Book_Chapters.length + conferences.length === 0 ? "" : <PieChart data={Publications_Pie_Chart_Date} title={"Projects"} />}
