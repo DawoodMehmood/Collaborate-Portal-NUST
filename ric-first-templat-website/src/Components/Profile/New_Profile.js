@@ -25,8 +25,16 @@ import Placeholder from "react-bootstrap/Placeholder";
 import nustLogo from '../../Icons/nustLogo.png'
 import nustLogo2 from '../../Icons/nustLogo2.png'
 
+
 const New_Profile = ({ publications, projects, conferences, supervisions, editorials, trainings, ips, profile, enable }) => {
 
+
+    // bar charts modal
+    const [modal, setModal] = useState(false);
+    
+    const toggleModal = (chart) => {
+        setModal(!modal);
+    }
 
     // Define settings for a slider component
     const research_settings = {
@@ -2578,22 +2586,39 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
     }
 
     return (
-        <div className={"User_Profile"}>
+        <>
+            {modal && (
+                <>
+                
+                <div className="modal-wrapper" onClick={toggleModal}></div>
+                <div className="modal-container">
+                <div className={modal ? "modal-barchart1" : "profile-charts-div"}>
+                            {Research_Articles.length + Books.length + Book_Chapters.length + conferences.length === 0 ? "" : <PieChart data={Publications_Pie_Chart_Date} title={"Projects"} />}
+                            {projects.length === 0 ? "" : <PieChart data={Project_Pie_Chart_Date} title={"Projects"} />}
+                        </div>
+                    <div className={modal ? "modal-barchart1" : "profile-charts-div"}>
+                        {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"} />}
+                        {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"} />}
+                    </div>
+                </div>
+                </>
+            )}
+        <div className={"User_Profile"} style={{}}>
+            {/* <div className="img_buttons"> */}
             <div className={"faculty_info"}>
                 <div className={"faculty_profile_pic"}>
                     <img
                         src={profile[0].Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile[0].Image_URL)} alt={"Avatar"}
                         referrerPolicy={"no-referrer"}
                         className={'faculty_img'}
-                    //alt={"Profile Image"}
                     />
                 </div>
-                <div className={"faculty_personal_info"}>
+                 <div className={"faculty_personal_info"}>
                     <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><span className={"designation"}>{profile[0].Work_Position}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><span className={"department"}>{profile[0].School}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><span>{profile[0].e_mail}</span></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><span> {profile[0].Work_Phone} </span></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><h3 className={"designation"}>{profile[0].Work_Position}</h3></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><h3 className={"department"}>{profile[0].School}</h3></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><h3>{profile[0].e_mail}</h3></div>
+                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><h3> {profile[0].Work_Phone} </h3></div>
                 </div>
                 <div className={"profile_links"}>
                     <div className={"links"}>
@@ -2618,6 +2643,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                         <button onClick={openCV} className={enable ? "CV-button" : "disabled"}> Download CV</button>
                     </div>
                 </div>
+                {/* </div> */}
                 <div className={"Options"}>
                     <div className={"analytics"}>
                         <Button
@@ -3243,7 +3269,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                                 Trade_Marks_tab: false,
                                             })
                                         }}>National <span className={"number internal_national"}>{IPS_Patent.length}</span></Button>}
-                                        {/*Below Code will always be hidden until link to international Patents is provided.*/}
+                                        
                                         {!false ? "" : <Button onClick={() => {
                                             setTabOptions({
                                                 ...TabOptions,
@@ -3505,7 +3531,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                             </div>
                         </Collapse>
                     </div>}
-                </div>
+                </div> 
             </div>
             <div className={"Main_Body"}>
                 {!TabOptions.analysis_tab ? "" : <div className={"analysis"}>
@@ -3564,16 +3590,17 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                             </div>
                         }
                     </div>
-
-                    {enable ? <>
-                        <div className={"profile-charts-div"}>
+                    {!modal && 
+                    enable ? <>
+                        <div className={"profile-charts-div"} onClick={toggleModal}>
                             {Research_Articles.length + Books.length + Book_Chapters.length + conferences.length === 0 ? "" : <PieChart data={Publications_Pie_Chart_Date} title={"Projects"} />}
                             {projects.length === 0 ? "" : <PieChart data={Project_Pie_Chart_Date} title={"Projects"} />}
                         </div>
-                        <div className={"profile-charts-div"}>
-                            {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"} />}
-                            {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"} />}
+                        <div className={"profile-charts-div"} onClick={toggleModal}>
+                            {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"}/>}
+                            {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"}/>}
                         </div>
+                        
                     </> : <div className={"Loading_Div"}>
                         <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
                             <Placeholder xs={12} />
@@ -3591,7 +3618,8 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                             <Placeholder xs={12} />
                         </Placeholder>
                         {/*<Placeholder className="w-75" />*/}
-                    </div>}
+                    </div> }
+
                     <div>
                         {Research_Images.length !== 0 ? <div className={"Research_Collaborations"}>
                             <h1 className={"Research-Collaborators"}>Research Collaborators</h1>
@@ -3727,7 +3755,9 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                     </div>
                 </div>}
             </div>
+            
         </div>
+        </>
     )
 }
 export default New_Profile;
