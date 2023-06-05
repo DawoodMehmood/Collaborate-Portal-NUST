@@ -1,82 +1,72 @@
 .work_details {
-    display: grid;
-    grid-gap: 2.5%;
-    height: max-content !important;
-  }
-  
-  .work_details.one {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  display: grid;
+  grid-gap: 2.5%;
+  height: max-content !important;
+}
 
-  .work_details.one .detail_work_div {
-    width: 50%; /* or any other value you want */
-    margin: 0 auto; /* to center the div horizontally */
-  }
-  
-  .work_details.two {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .work_details.three {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .work_details.four {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-  
-  .work_details.five {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-  /* .work_details.five {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 2.5%;
-    justify-content: center;
-    height: max-content !important;
-  } */
-  
-  .work_details.six {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-  
-  .detail_work_div {
-    height: 100% !important;
-    padding: 0 2%;
-    border-radius: 5px;
-    background-color: #FFFFFF !important;
-    color: rgba(106, 13, 173, 0.5);
-    border: 1px solid #e1e4e8;
-    box-shadow: 8px 8px 5px rgba(0, 0, 0, .15);
-  }
-  
-  /* .work_details.five .detail_work_div:nth-child(5),
-  .work_details.six .detail_work_div:nth-child(5) {
-    grid-column: span 2;
-  } */
+.work_details.one {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.work_details.one .detail_work_div {
+  width: 50%;
+ 
+  margin: 0 auto;
+ 
+}
+
+.work_details.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.work_details.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.work_details.four {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.work_details.five {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.work_details.six {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.detail_work_div {
+  height: 100% !important;
+  padding: 0 2%;
+  border-radius: 5px;
+  background-color: #FFFFFF !important;
+  color: rgba(106, 13, 173, 0.5);
+  border: 1px solid #e1e4e8;
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, .15);
+}
+
 
 
 .detail_work_div h6 {
-    font-size: 20px;
-    font-weight: bolder;
-    text-decoration: underline;
-    padding: 2% 0;
-    margin: 0;
-    border-radius: 5px;
-    text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: underline;
+  padding: 2% 0;
+  margin: 0;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .detail_work_div h1 {
-    padding: unset;
-    margin: auto;
-    width: 100%;
-    text-align: center;
+  padding: unset;
+  margin: auto;
+  width: 100%;
+  text-align: center;
 }
 
 .about_heading {
-    margin: 2.5% 0;
+  margin: 2.5% 0;
 }
