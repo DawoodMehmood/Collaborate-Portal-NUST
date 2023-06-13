@@ -17,13 +17,13 @@ const QualitiesPortion_Home = () => {
             </div>
 
             <div class="row outer-row">
-                <div class="col-lg center content-logo">
-                    <img src={process.env.PUBLIC_URL + "/Images/Qualities_Home_Images/GrantsImage.jpeg"} />
-                </div>
-                <div class="col-lg center-content content">
+                <div class="col-lg content">
                     <div class="row"><h1 class="italic-heading">High Valued Research Grants</h1></div>
                     <div class="row"><h5>National and International Grants worth millions have been awarded to NUST Faculty in collaboration with International Scientist for Innovative and applied projects.
                         In 2021, NUST faculty won grants worth close to 0.5B PKR.</h5></div>
+                </div>
+                <div class="col-lg content-logo">
+                    <img src={process.env.PUBLIC_URL + "/Images/Qualities_Home_Images/GrantsImage.jpeg"} />
                 </div>
             </div>
 

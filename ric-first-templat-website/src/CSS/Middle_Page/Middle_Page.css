@@ -1,4 +1,4 @@
-.middle-page{
+.middle-page {
     background-color: #f5f5f5;
     padding: 0 0 50px 0;
     width: 100%;
@@ -7,7 +7,8 @@
     overflow: hidden;
     margin-bottom: unset;
 }
-.Search-Results{
+
+.Search-Results {
     margin: auto;
     width: 90%;
     height: 100%;
@@ -20,18 +21,20 @@
     flex-wrap: wrap;
     padding: unset;
 }
-.Card-Profile{
+
+.Card-Profile {
     background-color: #fff;
     border: 1px solid #e1e4e8;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
     display: flex;
     flex-direction: column;
     width: 300px;
     overflow: hidden;
     margin: 10px;
 }
-.Card-Header{
+
+.Card-Header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -39,66 +42,112 @@
     padding: 10px;
     border-bottom: 1px solid #e1e4e8;
 }
-.Card-Image{
+
+.Card-Image {
     flex: 40%;
     height: 100px;
 }
-.Card-Image img{
+
+.Card-Image img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     background-color: #f5f5f5;
 }
-.Card-Button{
+
+.Card-Button {
     flex: 60%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
-.Card-Button button{
+
+.Card-Button button {
     margin-left: 8px;
     border: none;
     background-color: rgba(106, 13, 173, 1) !important;
     color: #FFFFFF;
 }
-.Card-Button button:hover{
+
+.Card-Button button:hover {
     background-color: rgba(106, 13, 173, 0.8) !important;
 }
-.Card-Button button:active{
+
+.Card-Button button:active {
     background-color: rgba(106, 13, 173, 0.6) !important;
 }
-.Card-Body{
+
+.Card-Body {
     margin: 1%;
 }
-.Card-Title > h2{
+
+.Card-Title>h2 {
     width: 100%;
     text-align: left;
     font-size: 1.5rem;
     font-weight: 600;
     margin: 2% 0 0 2%;
-    padding:  0 2% 0 0;
+    padding: 0 2% 0 0;
 }
-.Card-Email> h3{
+
+.Card-Email>h3 {
     width: 100%;
     text-align: left;
     font-size: .5rem;
     font-weight: 200;
     margin: 2% 0 0 2%;
-    padding:  0 2% 0 0;
+    padding: 0 2% 0 0;
 }
-.Card-Text{
-margin: unset;
+
+.Card-Text {
+    margin: unset;
 }
-.Card-Text > span, .Card-Text > p{
+
+.Card-Text>span,
+.Card-Text>p {
     width: 100%;
     text-align: left;
     font-size: 1rem;
     font-weight: 200;
-    padding:  0 2% 0 2%;
+    padding: 0 2% 0 2%;
     margin-bottom: 0.2rem;
 }
+
 .result-stats {
+    width: 80%;
+    margin: 1% 10%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.result-stats>button {
+    border-radius: 5px;
+    padding: 0.3% 50px;
+    background-color: #FFFFFF;
+    font-size: 1.3em;
+    width: max-content;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-bottom: 0;
+}
+
+.result-stats>button:hover {
+    background-color: #f4f4f4;
+}
+ 
+.col-md{
+    text-align: center;
+}
+/* .result-stats {
     width: 80%;
     margin: 1% 10%;
     height: max-content;
@@ -116,11 +165,76 @@ margin: unset;
     border: 1px solid #e1e4e8;
     box-shadow: 0 1px 3px rgba(0,0,0,.15);
     margin: 10px;
-}
-.result-stats  h6, .Card-Text h6{
+} */
+.result-stats h6,
+.Card-Text h6 {
     display: inline-block;
     font-weight: bolder;
     margin: 0;
     padding: 0;
     font-size: 1.1rem;
+}
+
+.middle-page .dropdown-menu.show .dropdown-item.red-option {
+    color: red;
+}
+
+.middle-page .dropdown-menu.show .dropdown-item.red-option:hover {
+    color: white;
+    background-color: red;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+}
+
+.show {
+    display: block;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dropdown-button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}   
+
+.dropdown-button:focus,
+.dropdown-button:active {
+    outline: none;
 }

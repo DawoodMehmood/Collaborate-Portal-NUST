@@ -1,16 +1,15 @@
 /*
 There is duplication of code in this file which is intended to be updated later in the beta version of this project.
  */
-
 import { useNavigate, useParams } from "react-router-dom";
 import SearchBar from "../Home/SearchBar";
 import ErrorMessage from "../NotFoundFiles/ErrorMessage";
 import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Placeholder from "react-bootstrap/Placeholder";
-import Dropdown from "../DropDown/DropDown";
-import Modal from "react-modal";
-import { Card } from 'react-bootstrap';
+import { Form } from "react-bootstrap";
+
+import CustomModal from "../Modal/Modal";
 
 const Middle_Page = () => {
     // Function to open a new window with the specified title.
@@ -25,199 +24,25 @@ const Middle_Page = () => {
         setModalData(data);
         setIsModalOpen(true);
     };
+
+
+    const handleSortingOptionChange = (event) => {
+        const selectedOption = event.target.value;
+        if (selectedOption === "projects") {
+            setCards("projects");
+        } else if (selectedOption === "publication") {
+            setCards("publications");
+            // Implement sorting logic based on publication
+        } else if (selectedOption === "IP") {
+            setCards("IP");
+            // Implement sorting logic based on IP
+        } else {
+            // Handle default case or clear sorting
+            setCards(Profile);
+        }
+
+    };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
-
-    //popup for publications
-    const openPopup1 = (title) => {
-        const newWindow = window.open("", title);
-        newWindow.document.write(`
-            <html>
-                <head>
-                    <title>${title}</title>
-                <style>
-                    .card {
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        padding: 10px;
-                        margin-bottom: 10px;
-                        background-color: #f2f2f2;
-                    }
-          
-                    .card h3 {
-                        font-size: 18px;
-                        margin-bottom: 5px;
-                    }
-          
-                    .card p {
-                        margin-bottom: 10px;
-                    }
-                </style>
-                </head>
-                <body>
-                    <h1>${title}</h1>
-                    <div>
-                        ${DisplayPublications
-                .map(
-                    (DisplayPublications) => `
-                        <div class="card" key="${DisplayPublications.id}">
-                          <h3>${DisplayPublications.title}</h3>
-                          <p>${DisplayPublications.all_author_compute}</p>
-                          <!-- Add any other publication data you want to display -->
-                        </div>
-                        `
-                )
-
-                .join("")}
-                    </div>
-                </body>
-            </html>
-        `);
-        newWindow.document.close();
-    };
-
-    //popUp for Projects
-    const openPopup2 = (title) => {
-        const newWindow = window.open("", title);
-        newWindow.document.write(`
-            <html>
-                <head>
-                    <title>${title}</title>
-                <style>
-                    .card {
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        padding: 10px;
-                        margin-bottom: 10px;
-                        background-color: #f2f2f2;
-                    }
-          
-                    .card h3 {
-                        font-size: 18px;
-                        margin-bottom: 5px;
-                    }
-          
-                    .card p {
-                        margin-bottom: 10px;
-                    }
-                </style>
-                </head>
-                <body>
-                    <h1>${title}</h1>
-                    <div>
-                        ${DisplayProjects
-                .map(
-                    (DisplayProjects) => `
-                        <div class="card" key="${DisplayProjects.id}">
-                          <h3>${DisplayProjects.title}</h3>
-              
-                          <!-- Add any other publication data you want to display -->
-                        </div>
-                        `
-                )
-
-                .join("")}
-                    </div>
-                </body>
-            </html>
-        `);
-        newWindow.document.close();
-    };
-
-    //popup for IPs
-    const openPopup3 = (title) => {
-        const newWindow = window.open("", title);
-        newWindow.document.write(`
-            <html>
-                <head>
-                    <title>${title}</title>
-                <style>
-                    .card {
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        padding: 10px;
-                        margin-bottom: 10px;
-                        background-color: #f2f2f2;
-                    }
-          
-                    .card h3 {
-                        font-size: 18px;
-                        margin-bottom: 5px;
-                    }
-          
-                    .card p {
-                        margin-bottom: 10px;
-                    }
-                </style>
-                </head>
-                <body>
-                    <h1>${title}</h1>
-                    <div>
-                        ${DisplayIPs
-                .map(
-                    (DisplayIPs) => `
-                        <div class="card" key="${DisplayIPs.id}">
-                          <h3>${DisplayIPs.title}</h3>
-              
-                          <!-- Add any other publication data you want to display -->
-                        </div>
-                        `
-                )
-
-                .join("")}
-                    </div>
-                </body>
-            </html>
-        `);
-        newWindow.document.close();
-    };
-
-    //popup for Experts
-    const openPopup4 = (title) => {
-        const newWindow = window.open("", title);
-        newWindow.document.write(`
-            <html>
-                <head>
-                    <title>${title}</title>
-                <style>
-                    .card {
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        padding: 10px;
-                        margin-bottom: 10px;
-                        background-color: #f2f2f2;
-                    }
-          
-                    .card h3 {
-                        font-size: 18px;
-                        margin-bottom: 5px;
-                    }
-          
-                    .card p {
-                        margin-bottom: 10px;
-                    }
-                </style>
-                </head>
-                <body>
-                    <h1>${title}</h1>
-                    <div>
-                        ${DisplayExperts
-                .map(
-                    (DisplayExperts) => `
-                        <div class="card" key="${DisplayExperts.id}">
-                          <h3>${DisplayExperts.title}</h3>
-              
-                          <!-- Add any other publication data you want to display -->
-                        </div>
-                        `
-                )
-
-                .join("")}
-                    </div>
-                </body>
-            </html>
-        `);
-        newWindow.document.close();
-    };
 
     //if anyone tries to change the length of keywords passed through URL, then move to Error Page
     const params = useParams();
@@ -247,6 +72,13 @@ const Middle_Page = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
 
+
+    // const [sortingOption, setSortingOption] = useState("");
+
+    const [cards, setCards] = useState([]);
+
+
+    const [sortedCards2, setSortedCards2] = useState([]);
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
     //State to indicate Error in fetching the data
@@ -308,14 +140,6 @@ const Middle_Page = () => {
             setSearchErrorsCounter((prevState) => prevState + 1);
         }
     }
-
-    useEffect(() => {
-        displayProjects();
-        displayPublications();
-        displayIPs();
-        displaySchoolFaculty();
-
-    }, []);
 
     //To fetch all Projects which are to be displayed in popup
     async function displayProjects() {
@@ -397,13 +221,8 @@ const Middle_Page = () => {
             });
     }
 
-
-
     /*<<<<<<<<<<<<<<<<<<<--------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>*/
-
-
     // Different Objects to change state of Page
-
     // This method will return the object of
     const getProfileObject = () => {
         return {
@@ -502,6 +321,11 @@ const Middle_Page = () => {
         setLoading(false);
     }
     useEffect(() => {
+
+        displayProjects();
+        displayPublications();
+        displayIPs();
+        displaySchoolFaculty();
 
         //To Fetch Profile of Faculty from API
         async function fetchProfile() {
@@ -684,9 +508,6 @@ const Middle_Page = () => {
                     }
                 })
         }
-
-
-
         // To Fetch Discipline
         async function fetchDiscipline() {
             await fetch(`http://localhost:8000/api/Discie`,
@@ -775,9 +596,231 @@ const Middle_Page = () => {
             changeLoading().then(() => { });
         }
     }, [ProfileCounter])
+    // useEffect(() => {
+    //     Profile.sort((a, b) => {
+    //         const publicationsA = AuthorIDs.current[a.Code]?.Publications || 0;
+    //         const publicationsB = AuthorIDs.current[b.Code]?.Publications || 0;
+    //         return publicationsB - publicationsA;
+    //     });
+    // }, [Profile, AuthorIDs]);
+
+    useEffect(() => {
+        const sortedProfile = Profile.sort((a, b) => {
+            const publicationCountA = AuthorIDs.current[a.Code]?.Publications || 0;
+            const publicationCountB = AuthorIDs.current[b.Code]?.Publications || 0;
+            return publicationCountB - publicationCountA; // Sort in descending order
+        });
+
+        const filteredSortedProfile = sortedProfile.filter((profile) => {
+            const publicationCount = AuthorIDs.current[profile.Code]?.Publications || 0;
+            return publicationCount > 0;
+        });
+
+        setSortedCards2(filteredSortedProfile);
+    }, [Profile, AuthorIDs]);
+
     const handleProfile = (cmsId, Name) => {
         window.open(`/profile/${Name}/${cmsId}`, "_blank");
     }
+    // Profile.forEach(profile => {
+    //     if (typeof profile.Publications !== 'number') {
+    //         console.log('Invalid Publications value:', profile.Publications);
+    //     }
+    // });
+
+    //Card to sort projects
+    const Cards1 = Profile.filter((profile) => {
+        const projectCount = AuthorIDs.current[profile.Code].Projects;
+        return projectCount > 0;
+    }).map((profile, index) => {
+        return (
+            <>
+                <div className={"Card-Profile"} >
+                    <div className={"Card-Header"}>
+                        <div className={"Card-Image"}>
+                            <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+                        </div>
+                        <div className={"Card-Button"}>
+                            <Button variant={"outline-primary"} onClick={() => {
+                                handleProfile(profile.Code, profile.Name);
+                            }}>Visit Profile</Button>
+                        </div>
+                    </div>
+                    <div className={"Card-Body"}>
+                        <div className={"Card-Title"}>
+                            <h2>{profile.Name}</h2>
+                        </div>
+                        <div className={"Card-Email"}>
+                            <h3>{profile.e_mail}</h3>
+                        </div>
+                        <div className={"Card-Text"}>
+                            <p>{profile.School}</p>
+                        </div>
+                        {Parameter.option === "name" || Parameter.option === "school" ? "" :
+                            <>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+                                        <span><i>Publications</i>: <h6
+                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
+                                        style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                                </div>
+                            </>
+                        }
+                    </div>
+                </div>
+            </>
+
+        )
+    })
+
+    //card to sort publications
+    const renderedCards2 = sortedCards2.map((profile, index) => {
+            return (
+                <>
+                    <div className={"Card-Profile"}>
+                        <div className={"Card-Header"}>
+                            <div className={"Card-Image"}>
+                                <img
+                                    src={
+                                        profile.Image_URL.trim() === ""
+                                            ? process.env.PUBLIC_URL +
+                                            "/Images/Profile Images/Profile_Vector.jpg"
+                                            : "data:image/png;base64," + atob(profile.Image_URL)
+                                    }
+                                    alt={"Avatar"}
+                                />
+                            </div>
+                            <div className={"Card-Button"}>
+                                <Button
+                                    variant={"outline-primary"}
+                                    onClick={() => {
+                                        handleProfile(profile.Code, profile.Name);
+                                    }}
+                                >
+                                    Visit Profile
+                                </Button>
+                            </div>
+                        </div>
+                        <div className={"Card-Body"}>
+                            <div className={"Card-Title"}>
+                                <h2>{profile.Name}</h2>
+                            </div>
+                            <div className={"Card-Email"}>
+                                <h3>{profile.e_mail}</h3>
+                            </div>
+                            <div className={"Card-Text"}>
+                                <p>{profile.School}</p>
+                            </div>
+                            {Parameter.option === "name" || Parameter.option === "school" ? (
+                                ""
+                            ) : (
+                                <>
+                                    <div className={"Card-Text"}>
+                                        {console.log('Condition:', AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined)}
+                                        {AuthorIDs.current[profile.Code].Publications === 0 ||
+                                            AuthorIDs.current[profile.Code].Publications === undefined ? (
+                                            ""
+                                        ) : (
+                                            <span>
+                                                <i>Publications</i>:{" "}
+                                                <h6
+                                                    style={{ display: "inline" }}
+                                                >
+                                                    {AuthorIDs.current[profile.Code].Publications}
+                                                </h6>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].Projects === 0 ||
+                                            AuthorIDs.current[profile.Code].Projects === undefined ? (
+                                            ""
+                                        ) : (
+                                            <span>
+                                                <i>Projects</i>:{" "}
+                                                <strong
+                                                    style={{ display: "inline" }}
+                                                >
+                                                    {AuthorIDs.current[profile.Code].Projects}
+                                                </strong>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].IPs === 0 ||
+                                            AuthorIDs.current[profile.Code].IPs === undefined ? (
+                                            ""
+                                        ) : (
+                                            <span>
+                                                <i>IPs</i>:{" "}
+                                                <h6 style={{ display: "inline" }}>
+                                                    {AuthorIDs.current[profile.Code].IPs}
+                                                </h6>
+                                            </span>
+                                        )}
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </>
+            );
+        });
+
+
+    //card to sort IPs
+    const Cards3 = Profile.filter((profile) => {
+        const ipCount = AuthorIDs.current[profile.Code].IPs;
+        return ipCount > 0;
+    }).map((profile, index) => {
+        return (
+            <>
+                <div className={"Card-Profile"} >
+                    <div className={"Card-Header"}>
+                        <div className={"Card-Image"}>
+                            <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+                        </div>
+                        <div className={"Card-Button"}>
+                            <Button variant={"outline-primary"} onClick={() => {
+                                handleProfile(profile.Code, profile.Name);
+                            }}>Visit Profile</Button>
+                        </div>
+                    </div>
+                    <div className={"Card-Body"}>
+                        <div className={"Card-Title"}>
+                            <h2>{profile.Name}</h2>
+                        </div>
+                        <div className={"Card-Email"}>
+                            <h3>{profile.e_mail}</h3>
+                        </div>
+                        <div className={"Card-Text"}>
+                            <p>{profile.School}</p>
+                        </div>
+                        {Parameter.option === "name" || Parameter.option === "school" ? "" : <><div className={"Card-Text"}>
+                            {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+                                <span><i>Publications</i>: <h6
+                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                        </div>
+                            <div className={"Card-Text"}>
+                                {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
+                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                            </div>
+                            <div className={"Card-Text"}>
+                                {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                            </div></>}
+                    </div>
+                </div>
+            </>
+        );
+    });
+
+    // Sort the Cards array in decreasing order if cards === "publications"
     const Cards = Profile.map((profile, index) => {
         return (
             <>
@@ -820,78 +863,70 @@ const Middle_Page = () => {
 
         )
     })
-    console.log(DisplayPublications);
-    // console.log(DisplayProjects.length);
-    // console.log(Experts);
+    // const sortedCards = Cards.sort((a, b) => b.props.children[0].props.children[1].props.children.props.date - a.props.children[0].props.children[1].props.children.props.date);
+
     // If Research Area option is selected, only then show these tabs, otherwise don't show them
     return (
         <div className="middle-page">
             <SearchBar />
-
-
             {Parameter.option === "area_expertise" && (
-                <div className="result-stats">
+                <div className="result-stats row">
                     {Experts !== 0 && (
-                        <button onClick={() => openPopup3("Experts")}>
+                        <button className="col-md">
                             Experts: <h6>{Profile.length}</h6>
                         </button>
                     )}
-                    {/* {publications !== 0 && (
-                        <button onClick={() => openPopup1("Publications", DisplayPublications)}>
-                            Publications: <h6>{DisplayPublications.length}</h6>
-                        </button>
-                    )} */}
                     {publications !== 0 && (
-                        <button onClick={() => handleButtonClick(DisplayPublications)}>
+                        <button className="col-md" onClick={() => handleButtonClick(DisplayPublications)}>
                             Publications: <h6>{DisplayPublications.length}</h6>
                         </button>
                     )}
                     {projects !== 0 && (
-                        <button onClick={() => openPopup2("Projects", DisplayProjects)}>
+                        <button className="col-md" onClick={() => handleButtonClick(DisplayProjects)}>
                             Projects: <h6>{DisplayProjects.length}</h6>
                         </button>
                     )}
                     {ips !== 0 && (
-                        <button onClick={() => openPopup3("Intellectual Property", DisplayIPs)}>
+                        <button className="col-md" onClick={() => handleButtonClick(DisplayIPs)}>
                             Intellectual Property: <h6>{DisplayIPs.length}</h6>
                         </button>
                     )}
+
                 </div>
             )}
+            <div className="button-container">
+                <button className={"dropdown-button"}>
 
-            {/* Modal */}
-            <Modal
-                isOpen={isModalOpen}
-                onRequestClose={closeModal}
-                contentLabel="Modal"
-            >
-                {modalData && (
-                    <div>
-                        <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Publications</h1>
-                        {DisplayPublications.map((publication, index) => (
-                            <Card key={publication.id} text="dark" style={{ width: '100%' }}>
-                                <Card.Header>{(index + 1) + ". " + publication.title}</Card.Header>
-                                <Card.Body>
-                                    <Card.Subtitle className="mb-2 text-muted">
-                                        Authors: {publication.all_author_compute === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${publication.all_author_compute} `}</strong>}
-                                        <br />
-                                        <i>{`${publication.journal_info}, `}</i>
-                                        <br />
-                                        Impact Factor: {publication.impact_factor === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${publication.impact_factor} `}</strong>}  &nbsp; &nbsp; Citations: <strong className={"strong-color"}>0</strong>  &nbsp; &nbsp;  Quartiles: <strong className={"strong-color"}>1</strong>
-
-                                    </Card.Subtitle>
-
-                                </Card.Body>
-                            </Card>
-                        ))}
+                    {/*Dropdown to select search option*/}
+                    <div className={"Searching"}>
+                        {/* <Form.Select className={"option_selector"} name={"option"} onChange={handleOptionChange}> */}
+                        <Form.Select className={""} name={"Sort"} onChange={handleSortingOptionChange}>
+                            <option className={""} value={""}>
+                                Sort By
+                            </option>
+                            <option className={""} value={"projects"}>
+                                Sort by project
+                            </option>
+                            <option className={""} value={"publications"} >
+                                Sort by publication
+                            </option>
+                            <option className={""} value={"IP"}>
+                                Sort by IP
+                            </option>
+                        </Form.Select>
                     </div>
-                )}
+                </button>
+            </div>
 
-                {/* {Button to close the modal}
-                <button onClick={closeModal}>Close Modal</button>
-                {Button to close the modal} */}
-            </Modal>
-
+            {/*Modal*/}
+            <CustomModal
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+                modalData={modalData}
+                DisplayPublications={DisplayPublications}
+                DisplayProjects={DisplayProjects}
+                DisplayIPs={DisplayIPs}
+            />
             {/*If the loading is true, then the loading animation is shown.*/}
             {loading ?
                 <div className={"Loading_Div"}>
@@ -919,13 +954,30 @@ const Middle_Page = () => {
                     // Else show the results.
                     Profile.length === 0 ? <ErrorMessage Message={"No Results Found"} /> :
                         <div className={"Search-Results"}>
-                            {Cards}
+                            {cards === "projects" ? (
+                                <>
+                                    {Cards1} {/* Invoke the Cards1 function by adding parentheses */}
+                                </>
+                            ) : cards === "publications" ? (
+                                <>
+                                    {renderedCards2}
+                                </>
+                            ) : cards === "IP" ? (
+                                <>
+                                    {Cards3}
+                                </>
+                            ) : (
+                                /* Default case: Render Cards */
+                                <>
+                                    {Cards} {/* Render the Cards component */}
+                                </>
+                            )}
                         </div> :
                     // If any error occurred, then show the error message.
                     <ErrorMessage Message={"Error in Fetching Data"} />
             }
 
-        </div>
+        </div >
     );
 }
 

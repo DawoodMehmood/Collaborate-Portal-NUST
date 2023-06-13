@@ -5,12 +5,12 @@
     gap: 2%;
 }
 .faculty_info{
-    /* position: sticky; */
     top: 0;
     display: flex;
     flex-direction: column;
     width: 25%;
     background: linear-gradient(#9966cc,#6A0DAD);
+    overflow-y: scroll;
 }
 .faculty_img{
     width: 70%;
@@ -38,8 +38,8 @@
     font-weight: normal;
     text-align: left;
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     gap: 0;
 }
 .faculty_personal_info h3{
@@ -416,7 +416,10 @@ button > h5{
 .info {
     color: white;
 }
-
+.details{
+    display: flex;
+    flex-direction: row;
+}
 @media screen and (max-width: 1200px){
     .User_Profile{
         flex-direction: column;
@@ -430,11 +433,13 @@ button > h5{
     .faculty_info{
         flex-direction: row;
         width: 100vw;
-        height: 40vh;
+        height: 300px;
         overflow: scroll;
+        box-shadow: 0 5px 5px;
     }
     .Main_Body{
         width: 100vw;
+        padding: 15px
     }
     .faculty_img{
         width: 200px;
@@ -442,7 +447,7 @@ button > h5{
         display: block;
     }
     .Options{
-        width: 65%;
+        width: 100%;
         margin-top: 0;
         
     }
@@ -452,39 +457,49 @@ button > h5{
         display: flex;
         flex-direction: column;
     }
-    .faculty_personal_info div{
+    /* .faculty_personal_info div{
         width: 70%;
-    }
+    } */
     .profile_links{
         margin-top: 0;
         width: 70%;
     }
+    .fonts{
+        display: flex;
+        flex-direction: row;
+    }
 
 }
-@media screen and (max-width: 970px){
+@media screen and (max-width: 910px){
     .User_Profile{
         flex-direction: column;
     }
     .faculty_info{
-        flex-direction: row;
+        flex-direction: column;
         width: 100vw;
         height: 20vh;
         overflow: scroll;
     }
-    .Main_Body{
+    .faculty_info{
+        flex-direction: column;
+        width: 100vw;
+        height: 600px;
+        overflow: scroll;
+    }
+    /* .Main_Body{
         width: 100vw;
     }
     .faculty_img{
         width: 200px;
         height: 75%;
         display: block;
-    }
+    } */
     .Options{
-        width: 65%;
+        width: 100%;
         margin-top: 0;
         
     }
-    .faculty_personal_info{
+    /* .faculty_personal_info{
         width: 100%;
         align-items: center;
         display: flex;
@@ -496,7 +511,7 @@ button > h5{
     .profile_links{
         margin-top: 0;
         width: 70%;
-    }
+    } */
 
 }
 

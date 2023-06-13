@@ -31,7 +31,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
 
     // bar charts modal
     const [modal, setModal] = useState(false);
-    
+
     const toggleModal = (chart) => {
         setModal(!modal);
     }
@@ -660,7 +660,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 rect1Height = 210;
             }
         } else {
-                // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
+            // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
             if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
                 rect1Width = 595;
                 rect1Height = 161;
@@ -2585,162 +2585,53 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
         divCount++;
     }
 
+    const [isiPadView, setiPadView] = useState(false)
+
+    const handleWindowSizeChange = () => {
+        setiPadView(window.innerWidth <= 1200 && window.innerWidth > 910)
+    }
+
+    useEffect(() => {
+        // Add event listener for window resize
+        window.addEventListener('resize', handleWindowSizeChange);
+
+        // Initial call to set the variableValue based on the window size
+        handleWindowSizeChange();
+
+        // Cleanup: remove event listener when component is unmounted
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        };
+    }, []);
+
     return (
         <>
             {modal && (
                 <>
-                
-                <div className="modal-wrapper" onClick={toggleModal}></div>
-                <div className="modal-container">
-                <div className={modal ? "modal-barchart1" : "profile-charts-div"}>
+                    <div className="modal-wrapper" onClick={toggleModal}></div>
+                    <div className="modal-container">
+                        <div className={modal ? "modal-barchart1" : "profile-charts-div"}>
                             {Research_Articles.length + Books.length + Book_Chapters.length + conferences.length === 0 ? "" : <PieChart data={Publications_Pie_Chart_Date} title={"Projects"} />}
                             {projects.length === 0 ? "" : <PieChart data={Project_Pie_Chart_Date} title={"Projects"} />}
                         </div>
-                    <div className={modal ? "modal-barchart1" : "profile-charts-div"}>
-                        {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"} />}
-                        {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"} />}
+                        <div className={modal ? "modal-barchart1" : "profile-charts-div"}>
+                            {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"} />}
+                            {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"} />}
+                        </div>
                     </div>
-                </div>
                 </>
             )}
-        <div className={"User_Profile"} style={{}}>
-            {/* <div className="img_buttons"> */}
-            <div className={"faculty_info"}>
-                <div className={"faculty_profile_pic"}>
-                    <img
-                        src={profile[0].Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile[0].Image_URL)} alt={"Avatar"}
-                        referrerPolicy={"no-referrer"}
-                        className={'faculty_img'}
-                    />
-                </div>
-                 <div className={"faculty_personal_info"}>
-                    <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><h3 className={"designation"}>{profile[0].Work_Position}</h3></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><h3 className={"department"}>{profile[0].School}</h3></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faEnvelope} className={'font'} /><h3>{profile[0].e_mail}</h3></div>
-                    <div style={{ fontSize: "1em" }}><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><h3> {profile[0].Work_Phone} </h3></div>
-                </div>
-                <div className={"profile_links"}>
-                    <div className={"links"}>
-                        <ul className={"featured-Icons"}>
-                            <li className={"li"}>
-                                <a href={`${profile[0].linkedin_URL}`} className={profile[0].linkedin_URL.trim() === "" ? "disabled_link" : ""} target={"_blank"}>
-                                    <FontAwesomeIcon icon={faLinkedinIn} className={"social_font"} />
-                                </a>
-                            </li>
-                            <li className={"li"}>
-                                <a href={`${profile[0].twitter_URL}`} className={profile[0].twitter_URL.trim() === "" ? "disabled_link" : ""} target={"_blank"}>
-                                    <FontAwesomeIcon icon={faTwitter} className={"social_font"} />
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className={"profile_links_1"}>
-                        <a href={`https://www.scopus.com/authid/detail.uri?authorId=${ScopusID}`} className={ScopusID === "" ? "disabled" : "research-info"} target={'_blank'}>Scopus</a>
-                        <a href={`${profile[0].google_URl}`} className={profile[0].google_URl.trim() === "" ? "disabled" : "research-info"} target={'_blank'}>Google Scholars</a>
-                    </div>
-                    <div className={"profile_links_2"}>
-                        <button onClick={openCV} className={enable ? "CV-button" : "disabled"}> Download CV</button>
-                    </div>
-                </div>
-                {/* </div> */}
-                <div className={"Options"}>
-                    <div className={"analytics"}>
-                        <Button
-                            onClick={() => setTabOptions({
-                                ...TabOptions,
-                                profile_tab: false,
-                                analysis_tab: true,
-                                allProjects_tab: false,
-                                researchProjects_International_tab: false,
-                                researchProjects_National_tab: false,
-                                industrialProjects_National_tab: false,
-                                industrialProjects_International_tab: false,
-                                publications_Articles_tab: false,
-                                publications_Books_tab: false,
-                                publications_Chapters_tab: false,
-                                Conference_tab: false,
-                                Patents_National_tab: false,
-                                Patents_International_tab: false,
-                                Intellectual_Property_tab: false,
-                                Supervision_PHD_tab: false,
-                                Supervision_Masters_tab: false,
-                                Editorial_Board_tab: false,
-                                Copyright_tab: false,
-                                Industrial_Design_tab: false,
-                                Trade_Marks_tab: false,
-                                Training_Conducted_tab: false,
-                                Training_Attended_tab: false,
-                            })}>
-                            Home
-                        </Button>
-                    </div>
-                    <div className={"profile"}>
-                        <Button
-                            onClick={() => {
-                                setOptions({
-                                    ...CollapseOptions,
-                                    Profile_options: !CollapseOptions.Profile_options
-                                })
-                                setProfileData((prevState) => {
-                                    return {
-                                        ...prevState,
-                                        Qualifications: true,
-                                        Awards: false,
-                                        Experience: false,
-                                        Talks: false,
-                                        Memberships: false
-                                    }
-                                });
-                                setTabOptions({
-                                    ...TabOptions,
-                                    analysis_tab: false,
-                                    profile_tab: true,
-                                    allProjects_tab: false,
-                                    researchProjects_International_tab: false,
-                                    researchProjects_National_tab: false,
-                                    industrialProjects_National_tab: false,
-                                    industrialProjects_International_tab: false,
-                                    publications_Articles_tab: false,
-                                    publications_Books_tab: false,
-                                    publications_Chapters_tab: false,
-                                    Conference_tab: false,
-                                    Patents_National_tab: false,
-                                    Patents_International_tab: false,
-                                    Intellectual_Property_tab: false,
-                                    Training_Conducted_tab: false,
-                                    Training_Attended_tab: false,
-                                    Supervision_PHD_tab: false,
-                                    Supervision_Masters_tab: false,
-                                    Editorial_Board_tab: false,
-                                    Copyright_tab: false,
-                                    Industrial_Design_tab: false,
-                                    Trade_Marks_tab: false,
-                                })
-
-                            }}
-                            aria-controls="profile-options-area" aria-expanded={CollapseOptions.Profile_options}
-                        >
-                            Profile
-                            <h5>{CollapseOptions.Profile_options ?
-                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                        </Button>
-                        <Collapse in={CollapseOptions.Profile_options}>
-                            <div id={"profile-options-area"}>
-                                {profile[0].Qualifications.length > 0 ? <Button onClick={() => {
-                                    setProfileData({
-                                        ...profileData,
-                                        Qualifications: true,
-                                        Awards: false,
-                                        Experience: false,
-                                        Talks: false,
-                                        Memberships: false,
-                                    });
-                                    setTabOptions({
+            <div className={"User_Profile"} style={{}}>
+                {/* <div className="img_buttons"> */}
+                <div className={"faculty_info"}>
+                    {isiPadView ? (
+                        <div className={"Options"}>
+                            <div className={"analytics"}>
+                                <Button
+                                    onClick={() => setTabOptions({
                                         ...TabOptions,
-                                        analysis_tab: false,
-                                        profile_tab: true,
+                                        profile_tab: false,
+                                        analysis_tab: true,
                                         allProjects_tab: false,
                                         researchProjects_International_tab: false,
                                         researchProjects_National_tab: false,
@@ -2753,658 +2644,39 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                         Patents_National_tab: false,
                                         Patents_International_tab: false,
                                         Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
                                         Supervision_PHD_tab: false,
                                         Supervision_Masters_tab: false,
                                         Editorial_Board_tab: false,
                                         Copyright_tab: false,
                                         Industrial_Design_tab: false,
                                         Trade_Marks_tab: false,
-                                    })
-                                }}>Qualifications</Button> : ""}
-                                {profile[0].Experience.length > 0 ? <Button onClick={() => {
-                                    setProfileData({
-                                        ...profileData,
-                                        Qualifications: false,
-                                        Awards: false,
-                                        Experience: true,
-                                        Talks: false,
-                                        Memberships: false,
-                                    });
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        analysis_tab: false,
-                                        profile_tab: true,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
                                         Training_Conducted_tab: false,
                                         Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Experience</Button> : ""}
-                                {profile[0].Awards.length > 0 ? <Button onClick={() => {
-                                    setProfileData({
-                                        ...profileData,
-                                        Qualifications: false,
-                                        Awards: true,
-                                        Experience: false,
-                                        Talks: false,
-                                        Memberships: false,
-                                    });
-
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        analysis_tab: false,
-                                        profile_tab: true,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-
-                                }}>Awards</Button> : ""}
-                                {profile[0].KeyNotes.length > 0 ? <Button onClick={() => {
-                                    setProfileData({
-                                        ...profileData,
-                                        Qualifications: false,
-                                        Awards: false,
-                                        Experience: false,
-                                        Talks: true,
-                                        Memberships: false,
-                                    });
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        analysis_tab: false,
-                                        profile_tab: true,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Invited Speaker & Keynotes</Button> : ""}
-                                {profile[0].Professional_Memberships_Registrations.length <= 0 ? "" : <Button onClick={() => {
-                                    setProfileData({
-                                        ...profileData,
-                                        Qualifications: false,
-                                        Awards: false,
-                                        Experience: false,
-                                        Talks: false,
-                                        Memberships: true,
-                                    });
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        analysis_tab: false,
-                                        profile_tab: true,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Memberships</Button>}
+                                    })}>
+                                    Home
+                                </Button>
                             </div>
-                        </Collapse>
-                    </div>
-                    {projects.length === 0 ? "" : <div className={"Projects"}>
-                        <Button
-                            onClick={() => setOptions({
-                                ...CollapseOptions,
-                                project_options: !CollapseOptions.project_options
-                            })}
-                            aria-controls="Project-options-area" aria-expanded={CollapseOptions.project_options}>
-                            Projects
-
-
-                            <span className={"number projects"}>{Research_national_List.length + Research_international_List.length + Industry_National_List.length + Industry_International_List.length}</span>
-
-
-                            <h5>{CollapseOptions.project_options ?
-                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                        </Button>
-                        <Collapse in={CollapseOptions.project_options}>
-                            <div id={"Project-options-area"}>
-                                {Project_Research.National.length === 0 && Project_Research.International.length === 0 ? "" :
-                                    <Button
-                                        onClick={() => setOptions({
-                                            ...CollapseOptions,
-                                            research_project_options: !CollapseOptions.research_project_options
-                                        })}
-                                        aria-controls={"research-project-options-area"} aria-expanded={CollapseOptions.research_project_options}>
-                                        Research Projects
-                                        <span className={"internal-projects"}>{Project_Research.National.length + Project_Research.International.length} </span>
-                                        <h5>{CollapseOptions.research_project_options ?
-                                            <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                            <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                                    </Button>}
-                                <Collapse in={CollapseOptions.research_project_options}>
-                                    <div id={"research-project-options-area"}>
-                                        {Project_Research.National.length === 0 ? "" : <Button onClick={() => {
-                                            setTabOptions({
-                                                ...TabOptions,
-                                                profile_tab: false, analysis_tab: false,
-                                                allProjects_tab: false,
-                                                researchProjects_International_tab: false,
-                                                researchProjects_National_tab: true,
-                                                industrialProjects_National_tab: false,
-                                                industrialProjects_International_tab: false,
-                                                publications_Articles_tab: false,
-                                                publications_Books_tab: false,
-                                                publications_Chapters_tab: false,
-                                                Conference_tab: false,
-                                                Patents_National_tab: false,
-                                                Patents_International_tab: false,
-                                                Intellectual_Property_tab: false,
-                                                Training_Conducted_tab: false,
-                                                Training_Attended_tab: false,
-                                                Supervision_PHD_tab: false,
-                                                Supervision_Masters_tab: false,
-                                                Editorial_Board_tab: false,
-                                                Copyright_tab: false,
-                                                Industrial_Design_tab: false,
-                                                Trade_Marks_tab: false,
-                                            })
-                                        }}>National <span className={"number internal_national"}>{Research_national_List.length}</span></Button>}
-                                        {Project_Research.International.length === 0 ? "" : <Button onClick={() => {
-                                            setTabOptions({
-                                                ...TabOptions,
-                                                profile_tab: false, analysis_tab: false,
-                                                allProjects_tab: false,
-                                                researchProjects_International_tab: true,
-                                                researchProjects_National_tab: false,
-                                                industrialProjects_National_tab: false,
-                                                industrialProjects_International_tab: false,
-                                                publications_Articles_tab: false,
-                                                publications_Books_tab: false,
-                                                publications_Chapters_tab: false,
-                                                Conference_tab: false,
-                                                Patents_National_tab: false,
-                                                Patents_International_tab: false,
-                                                Intellectual_Property_tab: false,
-                                                raining_Conducted_tab: false,
-                                                Training_Attended_tab: false,
-                                                Supervision_PHD_tab: false,
-                                                Supervision_Masters_tab: false,
-                                                Editorial_Board_tab: false,
-                                                Copyright_tab: false,
-                                                Industrial_Design_tab: false,
-                                                Trade_Marks_tab: false,
-                                            })
-                                        }}>International <span className={"internal_international"}>{Research_international_List.length}</span></Button>}
-                                    </div>
-                                </Collapse>
-                                {Project_Industry.National.length === 0 && Project_Industry.International.length === 0 ? "" : <Button onClick={() => setOptions({
-                                    ...CollapseOptions,
-                                    industrial_project_options: !CollapseOptions.industrial_project_options
-                                })}
-                                    aria-controls={"industrial-project-options-area"}
-                                    aria-expanded={CollapseOptions.industrial_project_options}>
-                                    Industrial Projects <span className={"internal-projects"}>{Project_Industry.National.length + Project_Industry.International.length}</span>
-                                    <h5>{CollapseOptions.industrial_project_options ?
-                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                                </Button>}
-                                <Collapse in={CollapseOptions.industrial_project_options}>
-                                    <div id={"industrial-project-options-area"}>
-                                        {Project_Industry.National.length === 0 ? "" : <Button onClick={() => {
-                                            setTabOptions({
-                                                ...TabOptions,
-                                                profile_tab: false, analysis_tab: false,
-                                                allProjects_tab: false,
-                                                researchProjects_International_tab: false,
-                                                researchProjects_National_tab: false,
-                                                industrialProjects_National_tab: true,
-                                                industrialProjects_International_tab: false,
-                                                publications_Articles_tab: false,
-                                                publications_Books_tab: false,
-                                                publications_Chapters_tab: false,
-                                                Conference_tab: false,
-                                                Patents_National_tab: false,
-                                                Patents_International_tab: false,
-                                                Intellectual_Property_tab: false,
-                                                Training_Conducted_tab: false,
-                                                Training_Attended_tab: false,
-                                                Supervision_PHD_tab: false,
-                                                Supervision_Masters_tab: false,
-                                                Editorial_Board_tab: false,
-                                                Copyright_tab: false,
-                                                Industrial_Design_tab: false,
-                                                Trade_Marks_tab: false,
-                                            })
-                                        }}>National <span className={"number internal_national"}>{Industry_National_List.length}</span></Button>}
-                                        {Project_Industry.International.length === 0 ? "" : <Button onClick={() => {
-                                            setTabOptions({
-                                                ...TabOptions,
-                                                profile_tab: false, analysis_tab: false,
-                                                allProjects_tab: false,
-                                                researchProjects_International_tab: false,
-                                                researchProjects_National_tab: false,
-                                                industrialProjects_National_tab: false,
-                                                industrialProjects_International_tab: true,
-                                                publications_Articles_tab: false,
-                                                publications_Books_tab: false,
-                                                publications_Chapters_tab: false,
-                                                Conference_tab: false,
-                                                Patents_National_tab: false,
-                                                Patents_International_tab: false,
-                                                Intellectual_Property_tab: false,
-                                                Training_Conducted_tab: false,
-                                                Training_Attended_tab: false,
-                                                Supervision_PHD_tab: false,
-                                                Supervision_Masters_tab: false,
-                                                Editorial_Board_tab: false,
-                                                Copyright_tab: false,
-                                                Industrial_Design_tab: false,
-                                                Trade_Marks_tab: false,
-                                            })
-                                        }}>International <span className={"internal_international"}>{Industry_International_List.length}</span></Button>}
-                                    </div>
-                                </Collapse>
-                            </div>
-                        </Collapse>
-                    </div>}
-                    {Research_Articles.length === 0 && Books.length === 0 && Book_Chapters.length === 0 && conferences.length === 0 && editorials.length === 0 ? "" : <div className={"publications"}>
-                        <Button
-                            onClick={() => setOptions({
-                                ...CollapseOptions,
-                                publications_options: !CollapseOptions.publications_options
-                            })}
-                            aria-controls="Publications-options-area"
-                            aria-expanded={CollapseOptions.publications_options}>
-                            Publications <span className={"number"}>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</span>
-                            <h5>{CollapseOptions.publications_options ?
-                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                        </Button>
-                        <Collapse in={CollapseOptions.publications_options}>
-                            <div id={"Publications-options-area"}>
-                                {Research_Articles.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: true,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Research Articles <span className={"internal-articles"}>{Research_Articles_List.length}</span></Button>}
-                                {conferences.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: true,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Conference Proceedings <span className={"internal-conference"}>{Conferences.length}</span></Button>}
-                                {editorials.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: true,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Editorial Activities <span className={"internal-editorials"}>{Editorials.length}</span></Button>}
-                                {Books.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: true,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Books <span className={"internal-chapter internal-book"}>{Books.length}</span></Button>}
-                                {Book_Chapters.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-
-
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: true,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>Book Chapters <span className={"internal-chapter"}>{Book_Chapters.length}</span></Button>}
-                            </div>
-                        </Collapse>
-                    </div>}
-                    {ips.length === 0 ? "" : <div className={"IP"}>
-                        <Button
-                            onClick={() => setOptions({ ...CollapseOptions, ip_options: !CollapseOptions.ip_options })}
-                            aria-controls="IP-options-area" aria-expanded={CollapseOptions.ip_options}>
-                            Intellectual Property <span className={"ip_number"}>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</span>
-                            <h5>{CollapseOptions.ip_options ? <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                        </Button>
-                        <Collapse in={CollapseOptions.ip_options}>
-                            <div id={"IP-options-area"}>
-                                {Intellectual_Property.Patents.length === 0 &&
-                                    Intellectual_Property.Patents.length === 0 ? "" : <Button onClick={() => setOptions({
-                                        ...CollapseOptions,
-                                        patents_options: !CollapseOptions.patents_options
-                                    })}
-                                        aria-controls="Patent-options-area"
-                                        aria-expanded={CollapseOptions.patents_options}>
-                                    Patents <span className={"patents"}>{IPS_Patent.length}</span>
-                                    <h5>{CollapseOptions.patents_options ?
-                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                                </Button>}
-                                <Collapse in={CollapseOptions.patents_options}>
-                                    <div id={"Patent-options-area"}>
-                                        {Intellectual_Property.Patents.length === 0 ? "" : <Button onClick={() => {
-                                            setTabOptions({
-                                                ...TabOptions,
-                                                profile_tab: false, analysis_tab: false,
-                                                allProjects_tab: false,
-                                                researchProjects_International_tab: false,
-                                                researchProjects_National_tab: false,
-                                                industrialProjects_National_tab: false,
-                                                industrialProjects_International_tab: false,
-                                                publications_Articles_tab: false,
-                                                publications_Books_tab: false,
-                                                publications_Chapters_tab: false,
-                                                Conference_tab: false,
-                                                Patents_National_tab: true,
-                                                Patents_International_tab: false,
-                                                Intellectual_Property_tab: false,
-                                                Training_Conducted_tab: false,
-                                                Training_Attended_tab: false,
-                                                Supervision_PHD_tab: false,
-                                                Supervision_Masters_tab: false,
-                                                Editorial_Board_tab: false,
-                                                Copyright_tab: false,
-                                                Industrial_Design_tab: false,
-                                                Trade_Marks_tab: false,
-                                            })
-                                        }}>National <span className={"number internal_national"}>{IPS_Patent.length}</span></Button>}
-                                        
-                                        {!false ? "" : <Button onClick={() => {
-                                            setTabOptions({
-                                                ...TabOptions,
-                                                profile_tab: false, analysis_tab: false,
-                                                allProjects_tab: false,
-                                                researchProjects_International_tab: false,
-                                                researchProjects_National_tab: false,
-                                                industrialProjects_National_tab: false,
-                                                industrialProjects_International_tab: false,
-                                                publications_Articles_tab: false,
-                                                publications_Books_tab: false,
-                                                publications_Chapters_tab: false,
-                                                Conference_tab: false,
-                                                Patents_National_tab: false,
-                                                Patents_International_tab: true,
-                                                Intellectual_Property_tab: false,
-                                                Training_Conducted_tab: false,
-                                                Training_Attended_tab: false,
-                                                Supervision_PHD_tab: false,
-                                                Supervision_Masters_tab: false,
-                                                Editorial_Board_tab: false,
-                                                Copyright_tab: false,
-                                                Industrial_Design_tab: false,
-                                                Trade_Marks_tab: false,
-                                            })
-                                        }}>International</Button>}
-                                    </div>
-                                </Collapse>
-                                {Intellectual_Property.Industrial_Design.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: true,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>
-                                    Industrial Designs <span className={"ips_ids"}>{IPS_Design.length}</span>
-                                </Button>}
-                                {Intellectual_Property.Copy_Rights.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: true,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: false,
-                                    })
-                                }}>
-                                    Copyrights <span className={"ips_cps"}>{IPS_CopyRight.length}</span>
-                                </Button>}
-                                {Intellectual_Property.Trade_Marks.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Copyright_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Trade_Marks_tab: true,
-                                    })
-                                }}>
-                                    Trade Marks <span className={"number ips_tds"}>{IPS_TradeMark.length}</span>
-                                </Button>}
-                            </div>
-                        </Collapse>
-                    </div>}
-                    {Trainings.length + profile[0].Trainings_Attended.length === 0 ? "" : <div className={"trainings"}>
-                        <Button
-                            onClick={() => setOptions({
-                                ...CollapseOptions,
-                                training_options: !CollapseOptions.training_options
-                            })}
-                            aria-controls="trainings-options-area" aria-expanded={CollapseOptions.training_options}>
-                            Trainings <span className={"trainings_number"}>{Trainings.length + profile[0].Trainings_Attended.length}</span>
-                            <h5>{CollapseOptions.training_options ?
-                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                        </Button>
-                        <Collapse in={CollapseOptions.training_options}>
-                            <div id={"trainings-options-area"}>
-                                {profile[0].Trainings_Attended.length === 0 ? "" : <Button
+                            <div className={"profile"}>
+                                <Button
                                     onClick={() => {
+                                        setOptions({
+                                            ...CollapseOptions,
+                                            Profile_options: !CollapseOptions.Profile_options
+                                        })
+                                        setProfileData((prevState) => {
+                                            return {
+                                                ...prevState,
+                                                Qualifications: true,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: false
+                                            }
+                                        });
                                         setTabOptions({
                                             ...TabOptions,
-                                            profile_tab: false, analysis_tab: false,
+                                            analysis_tab: false,
+                                            profile_tab: true,
                                             allProjects_tab: false,
                                             researchProjects_International_tab: false,
                                             researchProjects_National_tab: false,
@@ -3417,22 +2689,884 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                             Patents_National_tab: false,
                                             Patents_International_tab: false,
                                             Intellectual_Property_tab: false,
+                                            Training_Conducted_tab: false,
+                                            Training_Attended_tab: false,
                                             Supervision_PHD_tab: false,
                                             Supervision_Masters_tab: false,
-                                            Training_Attended_tab: true,
-                                            Training_Conducted_tab: false,
                                             Editorial_Board_tab: false,
                                             Copyright_tab: false,
                                             Industrial_Design_tab: false,
                                             Trade_Marks_tab: false,
                                         })
-                                    }}>Attended <span className={"trainings_number"}>{profile[0].Trainings_Attended.length}</span></Button>}
-                                {Trainings.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
 
+                                    }}
+                                    aria-controls="profile-options-area" aria-expanded={CollapseOptions.Profile_options}
+                                >
+                                    Profile
+                                    <h5>{CollapseOptions.Profile_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.Profile_options}>
+                                    <div id={"profile-options-area"}>
+                                        {profile[0].Qualifications.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: true,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: false,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Qualifications</Button> : ""}
+                                        {profile[0].Experience.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: false,
+                                                Experience: true,
+                                                Talks: false,
+                                                Memberships: false,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Experience</Button> : ""}
+                                        {profile[0].Awards.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: true,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: false,
+                                            });
+
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+
+                                        }}>Awards</Button> : ""}
+                                        {profile[0].KeyNotes.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: true,
+                                                Memberships: false,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Invited Speaker & Keynotes</Button> : ""}
+                                        {profile[0].Professional_Memberships_Registrations.length <= 0 ? "" : <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: true,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Memberships</Button>}
+                                    </div>
+                                </Collapse>
+                            </div>
+                            {projects.length === 0 ? "" : <div className={"Projects"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        project_options: !CollapseOptions.project_options
+                                    })}
+                                    aria-controls="Project-options-area" aria-expanded={CollapseOptions.project_options}>
+                                    Projects
+
+
+                                    <span className={"number projects"}>{Research_national_List.length + Research_international_List.length + Industry_National_List.length + Industry_International_List.length}</span>
+
+
+                                    <h5>{CollapseOptions.project_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.project_options}>
+                                    <div id={"Project-options-area"}>
+                                        {Project_Research.National.length === 0 && Project_Research.International.length === 0 ? "" :
+                                            <Button
+                                                onClick={() => setOptions({
+                                                    ...CollapseOptions,
+                                                    research_project_options: !CollapseOptions.research_project_options
+                                                })}
+                                                aria-controls={"research-project-options-area"} aria-expanded={CollapseOptions.research_project_options}>
+                                                Research Projects
+                                                <span className={"internal-projects"}>{Project_Research.National.length + Project_Research.International.length} </span>
+                                                <h5>{CollapseOptions.research_project_options ?
+                                                    <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                                    <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                            </Button>}
+                                        <Collapse in={CollapseOptions.research_project_options}>
+                                            <div id={"research-project-options-area"}>
+                                                {Project_Research.National.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: true,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>National <span className={"number internal_national"}>{Research_national_List.length}</span></Button>}
+                                                {Project_Research.International.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: true,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        raining_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>International <span className={"internal_international"}>{Research_international_List.length}</span></Button>}
+                                            </div>
+                                        </Collapse>
+                                        {Project_Industry.National.length === 0 && Project_Industry.International.length === 0 ? "" : <Button onClick={() => setOptions({
+                                            ...CollapseOptions,
+                                            industrial_project_options: !CollapseOptions.industrial_project_options
+                                        })}
+                                            aria-controls={"industrial-project-options-area"}
+                                            aria-expanded={CollapseOptions.industrial_project_options}>
+                                            Industrial Projects <span className={"internal-projects"}>{Project_Industry.National.length + Project_Industry.International.length}</span>
+                                            <h5>{CollapseOptions.industrial_project_options ?
+                                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                        </Button>}
+                                        <Collapse in={CollapseOptions.industrial_project_options}>
+                                            <div id={"industrial-project-options-area"}>
+                                                {Project_Industry.National.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: true,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>National <span className={"number internal_national"}>{Industry_National_List.length}</span></Button>}
+                                                {Project_Industry.International.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: true,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>International <span className={"internal_international"}>{Industry_International_List.length}</span></Button>}
+                                            </div>
+                                        </Collapse>
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {Research_Articles.length === 0 && Books.length === 0 && Book_Chapters.length === 0 && conferences.length === 0 && editorials.length === 0 ? "" : <div className={"publications"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        publications_options: !CollapseOptions.publications_options
+                                    })}
+                                    aria-controls="Publications-options-area"
+                                    aria-expanded={CollapseOptions.publications_options}>
+                                    Publications <span className={"number"}>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</span>
+                                    <h5>{CollapseOptions.publications_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.publications_options}>
+                                    <div id={"Publications-options-area"}>
+                                        {Research_Articles.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: true,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Research Articles <span className={"internal-articles"}>{Research_Articles_List.length}</span></Button>}
+                                        {conferences.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: true,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Conference Proceedings <span className={"internal-conference"}>{Conferences.length}</span></Button>}
+                                        {editorials.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: true,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Editorial Activities <span className={"internal-editorials"}>{Editorials.length}</span></Button>}
+                                        {Books.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: true,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Books <span className={"internal-chapter internal-book"}>{Books.length}</span></Button>}
+                                        {Book_Chapters.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: true,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Book Chapters <span className={"internal-chapter"}>{Book_Chapters.length}</span></Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {ips.length === 0 ? "" : <div className={"IP"}>
+                                <Button
+                                    onClick={() => setOptions({ ...CollapseOptions, ip_options: !CollapseOptions.ip_options })}
+                                    aria-controls="IP-options-area" aria-expanded={CollapseOptions.ip_options}>
+                                    Intellectual Property <span className={"ip_number"}>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</span>
+                                    <h5>{CollapseOptions.ip_options ? <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.ip_options}>
+                                    <div id={"IP-options-area"}>
+                                        {Intellectual_Property.Patents.length === 0 &&
+                                            Intellectual_Property.Patents.length === 0 ? "" : <Button onClick={() => setOptions({
+                                                ...CollapseOptions,
+                                                patents_options: !CollapseOptions.patents_options
+                                            })}
+                                                aria-controls="Patent-options-area"
+                                                aria-expanded={CollapseOptions.patents_options}>
+                                            Patents <span className={"patents"}>{IPS_Patent.length}</span>
+                                            <h5>{CollapseOptions.patents_options ?
+                                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                        </Button>}
+                                        <Collapse in={CollapseOptions.patents_options}>
+                                            <div id={"Patent-options-area"}>
+                                                {Intellectual_Property.Patents.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: true,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>National <span className={"number internal_national"}>{IPS_Patent.length}</span></Button>}
+
+                                                {!false ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: true,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>International</Button>}
+                                            </div>
+                                        </Collapse>
+                                        {Intellectual_Property.Industrial_Design.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: true,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>
+                                            Industrial Designs <span className={"ips_ids"}>{IPS_Design.length}</span>
+                                        </Button>}
+                                        {Intellectual_Property.Copy_Rights.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: true,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>
+                                            Copyrights <span className={"ips_cps"}>{IPS_CopyRight.length}</span>
+                                        </Button>}
+                                        {Intellectual_Property.Trade_Marks.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: true,
+                                            })
+                                        }}>
+                                            Trade Marks <span className={"number ips_tds"}>{IPS_TradeMark.length}</span>
+                                        </Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {Trainings.length + profile[0].Trainings_Attended.length === 0 ? "" : <div className={"trainings"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        training_options: !CollapseOptions.training_options
+                                    })}
+                                    aria-controls="trainings-options-area" aria-expanded={CollapseOptions.training_options}>
+                                    Trainings <span className={"trainings_number"}>{Trainings.length + profile[0].Trainings_Attended.length}</span>
+                                    <h5>{CollapseOptions.training_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.training_options}>
+                                    <div id={"trainings-options-area"}>
+                                        {profile[0].Trainings_Attended.length === 0 ? "" : <Button
+                                            onClick={() => {
+                                                setTabOptions({
+                                                    ...TabOptions,
+                                                    profile_tab: false, analysis_tab: false,
+                                                    allProjects_tab: false,
+                                                    researchProjects_International_tab: false,
+                                                    researchProjects_National_tab: false,
+                                                    industrialProjects_National_tab: false,
+                                                    industrialProjects_International_tab: false,
+                                                    publications_Articles_tab: false,
+                                                    publications_Books_tab: false,
+                                                    publications_Chapters_tab: false,
+                                                    Conference_tab: false,
+                                                    Patents_National_tab: false,
+                                                    Patents_International_tab: false,
+                                                    Intellectual_Property_tab: false,
+                                                    Supervision_PHD_tab: false,
+                                                    Supervision_Masters_tab: false,
+                                                    Training_Attended_tab: true,
+                                                    Training_Conducted_tab: false,
+                                                    Editorial_Board_tab: false,
+                                                    Copyright_tab: false,
+                                                    Industrial_Design_tab: false,
+                                                    Trade_Marks_tab: false,
+                                                })
+                                            }}>Attended <span className={"trainings_number"}>{profile[0].Trainings_Attended.length}</span></Button>}
+                                        {Trainings.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Training_Attended_tab: false,
+                                                Training_Conducted_tab: true,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Conducted <span
+                                            className={"trainings_number-conducted"}>{Trainings.length}</span></Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {supervisions.length === 0 ? "" : <div className={"supervisions"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        supervised_projects_options: !CollapseOptions.supervised_projects_options
+                                    })}
+                                    aria-controls="supervision-options-area"
+                                    aria-expanded={CollapseOptions.supervised_projects_options}>
+                                    Supervisions <span className={"supervisions-number"}>{supervisions.length}</span>
+                                    <h5>{CollapseOptions.supervised_projects_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.supervised_projects_options}>
+                                    <div id={"supervision-options-area"}>
+                                        {Supervision.PHD.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_tab: false,
+                                                Supervision_PHD_tab: true,
+                                                Supervision_Masters_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Trade_Marks_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Copyright_tab: false
+                                            })
+                                        }}>Phd Supervision <span className={"internal-supervisions"}>{Doctoral.length}</span></Button>}
+                                        {Supervision.Masters.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: true,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Trade_Marks_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Copyright_tab: false
+
+                                            })
+                                        }}>MS Supervision  <span className={"internal-supervisions-ms"}>{MS.length}</span></Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                        </div>) : null
+                    }
+                    <div className="">
+                        <div className={"faculty_profile_pic"}>
+                            <img
+                                src={profile[0].Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile[0].Image_URL)} alt={"Avatar"}
+                                referrerPolicy={"no-referrer"}
+                                className={'faculty_img'}
+                            />
+                        </div>
+                        <div className={"faculty_personal_info"}>
+                            <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
+                            <div className={window.innerWidth<910 ? "row" : "fonts"}>
+                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><h3 className={"designation"}>{profile[0].Work_Position}</h3></div>
+                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><h3 className={"department"}>{profile[0].School}</h3></div>
+                                </div>
+                                <div className={window.innerWidth<910 ? "row" : "fonts"}>
+                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faEnvelope} className={'font'} /><h3>{profile[0].e_mail}</h3></div>
+                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><h3> {profile[0].Work_Phone} </h3></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"profile_links"}>
+                        <div className={"links"}>
+                            <ul className={"featured-Icons"}>
+                                <li className={"li"}>
+                                    <a href={`${profile[0].linkedin_URL}`} className={profile[0].linkedin_URL.trim() === "" ? "disabled_link" : ""} target={"_blank"}>
+                                        <FontAwesomeIcon icon={faLinkedinIn} className={"social_font"} />
+                                    </a>
+                                </li>
+                                <li className={"li"}>
+                                    <a href={`${profile[0].twitter_URL}`} className={profile[0].twitter_URL.trim() === "" ? "disabled_link" : ""} target={"_blank"}>
+                                        <FontAwesomeIcon icon={faTwitter} className={"social_font"} />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className={"profile_links_1"}>
+                            <a href={`https://www.scopus.com/authid/detail.uri?authorId=${ScopusID}`} className={ScopusID === "" ? "disabled" : "research-info"} target={'_blank'}>Scopus</a>
+                            <a href={`${profile[0].google_URl}`} className={profile[0].google_URl.trim() === "" ? "disabled" : "research-info"} target={'_blank'}>Google Scholars</a>
+                        </div>
+                        <div className={"profile_links_2"}>
+                            <button onClick={openCV} className={enable ? "CV-button" : "disabled"}> Download CV</button>
+                        </div>
+                    </div>
+                    {/* </div> */}
+                    {!isiPadView ? (
+                        <div className={"Options"}>
+                            <div className={"analytics"}>
+                                <Button
+                                    onClick={() => setTabOptions({
+                                        ...TabOptions,
+                                        profile_tab: false,
+                                        analysis_tab: true,
+                                        allProjects_tab: false,
                                         researchProjects_International_tab: false,
                                         researchProjects_National_tab: false,
                                         industrialProjects_National_tab: false,
@@ -3446,317 +3580,1098 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                         Intellectual_Property_tab: false,
                                         Supervision_PHD_tab: false,
                                         Supervision_Masters_tab: false,
-                                        Training_Attended_tab: false,
-                                        Training_Conducted_tab: true,
                                         Editorial_Board_tab: false,
                                         Copyright_tab: false,
                                         Industrial_Design_tab: false,
                                         Trade_Marks_tab: false,
-                                    })
-                                }}>Conducted <span
-                                    className={"trainings_number-conducted"}>{Trainings.length}</span></Button>}
-                            </div>
-                        </Collapse>
-                    </div>}
-                    {supervisions.length === 0 ? "" : <div className={"supervisions"}>
-                        <Button
-                            onClick={() => setOptions({
-                                ...CollapseOptions,
-                                supervised_projects_options: !CollapseOptions.supervised_projects_options
-                            })}
-                            aria-controls="supervision-options-area"
-                            aria-expanded={CollapseOptions.supervised_projects_options}>
-                            Supervisions <span className={"supervisions-number"}>{supervisions.length}</span>
-                            <h5>{CollapseOptions.supervised_projects_options ?
-                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
-                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
-                        </Button>
-                        <Collapse in={CollapseOptions.supervised_projects_options}>
-                            <div id={"supervision-options-area"}>
-                                {Supervision.PHD.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_tab: false,
-                                        Supervision_PHD_tab: true,
-                                        Supervision_Masters_tab: false,
                                         Training_Conducted_tab: false,
                                         Training_Attended_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Trade_Marks_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Copyright_tab: false
-                                    })
-                                }}>Phd Supervision <span className={"internal-supervisions"}>{Doctoral.length}</span></Button>}
-                                {Supervision.Masters.length === 0 ? "" : <Button onClick={() => {
-                                    setTabOptions({
-                                        ...TabOptions,
-                                        profile_tab: false, analysis_tab: false,
-                                        allProjects_tab: false,
-                                        researchProjects_International_tab: false,
-                                        researchProjects_National_tab: false,
-                                        industrialProjects_National_tab: false,
-                                        industrialProjects_International_tab: false,
-                                        publications_Articles_tab: false,
-                                        publications_Books_tab: false,
-                                        publications_Chapters_tab: false,
-                                        Conference_tab: false,
-                                        Patents_National_tab: false,
-                                        Patents_International_tab: false,
-                                        Intellectual_Property_tab: false,
-                                        Training_tab: false,
-                                        Supervision_PHD_tab: false,
-                                        Supervision_Masters_tab: true,
-                                        Training_Conducted_tab: false,
-                                        Training_Attended_tab: false,
-                                        Editorial_Board_tab: false,
-                                        Trade_Marks_tab: false,
-                                        Industrial_Design_tab: false,
-                                        Copyright_tab: false
+                                    })}>
+                                    Home
+                                </Button>
+                            </div>
+                            <div className={"profile"}>
+                                <Button
+                                    onClick={() => {
+                                        setOptions({
+                                            ...CollapseOptions,
+                                            Profile_options: !CollapseOptions.Profile_options
+                                        })
+                                        setProfileData((prevState) => {
+                                            return {
+                                                ...prevState,
+                                                Qualifications: true,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: false
+                                            }
+                                        });
+                                        setTabOptions({
+                                            ...TabOptions,
+                                            analysis_tab: false,
+                                            profile_tab: true,
+                                            allProjects_tab: false,
+                                            researchProjects_International_tab: false,
+                                            researchProjects_National_tab: false,
+                                            industrialProjects_National_tab: false,
+                                            industrialProjects_International_tab: false,
+                                            publications_Articles_tab: false,
+                                            publications_Books_tab: false,
+                                            publications_Chapters_tab: false,
+                                            Conference_tab: false,
+                                            Patents_National_tab: false,
+                                            Patents_International_tab: false,
+                                            Intellectual_Property_tab: false,
+                                            Training_Conducted_tab: false,
+                                            Training_Attended_tab: false,
+                                            Supervision_PHD_tab: false,
+                                            Supervision_Masters_tab: false,
+                                            Editorial_Board_tab: false,
+                                            Copyright_tab: false,
+                                            Industrial_Design_tab: false,
+                                            Trade_Marks_tab: false,
+                                        })
 
-                                    })
-                                }}>MS Supervision  <span className={"internal-supervisions-ms"}>{MS.length}</span></Button>}
-                            </div>
-                        </Collapse>
-                    </div>}
-                </div> 
-            </div>
-            <div className={"Main_Body"}>
-                {!TabOptions.analysis_tab ? "" : <div className={"analysis"}>
-                    <div className={"analysis_tab_header"}>
-                        <div className={"about_heading"}>
-                            <h1 >
-                                <span>{profile[0].Name}</span>
-                            </h1>
-                            <h6 className={"introduction"}>
-                                <strong>Dr {profile[0].Name}</strong> is working as <strong>{profile[0].Work_Position}</strong> in the <strong>{profile[0].School}</strong>, NUST.
-                                <strong>Dr {profile[0].Name}</strong> has a PhD in <strong>{profile[0].Qualifications[0]["speciality"]}</strong>.
-                                &nbsp;<strong>Dr {profile[0].Name}</strong> has published <strong>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length} </strong> research articles & conference papers having a citation count of <strong>{Citations}</strong>,
-                                carried out <strong>{(Project_Research.National.length + Project_Research.International.length) + Project_Industry.National.length + Project_Industry.International.length}</strong> projects and filed <strong>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</strong> intellectual property. </h6>
-                        </div>
-                        <hr />
-                    </div>
-                    <div className={`work_details ${divCount === 1 ? "one" :
-                        divCount === 2 ? "two" :
-                            divCount === 3 ? "three" :
-                                divCount === 4 ? "four" :
-                                    divCount === 5 ? "five" : "six"}`}>
-                        {Project_Research.National.length + Project_Research.International.length !== 0 &&
-                            <div className={"detail_work_div"}>
-                                <h6>Research Projects</h6>
-                                <h1>{Project_Research.National.length + Project_Research.International.length}</h1>
-                            </div>
-                        }
-                        {Project_Industry.National.length + Project_Industry.International.length !== 0 &&
-                            <div className={"detail_work_div"}>
-                                <h6>Industry Projects</h6>
-                                <h1>{Project_Industry.National.length + Project_Industry.International.length}</h1>
-                            </div>
-                        }
-                        {AmountGranted != 0.0 &&
-                            <div className={"detail_work_div"}>
-                                <h6>Amount Granted</h6>
-                                <h1>{AmountGranted}M</h1>
-                            </div>
-                        }
-                        {Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length !== 0 &&
-                            <div className={"detail_work_div"}>
-                                <h6>Publications</h6>
-                                <h1>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</h1>
-                            </div>
-                        }
-                        {Citations !== 0 &&
-                            <div className={"detail_work_div"}>
-                                <h6>Citations</h6>
-                                <h1>{Citations}</h1>
-                            </div>
-                        }
-                        {IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length !== 0 &&
-                            <div className={"detail_work_div"}>
-                                <h6>Patents</h6>
-                                <h1>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</h1>
-                            </div>
-                        }
-                    </div>
-                    {!modal && 
-                    enable ? <>
-                        <div className={"profile-charts-div"} onClick={toggleModal}>
-                            {Research_Articles.length + Books.length + Book_Chapters.length + conferences.length === 0 ? "" : <PieChart data={Publications_Pie_Chart_Date} title={"Projects"} />}
-                            {projects.length === 0 ? "" : <PieChart data={Project_Pie_Chart_Date} title={"Projects"} />}
-                        </div>
-                        <div className={"profile-charts-div"} onClick={toggleModal}>
-                            {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"}/>}
-                            {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"}/>}
-                        </div>
-                        
-                    </> : <div className={"Loading_Div"}>
-                        <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        {/*<Placeholder className="w-75" />*/}
-                    </div> }
+                                    }}
+                                    aria-controls="profile-options-area" aria-expanded={CollapseOptions.Profile_options}
+                                >
+                                    Profile
+                                    <h5>{CollapseOptions.Profile_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.Profile_options}>
+                                    <div id={"profile-options-area"}>
+                                        {profile[0].Qualifications.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: true,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: false,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Qualifications</Button> : ""}
+                                        {profile[0].Experience.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: false,
+                                                Experience: true,
+                                                Talks: false,
+                                                Memberships: false,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Experience</Button> : ""}
+                                        {profile[0].Awards.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: true,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: false,
+                                            });
 
-                    <div>
-                        {Research_Images.length !== 0 ? <div className={"Research_Collaborations"}>
-                            <h1 className={"Research-Collaborators"}>Research Collaborators</h1>
-                            <Slider {...research_settings}>
-                                {Research_Images.map((image, index) =>
-                                (
-                                    <div className={"industry-collab"}>
-                                        <img
-                                            src={image}
-                                            className={"industry-collab-img"}
-                                            alt={image} />
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
 
+                                        }}>Awards</Button> : ""}
+                                        {profile[0].KeyNotes.length > 0 ? <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: true,
+                                                Memberships: false,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Invited Speaker & Keynotes</Button> : ""}
+                                        {profile[0].Professional_Memberships_Registrations.length <= 0 ? "" : <Button onClick={() => {
+                                            setProfileData({
+                                                ...profileData,
+                                                Qualifications: false,
+                                                Awards: false,
+                                                Experience: false,
+                                                Talks: false,
+                                                Memberships: true,
+                                            });
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                analysis_tab: false,
+                                                profile_tab: true,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Memberships</Button>}
                                     </div>
-                                )
-                                )}
-                            </Slider>
-                        </div> : ""}
-                    </div>
-                </div>}
-                {!TabOptions.profile_tab ? "" : <div className={"Profile"}>
-                    {!profileData.Qualifications ? "" : <div className={"Profile_Qualification profile_field"}>
-                        {qualifications}
-                    </div>}
-                    {!profileData.Experience ? "" :
-                        <div className={"Profile_Experience profile_field"}>
-                            {experience}
-                        </div>}
-                    {!profileData.Awards ? "" :
-                        <div className={"Profile_Awards profile_field"}>
-                            {awards}
+                                </Collapse>
+                            </div>
+                            {projects.length === 0 ? "" : <div className={"Projects"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        project_options: !CollapseOptions.project_options
+                                    })}
+                                    aria-controls="Project-options-area" aria-expanded={CollapseOptions.project_options}>
+                                    Projects
+
+
+                                    <span className={"number projects"}>{Research_national_List.length + Research_international_List.length + Industry_National_List.length + Industry_International_List.length}</span>
+
+
+                                    <h5>{CollapseOptions.project_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.project_options}>
+                                    <div id={"Project-options-area"}>
+                                        {Project_Research.National.length === 0 && Project_Research.International.length === 0 ? "" :
+                                            <Button
+                                                onClick={() => setOptions({
+                                                    ...CollapseOptions,
+                                                    research_project_options: !CollapseOptions.research_project_options
+                                                })}
+                                                aria-controls={"research-project-options-area"} aria-expanded={CollapseOptions.research_project_options}>
+                                                Research Projects
+                                                <span className={"internal-projects"}>{Project_Research.National.length + Project_Research.International.length} </span>
+                                                <h5>{CollapseOptions.research_project_options ?
+                                                    <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                                    <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                            </Button>}
+                                        <Collapse in={CollapseOptions.research_project_options}>
+                                            <div id={"research-project-options-area"}>
+                                                {Project_Research.National.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: true,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>National <span className={"number internal_national"}>{Research_national_List.length}</span></Button>}
+                                                {Project_Research.International.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: true,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        raining_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>International <span className={"internal_international"}>{Research_international_List.length}</span></Button>}
+                                            </div>
+                                        </Collapse>
+                                        {Project_Industry.National.length === 0 && Project_Industry.International.length === 0 ? "" : <Button onClick={() => setOptions({
+                                            ...CollapseOptions,
+                                            industrial_project_options: !CollapseOptions.industrial_project_options
+                                        })}
+                                            aria-controls={"industrial-project-options-area"}
+                                            aria-expanded={CollapseOptions.industrial_project_options}>
+                                            Industrial Projects <span className={"internal-projects"}>{Project_Industry.National.length + Project_Industry.International.length}</span>
+                                            <h5>{CollapseOptions.industrial_project_options ?
+                                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                        </Button>}
+                                        <Collapse in={CollapseOptions.industrial_project_options}>
+                                            <div id={"industrial-project-options-area"}>
+                                                {Project_Industry.National.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: true,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>National <span className={"number internal_national"}>{Industry_National_List.length}</span></Button>}
+                                                {Project_Industry.International.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: true,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>International <span className={"internal_international"}>{Industry_International_List.length}</span></Button>}
+                                            </div>
+                                        </Collapse>
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {Research_Articles.length === 0 && Books.length === 0 && Book_Chapters.length === 0 && conferences.length === 0 && editorials.length === 0 ? "" : <div className={"publications"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        publications_options: !CollapseOptions.publications_options
+                                    })}
+                                    aria-controls="Publications-options-area"
+                                    aria-expanded={CollapseOptions.publications_options}>
+                                    Publications <span className={"number"}>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</span>
+                                    <h5>{CollapseOptions.publications_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.publications_options}>
+                                    <div id={"Publications-options-area"}>
+                                        {Research_Articles.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: true,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Research Articles <span className={"internal-articles"}>{Research_Articles_List.length}</span></Button>}
+                                        {conferences.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: true,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Conference Proceedings <span className={"internal-conference"}>{Conferences.length}</span></Button>}
+                                        {editorials.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: true,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Editorial Activities <span className={"internal-editorials"}>{Editorials.length}</span></Button>}
+                                        {Books.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: true,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Books <span className={"internal-chapter internal-book"}>{Books.length}</span></Button>}
+                                        {Book_Chapters.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: true,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Book Chapters <span className={"internal-chapter"}>{Book_Chapters.length}</span></Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {ips.length === 0 ? "" : <div className={"IP"}>
+                                <Button
+                                    onClick={() => setOptions({ ...CollapseOptions, ip_options: !CollapseOptions.ip_options })}
+                                    aria-controls="IP-options-area" aria-expanded={CollapseOptions.ip_options}>
+                                    Intellectual Property <span className={"ip_number"}>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</span>
+                                    <h5>{CollapseOptions.ip_options ? <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.ip_options}>
+                                    <div id={"IP-options-area"}>
+                                        {Intellectual_Property.Patents.length === 0 &&
+                                            Intellectual_Property.Patents.length === 0 ? "" : <Button onClick={() => setOptions({
+                                                ...CollapseOptions,
+                                                patents_options: !CollapseOptions.patents_options
+                                            })}
+                                                aria-controls="Patent-options-area"
+                                                aria-expanded={CollapseOptions.patents_options}>
+                                            Patents <span className={"patents"}>{IPS_Patent.length}</span>
+                                            <h5>{CollapseOptions.patents_options ?
+                                                <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                                <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                        </Button>}
+                                        <Collapse in={CollapseOptions.patents_options}>
+                                            <div id={"Patent-options-area"}>
+                                                {Intellectual_Property.Patents.length === 0 ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: true,
+                                                        Patents_International_tab: false,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>National <span className={"number internal_national"}>{IPS_Patent.length}</span></Button>}
+
+                                                {!false ? "" : <Button onClick={() => {
+                                                    setTabOptions({
+                                                        ...TabOptions,
+                                                        profile_tab: false, analysis_tab: false,
+                                                        allProjects_tab: false,
+                                                        researchProjects_International_tab: false,
+                                                        researchProjects_National_tab: false,
+                                                        industrialProjects_National_tab: false,
+                                                        industrialProjects_International_tab: false,
+                                                        publications_Articles_tab: false,
+                                                        publications_Books_tab: false,
+                                                        publications_Chapters_tab: false,
+                                                        Conference_tab: false,
+                                                        Patents_National_tab: false,
+                                                        Patents_International_tab: true,
+                                                        Intellectual_Property_tab: false,
+                                                        Training_Conducted_tab: false,
+                                                        Training_Attended_tab: false,
+                                                        Supervision_PHD_tab: false,
+                                                        Supervision_Masters_tab: false,
+                                                        Editorial_Board_tab: false,
+                                                        Copyright_tab: false,
+                                                        Industrial_Design_tab: false,
+                                                        Trade_Marks_tab: false,
+                                                    })
+                                                }}>International</Button>}
+                                            </div>
+                                        </Collapse>
+                                        {Intellectual_Property.Industrial_Design.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: true,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>
+                                            Industrial Designs <span className={"ips_ids"}>{IPS_Design.length}</span>
+                                        </Button>}
+                                        {Intellectual_Property.Copy_Rights.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: true,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>
+                                            Copyrights <span className={"ips_cps"}>{IPS_CopyRight.length}</span>
+                                        </Button>}
+                                        {Intellectual_Property.Trade_Marks.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: true,
+                                            })
+                                        }}>
+                                            Trade Marks <span className={"number ips_tds"}>{IPS_TradeMark.length}</span>
+                                        </Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {Trainings.length + profile[0].Trainings_Attended.length === 0 ? "" : <div className={"trainings"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        training_options: !CollapseOptions.training_options
+                                    })}
+                                    aria-controls="trainings-options-area" aria-expanded={CollapseOptions.training_options}>
+                                    Trainings <span className={"trainings_number"}>{Trainings.length + profile[0].Trainings_Attended.length}</span>
+                                    <h5>{CollapseOptions.training_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.training_options}>
+                                    <div id={"trainings-options-area"}>
+                                        {profile[0].Trainings_Attended.length === 0 ? "" : <Button
+                                            onClick={() => {
+                                                setTabOptions({
+                                                    ...TabOptions,
+                                                    profile_tab: false, analysis_tab: false,
+                                                    allProjects_tab: false,
+                                                    researchProjects_International_tab: false,
+                                                    researchProjects_National_tab: false,
+                                                    industrialProjects_National_tab: false,
+                                                    industrialProjects_International_tab: false,
+                                                    publications_Articles_tab: false,
+                                                    publications_Books_tab: false,
+                                                    publications_Chapters_tab: false,
+                                                    Conference_tab: false,
+                                                    Patents_National_tab: false,
+                                                    Patents_International_tab: false,
+                                                    Intellectual_Property_tab: false,
+                                                    Supervision_PHD_tab: false,
+                                                    Supervision_Masters_tab: false,
+                                                    Training_Attended_tab: true,
+                                                    Training_Conducted_tab: false,
+                                                    Editorial_Board_tab: false,
+                                                    Copyright_tab: false,
+                                                    Industrial_Design_tab: false,
+                                                    Trade_Marks_tab: false,
+                                                })
+                                            }}>Attended <span className={"trainings_number"}>{profile[0].Trainings_Attended.length}</span></Button>}
+                                        {Trainings.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: false,
+                                                Training_Attended_tab: false,
+                                                Training_Conducted_tab: true,
+                                                Editorial_Board_tab: false,
+                                                Copyright_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Trade_Marks_tab: false,
+                                            })
+                                        }}>Conducted <span
+                                            className={"trainings_number-conducted"}>{Trainings.length}</span></Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                            {supervisions.length === 0 ? "" : <div className={"supervisions"}>
+                                <Button
+                                    onClick={() => setOptions({
+                                        ...CollapseOptions,
+                                        supervised_projects_options: !CollapseOptions.supervised_projects_options
+                                    })}
+                                    aria-controls="supervision-options-area"
+                                    aria-expanded={CollapseOptions.supervised_projects_options}>
+                                    Supervisions <span className={"supervisions-number"}>{supervisions.length}</span>
+                                    <h5>{CollapseOptions.supervised_projects_options ?
+                                        <FontAwesomeIcon icon={faAngleUp} className={'arrow'} /> :
+                                        <FontAwesomeIcon icon={faAngleDown} className={'arrow'} />}</h5>
+                                </Button>
+                                <Collapse in={CollapseOptions.supervised_projects_options}>
+                                    <div id={"supervision-options-area"}>
+                                        {Supervision.PHD.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_tab: false,
+                                                Supervision_PHD_tab: true,
+                                                Supervision_Masters_tab: false,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Trade_Marks_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Copyright_tab: false
+                                            })
+                                        }}>Phd Supervision <span className={"internal-supervisions"}>{Doctoral.length}</span></Button>}
+                                        {Supervision.Masters.length === 0 ? "" : <Button onClick={() => {
+                                            setTabOptions({
+                                                ...TabOptions,
+                                                profile_tab: false, analysis_tab: false,
+                                                allProjects_tab: false,
+                                                researchProjects_International_tab: false,
+                                                researchProjects_National_tab: false,
+                                                industrialProjects_National_tab: false,
+                                                industrialProjects_International_tab: false,
+                                                publications_Articles_tab: false,
+                                                publications_Books_tab: false,
+                                                publications_Chapters_tab: false,
+                                                Conference_tab: false,
+                                                Patents_National_tab: false,
+                                                Patents_International_tab: false,
+                                                Intellectual_Property_tab: false,
+                                                Training_tab: false,
+                                                Supervision_PHD_tab: false,
+                                                Supervision_Masters_tab: true,
+                                                Training_Conducted_tab: false,
+                                                Training_Attended_tab: false,
+                                                Editorial_Board_tab: false,
+                                                Trade_Marks_tab: false,
+                                                Industrial_Design_tab: false,
+                                                Copyright_tab: false
+
+                                            })
+                                        }}>MS Supervision  <span className={"internal-supervisions-ms"}>{MS.length}</span></Button>}
+                                    </div>
+                                </Collapse>
+                            </div>}
+                        </div>) : null}
+                </div>
+                <div className={"Main_Body"}>
+                    {!TabOptions.analysis_tab ? "" : <div className={"analysis"}>
+                        <div className={"analysis_tab_header"}>
+                            <div className={"about_heading"}>
+                                <h1 >
+                                    <span>{profile[0].Name}</span>
+                                </h1>
+                                <h6 className={"introduction"}>
+                                    <strong>Dr {profile[0].Name}</strong> is working as <strong>{profile[0].Work_Position}</strong> in the <strong>{profile[0].School}</strong>, NUST.
+                                    <strong>Dr {profile[0].Name}</strong> has a PhD in <strong>{profile[0].Qualifications[0]["speciality"]}</strong>.
+                                    &nbsp;<strong>Dr {profile[0].Name}</strong> has published <strong>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length} </strong> research articles & conference papers having a citation count of <strong>{Citations}</strong>,
+                                    carried out <strong>{(Project_Research.National.length + Project_Research.International.length) + Project_Industry.National.length + Project_Industry.International.length}</strong> projects and filed <strong>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</strong> intellectual property. </h6>
+                            </div>
+                            <hr />
                         </div>
-                    }
-                    {!profileData.Talks ? "" : <div className={"Profile_KeyNotes profile_field"}>
-                        {keynotes}
+                        <div className={`work_details row ${divCount === 1 ? "one" :
+                            divCount === 2 ? "two" :
+                                divCount === 3 ? "three" :
+                                    divCount === 4 ? "four" :
+                                        divCount === 5 ? "five" : "six"}`}>
+                            {Project_Research.National.length + Project_Research.International.length !== 0 &&
+                                <div className={"detail_work_div col-lg"}>
+                                    <h6>Research Projects</h6>
+                                    <h1>{Project_Research.National.length + Project_Research.International.length}</h1>
+                                </div>
+                            }
+                            {Project_Industry.National.length + Project_Industry.International.length !== 0 &&
+                                <div className={"detail_work_div col-lg"}>
+                                    <h6>Industry Projects</h6>
+                                    <h1>{Project_Industry.National.length + Project_Industry.International.length}</h1>
+                                </div>
+                            }
+                            {AmountGranted != 0.0 &&
+                                <div className={"detail_work_div col-lg"}>
+                                    <h6>Amount Granted</h6>
+                                    <h1>{AmountGranted}M</h1>
+                                </div>
+                            }
+                            {Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length !== 0 &&
+                                <div className={"detail_work_div col-lg"}>
+                                    <h6>Publications</h6>
+                                    <h1>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</h1>
+                                </div>
+                            }
+                            {Citations !== 0 &&
+                                <div className={"detail_work_div col-lg"}>
+                                    <h6>Citations</h6>
+                                    <h1>{Citations}</h1>
+                                </div>
+                            }
+                            {IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length !== 0 &&
+                                <div className={"detail_work_div col-lg"}>
+                                    <h6>Patents</h6>
+                                    <h1>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</h1>
+                                </div>
+                            }
+                        </div>
+                        {!modal &&
+                            enable ? <>
+                            <div className={"profile-charts-div"} onClick={toggleModal}>
+                                {Research_Articles.length + Books.length + Book_Chapters.length + conferences.length === 0 ? "" : <PieChart data={Publications_Pie_Chart_Date} title={"Projects"} />}
+                                {projects.length === 0 ? "" : <PieChart data={Project_Pie_Chart_Date} title={"Projects"} />}
+                            </div>
+                            <div className={"profile-charts-div"} onClick={toggleModal}>
+                                {Research_Articles.length + Books.length + Book_Chapters.length === 0 ? "" : <Line_Chart data={publications_data} title={"Publications"} />}
+                                {projects.length === 0 ? "" : <Line_Chart data={projects_data} title={"Projects"} />}
+                            </div>
+
+                        </> : <div className={"Loading_Div"}>
+                            <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                                <Placeholder xs={12} />
+                            </Placeholder>
+                            <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
+                                <Placeholder xs={12} />
+                            </Placeholder>
+                            <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                                <Placeholder xs={12} />
+                            </Placeholder>
+                            <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
+                                <Placeholder xs={12} />
+                            </Placeholder>
+                            <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                                <Placeholder xs={12} />
+                            </Placeholder>
+                            {/*<Placeholder className="w-75" />*/}
+                        </div>}
+
+                        <div>
+                            {Research_Images.length !== 0 ? <div className={"Research_Collaborations"}>
+                                <h1 className={"Research-Collaborators"}>Research Collaborators</h1>
+                                <Slider {...research_settings}>
+                                    {Research_Images.map((image, index) =>
+                                    (
+                                        <div className={"industry-collab"}>
+                                            <img
+                                                src={image}
+                                                className={"industry-collab-img"}
+                                                alt={image} />
+
+                                        </div>
+                                    )
+                                    )}
+                                </Slider>
+                            </div> : ""}
+                        </div>
                     </div>}
-                    {!profileData.Memberships ? "" : <div className={"Profile_Professional_Membership profile_field"}>
-                        {Professional_Memberships}
+                    {!TabOptions.profile_tab ? "" : <div className={"Profile"}>
+                        {!profileData.Qualifications ? "" : <div className={"Profile_Qualification profile_field"}>
+                            {qualifications}
+                        </div>}
+                        {!profileData.Experience ? "" :
+                            <div className={"Profile_Experience profile_field"}>
+                                {experience}
+                            </div>}
+                        {!profileData.Awards ? "" :
+                            <div className={"Profile_Awards profile_field"}>
+                                {awards}
+                            </div>
+                        }
+                        {!profileData.Talks ? "" : <div className={"Profile_KeyNotes profile_field"}>
+                            {keynotes}
+                        </div>}
+                        {!profileData.Memberships ? "" : <div className={"Profile_Professional_Membership profile_field"}>
+                            {Professional_Memberships}
+                        </div>}
                     </div>}
-                </div>}
-                {!TabOptions.researchProjects_National_tab ? "" : <div className={"researchNational_Tab"}>
-                    <div className={"researchNational_Tab_header"}>
-                        {Research_national_List}
-                    </div>
-                </div>}
-                {!TabOptions.researchProjects_International_tab ? "" : <div className={"researchInterNational_Tab"}>
-                    <div className={"researchInterNational_Tab_header"}>
-                        {Research_international_List}
-                    </div>
-                </div>}
-                {!TabOptions.industrialProjects_National_tab ? "" : <div className={"industrialNational_Tab"}>
-                    <div className={"industrialNational_Tab_header"}>
-                        {Industry_National_List}
-                    </div>
-                </div>}
-                {!TabOptions.industrialProjects_International_tab ? "" : <div className={"industrialInterNational_Tab"}>
-                    <div className={"industrialInterNational_Tab_header"}>
-                        {Industry_International_List}
-                    </div>
-                </div>}
-                {!TabOptions.publications_Articles_tab ? "" : <div className={"publications_Articles_Tab"}>
-                    <div className={"publications_Articles_Tab_header"}>
-                        {Research_Articles_List}
-                    </div>
-                </div>}
-                {!TabOptions.publications_Books_tab ? "" : <div className={"publications_Books_Tab"}>
-                    <div className={"publications_Books_Tab_header"}>
-                        {Book_List}
-                    </div>
-                </div>}
-                {!TabOptions.publications_Chapters_tab ? "" : <div className={"publications_Chapters_Tab"}>
-                    <div className={"publications_Chapters_Tab_header"}>
-                        {Book_Chapters_List}
-                    </div>
-                </div>}
-                {!TabOptions.Conference_tab ? "" : <div className={"Conference_Tab"}>
-                    <div className={"Conference_Tab_header"}>
-                        {Conferences}
-                    </div>
-                </div>}
-                {!TabOptions.Editorial_Board_tab ? "" : <div className={"Editorial_Tab"}>
-                    <div className={"Editorial_Tab_header"}>
-                        {Editorials}
-                    </div>
-                </div>}
-                {!TabOptions.Patents_International_tab ? "" : <div className={"Patents_International_Tab"}>
-                    <div className={"Patents_International_Tab_header"}>
-                        <h1 className={"Patents_International_Tab_header_text"}>International Patents Tab</h1>
-                    </div>
-                </div>}
-                {!TabOptions.Patents_National_tab ? "" : <div className={"Patents_National_Tab"}>
-                    <div className={"Patents_National_Tab_header"}>
-                        {IPS_Patent}
-                    </div>
-                </div>}
-                {!TabOptions.Intellectual_Property_tab ? "" : <div className={"Intellectual_Property_Tab"}>
-                    <div className={"Intellectual_Property_Tab_header"}>
-                        <h1 className={"Intellectual_Property_Tab_header_text"}>Intellectual Property Tab</h1>
-                    </div>
-                </div>}
-                {!TabOptions.Industrial_Design_tab ? "" : <div className={"Intellectual_Property_ID_Tab"}>
-                    <div className={"Intellectual_Property_ID_Tab_header"}>
-                        {IPS_Design}
-                    </div>
-                </div>}
-                {!TabOptions.Trade_Marks_tab ? "" : <div className={"TradeMark_Tab"}>
-                    <div className={"TradeMark_Tab_header"}>
-                        {IPS_TradeMark}
-                    </div>
-                </div>}
-                {!TabOptions.Copyright_tab ? "" : <div className={"Copyright_Tab"}>
-                    <div className={"Copyright_Tab_header"}>
-                        {IPS_CopyRight}
-                    </div>
-                </div>}
-                {!TabOptions.Training_Attended_tab ? "" : <div className={"Training_Attended_Tab"}>
-                    <div>
-                        {Trainings_Attended}
-                    </div>
-                </div>}
-                {!TabOptions.Training_Conducted_tab ? "" : <div className={"Training_Conducted_Tab"}>
-                    <div className={"Training_Conducted_Tab_header"}>
-                        {Trainings}
-                    </div>
-                </div>}
-                {!TabOptions.Supervision_Masters_tab ? "" : <div className={"Supervision_Masters_Tab"}>
-                    <div className={"Supervision_Masters_Tab_header"}>
-                        {MS}
-                    </div>
-                </div>}
-                {!TabOptions.Supervision_PHD_tab ? "" : <div className={"Supervision_PHD_Tab"}>
-                    <div className={"Supervision_PHD_Tab_header"}>
-                        {Doctoral}
-                    </div>
-                </div>}
+                    {!TabOptions.researchProjects_National_tab ? "" : <div className={"researchNational_Tab"}>
+                        <div className={"researchNational_Tab_header"}>
+                            {Research_national_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.researchProjects_International_tab ? "" : <div className={"researchInterNational_Tab"}>
+                        <div className={"researchInterNational_Tab_header"}>
+                            {Research_international_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.industrialProjects_National_tab ? "" : <div className={"industrialNational_Tab"}>
+                        <div className={"industrialNational_Tab_header"}>
+                            {Industry_National_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.industrialProjects_International_tab ? "" : <div className={"industrialInterNational_Tab"}>
+                        <div className={"industrialInterNational_Tab_header"}>
+                            {Industry_International_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.publications_Articles_tab ? "" : <div className={"publications_Articles_Tab"}>
+                        <div className={"publications_Articles_Tab_header"}>
+                            {Research_Articles_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.publications_Books_tab ? "" : <div className={"publications_Books_Tab"}>
+                        <div className={"publications_Books_Tab_header"}>
+                            {Book_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.publications_Chapters_tab ? "" : <div className={"publications_Chapters_Tab"}>
+                        <div className={"publications_Chapters_Tab_header"}>
+                            {Book_Chapters_List}
+                        </div>
+                    </div>}
+                    {!TabOptions.Conference_tab ? "" : <div className={"Conference_Tab"}>
+                        <div className={"Conference_Tab_header"}>
+                            {Conferences}
+                        </div>
+                    </div>}
+                    {!TabOptions.Editorial_Board_tab ? "" : <div className={"Editorial_Tab"}>
+                        <div className={"Editorial_Tab_header"}>
+                            {Editorials}
+                        </div>
+                    </div>}
+                    {!TabOptions.Patents_International_tab ? "" : <div className={"Patents_International_Tab"}>
+                        <div className={"Patents_International_Tab_header"}>
+                            <h1 className={"Patents_International_Tab_header_text"}>International Patents Tab</h1>
+                        </div>
+                    </div>}
+                    {!TabOptions.Patents_National_tab ? "" : <div className={"Patents_National_Tab"}>
+                        <div className={"Patents_National_Tab_header"}>
+                            {IPS_Patent}
+                        </div>
+                    </div>}
+                    {!TabOptions.Intellectual_Property_tab ? "" : <div className={"Intellectual_Property_Tab"}>
+                        <div className={"Intellectual_Property_Tab_header"}>
+                            <h1 className={"Intellectual_Property_Tab_header_text"}>Intellectual Property Tab</h1>
+                        </div>
+                    </div>}
+                    {!TabOptions.Industrial_Design_tab ? "" : <div className={"Intellectual_Property_ID_Tab"}>
+                        <div className={"Intellectual_Property_ID_Tab_header"}>
+                            {IPS_Design}
+                        </div>
+                    </div>}
+                    {!TabOptions.Trade_Marks_tab ? "" : <div className={"TradeMark_Tab"}>
+                        <div className={"TradeMark_Tab_header"}>
+                            {IPS_TradeMark}
+                        </div>
+                    </div>}
+                    {!TabOptions.Copyright_tab ? "" : <div className={"Copyright_Tab"}>
+                        <div className={"Copyright_Tab_header"}>
+                            {IPS_CopyRight}
+                        </div>
+                    </div>}
+                    {!TabOptions.Training_Attended_tab ? "" : <div className={"Training_Attended_Tab"}>
+                        <div>
+                            {Trainings_Attended}
+                        </div>
+                    </div>}
+                    {!TabOptions.Training_Conducted_tab ? "" : <div className={"Training_Conducted_Tab"}>
+                        <div className={"Training_Conducted_Tab_header"}>
+                            {Trainings}
+                        </div>
+                    </div>}
+                    {!TabOptions.Supervision_Masters_tab ? "" : <div className={"Supervision_Masters_Tab"}>
+                        <div className={"Supervision_Masters_Tab_header"}>
+                            {MS}
+                        </div>
+                    </div>}
+                    {!TabOptions.Supervision_PHD_tab ? "" : <div className={"Supervision_PHD_Tab"}>
+                        <div className={"Supervision_PHD_Tab_header"}>
+                            {Doctoral}
+                        </div>
+                    </div>}
+                </div>
+
             </div>
-            
-        </div>
         </>
     )
 }

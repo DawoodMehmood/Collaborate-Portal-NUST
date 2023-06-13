@@ -33,3 +33,20 @@
     padding: 30px;
     border-style: outset;
 }
+
+.content h1,
+.content h5 {
+    text-align: justify;
+    font-size: 30px;
+}
+
+.italic-heading {
+    font-style: italic;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.content h1,
+.center-content h1 {
+    border-bottom: 2px solid gray;
+}
