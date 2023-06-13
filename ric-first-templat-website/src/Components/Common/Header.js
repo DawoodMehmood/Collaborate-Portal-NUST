@@ -7,7 +7,7 @@ const Header = () =>{
                 <a class="navbar-brand" href="https://nust.edu.pk">
                     <img src={process.env.PUBLIC_URL + "/Images/Icons/NUSTLogo.png"} width="65" alt="NUST"/>
                 </a>
-                <a class="navbar-brand" href="/">Research Collaboration Portal</a>
+                <a class="navbar-brand" href="/">Research Collaboration<sup>Beta</sup> Portal</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

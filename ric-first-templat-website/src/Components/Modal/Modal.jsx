@@ -2,6 +2,9 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import Modal from 'react-modal';
 
+// Add this line before rendering any modals
+Modal.setAppElement('#root');
+
 const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, DisplayProjects, DisplayIPs }) => {
     return (
         <div>
@@ -32,25 +35,51 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                             </div>
                         )}
 
+
                         {modalData === DisplayProjects && (
                             <div>
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Projects</h1>
-                                {DisplayProjects.map((project, index) => (
-                                    <Card key={project.id} text="dark" style={{ width: '100%' }}>
-                                        <Card.Header>{(index + 1) + ". " + project.title}</Card.Header>
-                                        <Card.Body>
-                                            <Card.Subtitle className="mb-2 text-muted">
-                                                Author: {project.copi_ids[0].name === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>}
-                                                <br />
-                                                <strong className={"strong-color"}>NUST</strong>
-                                                <br />
-                                                Project Status: {project.copi_ids[0].project_status === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${project.copi_ids[0].project_status} `}</strong>}  &nbsp; &nbsp; Rs: {project.cost_in_pkr / 1000000 === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${project.cost_in_pkr / 1000000}M`}</strong>}  &nbsp; &nbsp; Submission Date: {project.submission_date === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${project.submission_date}`}</strong>}
-                                            </Card.Subtitle>
-                                        </Card.Body>
-                                    </Card>
-                                ))}
+                                {DisplayProjects
+                                    .filter(project => project.copi_ids[0]?.project_status !== "submitted") // Filter projects by project status
+                                    .map((project, index) => (
+                                        <Card key={project.id} text="dark" style={{ width: '100%' }}>
+                                            <Card.Header>{(index + 1) + ". " + project.title}</Card.Header>
+                                            <Card.Body>
+                                                <Card.Subtitle className="mb-2 text-muted">
+                                                    Author: {project.copi_ids[0]?.name !== undefined && project.copi_ids[0]?.name !== "" ? (
+                                                        <strong className={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>
+                                                    ) : (
+                                                        <strong className={"strong-color"}>0</strong>
+                                                    )}
+                                                    <br />
+                                                    <strong className={"strong-color"}>NUST</strong>
+                                                    <br />
+                                                    Project Status: {project.copi_ids[0]?.project_status !== undefined && project.copi_ids[0]?.project_status !== "" ? (
+                                                        <strong className={"strong-color"}>{`${project.copi_ids[0].project_status}`}</strong>
+                                                    ) : (
+                                                        project.copi_ids[0]?.project_status === "Approved / In-Progress" ? (
+                                                            <strong className={"strong-color"}>Approved / In-Progress</strong>
+                                                        ) : (
+                                                            <strong className={"strong-color"}>0</strong>
+                                                        )
+                                                    )}  &nbsp; &nbsp; Rs: {project.cost_in_pkr !== undefined && project.cost_in_pkr / 1000000 !== "" ? (
+                                                        <strong className={"strong-color"}>{`${project.cost_in_pkr / 1000000}M`}</strong>
+                                                    ) : (
+                                                        <strong className={"strong-color"}>0</strong>
+                                                    )}  &nbsp; &nbsp; Submission Date: {project.submission_date !== undefined && project.submission_date !== "" ? (
+                                                        <strong className={"strong-color"}>{`${project.submission_date}`}</strong>
+                                                    ) : (
+                                                        <strong className={"strong-color"}>0</strong>
+                                                    )}
+                                                </Card.Subtitle>
+                                            </Card.Body>
+                                        </Card>
+                                    ))}
                             </div>
                         )}
+
+
+
 
                         {modalData === DisplayIPs && (
                             <div>

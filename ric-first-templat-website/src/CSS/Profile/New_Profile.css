@@ -429,27 +429,24 @@ button > h5{
         align-items: center;
         justify-content: center;
         align-self: center;
+        width: 200px;
+        height: 75%;
     }
     .faculty_info{
         flex-direction: row;
         width: 100vw;
-        height: 300px;
+        height: 320px;
         overflow: scroll;
         box-shadow: 0 5px 5px;
+        margin-bottom: 0;
     }
     .Main_Body{
         width: 100vw;
         padding: 15px
     }
-    .faculty_img{
-        width: 200px;
-        height: 75%;
-        display: block;
-    }
     .Options{
         width: 100%;
         margin-top: 0;
-        
     }
     .faculty_personal_info{
         width: 100%;
@@ -457,9 +454,6 @@ button > h5{
         display: flex;
         flex-direction: column;
     }
-    /* .faculty_personal_info div{
-        width: 70%;
-    } */
     .profile_links{
         margin-top: 0;
         width: 70%;
@@ -486,32 +480,11 @@ button > h5{
         height: 600px;
         overflow: scroll;
     }
-    /* .Main_Body{
-        width: 100vw;
-    }
-    .faculty_img{
-        width: 200px;
-        height: 75%;
-        display: block;
-    } */
     .Options{
         width: 100%;
         margin-top: 0;
         
     }
-    /* .faculty_personal_info{
-        width: 100%;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-    }
-    .faculty_personal_info div{
-        width: 70%;
-    }
-    .profile_links{
-        margin-top: 0;
-        width: 70%;
-    } */
 
 }
 
