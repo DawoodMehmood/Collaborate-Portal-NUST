@@ -70,3 +70,7 @@
 .about_heading {
   margin: 2.5% 0;
 }
+.detail_work_div:hover{
+  transform: scale(1.02);
+  cursor: pointer;
+}

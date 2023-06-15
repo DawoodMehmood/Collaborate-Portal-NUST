@@ -1,3 +1,9 @@
+.introduction{
+    font-size: 1.3rem; /* Adjust the font size as needed */
+    color: #333; /* Choose an appropriate text color */
+    /* font-family: 'Open Sans', sans-serif; */
+    text-align: left;
+}
 .User_Profile{
     margin: unset;
     display: flex;
@@ -12,14 +18,27 @@
     background: linear-gradient(#9966cc,#6A0DAD);
     overflow-y: scroll;
 }
+.faculty_profile_pic{
+  width: 210px; /* Adjust the width and height to set the desired circle size */
+  height: 210px;
+  border-radius: 50%; /* Makes the container a circle shape */
+  overflow: hidden; /* Clips the image to the circle boundaries */
+  position: relative; /* Enables positioning of the image */
+  margin : auto;
+  margin-top: 25px;
+  border: 2px solid rgba(0,0,0,0.45);
+  box-shadow: 5px 5px 5px 10px rgba(0,0,0,.15);
+}
 .faculty_img{
-    width: 70%;
-    height: 75%;
-    border-radius: 50%;
-    border: 2px solid rgba(0,0,0,0.45);
-    display: block;
-    margin: 20px auto auto;
-    box-shadow: 5px 5px 5px 10px rgba(0,0,0,.15);
+  width: 110%; /* Ensures the image fills the circle container completely */
+  height: 110%;
+  object-fit: cover; /* Maintains aspect ratio and fills the available space */
+  position: absolute; /* Positions the image within the circle */
+  top: 50%;
+  left: 50%;
+  transform: translate(-53%, -47%); /* Centers the image within the circle */
+  /* mask-image: radial-gradient(circle at center, transparent 70%, black 100%); Creates the circular mask */
+
 }
 .faculty_personal_info{
     width: 100%;
@@ -424,14 +443,7 @@ button > h5{
     .User_Profile{
         flex-direction: column;
     }
-    .faculty_img{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-        width: 200px;
-        height: 75%;
-    }
+
     .faculty_info{
         flex-direction: row;
         width: 100vw;

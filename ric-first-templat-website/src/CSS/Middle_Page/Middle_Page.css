@@ -46,13 +46,24 @@
 .Card-Image {
     flex: 40%;
     height: 100px;
+    border-radius: 50%; /* Makes the container a circle shape */
+    overflow: hidden; /* Clips the image to the circle boundaries */
+    position: relative; /* Enables positioning of the image */
+    margin : auto;
+    border: 2px solid rgba(0,0,0,0.45);
+    box-shadow: 5px 5px 5px 10px rgba(0,0,0,.015);
 }
 
 .Card-Image img {
-    width: 100%;
+    width: 102%; /* Ensures the image fills the circle container completely */
     height: 100%;
-    border-radius: 50%;
-    background-color: #f5f5f5;
+    object-fit: cover; /* Maintains aspect ratio and fills the available space */
+    position: absolute; /* Positions the image within the circle */
+    top: 50%;
+    left: 50%;
+    transform: translate(-49%, -50%); /* Centers the image within the circle */
+  /* mask-image: radial-gradient(circle at center, transparent 70%, black 100%); Creates the circular mask */
+
 }
 
 .Card-Button {

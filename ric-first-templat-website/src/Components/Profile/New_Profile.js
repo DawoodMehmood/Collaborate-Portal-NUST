@@ -22,12 +22,345 @@ import Linked from '../../Icons/linkedin.png';
 import Twitter from '../../Icons/twitter.png';
 import Phone from '../../Icons/phone.png';
 import Placeholder from "react-bootstrap/Placeholder";
+import html2canvas from 'html2canvas'
 import nustLogo from '../../Icons/nustLogo.png'
 import nustLogo2 from '../../Icons/nustLogo2.png'
 
 
 const New_Profile = ({ publications, projects, conferences, supervisions, editorials, trainings, ips, profile, enable }) => {
 
+    // This function is responsible for showing the ResearchProject of Faculty Member
+    const showResearchProjects = () => {
+        if (Project_Research.National.length > Project_Research.International.length) {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false,
+                analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: false,
+                researchProjects_National_tab: true,
+                industrialProjects_National_tab: false,
+                industrialProjects_International_tab: false,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Copyright_tab: false,
+                Industrial_Design_tab: false,
+                Trade_Marks_tab: false,
+            })
+        }
+        else {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false,
+                analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: true,
+                researchProjects_National_tab: false,
+                industrialProjects_National_tab: false,
+                industrialProjects_International_tab: false,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Copyright_tab: false,
+                Industrial_Design_tab: false,
+                Trade_Marks_tab: false,
+            })
+
+        }
+
+    }
+    // This function is responsible for showing the ResearchProject of Faculty Member
+    const showIndustrialProjects = () => {
+        // Project_Industry.National.length + Project_Industry.International.length
+        if (Project_Industry.National.length > Project_Industry.International.length) {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false,
+                analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: false,
+                researchProjects_National_tab: false,
+                industrialProjects_National_tab: true,
+                industrialProjects_International_tab: false,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Copyright_tab: false,
+                Industrial_Design_tab: false,
+                Trade_Marks_tab: false,
+
+            })
+        }
+        else {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false,
+                analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: false,
+                researchProjects_National_tab: false,
+                industrialProjects_National_tab: false,
+                industrialProjects_International_tab: true,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Copyright_tab: false,
+                Industrial_Design_tab: false,
+                Trade_Marks_tab: false,
+
+
+            })
+        }
+
+
+    }
+
+    // This function is responsible for showing the Publications of Faculty Member
+    const showPublications = () => {
+        setTabOptions({
+            ...TabOptions,
+            profile_tab: false,
+            analysis_tab: false,
+            allProjects_tab: false,
+            researchProjects_International_tab: false,
+            researchProjects_National_tab: false,
+            industrialProjects_National_tab: false,
+            industrialProjects_International_tab: false,
+            publications_Articles_tab: true,
+            publications_Books_tab: false,
+            publications_Chapters_tab: false,
+            Conference_tab: false,
+            Patents_National_tab: false,
+            Patents_International_tab: false,
+            Intellectual_Property_tab: false,
+            Training_Conducted_tab: false,
+            Training_Attended_tab: false,
+            Supervision_PHD_tab: false,
+            Supervision_Masters_tab: false,
+            Editorial_Board_tab: false,
+            Copyright_tab: false,
+            Industrial_Design_tab: false,
+            Trade_Marks_tab: false,
+        })
+    }
+
+    // This function is responsible for showing the Industrial Projects of Faculty Member
+    const showIntellectualProperties = () => {
+        // largest Intellectual Property
+        let largestIntellectualProperty = "";
+        if (Intellectual_Property.Patents.length > Intellectual_Property.Industrial_Design.length) {
+            if (Intellectual_Property.Patents.length > Intellectual_Property.Copy_Rights.length) {
+                if (Intellectual_Property.Patents.length > Intellectual_Property.Trade_Marks.length) {
+                    largestIntellectualProperty = "Patents";
+                }
+                else {
+                    largestIntellectualProperty = "Trade Marks";
+                }
+            }
+            else {
+                if (Intellectual_Property.Copy_Rights.length > Intellectual_Property.Trade_Marks.length) {
+                    largestIntellectualProperty = "Copy Rights";
+                }
+                else {
+                    largestIntellectualProperty = "Trade Marks";
+                }
+            }
+        }
+        else {
+            if (Intellectual_Property.Industrial_Design.length > Intellectual_Property.Copy_Rights.length) {
+                if (Intellectual_Property.Industrial_Design.length > Intellectual_Property.Trade_Marks.length) {
+                    largestIntellectualProperty = "Industrial Design";
+                }
+                else {
+                    largestIntellectualProperty = "Trade Marks";
+                }
+            }
+            else {
+                if (Intellectual_Property.Copy_Rights.length > Intellectual_Property.Trade_Marks.length) {
+                    largestIntellectualProperty = "Copy Rights";
+                }
+                else {
+                    largestIntellectualProperty = "Trade Marks";
+                }
+            }
+        }
+        // Now we have largest Intellectual Property, so we will show that property
+        if (largestIntellectualProperty === "Patents") {
+            // select national patent is high or international patent is high
+            if (Intellectual_Property.Patents.length > Intellectual_Property.International_Patents.length) {
+                setTabOptions({
+                    ...TabOptions,
+                    profile_tab: false,
+                    analysis_tab: false,
+                    allProjects_tab: false,
+                    researchProjects_International_tab: false,
+                    researchProjects_National_tab: false,
+                    industrialProjects_National_tab: false,
+                    industrialProjects_International_tab: false,
+                    publications_Articles_tab: false,
+                    publications_Books_tab: false,
+                    publications_Chapters_tab: false,
+                    Conference_tab: false,
+                    Patents_National_tab: true,
+                    Patents_International_tab: false,
+                    Intellectual_Property_tab: false,
+                    Training_Conducted_tab: false,
+                    Training_Attended_tab: false,
+                    Supervision_PHD_tab: false,
+                    Supervision_Masters_tab: false,
+                    Editorial_Board_tab: false,
+                    Copyright_tab: false,
+                    Industrial_Design_tab: false,
+                    Trade_Marks_tab: false,
+
+
+
+                })
+            }
+            else {
+                setTabOptions({
+                    ...TabOptions,
+                    profile_tab: false,
+                    analysis_tab: false,
+                    allProjects_tab: false,
+                    researchProjects_International_tab: false,
+                    researchProjects_National_tab: false,
+                    industrialProjects_National_tab: false,
+                    industrialProjects_International_tab: false,
+                    publications_Articles_tab: false,
+                    publications_Books_tab: false,
+                    publications_Chapters_tab: false,
+                    Conference_tab: false,
+                    Patents_National_tab: false,
+                    Patents_International_tab: true,
+                    Intellectual_Property_tab: false,
+                    Training_Conducted_tab: false,
+                    Training_Attended_tab: false,
+                    Supervision_PHD_tab: false,
+                    Supervision_Masters_tab: false,
+                    Editorial_Board_tab: false,
+                    Copyright_tab: false,
+                    Industrial_Design_tab: false,
+                    Trade_Marks_tab: false,
+                })
+            }
+        }
+        else if (largestIntellectualProperty === "Industrial Design") {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false, analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: false,
+                researchProjects_National_tab: false,
+                industrialProjects_National_tab: false,
+                industrialProjects_International_tab: false,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Industrial_Design_tab: true,
+                Trade_Marks_tab: false,
+            })
+        }
+        else if (largestIntellectualProperty === "Copy Rights") {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false,
+                analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: false,
+                researchProjects_National_tab: false,
+                industrialProjects_National_tab: false,
+                industrialProjects_International_tab: false,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Copyright_tab: true,
+                Industrial_Design_tab: false,
+                Trade_Marks_tab: false,
+            })
+        }
+        else if (largestIntellectualProperty === "Trade Marks") {
+            setTabOptions({
+                ...TabOptions,
+                profile_tab: false,
+                analysis_tab: false,
+                allProjects_tab: false,
+                researchProjects_International_tab: false,
+                researchProjects_National_tab: false,
+                industrialProjects_National_tab: false,
+                industrialProjects_International_tab: false,
+                publications_Articles_tab: false,
+                publications_Books_tab: false,
+                publications_Chapters_tab: false,
+                Conference_tab: false,
+                Patents_National_tab: false,
+                Patents_International_tab: false,
+                Intellectual_Property_tab: false,
+                Training_Conducted_tab: false,
+                Training_Attended_tab: false,
+                Supervision_PHD_tab: false,
+                Supervision_Masters_tab: false,
+                Editorial_Board_tab: false,
+                Industrial_Design_tab: false,
+                Trade_Marks_tab: true,
+            })
+        }
+    }
 
     // bar charts modal
     const [modal, setModal] = useState(false);
@@ -617,6 +950,16 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
 
     // This method is called whenever "Download CV" button is clicked on Profile Page and it is also responsible for creating PDF for CV
     const openCV = () => {
+        const check = document.getElementById('roundImageFaculty');
+        html2canvas(check, {}).then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+            const height = (canvas.height * 210) / canvas.width;
+
+            const pdf = new jsPDF("p", "mm", "a4");
+            doc.addImage(imgData, "PNG", 450, 50, 125, height, "Image of Faculty Member", "NUST");
+            pdf.addImage(imgData, "PNG", 0, 0, 210, height);
+            pdf.save("roundImage.pdf");
+        })
         // Creating PDF Object
         const doc = new jsPDF('p', 'pt', 'a4');
 
@@ -735,54 +1078,55 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
 
 
 
-        if (rect1Height == 130) {
-            if (profile[0].Image_URL !== "") {
+        // if (rect1Height == 130) {
+        //     if (profile[0].Image_URL !== "") {
 
-                const img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
-            }
-        } else if (rect1Height == 230) {
-            if (profile[0].Image_URL !== "") {
+        //         const img = new Image();
+        //         img.crossOrigin = "Anonymous";
+        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+        //         doc.addImage(img, "JPEG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
+        //     }
+        // } else if (rect1Height == 230) {
+        //     if (profile[0].Image_URL !== "") {
 
-                const img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 460, 15, 100, 100, "Image of Faculty Member", "NUST");
-            }
-        } else if (rect1Height == 161) {
-            if (profile[0].Image_URL !== "") {
+        //         const img = new Image();
+        //         img.crossOrigin = "Anonymous";
+        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+        //         doc.addImage(img, "JPEG", 460, 15, 100, 100, "Image of Faculty Member", "NUST");
+        //     }
+        // } else if (rect1Height == 161) {
+        //     if (profile[0].Image_URL !== "") {
 
-                const img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 460, 30, 100, 100, "Image of Faculty Member", "NUST");
-            }
-        } else if (rect1Height == 180) {
-            if (profile[0].Image_URL !== "") {
+        //         const img = new Image();
+        //         img.crossOrigin = "Anonymous";
+        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+        //         doc.addImage(img, "JPEG", 460, 30, 100, 100, "Image of Faculty Member", "NUST");
+        //     }
+        // } else if (rect1Height == 180) {
+        //     if (profile[0].Image_URL !== "") {
 
-                const img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 440, 33, 115, 115, "Image of Faculty Member", "NUST");
-            }
-        } else if (rect1Height == 210) {
-            if (profile[0].Image_URL !== "") {
+        //         const img = new Image();
+        //         img.crossOrigin = "Anonymous";
+        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+        //         doc.addImage(img, "JPEG", 440, 33, 115, 115, "Image of Faculty Member", "NUST");
+        //     }
+        // } else if (rect1Height == 210) {
+        //     if (profile[0].Image_URL !== "") {
 
-                const img = new Image();
-                img.crossOrigin = "Anonymous";
-                img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-                doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
-            }
-        }
+        //         const img = new Image();
+        //         img.crossOrigin = "Anonymous";
+        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+        //         doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
+        //     }
+        // }
 
-        //    if(profile[0].Image_URL!=="") {
 
+        // if (profile[0].Image_URL !== "") {
         //     const img = new Image();
         //     img.crossOrigin = "Anonymous";
         //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //     doc.addImage(img, "JPEG", 430, 50, 125, 125, "Image of Faculty Member", "NUST");
+        //     doc.addImage(img, "JPEG", 450, 50, 125, 125, "Image of Faculty Member", "NUST");
+        // }
 
         // img.onload = function() {
         //     // const canvas = document.createElement('canvas');
@@ -3515,7 +3859,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                         </div>) : null
                     }
                     <div className="">
-                        <div className={"faculty_profile_pic"}>
+                        <div id="roundImageFaculty" className={"faculty_profile_pic"}>
                             <img
                                 src={profile[0].Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile[0].Image_URL)} alt={"Avatar"}
                                 referrerPolicy={"no-referrer"}
@@ -3524,11 +3868,11 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                         </div>
                         <div className={"faculty_personal_info"}>
                             <h1 className={'Name_Faculty'}>{profile[0].Name}</h1>
-                            <div className={window.innerWidth<910 ? "row" : "fonts"}>
+                            <div className={window.innerWidth < 910 ? "row" : "fonts"}>
                                 <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faGraduationCap} className={'font'} /><h3 className={"designation"}>{profile[0].Work_Position}</h3></div>
                                 <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><h3 className={"department"}>{profile[0].School}</h3></div>
-                                </div>
-                                <div className={window.innerWidth<910 ? "row" : "fonts"}>
+                            </div>
+                            <div className={window.innerWidth < 910 ? "row" : "fonts"}>
                                 <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faEnvelope} className={'font'} /><h3>{profile[0].e_mail}</h3></div>
                                 <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><h3> {profile[0].Work_Phone} </h3></div>
                             </div>
@@ -4469,13 +4813,13 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                     divCount === 4 ? "four" :
                                         divCount === 5 ? "five" : "six"}`}>
                             {Project_Research.National.length + Project_Research.International.length !== 0 &&
-                                <div className={"detail_work_div col-lg"}>
+                                <div className={"detail_work_div col-lg"} onClick={showResearchProjects}>
                                     <h6>Research Projects</h6>
                                     <h1>{Project_Research.National.length + Project_Research.International.length}</h1>
                                 </div>
                             }
                             {Project_Industry.National.length + Project_Industry.International.length !== 0 &&
-                                <div className={"detail_work_div col-lg"}>
+                                <div className={"detail_work_div col-lg"} onClick={showIndustrialProjects}>
                                     <h6>Industry Projects</h6>
                                     <h1>{Project_Industry.National.length + Project_Industry.International.length}</h1>
                                 </div>
@@ -4487,7 +4831,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                 </div>
                             }
                             {Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length !== 0 &&
-                                <div className={"detail_work_div col-lg"}>
+                                <div className={"detail_work_div col-lg"} onClick={showPublications}>
                                     <h6>Publications</h6>
                                     <h1>{Research_Articles_List.length + Books.length + Book_Chapters.length + Conferences.length}</h1>
                                 </div>
@@ -4499,8 +4843,8 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                 </div>
                             }
                             {IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length !== 0 &&
-                                <div className={"detail_work_div col-lg"}>
-                                    <h6>Patents</h6>
+                                <div className={"detail_work_div col-lg"} onClick={showIntellectualProperties}>
+                                    <h6>Intellectual Property</h6>
                                     <h1>{IPS_Patent.length + IPS_Design.length + IPS_CopyRight.length + IPS_TradeMark.length}</h1>
                                 </div>
                             }
