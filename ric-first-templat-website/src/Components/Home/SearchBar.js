@@ -34,19 +34,19 @@ const SearchBar = () => {
 
         let placeholder = "Keyword";
         if (selectedOption === "name") {
-          placeholder = "Enter faculty name";
+            placeholder = "Enter faculty name";
         } else if (selectedOption === "school") {
-          placeholder = "Enter faculty name (optional)";
-        } else if(selectedOption === "area_expertise") {
+            placeholder = "Enter faculty name (optional)";
+        } else if (selectedOption === "area_expertise") {
             placeholder = "Keyword(s)";
         }
 
-        
+
         await setSearch({
             ...search,
             option: e.target.value,
             schoolOption: "select", // Reset school option to default
-            search: "", // Reset the search text when the option changes
+            // search: "", // Reset the search text when the option changes
         })
         setPlaceholderValue(placeholder);
     }
@@ -71,7 +71,7 @@ const SearchBar = () => {
             ...search,
             search: e.target.value
         })
-        
+
     }
 
     // Function to handle search form submission
@@ -179,7 +179,7 @@ const SearchBar = () => {
                         </Form.Select>}
 
                     {/*Input field to enter search keyword*/}
-                    <Form.Control className={"search"} type="text" placeholder={placeholderValue}  onChange={handleSearchChange} value={search.search} />
+                    <Form.Control className={"search"} type="text" placeholder={placeholderValue} onChange={handleSearchChange} value={search.search} />
                 </div>
                 {/*Button to submit search query*/}
                 <div className={"searchButtonDiv"}>

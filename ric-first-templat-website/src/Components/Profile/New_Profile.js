@@ -1006,7 +1006,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
                 if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
                     rect1Width = 595;
-                    rect1Height = 161;
+                    rect1Height = 160;
                 } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
                     rect1Width = 595;
                     rect1Height = 160;
@@ -1077,17 +1077,18 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
 
 
 
-
-            if (rect1Height == 130) {
+            // Adding Image to PDF
+            if (rect1Height <= 130) {
                 doc.addImage(imgData, "PNG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
-            } else if (rect1Height == 230) {
-                doc.addImage(imgData, "JPEG", 465, 30, 100, 100, "Image of Faculty Member", "NUST");
-            } else if (rect1Height == 161) {
-                doc.addImage(imgData, "JPEG", 465, 20, 100, 100, "Image of Faculty Member", "NUST");
-            } else if (rect1Height == 180) {
+            }
+            else if (rect1Height <= 180) {
                 doc.addImage(imgData, "JPEG", 465, 23, 100, 100, "Image of Faculty Member", "NUST");
-            } else if (rect1Height == 210) {
+            }
+            else if (rect1Height <= 210) {
                 doc.addImage(imgData, "JPEG", 465, 26, 100, 100, "Image of Faculty Member", "NUST");
+            }
+            else if (rect1Height <= 230) {
+                doc.addImage(imgData, "JPEG", 465, 30, 100, 100, "Image of Faculty Member", "NUST");
             }
 
 

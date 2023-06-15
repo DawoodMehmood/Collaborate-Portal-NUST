@@ -5,7 +5,10 @@ import Modal from 'react-modal';
 // Add this line before rendering any modals
 Modal.setAppElement('#root');
 
-const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, DisplayProjects, DisplayIPs }) => {
+const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, DisplayProjects, DisplayIPs, islabsData, isindustryData }) => {
+
+
+
     return (
         <div>
             <Modal
@@ -22,12 +25,12 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                     <Card key={publication.id} text="dark" style={{ width: '100%' }}>
                                         <Card.Header>{(index + 1) + ". " + publication.title}</Card.Header>
                                         <Card.Body>
-                                            <Card.Subtitle className="mb-2 text-muted">
-                                                Authors: {publication.all_author_compute === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${publication.all_author_compute} `}</strong>}
+                                            <Card.Subtitle class="mb-2 text-muted">
+                                                Authors: {publication.all_author_compute === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.all_author_compute} `}</strong>}
                                                 <br />
                                                 <i>{`${publication.journal_info}, `}</i>
                                                 <br />
-                                                Impact Factor: {publication.impact_factor === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${publication.impact_factor} `}</strong>}  &nbsp; &nbsp; Citations: <strong className={"strong-color"}>0</strong>  &nbsp; &nbsp;  Quartiles: <strong className={"strong-color"}>1</strong>
+                                                Impact Factor: {publication.impact_factor === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.impact_factor} `}</strong>}  &nbsp; &nbsp; Citations: <strong class={"strong-color"}>0</strong>  &nbsp; &nbsp;  Quartiles: <strong class={"strong-color"}>1</strong>
                                             </Card.Subtitle>
                                         </Card.Body>
                                     </Card>
@@ -45,31 +48,31 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                         <Card key={project.id} text="dark" style={{ width: '100%' }}>
                                             <Card.Header>{(index + 1) + ". " + project.title}</Card.Header>
                                             <Card.Body>
-                                                <Card.Subtitle className="mb-2 text-muted">
+                                                <Card.Subtitle class="mb-2 text-muted">
                                                     Author: {project.copi_ids[0]?.name !== undefined && project.copi_ids[0]?.name !== "" ? (
-                                                        <strong className={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>
+                                                        <strong class={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>
                                                     ) : (
-                                                        <strong className={"strong-color"}>0</strong>
+                                                        <strong class={"strong-color"}>0</strong>
                                                     )}
                                                     <br />
-                                                    <strong className={"strong-color"}>NUST</strong>
+                                                    <strong class={"strong-color"}>NUST</strong>
                                                     <br />
                                                     Project Status: {project.copi_ids[0]?.project_status !== undefined && project.copi_ids[0]?.project_status !== "" ? (
-                                                        <strong className={"strong-color"}>{`${project.copi_ids[0].project_status}`}</strong>
+                                                        <strong class={"strong-color"}>{`${project.copi_ids[0].project_status}`}</strong>
                                                     ) : (
                                                         project.copi_ids[0]?.project_status === "Approved / In-Progress" ? (
-                                                            <strong className={"strong-color"}>Approved / In-Progress</strong>
+                                                            <strong class={"strong-color"}>Approved / In-Progress</strong>
                                                         ) : (
-                                                            <strong className={"strong-color"}>0</strong>
+                                                            <strong class={"strong-color"}>0</strong>
                                                         )
                                                     )}  &nbsp; &nbsp; Rs: {project.cost_in_pkr !== undefined && project.cost_in_pkr / 1000000 !== "" ? (
-                                                        <strong className={"strong-color"}>{`${project.cost_in_pkr / 1000000}M`}</strong>
+                                                        <strong class={"strong-color"}>{`${project.cost_in_pkr / 1000000}M`}</strong>
                                                     ) : (
-                                                        <strong className={"strong-color"}>0</strong>
+                                                        <strong class={"strong-color"}>0</strong>
                                                     )}  &nbsp; &nbsp; Submission Date: {project.submission_date !== undefined && project.submission_date !== "" ? (
-                                                        <strong className={"strong-color"}>{`${project.submission_date}`}</strong>
+                                                        <strong class={"strong-color"}>{`${project.submission_date}`}</strong>
                                                     ) : (
-                                                        <strong className={"strong-color"}>0</strong>
+                                                        <strong class={"strong-color"}>0</strong>
                                                     )}
                                                 </Card.Subtitle>
                                             </Card.Body>
@@ -88,18 +91,75 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                     <Card key={displayIP.id} text="dark" style={{ width: '100%' }}>
                                         <Card.Header>{(index + 1) + ". " + displayIP.title}</Card.Header>
                                         <Card.Body>
-                                            <Card.Subtitle className="mb-2 text-muted">
-                                                Author: {displayIP.inventors === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${displayIP.inventors} `}</strong>}
+                                            <Card.Subtitle class="mb-2 text-muted">
+                                                Author: {displayIP.inventors === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.inventors} `}</strong>}
                                                 <br />
-                                                <strong className={"strong-color"}>NUST</strong>
+                                                <strong class={"strong-color"}>NUST</strong>
                                                 <br />
-                                                Filing year: {displayIP.filing_year === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${displayIP.filing_year} `}</strong>}  &nbsp; &nbsp; IP Type: {displayIP.ip_type === "" ? <strong className={"strong-color"}>0</strong> : <strong className={"strong-color"}>{`${displayIP.ip_type}`}</strong>}
+                                                Filing year: {displayIP.filing_year === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.filing_year} `}</strong>}  &nbsp; &nbsp; IP Type: {displayIP.ip_type === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.ip_type}`}</strong>}
                                             </Card.Subtitle>
                                         </Card.Body>
                                     </Card>
                                 ))}
                             </div>
                         )}
+
+                        {modalData === islabsData && (
+                            <div>
+                                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Labs</h1>
+                                {modalData.map((lab) => (
+                                    <Card key={lab.id} text="dark" style={{ width: '100%' }}>
+                                        <Card.Header>{lab.title}</Card.Header>
+                                        <Card.Body>
+                                            <Card.Subtitle className="mb-2 text-muted">
+                                                {lab.description && <p>{lab.description}</p>}
+                                            </Card.Subtitle>
+
+                                            {lab.model && <p>Model: {lab.model}</p>}
+                                            {lab.company && <p>Company: {lab.company}</p>}
+                                            {lab.country && <p>Country: {lab.country}</p>}
+                                            {lab.capacity && <p>Capacity: {lab.capacity}</p>}
+                                            {lab.range && <p>Range: {lab.range}</p>}
+                                            {lab.venue && <p>Venue: {lab.venue}</p>}
+
+                                            {/* {lab.model && (
+                                                <p>
+                                                    Model: {lab.model}, Company: {lab.company}
+                                                    {lab.country && `, Country: ${lab.country}`}
+                                                    <br />
+                                                    {lab.range && (
+                                                        <span>
+                                                            Range: {lab.range}
+                                                            <br />
+                                                        </span>
+                                                    )}
+                                                    Venue: {lab.venue}
+                                                </p>
+                                            )} */}
+
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                            </div>
+                        )}
+
+                        {modalData === isindustryData && (
+                            <div>
+                                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Industry</h1>
+                                {modalData.map((industry) => (
+                                    <Card key={industry.id} text="dark" style={{ width: '100%' }}>
+                                        <Card.Header>{industry.title}</Card.Header>
+                                        <Card.Body>
+                                            <Card.Subtitle className="mb-2 text-muted">
+                                                {industry.country && <p>Country: {industry.country}</p>}
+                                            </Card.Subtitle>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                            </div>
+                        )}
+
+
                     </div>
                 )}
             </Modal>

@@ -15,6 +15,122 @@ const Middle_Page = () => {
     // Function to open a new window with the specified title.
 
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
+
+
+    // Nanomaterials
+    const labsData1 = [
+        {
+            id: 1, title: 'Scanning Electron Microscopy', description: 'SEM produces largely Magnified image by using electron as source It gives the morphology of the samples at highly magnified images It also gives elemental composition of any sample (EDX)',
+            model: 'JSM-6490A', company: 'JEOL', country: 'Japan',
+            capacity: '',
+            range: '',
+            venue: 'School of Chemical and Materials Engineering (SCME)'
+        },
+        {
+            id: 2, title: 'Laser Scattering Particle Size Distribution Analyzer', description: 'The measurement of particle size distribution is used for fundamental studies and quality control in production processes in many diverse fields such as fine ceramics, cement, pharmaceuticals, metal powders, industrial minerals and ores, explosives, solid fuels, food, drugs and beauty care emulsions, micelles, polymers, coatings and adhesives, pigments and dyes, carbon black and other mineral additives, and fillers used in the rubber, plastics and paper industries',
+            model: '', company: 'HORIBA', country: '',
+            capacity: '',
+            venue: 'School of Chemical and Materials Engineering (SCME)'
+        }
+    ];
+
+    //Microwave
+    const labsData2 = [
+        {
+            id: 1, title: 'Antenna Kit ', description: '',
+            model: 'JSM-6490A', company: 'JEOL', country: 'Japan',
+            capacity: '',
+            range: '20 Hz - 40 GHz',
+            venue: 'School of Electrical, Electronics and Computer Science (SEECS)'
+        },
+        {
+            id: 1, title: 'EMI Analyzer PXE N9048B 1 Hz - 26.5 GHz ', description: 'Spectrum Analyzer for EMI Testing',
+            model: 'PXE N9048B', company: '', country: '',
+            capacity: '',
+            range: '1 Hz - 26.5 GHz',
+            venue: 'School of Electrical, Electronics and Computer Science (SEECS)'
+        }
+    ];
+
+
+    const labsData3 = [
+        {
+            id: 1, title: 'Acoustic Camera', description: 'It is used for noise and leakage detection in many different scenarios. It enable the user to visualise different sound sources at different frequencies and source strengths. It has 128 microphones with camera in middle. It is a real time virtual microphone with digital microphones and no extra acquisition unit needed.',
+            model: '', company: 'NorSonic', country: '',
+            capacity: '',
+            range: '316 Hz - 15kHz, Operating distance 0,5 m to 200 m',
+            venue: 'School of Mechanical and Manufacturing Engineering (SMME)'
+        }
+
+        // Add more lab data as needed
+    ];
+
+    const labsData4 = [
+        {
+            id: 1, title: 'Gas Chromatography Mass Spectrometry', description: 'Measurement of qualitative and quantitative analysis of composition of different organic materials.',
+            model: '', company: 'Philips', country: '',
+            capacity: '4-7 Samples/Day',
+            range: '',
+            venue: 'School of Natural Sciences (SNS)'
+        },
+        {
+            id: 2, title: 'High Performance Liquid Chromatography (HPLC)', description: 'HPLC is an important analytical method commonly used to separate and quantify components of liquid samples',
+            model: '', company: '', country: '',
+            capacity: 'Column Heater, Binary HPLC Pump, UV/Vis Detector, 10 samples / day',
+            range: '',
+            venue: 'School of Natural Sciences'
+        }
+
+        // Add more lab data as needed
+    ];
+
+
+    const industryData1 = [
+        {
+            id: 1, title: 'Glaxosmithkline',
+            country: 'United Kingdom',
+        },
+        {
+            id: 2, title: 'GmbH',
+            country: ' Germany',
+        },
+    ];
+
+
+    const industryData2 = [
+        {
+            id: 1, title: 'Ferrite Microwave Technologies',
+            country: 'United States',
+        },
+        {
+            id: 2, title: 'American Microwave Corporation',
+            country: 'United States',
+        },
+    ]
+
+    const industryData3 = [
+        {
+            id: 1, title: 'Pakistan Aeronautical Complex',
+            country: 'Pakistan',
+
+        },
+        {
+            id: 1, title: 'Lockheed Martin',
+            country: 'United States',
+        },
+    ]
+
+    const industryData4 = [
+        {
+            id: 1, title: 'BASF',
+            country: 'Germany',
+        },
+        {
+            id: 2, title: 'Clariant',
+            country: 'Germany',
+        },
+    ]
+
     const closeModal = () => {
         setIsModalOpen(false);
         setModalData(null);
@@ -25,6 +141,56 @@ const Middle_Page = () => {
         setIsModalOpen(true);
     };
 
+    //function for data handling of labs and indurstry button (hard coded data)
+    const handleModalClick = (keyword) => {
+        // Set the modal data based on the keyword
+        if (keyword === "labs") {
+            if (Parameter.search === "Nanomaterials") {
+                setModalData(labsData1);
+                setlabsData(labsData1)
+            } else if (Parameter.search === "Microwave") {
+                setModalData(labsData2);
+                setlabsData(labsData2)
+            } else if (Parameter.search === "Aeroacoustics") {
+                setModalData(labsData3);
+                setlabsData(labsData3)
+            } else if (Parameter.search === "Catalyst") {
+                setModalData(labsData4);
+                setlabsData(labsData4)
+            } else {
+                setModalData([]);
+                setlabsData([]);
+            }
+        }
+
+        // Open the modal with the hardcoded data
+        setIsModalOpen(true);
+    };
+
+    const handleModalClick2 = (keyword) => {
+        // Set the modal data based on the keyword
+        if (keyword === "industry") {
+            if (Parameter.search === "Nanomaterials") {
+                setModalData(industryData1);
+                setindustryData(industryData1)
+            } else if (Parameter.search === "Aeroacoustics") {
+                setModalData(industryData2);
+                setindustryData(industryData2)
+            } else if (Parameter.search === "Microwave") {
+                setModalData(industryData3);
+                setindustryData(industryData3)
+            } else if (Parameter.search === "Catalyst") {
+                setModalData(industryData4);
+                setindustryData(industryData4)
+            } else {
+                setModalData([]);
+                setindustryData([]);
+            }
+        }
+
+        // Open the modal with the hardcoded data
+        setIsModalOpen(true);
+    };
 
     const handleSortingOptionChange = (event) => {
         const selectedOption = event.target.value;
@@ -79,6 +245,13 @@ const Middle_Page = () => {
 
 
     const [sortedCards2, setSortedCards2] = useState([]);
+
+    const searchKeywords = ["Catalyst", "Aeroacoustics", "Microwave", "Nanomaterials"];
+
+    const [islabsData, setlabsData] = useState('');
+
+    const [isindustryData, setindustryData] = useState('');
+
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
     //State to indicate Error in fetching the data
@@ -325,7 +498,7 @@ const Middle_Page = () => {
         displayProjects();
         displayPublications();
         displayIPs();
-        displaySchoolFaculty();
+
 
         //To Fetch Profile of Faculty from API
         async function fetchProfile() {
@@ -630,7 +803,8 @@ const Middle_Page = () => {
 
     //Card to sort projects
     const Cards1 = Profile.filter((profile) => {
-        const projectCount = AuthorIDs.current[profile.Code].Projects;
+        const author = AuthorIDs.current[profile.Code];
+        const projectCount = author?.Projects;
         return projectCount > 0;
     }).map((profile, index) => {
         return (
@@ -681,102 +855,104 @@ const Middle_Page = () => {
 
     //card to sort publications
     const renderedCards2 = sortedCards2.map((profile, index) => {
-            return (
-                <>
-                    <div className={"Card-Profile"}>
-                        <div className={"Card-Header"}>
-                            <div className={"Card-Image"}>
-                                <img
-                                    src={
-                                        profile.Image_URL.trim() === ""
-                                            ? process.env.PUBLIC_URL +
-                                            "/Images/Profile Images/Profile_Vector.jpg"
-                                            : "data:image/png;base64," + atob(profile.Image_URL)
-                                    }
-                                    alt={"Avatar"}
-                                />
-                            </div>
-                            <div className={"Card-Button"}>
-                                <Button
-                                    variant={"outline-primary"}
-                                    onClick={() => {
-                                        handleProfile(profile.Code, profile.Name);
-                                    }}
-                                >
-                                    Visit Profile
-                                </Button>
-                            </div>
+        return (
+            <>
+                <div className={"Card-Profile"}>
+                    <div className={"Card-Header"}>
+                        <div className={"Card-Image"}>
+                            <img
+                                src={
+                                    profile.Image_URL.trim() === ""
+                                        ? process.env.PUBLIC_URL +
+                                        "/Images/Profile Images/Profile_Vector.jpg"
+                                        : "data:image/png;base64," + atob(profile.Image_URL)
+                                }
+                                alt={"Avatar"}
+                            />
                         </div>
-                        <div className={"Card-Body"}>
-                            <div className={"Card-Title"}>
-                                <h2>{profile.Name}</h2>
-                            </div>
-                            <div className={"Card-Email"}>
-                                <h3>{profile.e_mail}</h3>
-                            </div>
-                            <div className={"Card-Text"}>
-                                <p>{profile.School}</p>
-                            </div>
-                            {Parameter.option === "name" || Parameter.option === "school" ? (
-                                ""
-                            ) : (
-                                <>
-                                    <div className={"Card-Text"}>
-                                        {console.log('Condition:', AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined)}
-                                        {AuthorIDs.current[profile.Code].Publications === 0 ||
-                                            AuthorIDs.current[profile.Code].Publications === undefined ? (
-                                            ""
-                                        ) : (
-                                            <span>
-                                                <i>Publications</i>:{" "}
-                                                <h6
-                                                    style={{ display: "inline" }}
-                                                >
-                                                    {AuthorIDs.current[profile.Code].Publications}
-                                                </h6>
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className={"Card-Text"}>
-                                        {AuthorIDs.current[profile.Code].Projects === 0 ||
-                                            AuthorIDs.current[profile.Code].Projects === undefined ? (
-                                            ""
-                                        ) : (
-                                            <span>
-                                                <i>Projects</i>:{" "}
-                                                <strong
-                                                    style={{ display: "inline" }}
-                                                >
-                                                    {AuthorIDs.current[profile.Code].Projects}
-                                                </strong>
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className={"Card-Text"}>
-                                        {AuthorIDs.current[profile.Code].IPs === 0 ||
-                                            AuthorIDs.current[profile.Code].IPs === undefined ? (
-                                            ""
-                                        ) : (
-                                            <span>
-                                                <i>IPs</i>:{" "}
-                                                <h6 style={{ display: "inline" }}>
-                                                    {AuthorIDs.current[profile.Code].IPs}
-                                                </h6>
-                                            </span>
-                                        )}
-                                    </div>
-                                </>
-                            )}
+                        <div className={"Card-Button"}>
+                            <Button
+                                variant={"outline-primary"}
+                                onClick={() => {
+                                    handleProfile(profile.Code, profile.Name);
+                                }}
+                            >
+                                Visit Profile
+                            </Button>
                         </div>
+
+
                     </div>
-                </>
-            );
-        });
+                    <div className={"Card-Body"}>
+                        <div className={"Card-Title"}>
+                            <h2>{profile.Name}</h2>
+                        </div>
+                        <div className={"Card-Email"}>
+                            <h3>{profile.e_mail}</h3>
+                        </div>
+                        <div className={"Card-Text"}>
+                            <p>{profile.School}</p>
+                        </div>
+                        {Parameter.option === "name" || Parameter.option === "school" ? (
+                            ""
+                        ) : (
+                            <>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Publications === 0 ||
+                                        AuthorIDs.current[profile.Code].Publications === undefined ? (
+                                        ""
+                                    ) : (
+                                        <span>
+                                            <i>Publications</i>:{" "}
+                                            <h6
+                                                style={{ display: "inline" }}
+                                            >
+                                                {AuthorIDs.current[profile.Code].Publications}
+                                            </h6>
+                                        </span>
+                                    )}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Projects === 0 ||
+                                        AuthorIDs.current[profile.Code].Projects === undefined ? (
+                                        ""
+                                    ) : (
+                                        <span>
+                                            <i>Projects</i>:{" "}
+                                            <strong
+                                                style={{ display: "inline" }}
+                                            >
+                                                {AuthorIDs.current[profile.Code].Projects}
+                                            </strong>
+                                        </span>
+                                    )}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].IPs === 0 ||
+                                        AuthorIDs.current[profile.Code].IPs === undefined ? (
+                                        ""
+                                    ) : (
+                                        <span>
+                                            <i>IPs</i>:{" "}
+                                            <h6 style={{ display: "inline" }}>
+                                                {AuthorIDs.current[profile.Code].IPs}
+                                            </h6>
+                                        </span>
+                                    )}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </>
+        );
+    });
 
 
     //card to sort IPs
     const Cards3 = Profile.filter((profile) => {
-        const ipCount = AuthorIDs.current[profile.Code].IPs;
+        const author = AuthorIDs.current[profile.Code];
+        const ipCount = author?.IPs;
         return ipCount > 0;
     }).map((profile, index) => {
         return (
@@ -865,31 +1041,72 @@ const Middle_Page = () => {
     })
     // const sortedCards = Cards.sort((a, b) => b.props.children[0].props.children[1].props.children.props.date - a.props.children[0].props.children[1].props.children.props.date);
 
+    console.log(islabsData)
+    // console.log(isindustryData)
     // If Research Area option is selected, only then show these tabs, otherwise don't show them
     return (
+
+        //col-md
+
         <div className="middle-page">
             <SearchBar />
             {Parameter.option === "area_expertise" && (
                 <div className="result-stats row">
                     {Experts !== 0 && (
-                        <button className="col-md">
-                            Experts: <h6>{Profile.length}</h6>
+                        <button>
+                            Experts: <h6>{Profile ? Profile.length : 0}</h6>
                         </button>
                     )}
                     {publications !== 0 && (
-                        <button className="col-md" onClick={() => handleButtonClick(DisplayPublications)}>
-                            Publications: <h6>{DisplayPublications.length}</h6>
+                        <button onClick={() => handleButtonClick(DisplayPublications)}>
+                            Publications: <h6>{DisplayPublications ? DisplayPublications.length : 0}</h6>
                         </button>
                     )}
                     {projects !== 0 && (
-                        <button className="col-md" onClick={() => handleButtonClick(DisplayProjects)}>
-                            Projects: <h6>{DisplayProjects.length}</h6>
+                        <button onClick={() => handleButtonClick(DisplayProjects)}>
+                            Projects: <h6>{DisplayProjects.filter(project => project.copi_ids[0]?.project_status !== "submitted").length}</h6>
                         </button>
                     )}
                     {ips !== 0 && (
-                        <button className="col-md" onClick={() => handleButtonClick(DisplayIPs)}>
-                            Intellectual Property: <h6>{DisplayIPs.length}</h6>
+                        <button onClick={() => handleButtonClick(DisplayIPs)}>
+                            Intellectual Property: <h6>{DisplayIPs ? DisplayIPs.length : 0}</h6>
                         </button>
+                    )}
+
+                    {loading ? (
+                        ""
+                    ) : (
+                        <>
+                            <button onClick={() => handleModalClick("labs")}>
+                                Labs: <h6>
+                                    {Parameter.search === "Nanomaterials"
+                                        ? labsData1.length
+                                        : Parameter.search === "Aeroacoustics"
+                                            ? labsData2.length
+                                            : Parameter.search === "Microwave"
+                                                ? labsData3.length
+                                                : Parameter.search === "Catalyst"
+                                                    ? labsData4.length
+                                                    : 0
+                                    }
+                                </h6>
+                            </button>
+                            <button onClick={() => handleModalClick2("industry")}>
+                                Industry:
+                                <h6>
+                                    {Parameter.search === "Nanomaterials"
+                                        ? industryData1.length
+                                        : Parameter.search === "Aeroacoustics"
+                                            ? industryData2.length
+                                            : Parameter.search === "Microwave"
+                                                ? industryData3.length
+                                                : Parameter.search === "Catalyst"
+                                                    ? industryData4.length
+                                                    : 0
+                                    }
+                                </h6>
+                            </button>
+                        </>
                     )}
 
                 </div>
@@ -897,9 +1114,7 @@ const Middle_Page = () => {
             <div className="button-container">
                 <button className={"dropdown-button"}>
 
-                    {/*Dropdown to select search option*/}
                     <div className={"Searching"}>
-                        {/* <Form.Select className={"option_selector"} name={"option"} onChange={handleOptionChange}> */}
                         <Form.Select className={""} name={"Sort"} onChange={handleSortingOptionChange}>
                             <option className={""} value={""}>
                                 Sort By
@@ -926,6 +1141,8 @@ const Middle_Page = () => {
                 DisplayPublications={DisplayPublications}
                 DisplayProjects={DisplayProjects}
                 DisplayIPs={DisplayIPs}
+                islabsData={islabsData}
+                isindustryData={isindustryData}
             />
             {/*If the loading is true, then the loading animation is shown.*/}
             {loading ?
@@ -972,6 +1189,7 @@ const Middle_Page = () => {
                                     {Cards} {/* Render the Cards component */}
                                 </>
                             )}
+
                         </div> :
                     // If any error occurred, then show the error message.
                     <ErrorMessage Message={"Error in Fetching Data"} />
@@ -982,3 +1200,4 @@ const Middle_Page = () => {
 }
 
 export default Middle_Page;
+
