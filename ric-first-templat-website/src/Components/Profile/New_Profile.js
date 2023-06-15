@@ -951,1320 +951,1292 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
     // This method is called whenever "Download CV" button is clicked on Profile Page and it is also responsible for creating PDF for CV
     const openCV = () => {
         const check = document.getElementById('roundImageFaculty');
-        html2canvas(check, {}).then((canvas) => {
+        check.style.backgroundColor = 'transparent';
+
+        html2canvas(check, { backgroundColor: null }).then((canvas) => {
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas background to transparent
+            // ctx.clearRect(10, 10, canvas.width, canvas.height);
+
             const imgData = canvas.toDataURL("image/png");
-            const height = (canvas.height * 210) / canvas.width;
 
-            const pdf = new jsPDF("p", "mm", "a4");
-            doc.addImage(imgData, "PNG", 450, 50, 125, height, "Image of Faculty Member", "NUST");
-            pdf.addImage(imgData, "PNG", 0, 0, 210, height);
-            pdf.save("roundImage.pdf");
+            // const pdf = new jsPDF("p", "mm", "a4");
+            // Creating PDF Object
+            const doc = new jsPDF('p', 'pt', 'a4');
+            //Working on waterMark of page
+            // for (let i = 1; i <= doc.getNumberOfPages(); i++) {
+            //     doc.setPage(i);
+            //     doc.addImage(nustLogo2, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
+            //   }
+
+
+            // Calculate the width of the text field based on the length of the profile name
+            const nameTextWidth = doc.getTextWidth(profile[0].Name);
+            console.log("nameTextWidth:", nameTextWidth);
+
+            // Assume profile[0] contains user data including email and Twitter handle
+            let hasEmail = profile[0].e_mail.trim() !== "";
+            let hasTwitter = profile[0].twitter_URL.trim() !== "";
+            let hasLinkedin = profile[0].linkedin_URL.trim() !== "";
+            let hasPhone = profile[0].Work_Phone.trim() !== "";
+
+
+            let rect1Width = 100;
+            let rect1Height = 100;
+
+
+            // Check if the name fits in one line
+            if (nameTextWidth <= 250) {
+                // Check for the presence of email, phone, twitter, and LinkedIn
+                if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 130;
+                } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 180;
+                } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 180;
+                } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 210;
+                }
+            } else {
+                // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
+                if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 161;
+                } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 160;
+                } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 160;
+                } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
+                    rect1Width = 595;
+                    rect1Height = 190;
+                }
+            }
+            // // If the user has both an email and a Twitter handle, increase the dimensions of the blue area
+            // if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
+            //     rect1Width = 595;
+            //     rect1Height = 130;
+
+            // } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
+            //     rect1Width = 595
+            //     rect1Height = 180
+            // } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
+            //     rect1Width = 595
+            //     rect1Height = 180
+            // } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
+            //     rect1Width = 595
+            //     rect1Height = 210
+            // }
+
+            // X-Axis and Y-Axis Positions of To Blue Area of CV
+            let rect1X = 0;
+            const rect1Y = 0;
+            // const rect1Width = 595;
+            // const rect1Height = 230;
+            // Draw the Header Rectangle
+            doc.setFillColor(91, 126, 222);
+            doc.rect(rect1X, rect1Y, rect1Width, rect1Height, 'F');
+
+            // Fill the rectangle with text
+            // Now adding Text on Blue Rectangle
+            doc.setFontSize(30);
+            doc.setTextColor(255, 255, 255);
+            doc.text(
+                `${profile[0].Name}`,  // Text to be Displayed
+                20,  // x-axis position
+                rect1Y + 40, // y-axis position
+                { maxWidth: 420 } // maximum width of text field box
+            );
+            let y;
+            // Calculating how many lines text will take if we specify width size to 320
+            if (doc.splitTextToSize(profile[0].Name, 420).length === 1) {
+                y = 60;
+            }
+            else {
+                y = doc.splitTextToSize(profile[0].Name, 420).length * 25 + 40;
+            }
+            doc.setFontSize(12);
+            doc.text(
+                `${profile[0].Work_Position}`, // Text to be Displayed
+                20, // x-axis position
+                y, // y-axis position
+                { maxWidth: 320 } // maximum width of text field box
+            );
+            doc.text(
+                `${profile[0].School}`, // Text to be Displayed
+                20, // x-axis position
+                y + 20, // y-axis position
+                { maxWidth: 320 } // maximum width of text field box
+            );
+
+
+
+
+            if (rect1Height == 130) {
+                doc.addImage(imgData, "PNG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
+            } else if (rect1Height == 230) {
+                doc.addImage(imgData, "JPEG", 465, 30, 100, 100, "Image of Faculty Member", "NUST");
+            } else if (rect1Height == 161) {
+                doc.addImage(imgData, "JPEG", 465, 20, 100, 100, "Image of Faculty Member", "NUST");
+            } else if (rect1Height == 180) {
+                doc.addImage(imgData, "JPEG", 465, 23, 100, 100, "Image of Faculty Member", "NUST");
+            } else if (rect1Height == 210) {
+                doc.addImage(imgData, "JPEG", 465, 26, 100, 100, "Image of Faculty Member", "NUST");
+            }
+
+
+
+            // if (profile[0].Image_URL !== "") {
+            //     const img = new Image();
+            //     img.crossOrigin = "Anonymous";
+            //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+            //     doc.addImage(img, "JPEG", 450, 50, 125, 125, "Image of Faculty Member", "NUST");
+            // }
+
+            // img.onload = function() {
+            //     // const canvas = document.createElement('canvas');
+            //     // const ctx = canvas.getContext('2d');
+
+            //     // canvas.width = 125;
+            //     // canvas.height = 125;
+
+            //     // ctx.drawImage(img, 0, 0,canvas.width,canvas.height);
+
+            //     // const canvasData = canvas.toDataURL("image/jpeg");
+
+
+
+
+
+
+            // }
+            // img.onerror = function() {
+            //     console.log("Error loading image:", img.src);
+            // };
+
+
+            // create a new canvas element
+
+            //}
+
+
+
+            // // add a red rectangle to the canvas
+            // ctx.fillStyle = 'red';
+            // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // // add the canvas as an image to the PDF document
+            // const canvasData = canvas.toDataURL('image/jpeg');
+            // doc.addImage(canvasData, 'JPEG', 430, 50, 125, 125, "Image of Faculty Member", "NUST");
+
+
+
+
+
+
+            /* Original */
+            // Loading Image from bas14 code provided by the NUST Server
+            // if(profile[0].Image_URL!=="") {
+            //     const img = new Image();
+            //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
+
+            //     doc.addImage(img, 'jpeg', 430, 50, 125, 125, "Image of Faculty Member", "NUST");
+            // }
+
+
+            /*
+                Adding Contact Information and Social Media Links
+             */
+            // Code for adding Email with its logo
+            //Write code to add Icon in PDF using JsPDF
+
+            if (doc.splitTextToSize(profile[0].School, 320).length === 1) {
+                y += 20;
+            }
+            else {
+                y = doc.splitTextToSize(profile[0].School, 320).length * 20 + y;
+            }
+
+            if (profile[0].e_mail.trim() !== "") {
+                doc.addImage(Email, "JPEG", rect1X + 10, y, 40, 25);
+                //write code to add text on the right side of this image
+                doc.text(`${profile[0].e_mail}`, rect1X + 50, y + 18, { maxWidth: 320 });
+            }
+
+            // // Code for adding Phone with its logo
+            // //Write code to add Icon in PDF using JsPDF
+            // y=doc.splitTextToSize(profile[0].e_mail,320).length*20+120;
+            if (doc.splitTextToSize(profile[0].e_mail, 320).length === 1) {
+                y += 28;
+            }
+            else {
+                y = doc.splitTextToSize(profile[0].e_mail, 320).length * 28 + y;
+            }
+            if (profile[0].Work_Phone.trim() !== "") {
+                doc.addImage(Phone, "JPEG", rect1X + 20, y, 20, 13);
+                //write code to add text on the right side of this image
+                doc.text(`${profile[0].Work_Phone}`, rect1X + 50, y + 10, { maxWidth: 320 });
+            }
+            // Code for adding LinkedIn with its logo
+            //Write code to add Icon in PDF using JsPDF
+
+            if (doc.splitTextToSize(profile[0].Work_Phone, 320).length === 1) {
+                y += 25;
+            }
+            else {
+                y = doc.splitTextToSize(profile[0].Work_Phone, 320).length * 25 + y;
+            }
+            if (profile[0].linkedin_URL.trim() !== "") {
+                doc.addImage(Linked, "JPEG", rect1X + 15, y, 30, 22);
+                //write code to add text on the right side of this image
+                doc.text(`${profile[0].linkedin_URL}`, rect1X + 50, y + 12, { maxWidth: 300 });
+            }
+            // Code for adding Twitter with its logo
+            //Write code to add Icon in PDF using JsPDF
+            if (doc.splitTextToSize(profile[0].linkedin_URL, 320).length === 1) {
+                y += 25;
+            }
+            else {
+                y = doc.splitTextToSize(profile[0].linkedin_URL, 320).length * 25 + y;
+            }
+            if (profile[0].twitter_URL.trim() !== "") {
+                doc.addImage(Twitter, "JPEG", rect1X + 18, y, 25, 20);
+                //     write code to add text on the right side of this image
+                doc.text(`${profile[0].twitter_URL}`, rect1X + 50, y + 15, { maxWidth: 300 });
+            }
+            /*
+                Now Adding, Education, Experience, and Awards
+             */
+
+            // These are the variables for determining the position of the text in complete CV
+            /*
+                lastFieldHeight ==> This variable represents the starting height of new section after adding some spaces
+                to final position of last section.
+                title ==> Will hold the heading text of section.
+             */
+            let lastFieldHeight = rect1Height + 30;
+            let title = "";
+            let heading_x_axis = 0;
+            let printing_string = "";
+
+            // Below is the procedure to write Qualifications, it is same for all other sections of CV
+            /*
+                If qualifications are provided, then first add its heading, then find height of heading after that add '5'
+                pixels more to it and start adding fields of this section.
+             */
+            if (profile[0].Qualifications.length > 0) {
+
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Qualifications";
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                profile[0].Qualifications.map((qualification, index) => {
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    doc.text(`${index + 1}. ${qualification.Degree}, ${qualification.speciality}`, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+
+                    /*
+                        Find the height of sub-field and add '5' pixels to it, then add its description
+                     */
+                    lastFieldHeight += (doc.splitTextToSize(`${index + 1}. ${qualification.Degree}, ${qualification.speciality}`, 450).length) * 10;
+                    printing_string = `${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 400 });
+                    /*
+                        After adding one field completely along with its description, add '20' pixel gap to start adding new fields
+                     */
+                    printing_string = `${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`.replace(/^\s*\n/gm, "").trim()
+                    if ((doc.splitTextToSize(`${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(`${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += (doc.splitTextToSize(`${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`, 450).length * 4) + 18;
+
+                    }
+
+                })
+            }
+
+            // Same procedure is repeated for below loops. This can be optimized based and duplicate can be moved to a single function performing the tasks
+            if (profile[0].Experience.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Experience";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                profile[0].Experience.map((experience, index) => {
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    printing_string = `${index + 1}. ${experience.job_description} ( ${experience.Year_From} - ${experience.Year_To})`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    lastFieldHeight += doc.splitTextToSize(`${index + 1}. ${experience.job_description} ( ${experience.Year_From} - ${experience.Year_To})`, 450).length * 12;
+                    printing_string = `${experience.org_name}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, rect1X + 55, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(`${experience.org_name}`, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(`${experience.org_name}`, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(`${experience.org_name}`, 450).length) * 4) + 18;
+                    }
+                }
+
+                )
+            }
+
+            if (profile[0].Awards.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Awards"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                profile[0].Awards.map((award, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    printing_string = `${index + 1}. ${(award.Location).replace(":", "").replace("-", "")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    lastFieldHeight += doc.splitTextToSize(`${index + 1}. ${(award.Location).replace(":", "").replace("-", "")}`, 450).length * 12;
+                    printing_string = `${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(`${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(`${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(`${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`, 450).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (profile[0].KeyNotes.length > 0) {
+                lastFieldHeight = lastFieldHeight + 5;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Invited Talks & Key Note Speaker"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                profile[0].KeyNotes.map((keyNotes, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.text(`${index + 1}. ${keyNotes.Location} ${(keyNotes.Year) === "" ? "" : `(${keyNotes.Year})`}`, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    lastFieldHeight += doc.splitTextToSize(`${index + 1}. ${keyNotes.Location} ${(keyNotes.Year) === "" ? "" : `(${keyNotes.Year})`}`, 450).length * 12;
+                    doc.text(`${keyNotes.Title}`, 53, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(`${keyNotes.Title}`, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(`${keyNotes.Title}`, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(`${keyNotes.Title}`, 450).length) * 4) + 18;
+                    }
+
+                })
+            }
+
+            if (profile[0].Professional_Memberships_Registrations.length > 0) {
+                lastFieldHeight = lastFieldHeight + 5;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Professional Memberships"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                profile[0].Professional_Memberships_Registrations.map((memberships, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.text(`${(index + 1) + ". Member of " + memberships.Name}`, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(`${(index + 1) + ". Member of " + memberships.Name}`, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(`${(index + 1) + ". Member of " + memberships.Name}`, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(`${(index + 1) + ". Member of " + memberships.Name}`, 450).length) * 4) + 18;
+                    }
+
+                })
+            }
+
+            /*
+                Basic Profile Completed, Moving towards work profile
+            */
+            let common_index = 0;
+            if (Project_Research.National.length > 0 || Project_Research.International.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Research Projects";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                common_index = 1;
+            }
+
+            if (Project_Research.National.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(14);
+                doc.setTextColor(0, 0, 0);
+                title = "National Projects";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+
+                Project_Research.National.map((researchProject, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    printing_string = `${index + 1}. ${researchProject.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${researchProject.Funding_Agency.replace("+", "")}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${researchProject["Project_Status"] === "Completed" ? researchProject["Project_Status"] + " ( " + researchProject["Approval_Date"] + " - " + researchProject["Completion_Date"] + " )" : researchProject["Project_Status"].substring(11) + " ( " + researchProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
+                    }
+                    common_index += 1;
+                })
+            }
+            if (Project_Research.International.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(14);
+                doc.setTextColor(0, 0, 0);
+                title = "International Projects";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Project_Research.International.map((researchProject, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    printing_string = `${index + 1}. ${researchProject.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${researchProject.Funding_Agency.replace("+", "")}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${researchProject["Project_Status"] === "Completed" ? researchProject["Project_Status"] + " ( " + researchProject["Approval_Date"] + " - " + researchProject["Completion_Date"] + " )" : researchProject["Project_Status"].substring(11) + " ( " + researchProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
+                    }
+                    common_index += 1;
+                })
+            }
+
+            if (Project_Industry.National.length > 0 || Project_Industry.International.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(18);
+                doc.setTextColor(0, 0, 0);
+                title = "Industry Projects"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                common_index = 1;
+            }
+
+            if (Project_Industry.National.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(14);
+                doc.setTextColor(0, 0, 0);
+                title = "National Projects";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Project_Industry.National.map((industryProject, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    printing_string = `${index + 1}. ${industryProject.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
+
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+
+                    printing_string = `${industryProject.Funding_Agency.replace("+", "")}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${industryProject["Project_Status"] === "Completed" ? industryProject["Project_Status"] + " ( " + industryProject["Approval_Date"] + " - " + industryProject["Completion_Date"] + " )" : industryProject["Project_Status"].substring(11) + " ( " + industryProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
+                    }
+                    common_index += 1;
+                })
+            }
+            if (Project_Industry.International.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(14);
+                doc.setTextColor(0, 0, 0);
+                title = "International Projects";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Project_Industry.International.map((industryProject, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    printing_string = `${index + 1}. ${industryProject.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${industryProject.Funding_Agency.replace("+", "")}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${industryProject["Project_Status"] === "Completed" ? industryProject["Project_Status"] + " ( " + industryProject["Approval_Date"] + " - " + industryProject["Completion_Date"] + " )" : industryProject["Project_Status"].substring(11) + " ( " + industryProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
+                    }
+                    common_index += 1;
+                })
+            }
+
+            if (Research_Articles.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Research Articles"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+
+                Research_Articles.map((article, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${article.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `Authors: ${article.All_Authors.trim().substring(0, article.All_Authors.length - 2)}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(`${printing_string}`, 40, lastFieldHeight, { maxWidth: 450 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 11;
+                    printing_string = `${article.Journal_Title} ${Pub_Info(article.Journal_Info, article.Publication_year, index)}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (conferences.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Conference Proceedings"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+
+                conferences.map((conference, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${conference.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `Authors: ${conference.Authors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+                    printing_string = `${conference.Conference_Name + " (" + conference.Year + ")"}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (editorials.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Editorial Activities"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+
+                editorials.map((editorial, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${editorial.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${editorial.Reviewer_Type}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(`${editorial.Reviewer_Type}`, rect1X + 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+                    printing_string = `${editorial.Impact_Factor.trim() === "" ? "" : "IF: " + editorial.Impact_Factor}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, rect1X + 40, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Book_Chapters.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Book Chapters"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+
+                Book_Chapters.map((chapter, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${chapter.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `Authors: ${(chapter.All_Authors).trim().substring(0, chapter.All_Authors.length - 2)}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(
+                        printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+                    printing_string = `${chapter.Journal_Title} ${'(' + chapter.Journal_Info + ')'} (${chapter.Publication_year})`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Books.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Books Published"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Books.map((book, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${(index + 1)}. ${book.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `Authors: ${(book.All_Authors).trim().substring(0, book.All_Authors.length - 2)}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+
+            if (trainings.length > 0 || profile[0].Trainings_Attended.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(18);
+                doc.setTextColor(0, 0, 0);
+                title = "Trainings"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                // common_index = 1;
+            }
+
+            if (trainings.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(14);
+                doc.setTextColor(0, 0, 0);
+                title = "Trainings Conducted";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                trainings.map((training, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${(index + 1)}. ${training.Name} ( ${training.Completions_Date} )`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (profile[0].Trainings_Attended.length !== 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(14);
+                doc.setTextColor(0, 0, 0);
+                title = "Trainings Attended";
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                profile[0].Trainings_Attended.map((training, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${(index + 1)}. ${training.Name} (${training.Date_From} ) - ( ${training.Date_To})`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Intellectual_Property.Patents.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Patents"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+
+                Intellectual_Property.Patents.map((ip, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `Authors: ${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+                    printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Intellectual_Property.Industrial_Design.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Industrial Designs"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Intellectual_Property.Industrial_Design.map((ip, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `Authors: ${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(`Authors: ${ip.Inventors.join(", ")}`, 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+
+                    printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(`${ip.Schools.join(", ")}`, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Intellectual_Property.Trade_Marks.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Industrial Designs"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Intellectual_Property.Trade_Marks.map((ip, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(`${index + 1}. ${ip.Title}`, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+
+                    printing_string = `${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+                    printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Intellectual_Property.Copy_Rights.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Copy Rights"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Intellectual_Property.Copy_Rights.map((ip, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
+                    printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Supervision.PHD.length > 0) {
+                lastFieldHeight = lastFieldHeight + 5;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "PHD Supervisions"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Supervision.PHD.map((supervision, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${supervision.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${supervision.StudentName} - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+            if (Supervision.Masters.length > 0) {
+                lastFieldHeight = lastFieldHeight + 10;
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 0);
+                title = "Masters Supervision"
+                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
+                    doc.addPage('a4', 'portrait');
+                    lastFieldHeight = 45;
+                }
+                doc.setFont("helvetica", "bolditalic");
+                doc.text(title, rect1X + 20, lastFieldHeight);
+                doc.setFont("helvetica", "normal");
+                lastFieldHeight += doc.getTextDimensions(title).h + 5;
+                Supervision.Masters.map((supervision, index) => {
+                    if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
+                        doc.addPage('a4', 'portrait');
+                        lastFieldHeight = 45;
+                    }
+                    if ((index + 1) >= 10) {
+                        heading_x_axis = 35;
+                    }
+                    else {
+                        heading_x_axis = 40;
+                    }
+                    doc.setFontSize(11);
+                    doc.setTextColor(0, 0, 0);
+                    printing_string = `${index + 1}. ${supervision.Title}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
+                    lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
+                    doc.setFontSize(8);
+                    doc.setTextColor(0, 0, 0);
+
+                    printing_string = `${supervision.StudentName} - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}`.replace(/^\s*\n/gm, "").trim()
+                    doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
+                    if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
+                        lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
+                    }
+                    else {
+                        lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
+                    }
+                })
+            }
+
+
+            doc.save(`${profile[0].Name}.pdf`);
         })
-        // Creating PDF Object
-        const doc = new jsPDF('p', 'pt', 'a4');
-
-
-        //Working on waterMark of page
-        // for (let i = 1; i <= doc.getNumberOfPages(); i++) {
-        //     doc.setPage(i);
-        //     doc.addImage(nustLogo2, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
-        //   }
-
-
-        // Calculate the width of the text field based on the length of the profile name
-        const nameTextWidth = doc.getTextWidth(profile[0].Name);
-        console.log("nameTextWidth:", nameTextWidth);
-
-        // Assume profile[0] contains user data including email and Twitter handle
-        let hasEmail = profile[0].e_mail.trim() !== "";
-        let hasTwitter = profile[0].twitter_URL.trim() !== "";
-        let hasLinkedin = profile[0].linkedin_URL.trim() !== "";
-        let hasPhone = profile[0].Work_Phone.trim() !== "";
-
-
-        let rect1Width = 100;
-        let rect1Height = 100;
-
-
-        // Check if the name fits in one line
-        if (nameTextWidth <= 250) {
-            // Check for the presence of email, phone, twitter, and LinkedIn
-            if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 130;
-            } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 180;
-            } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 180;
-            } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 210;
-            }
-        } else {
-            // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
-            if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 161;
-            } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 160;
-            } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 160;
-            } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
-                rect1Width = 595;
-                rect1Height = 190;
-            }
-        }
-        // // If the user has both an email and a Twitter handle, increase the dimensions of the blue area
-        // if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
-        //     rect1Width = 595;
-        //     rect1Height = 130;
-
-        // } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
-        //     rect1Width = 595
-        //     rect1Height = 180
-        // } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
-        //     rect1Width = 595
-        //     rect1Height = 180
-        // } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
-        //     rect1Width = 595
-        //     rect1Height = 210
-        // }
-
-        // X-Axis and Y-Axis Positions of To Blue Area of CV
-        let rect1X = 0;
-        const rect1Y = 0;
-        // const rect1Width = 595;
-        // const rect1Height = 230;
-        // Draw the Header Rectangle
-        doc.setFillColor(91, 126, 222);
-        doc.rect(rect1X, rect1Y, rect1Width, rect1Height, 'F');
-
-        // Fill the rectangle with text
-        // Now adding Text on Blue Rectangle
-        doc.setFontSize(30);
-        doc.setTextColor(255, 255, 255);
-        doc.text(
-            `${profile[0].Name}`,  // Text to be Displayed
-            20,  // x-axis position
-            rect1Y + 40, // y-axis position
-            { maxWidth: 420 } // maximum width of text field box
-        );
-        let y;
-        // Calculating how many lines text will take if we specify width size to 320
-        if (doc.splitTextToSize(profile[0].Name, 420).length === 1) {
-            y = 60;
-        }
-        else {
-            y = doc.splitTextToSize(profile[0].Name, 420).length * 25 + 40;
-        }
-        doc.setFontSize(12);
-        doc.text(
-            `${profile[0].Work_Position}`, // Text to be Displayed
-            20, // x-axis position
-            y, // y-axis position
-            { maxWidth: 320 } // maximum width of text field box
-        );
-        doc.text(
-            `${profile[0].School}`, // Text to be Displayed
-            20, // x-axis position
-            y + 20, // y-axis position
-            { maxWidth: 320 } // maximum width of text field box
-        );
-
-
-
-
-        // if (rect1Height == 130) {
-        //     if (profile[0].Image_URL !== "") {
-
-        //         const img = new Image();
-        //         img.crossOrigin = "Anonymous";
-        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //         doc.addImage(img, "JPEG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
-        //     }
-        // } else if (rect1Height == 230) {
-        //     if (profile[0].Image_URL !== "") {
-
-        //         const img = new Image();
-        //         img.crossOrigin = "Anonymous";
-        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //         doc.addImage(img, "JPEG", 460, 15, 100, 100, "Image of Faculty Member", "NUST");
-        //     }
-        // } else if (rect1Height == 161) {
-        //     if (profile[0].Image_URL !== "") {
-
-        //         const img = new Image();
-        //         img.crossOrigin = "Anonymous";
-        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //         doc.addImage(img, "JPEG", 460, 30, 100, 100, "Image of Faculty Member", "NUST");
-        //     }
-        // } else if (rect1Height == 180) {
-        //     if (profile[0].Image_URL !== "") {
-
-        //         const img = new Image();
-        //         img.crossOrigin = "Anonymous";
-        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //         doc.addImage(img, "JPEG", 440, 33, 115, 115, "Image of Faculty Member", "NUST");
-        //     }
-        // } else if (rect1Height == 210) {
-        //     if (profile[0].Image_URL !== "") {
-
-        //         const img = new Image();
-        //         img.crossOrigin = "Anonymous";
-        //         img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //         doc.addImage(img, "JPEG", 430, 10, 125, 125, "Image of Faculty Member", "NUST");
-        //     }
-        // }
-
-
-        // if (profile[0].Image_URL !== "") {
-        //     const img = new Image();
-        //     img.crossOrigin = "Anonymous";
-        //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-        //     doc.addImage(img, "JPEG", 450, 50, 125, 125, "Image of Faculty Member", "NUST");
-        // }
-
-        // img.onload = function() {
-        //     // const canvas = document.createElement('canvas');
-        //     // const ctx = canvas.getContext('2d');
-
-        //     // canvas.width = 125;
-        //     // canvas.height = 125;
-
-        //     // ctx.drawImage(img, 0, 0,canvas.width,canvas.height);
-
-        //     // const canvasData = canvas.toDataURL("image/jpeg");
-
-
-
-
-
-
-        // }
-        // img.onerror = function() {
-        //     console.log("Error loading image:", img.src);
-        // };
-
-
-        // create a new canvas element
-
-        //}
-
-
-
-        // // add a red rectangle to the canvas
-        // ctx.fillStyle = 'red';
-        // ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // // add the canvas as an image to the PDF document
-        // const canvasData = canvas.toDataURL('image/jpeg');
-        // doc.addImage(canvasData, 'JPEG', 430, 50, 125, 125, "Image of Faculty Member", "NUST");
-
-
-
-
-
-
-        /* Original */
-        // Loading Image from bas14 code provided by the NUST Server
-        // if(profile[0].Image_URL!=="") {
-        //     const img = new Image();
-        //     img.src = "data:image/png;base64," + atob(profile[0].Image_URL);
-
-        //     doc.addImage(img, 'jpeg', 430, 50, 125, 125, "Image of Faculty Member", "NUST");
-        // }
-
-
-        /*
-            Adding Contact Information and Social Media Links
-         */
-        // Code for adding Email with its logo
-        //Write code to add Icon in PDF using JsPDF
-
-        if (doc.splitTextToSize(profile[0].School, 320).length === 1) {
-            y += 20;
-        }
-        else {
-            y = doc.splitTextToSize(profile[0].School, 320).length * 20 + y;
-        }
-
-        if (profile[0].e_mail.trim() !== "") {
-            doc.addImage(Email, "JPEG", rect1X + 10, y, 40, 25);
-            //write code to add text on the right side of this image
-            doc.text(`${profile[0].e_mail}`, rect1X + 50, y + 18, { maxWidth: 320 });
-        }
-
-        // // Code for adding Phone with its logo
-        // //Write code to add Icon in PDF using JsPDF
-        // y=doc.splitTextToSize(profile[0].e_mail,320).length*20+120;
-        if (doc.splitTextToSize(profile[0].e_mail, 320).length === 1) {
-            y += 28;
-        }
-        else {
-            y = doc.splitTextToSize(profile[0].e_mail, 320).length * 28 + y;
-        }
-        if (profile[0].Work_Phone.trim() !== "") {
-            doc.addImage(Phone, "JPEG", rect1X + 20, y, 20, 13);
-            //write code to add text on the right side of this image
-            doc.text(`${profile[0].Work_Phone}`, rect1X + 50, y + 10, { maxWidth: 320 });
-        }
-        // Code for adding LinkedIn with its logo
-        //Write code to add Icon in PDF using JsPDF
-
-        if (doc.splitTextToSize(profile[0].Work_Phone, 320).length === 1) {
-            y += 25;
-        }
-        else {
-            y = doc.splitTextToSize(profile[0].Work_Phone, 320).length * 25 + y;
-        }
-        if (profile[0].linkedin_URL.trim() !== "") {
-            doc.addImage(Linked, "JPEG", rect1X + 15, y, 30, 22);
-            //write code to add text on the right side of this image
-            doc.text(`${profile[0].linkedin_URL}`, rect1X + 50, y + 12, { maxWidth: 300 });
-        }
-        // Code for adding Twitter with its logo
-        //Write code to add Icon in PDF using JsPDF
-        if (doc.splitTextToSize(profile[0].linkedin_URL, 320).length === 1) {
-            y += 25;
-        }
-        else {
-            y = doc.splitTextToSize(profile[0].linkedin_URL, 320).length * 25 + y;
-        }
-        if (profile[0].twitter_URL.trim() !== "") {
-            doc.addImage(Twitter, "JPEG", rect1X + 18, y, 25, 20);
-            //     write code to add text on the right side of this image
-            doc.text(`${profile[0].twitter_URL}`, rect1X + 50, y + 15, { maxWidth: 300 });
-        }
-        /*
-            Now Adding, Education, Experience, and Awards
-         */
-
-        // These are the variables for determining the position of the text in complete CV
-        /*
-            lastFieldHeight ==> This variable represents the starting height of new section after adding some spaces
-            to final position of last section.
-            title ==> Will hold the heading text of section.
-         */
-        let lastFieldHeight = rect1Height + 30;
-        let title = "";
-        let heading_x_axis = 0;
-        let printing_string = "";
-
-        // Below is the procedure to write Qualifications, it is same for all other sections of CV
-        /*
-            If qualifications are provided, then first add its heading, then find height of heading after that add '5'
-            pixels more to it and start adding fields of this section.
-         */
-        if (profile[0].Qualifications.length > 0) {
-
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Qualifications";
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            profile[0].Qualifications.map((qualification, index) => {
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                doc.text(`${index + 1}. ${qualification.Degree}, ${qualification.speciality}`, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-
-                /*
-                    Find the height of sub-field and add '5' pixels to it, then add its description
-                 */
-                lastFieldHeight += (doc.splitTextToSize(`${index + 1}. ${qualification.Degree}, ${qualification.speciality}`, 450).length) * 10;
-                printing_string = `${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 400 });
-                /*
-                    After adding one field completely along with its description, add '20' pixel gap to start adding new fields
-                 */
-                printing_string = `${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`.replace(/^\s*\n/gm, "").trim()
-                if ((doc.splitTextToSize(`${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(`${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += (doc.splitTextToSize(`${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`, 450).length * 4) + 18;
-
-                }
-
-            })
-        }
-
-        // Same procedure is repeated for below loops. This can be optimized based and duplicate can be moved to a single function performing the tasks
-        if (profile[0].Experience.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Experience";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            profile[0].Experience.map((experience, index) => {
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                printing_string = `${index + 1}. ${experience.job_description} ( ${experience.Year_From} - ${experience.Year_To})`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                lastFieldHeight += doc.splitTextToSize(`${index + 1}. ${experience.job_description} ( ${experience.Year_From} - ${experience.Year_To})`, 450).length * 12;
-                printing_string = `${experience.org_name}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, rect1X + 55, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(`${experience.org_name}`, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(`${experience.org_name}`, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(`${experience.org_name}`, 450).length) * 4) + 18;
-                }
-            }
-
-            )
-        }
-
-        if (profile[0].Awards.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Awards"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            profile[0].Awards.map((award, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                printing_string = `${index + 1}. ${(award.Location).replace(":", "").replace("-", "")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                lastFieldHeight += doc.splitTextToSize(`${index + 1}. ${(award.Location).replace(":", "").replace("-", "")}`, 450).length * 12;
-                printing_string = `${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(`${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(`${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(`${award.Title} ${(award.Year) === "" ? "" : `(${award.Year})`}`, 450).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (profile[0].KeyNotes.length > 0) {
-            lastFieldHeight = lastFieldHeight + 5;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Invited Talks & Key Note Speaker"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            profile[0].KeyNotes.map((keyNotes, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.text(`${index + 1}. ${keyNotes.Location} ${(keyNotes.Year) === "" ? "" : `(${keyNotes.Year})`}`, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                lastFieldHeight += doc.splitTextToSize(`${index + 1}. ${keyNotes.Location} ${(keyNotes.Year) === "" ? "" : `(${keyNotes.Year})`}`, 450).length * 12;
-                doc.text(`${keyNotes.Title}`, 53, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(`${keyNotes.Title}`, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(`${keyNotes.Title}`, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(`${keyNotes.Title}`, 450).length) * 4) + 18;
-                }
-
-            })
-        }
-
-        if (profile[0].Professional_Memberships_Registrations.length > 0) {
-            lastFieldHeight = lastFieldHeight + 5;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Professional Memberships"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            profile[0].Professional_Memberships_Registrations.map((memberships, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.text(`${(index + 1) + ". Member of " + memberships.Name}`, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(`${(index + 1) + ". Member of " + memberships.Name}`, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(`${(index + 1) + ". Member of " + memberships.Name}`, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(`${(index + 1) + ". Member of " + memberships.Name}`, 450).length) * 4) + 18;
-                }
-
-            })
-        }
-
-        /*
-            Basic Profile Completed, Moving towards work profile
-        */
-        let common_index = 0;
-        if (Project_Research.National.length > 0 || Project_Research.International.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Research Projects";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            common_index = 1;
-        }
-
-        if (Project_Research.National.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            title = "National Projects";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-
-            Project_Research.National.map((researchProject, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                printing_string = `${index + 1}. ${researchProject.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${researchProject.Funding_Agency.replace("+", "")}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${researchProject["Project_Status"] === "Completed" ? researchProject["Project_Status"] + " ( " + researchProject["Approval_Date"] + " - " + researchProject["Completion_Date"] + " )" : researchProject["Project_Status"].substring(11) + " ( " + researchProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
-                }
-                common_index += 1;
-            })
-        }
-        if (Project_Research.International.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            title = "International Projects";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Project_Research.International.map((researchProject, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                printing_string = `${index + 1}. ${researchProject.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-
-                lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${researchProject.Funding_Agency.replace("+", "")}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${researchProject["Project_Status"] === "Completed" ? researchProject["Project_Status"] + " ( " + researchProject["Approval_Date"] + " - " + researchProject["Completion_Date"] + " )" : researchProject["Project_Status"].substring(11) + " ( " + researchProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
-                }
-                common_index += 1;
-            })
-        }
-
-        if (Project_Industry.National.length > 0 || Project_Industry.International.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(18);
-            doc.setTextColor(0, 0, 0);
-            title = "Industry Projects"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            common_index = 1;
-        }
-
-        if (Project_Industry.National.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            title = "National Projects";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Project_Industry.National.map((industryProject, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                printing_string = `${index + 1}. ${industryProject.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
-
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-
-                printing_string = `${industryProject.Funding_Agency.replace("+", "")}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${industryProject["Project_Status"] === "Completed" ? industryProject["Project_Status"] + " ( " + industryProject["Approval_Date"] + " - " + industryProject["Completion_Date"] + " )" : industryProject["Project_Status"].substring(11) + " ( " + industryProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
-                }
-                common_index += 1;
-            })
-        }
-        if (Project_Industry.International.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            title = "International Projects";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Project_Industry.International.map((industryProject, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                printing_string = `${index + 1}. ${industryProject.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${industryProject.Funding_Agency.replace("+", "")}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${industryProject["Project_Status"] === "Completed" ? industryProject["Project_Status"] + " ( " + industryProject["Approval_Date"] + " - " + industryProject["Completion_Date"] + " )" : industryProject["Project_Status"].substring(11) + " ( " + industryProject["Approval_Date"] + " )"}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 450).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
-                }
-                common_index += 1;
-            })
-        }
-
-        if (Research_Articles.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Research Articles"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-
-            Research_Articles.map((article, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${article.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `Authors: ${article.All_Authors.trim().substring(0, article.All_Authors.length - 2)}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(`${printing_string}`, 40, lastFieldHeight, { maxWidth: 450 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 450).length * 11;
-                printing_string = `${article.Journal_Title} ${Pub_Info(article.Journal_Info, article.Publication_year, index)}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 450).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 450).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (conferences.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Conference Proceedings"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-
-            conferences.map((conference, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${conference.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `Authors: ${conference.Authors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-                printing_string = `${conference.Conference_Name + " (" + conference.Year + ")"}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (editorials.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Editorial Activities"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-
-            editorials.map((editorial, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${editorial.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${editorial.Reviewer_Type}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(`${editorial.Reviewer_Type}`, rect1X + 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-                printing_string = `${editorial.Impact_Factor.trim() === "" ? "" : "IF: " + editorial.Impact_Factor}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, rect1X + 40, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Book_Chapters.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Book Chapters"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-
-            Book_Chapters.map((chapter, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${chapter.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `Authors: ${(chapter.All_Authors).trim().substring(0, chapter.All_Authors.length - 2)}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(
-                    printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-                printing_string = `${chapter.Journal_Title} ${'(' + chapter.Journal_Info + ')'} (${chapter.Publication_year})`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Books.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Books Published"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Books.map((book, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${(index + 1)}. ${book.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `Authors: ${(book.All_Authors).trim().substring(0, book.All_Authors.length - 2)}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-
-        if (trainings.length > 0 || profile[0].Trainings_Attended.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(18);
-            doc.setTextColor(0, 0, 0);
-            title = "Trainings"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            // common_index = 1;
-        }
-
-        if (trainings.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            title = "Trainings Conducted";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            trainings.map((training, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${(index + 1)}. ${training.Name} ( ${training.Completions_Date} )`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (profile[0].Trainings_Attended.length !== 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            title = "Trainings Attended";
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            profile[0].Trainings_Attended.map((training, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${(index + 1)}. ${training.Name} (${training.Date_From} ) - ( ${training.Date_To})`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 450 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Intellectual_Property.Patents.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Patents"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-
-            Intellectual_Property.Patents.map((ip, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `Authors: ${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-                printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Intellectual_Property.Industrial_Design.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Industrial Designs"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Intellectual_Property.Industrial_Design.map((ip, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `Authors: ${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(`Authors: ${ip.Inventors.join(", ")}`, 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-
-                printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(`${ip.Schools.join(", ")}`, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Intellectual_Property.Trade_Marks.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Industrial Designs"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Intellectual_Property.Trade_Marks.map((ip, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(`${index + 1}. ${ip.Title}`, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-
-                printing_string = `${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-                printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Intellectual_Property.Copy_Rights.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Copy Rights"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Intellectual_Property.Copy_Rights.map((ip, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${ip.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${ip.Inventors.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 11;
-                printing_string = `${ip.Schools.join(", ")}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Supervision.PHD.length > 0) {
-            lastFieldHeight = lastFieldHeight + 5;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "PHD Supervisions"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Supervision.PHD.map((supervision, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${supervision.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${supervision.StudentName} - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-        if (Supervision.Masters.length > 0) {
-            lastFieldHeight = lastFieldHeight + 10;
-            doc.setFontSize(15);
-            doc.setTextColor(0, 0, 0);
-            title = "Masters Supervision"
-            if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 150)) {
-                doc.addPage('a4', 'portrait');
-                lastFieldHeight = 45;
-            }
-            doc.setFont("helvetica", "bolditalic");
-            doc.text(title, rect1X + 20, lastFieldHeight);
-            doc.setFont("helvetica", "normal");
-            lastFieldHeight += doc.getTextDimensions(title).h + 5;
-            Supervision.Masters.map((supervision, index) => {
-                if (lastFieldHeight > (doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] - 100)) {
-                    doc.addPage('a4', 'portrait');
-                    lastFieldHeight = 45;
-                }
-                if ((index + 1) >= 10) {
-                    heading_x_axis = 35;
-                }
-                else {
-                    heading_x_axis = 40;
-                }
-                doc.setFontSize(11);
-                doc.setTextColor(0, 0, 0);
-                printing_string = `${index + 1}. ${supervision.Title}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, heading_x_axis, lastFieldHeight, { maxWidth: 500 });
-                lastFieldHeight += doc.splitTextToSize(printing_string, 500).length * 12;
-                doc.setFontSize(8);
-                doc.setTextColor(0, 0, 0);
-
-                printing_string = `${supervision.StudentName} - ${(supervision.Program).split(" - ")[0]} - ${supervision.School}`.replace(/^\s*\n/gm, "").trim()
-                doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
-                if ((doc.splitTextToSize(printing_string, 500).length === 1)) {
-                    lastFieldHeight += (doc.splitTextToSize(printing_string, 500).length) + 18;
-                }
-                else {
-                    lastFieldHeight += ((doc.splitTextToSize(printing_string, 500).length) * 4) + 18;
-                }
-            })
-        }
-
-
-        doc.save(`${profile[0].Name}.pdf`);
     }
     const Pub_Info = (pub_info, year) => {
         if (pub_info === "NULL" || pub_info === "") {
