@@ -1,3 +1,15 @@
+.gotoprofile{
+    font-size: 30px;
+    color: #9661ca;
+    float: right;
+    margin: 10px;
+    clear: both;
+}
+.gotoprofile:hover{
+    color: #6A0DAD;
+    cursor: pointer;
+}
+
 .introduction{
     font-size: 1.3rem; /* Adjust the font size as needed */
     color: #333; /* Choose an appropriate text color */

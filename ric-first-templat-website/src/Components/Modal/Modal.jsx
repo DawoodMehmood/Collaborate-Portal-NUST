@@ -150,9 +150,14 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                     <Card key={industry.id} text="dark" style={{ width: '100%' }}>
                                         <Card.Header style={{fontWeight:"bold"}}>{industry.title}</Card.Header>
                                         <Card.Body>
+                                            {<img src={process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png"}></img>}
+                                            {console.log(process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png")}
                                             <Card.Subtitle className="mb-2 text-muted">
-                                                {industry.country && <p>Country: {industry.country}</p>}
+                                                {industry.description && <p style={{fontSize: "18px"}}>Description: {industry.description}</p>}
                                             </Card.Subtitle>
+
+                                            {industry.services && <p style={{fontWeight:"bold"}}>Services: {industry.services}</p>}
+                                            {industry.contact && <p style={{fontWeight:"bold"}}>Contact: {industry.contact}</p>}
                                         </Card.Body>
                                     </Card>
                                 ))}

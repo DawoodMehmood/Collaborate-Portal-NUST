@@ -1,7 +1,7 @@
 /*
 There is duplication of code in this file which is intended to be updated later in the beta version of this project.
  */
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import SearchBar from "../Home/SearchBar";
 import ErrorMessage from "../NotFoundFiles/ErrorMessage";
 import React, { useEffect, useRef, useState } from "react";
@@ -98,47 +98,39 @@ const Middle_Page = () => {
 
     const industryData1 = [
         {
-            id: 1, title: 'Glaxosmithkline',
-            country: 'United Kingdom',
-        },
-        {
-            id: 2, title: 'GmbH',
-            country: ' Germany',
+            id: 1, title: 'Pharmatec Pakistan (Pvt) Ltd',
+            description: "One of the most dynamic and fast-growing privately-owned pharmaceutical companies in Pakistan, that is developing, manufacturing and supplying pharmaceutical generics and value-added products.",
+            services: "Injectable plant Creams, ointment and gel area, Most modern facilities for liquid/drops, tablet/capsules/caplets manufacturing & packaging area (Cardiovascular, anti-diabetic, psychiatry, pain management, anti gout, respiratory disease, gastro-intestinal, anti-biotics & vitamins medicines), State of art Quality Control / Quality Assurance laboratories, R&D team with years of experience in formulation development",
+            contact: "www.pharmatec.com"
         },
     ];
 
 
     const industryData2 = [
         {
-            id: 1, title: 'Ferrite Microwave Technologies',
-            country: 'United States',
-        },
-        {
-            id: 2, title: 'American Microwave Corporation',
-            country: 'United States',
+            id: 1, title: 'National Radio Telecom Corporation (NRTC)',
+            description: "National Radio Telecommunication Corporation the high tech industry engaged in manufacturing of telecommunication equipment in Pakistan. NRTC is the pioneer in Telecommunication Equipment in Pakistan and leader in the field of communication for the last three decades. NRTC is producing high quality ruggedized products to be used in harsh environment such as defense services, Para / Auxiliary security services. Commercial products and versions for use by civil Telecommunications operators and civil organizations / establishments since 1966.",
+            services: "LMR, JAMMERs, ANTENNAs, MICROWAVE, ENCRYPTION DEVICES, COMSEC SYSTEMS, Tracking systems, Homeland security, TETRA, Electronic Warfare, DIGITAL INTERCOM, IP INTERFACES, Solar Solution, LI systems, Smart automation, UGS, Digital Investigation suite, EOD/ROBOTS, Field Exchanges",
+            contact: "www.nrtc.com.pk"
         },
     ]
 
     const industryData3 = [
         {
-            id: 1, title: 'Pakistan Aeronautical Complex',
-            country: 'Pakistan',
+            id: 1, title: 'Turkish Aerospace',
+            description: "The centre of technology in design, development, manufacturing and integration of aerospace systems, modernisation and after sales support in Turkey.",
+            services: "Aircraft, Helicopter, UAV, Space, Component Production",
+            contact: "www.tai.com.tr"
 
-        },
-        {
-            id: 1, title: 'Lockheed Martin',
-            country: 'United States',
         },
     ]
 
     const industryData4 = [
         {
-            id: 1, title: 'BASF',
-            country: 'Germany',
-        },
-        {
-            id: 2, title: 'Clariant',
-            country: 'Germany',
+            id: 1, title: 'Chemonics International Inc',
+            description: "A private international development firm based in Washington DC, USA, offering a variety of services globally. With more than USD 1.5 billion in USAID contracts in 2019, it  is the largest for-profit recipient of US Government foreign aid. As of 2019, the company has approximately 5,000 employees in 100 countries.",
+            services: "Agriculture & Food security, Environment & Natural Resources, Health, Supply chain solutions, Water, energy & sustainable cities",
+            contact: "www.chemonics.com"
         },
     ]
 
@@ -193,11 +185,11 @@ const Middle_Page = () => {
                 setModalData(industryData1);
                 setindustryData(industryData1)
             } else if (Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics") {
-                setModalData(industryData2);
-                setindustryData(industryData2)
-            } else if (Parameter.search === "Microwave" || Parameter.search === "microwave") {
                 setModalData(industryData3);
                 setindustryData(industryData3)
+            } else if (Parameter.search === "Microwave" || Parameter.search === "microwave") {
+                setModalData(industryData2);
+                setindustryData(industryData2)
             } else if (Parameter.search === "Catalyst" || Parameter.search === "catalyst") {
                 setModalData(industryData4);
                 setindustryData(industryData4)
@@ -305,7 +297,11 @@ const Middle_Page = () => {
     // Storing Profiles in Temporary array for sorting out after retrieval
     let ProfilesHolder = useRef([]);
 
-
+    // Showing the search word from the search bar
+    const location = useLocation();
+    const currentUrl = location.pathname;
+    const encodedWord = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
+    const searchWord = decodeURIComponent(encodedWord);
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
     //To fetch all publication which are to be displayed in popup
@@ -1086,12 +1082,15 @@ const Middle_Page = () => {
     })
     // const sortedCards = Cards.sort((a, b) => b.props.children[0].props.children[1].props.children.props.date - a.props.children[0].props.children[1].props.children.props.date);
 
+
     // If Research Area option is selected, only then show these tabs, otherwise don't show them
     return (
 
         //col-md
         <div className="middle-page">
             <SearchBar />
+            
+            <h6 style={{marginLeft: "5%", marginTop: "0"}}>Showing results for: {searchWord}</h6>
             {Parameter.option === "area_expertise" && (
                 <div className="result-stats row">
                     {Experts !== 0 && (
@@ -1138,9 +1137,9 @@ const Middle_Page = () => {
                                     {Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials"
                                         ? industryData1.length
                                         : Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics"
-                                            ? industryData2.length
+                                            ? industryData3.length
                                             : Parameter.search === "Microwave" || Parameter.search === "microwave"
-                                                ? industryData3.length
+                                                ? industryData2.length
                                                 : Parameter.search === "Catalyst" || Parameter.search === "catalyst"
                                                     ? industryData4.length
                                                     : 0

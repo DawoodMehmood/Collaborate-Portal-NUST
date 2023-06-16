@@ -30,6 +30,34 @@ import nustLogo2 from '../../Icons/nustLogo2.png'
 const New_Profile = ({ publications, projects, conferences, supervisions, editorials, trainings, ips, profile, enable }) => {
 
     // This function is responsible for showing the ResearchProject of Faculty Member
+    const showmainprofile = () => {
+        setTabOptions({
+            ...TabOptions,
+            profile_tab: false,
+            analysis_tab: true,
+            allProjects_tab: false,
+            researchProjects_International_tab: false,
+            researchProjects_National_tab: false,
+            industrialProjects_National_tab: false,
+            industrialProjects_International_tab: false,
+            publications_Articles_tab: false,
+            publications_Books_tab: false,
+            publications_Chapters_tab: false,
+            Conference_tab: false,
+            Patents_National_tab: false,
+            Patents_International_tab: false,
+            Intellectual_Property_tab: false,
+            Supervision_PHD_tab: false,
+            Supervision_Masters_tab: false,
+            Editorial_Board_tab: false,
+            Copyright_tab: false,
+            Industrial_Design_tab: false,
+            Trade_Marks_tab: false,
+            Training_Conducted_tab: false,
+            Training_Attended_tab: false,
+        })
+    }
+    // This function is responsible for showing the ResearchProject of Faculty Member
     const showResearchProjects = () => {
         if (Project_Research.National.length > Project_Research.International.length) {
             setTabOptions({
@@ -4758,6 +4786,12 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                         </div>) : null}
                 </div>
                 <div className={"Main_Body"}>
+
+                    {!TabOptions.analysis_tab ?
+                        <div className="gotoprofile" onClick={showmainprofile}>
+                            <i className="fa-solid fa-house-user"></i>
+                        </div>
+                        : ""}
                     {!TabOptions.analysis_tab ? "" : <div className={"analysis"}>
                         <div className={"analysis_tab_header"}>
                             <div className={"about_heading"}>
