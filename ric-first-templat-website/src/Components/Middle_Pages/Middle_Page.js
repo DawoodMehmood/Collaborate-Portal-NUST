@@ -137,9 +137,9 @@ const Middle_Page = () => {
     const industryData5 = [
         {
             id: 1, title: 'No Industry found',
- 
+
         },
-        
+
     ]
 
     const closeModal = () => {
@@ -1033,7 +1033,7 @@ const Middle_Page = () => {
     const TopSchoolsRow = () => (
         <div className="row">
             {topSchools.map((school) => (
-                <div className="col-md top-schools" key={school} style={{backgroundColor: "rgb(106, 13, 173)", color: "white"}}>{school}: <b>{schoolCount[school]}</b></div>
+                <div className="col-md top-schools" key={school} style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
             ))}
         </div>
     );
@@ -1089,8 +1089,8 @@ const Middle_Page = () => {
         //col-md
         <div className="middle-page">
             <SearchBar />
-            
-            <h6 style={{marginLeft: "5%", marginTop: "0"}}>Showing results for: {searchWord}</h6>
+
+            <h4 style={{ textAlign: "center" }}>Showing results for: {searchWord.toUpperCase()}</h4>
             {Parameter.option === "area_expertise" && (
                 <div className="result-stats row">
                     {Experts !== 0 && (
@@ -1155,8 +1155,8 @@ const Middle_Page = () => {
 
             {cards !== "projects" && cards !== "publications" && cards !== "IP" &&
                 <div>
-                {Parameter.option === "area_expertise" && <TopSchoolsRow />}
-            </div>}
+                    {Parameter.option === "area_expertise" && <TopSchoolsRow />}
+                </div>}
             {Parameter.option !== "name" && Parameter.option !== "school" &&
                 <div className="button-container">
                     <button className={"dropdown-button"}>
@@ -1233,7 +1233,7 @@ const Middle_Page = () => {
                             ) : (
                                 /* Default case: Render Cards */
                                 <>
-                                
+
                                     {Cards} {/* Render the Cards component */}
                                 </>
                             )}

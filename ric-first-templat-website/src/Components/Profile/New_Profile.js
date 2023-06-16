@@ -212,10 +212,43 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
     // This function is responsible for showing the Industrial Projects of Faculty Member
     const showIntellectualProperties = () => {
         // largest Intellectual Property
+
+        // setTabOptions({
+        //     ...TabOptions,
+        //     profile_tab: false,
+        //     analysis_tab: false,
+        //     allProjects_tab: false,
+        //     researchProjects_International_tab: false,
+        //     researchProjects_National_tab: false,
+        //     industrialProjects_National_tab: false,
+        //     industrialProjects_International_tab: false,
+        //     publications_Articles_tab: false,
+        //     publications_Books_tab: false,
+        //     publications_Chapters_tab: false,
+        //     Conference_tab: false,
+        //     Patents_National_tab: true,
+        //     Patents_International_tab: false,
+        //     Intellectual_Property_tab: false,
+        //     Training_Conducted_tab: false,
+        //     Training_Attended_tab: false,
+        //     Supervision_PHD_tab: false,
+        //     Supervision_Masters_tab: false,
+        //     Editorial_Board_tab: false,
+        //     Copyright_tab: false,
+        //     Industrial_Design_tab: false,
+        //     Trade_Marks_tab: false,
+        // })
+        // return
         let largestIntellectualProperty = "";
-        if (Intellectual_Property.Patents.length > Intellectual_Property.Industrial_Design.length) {
-            if (Intellectual_Property.Patents.length > Intellectual_Property.Copy_Rights.length) {
-                if (Intellectual_Property.Patents.length > Intellectual_Property.Trade_Marks.length) {
+
+        const patents = Intellectual_Property.Patents ? Intellectual_Property.Patents.length : 0;
+        const industrialDesign = Intellectual_Property.Industrial_Design ? Intellectual_Property.Industrial_Design.length : 0;
+        const copyRights = Intellectual_Property.Copy_Rights ? Intellectual_Property.Copy_Rights.length : 0;
+        const tradeMarks = Intellectual_Property.Trade_Marks ? Intellectual_Property.Trade_Marks.length : 0;
+
+        if (patents > industrialDesign) {
+            if (patents > copyRights) {
+                if (patents > tradeMarks) {
                     largestIntellectualProperty = "Patents";
                 }
                 else {
@@ -223,7 +256,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 }
             }
             else {
-                if (Intellectual_Property.Copy_Rights.length > Intellectual_Property.Trade_Marks.length) {
+                if (copyRights > tradeMarks) {
                     largestIntellectualProperty = "Copy Rights";
                 }
                 else {
@@ -232,8 +265,8 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
             }
         }
         else {
-            if (Intellectual_Property.Industrial_Design.length > Intellectual_Property.Copy_Rights.length) {
-                if (Intellectual_Property.Industrial_Design.length > Intellectual_Property.Trade_Marks.length) {
+            if (industrialDesign > copyRights) {
+                if (industrialDesign > tradeMarks) {
                     largestIntellectualProperty = "Industrial Design";
                 }
                 else {
@@ -241,7 +274,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 }
             }
             else {
-                if (Intellectual_Property.Copy_Rights.length > Intellectual_Property.Trade_Marks.length) {
+                if (copyRights > tradeMarks) {
                     largestIntellectualProperty = "Copy Rights";
                 }
                 else {
@@ -252,7 +285,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
         // Now we have largest Intellectual Property, so we will show that property
         if (largestIntellectualProperty === "Patents") {
             // select national patent is high or international patent is high
-            if (Intellectual_Property.Patents.length > Intellectual_Property.International_Patents.length) {
+            if (Intellectual_Property.Patents ? Intellectual_Property.Patents.length : 0 > Intellectual_Property.International_Patents ? Intellectual_Property.International_Patents.length : 0) {
                 setTabOptions({
                     ...TabOptions,
                     profile_tab: false,
@@ -388,6 +421,7 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 Trade_Marks_tab: true,
             })
         }
+
     }
 
     // bar charts modal
