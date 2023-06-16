@@ -109,18 +109,18 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Labs</h1>
                                 {modalData.map((lab) => (
                                     <Card key={lab.id} text="dark" style={{ width: '100%' }}>
-                                        <Card.Header>{lab.title}</Card.Header>
+                                        <Card.Header style={{fontWeight:"bold"}}>{lab.title}</Card.Header>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">
-                                                {lab.description && <p>{lab.description}</p>}
+                                                {lab.description && <p >{lab.description}</p>}
                                             </Card.Subtitle>
 
-                                            {lab.model && <p>Model: {lab.model}</p>}
-                                            {lab.company && <p>Company: {lab.company}</p>}
-                                            {lab.country && <p>Country: {lab.country}</p>}
-                                            {lab.capacity && <p>Capacity: {lab.capacity}</p>}
-                                            {lab.range && <p>Range: {lab.range}</p>}
-                                            {lab.venue && <p>Venue: {lab.venue}</p>}
+                                            {lab.model && <p style={{fontWeight:"bold"}}>Model: {lab.model}</p>}
+                                            {lab.company && <p style={{fontWeight:"bold"}}>Company: {lab.company}</p>}
+                                            {lab.country && <p style={{fontWeight:"bold"}}>Country: {lab.country}</p>}
+                                            {lab.capacity && <p style={{fontWeight:"bold"}}>Capacity: {lab.capacity}</p>}
+                                            {lab.range && <p style={{fontWeight:"bold"}}>Range: {lab.range}</p>}
+                                            {lab.venue && <p style={{fontWeight:"bold"}}>Venue: {lab.venue}</p>}
 
                                             {/* {lab.model && (
                                                 <p>
@@ -148,7 +148,7 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Industry</h1>
                                 {modalData.map((industry) => (
                                     <Card key={industry.id} text="dark" style={{ width: '100%' }}>
-                                        <Card.Header>{industry.title}</Card.Header>
+                                        <Card.Header style={{fontWeight:"bold"}}>{industry.title}</Card.Header>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">
                                                 {industry.country && <p>Country: {industry.country}</p>}

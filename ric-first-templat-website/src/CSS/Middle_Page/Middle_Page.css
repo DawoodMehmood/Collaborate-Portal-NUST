@@ -7,6 +7,17 @@
     overflow: hidden;
     margin-bottom: unset;
 }
+.top-schools{
+    border-radius: 5px;
+    padding: 0.3% 50px;
+    background-color: #FFFFFF;
+    font-size: 1.1em;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    margin: 10px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
 
 .Search-Results {
     margin: auto;

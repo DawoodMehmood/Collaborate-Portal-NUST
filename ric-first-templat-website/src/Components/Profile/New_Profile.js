@@ -982,39 +982,31 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
             let hasPhone = profile[0].Work_Phone.trim() !== "";
 
 
-            let rect1Width = 100;
-            let rect1Height = 100;
+            let rect1Width = 595;
+            let rect1Height = 125;
 
 
             // Check if the name fits in one line
             if (nameTextWidth <= 250) {
                 // Check for the presence of email, phone, twitter, and LinkedIn
                 if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
-                    rect1Width = 595;
-                    rect1Height = 130;
+                    rect1Height = 150;
                 } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
-                    rect1Width = 595;
                     rect1Height = 180;
                 } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
-                    rect1Width = 595;
                     rect1Height = 180;
                 } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
-                    rect1Width = 595;
                     rect1Height = 210;
                 }
             } else {
                 // If the user has more than one line of text in their name, check if they have email, phone, LinkedIn, and Twitter
                 if (hasEmail && hasPhone && !hasLinkedin && !hasTwitter) {
-                    rect1Width = 595;
-                    rect1Height = 160;
+                    rect1Height = 180;
                 } else if (hasEmail && hasPhone && hasLinkedin && !hasTwitter) {
-                    rect1Width = 595;
                     rect1Height = 160;
                 } else if (hasEmail && hasPhone && !hasLinkedin && hasTwitter) {
-                    rect1Width = 595;
                     rect1Height = 160;
                 } else if (hasEmail && hasPhone && hasLinkedin && hasTwitter) {
-                    rect1Width = 595;
                     rect1Height = 190;
                 }
             }
@@ -1082,13 +1074,13 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                 doc.addImage(imgData, "PNG", 465, 15, 100, 100, "Image of Faculty Member", "NUST");
             }
             else if (rect1Height <= 180) {
-                doc.addImage(imgData, "JPEG", 465, 23, 100, 100, "Image of Faculty Member", "NUST");
-            }
-            else if (rect1Height <= 210) {
                 doc.addImage(imgData, "JPEG", 465, 26, 100, 100, "Image of Faculty Member", "NUST");
             }
+            else if (rect1Height <= 210) {
+                doc.addImage(imgData, "JPEG", 440, 40, 125, 125, "Image of Faculty Member", "NUST");
+            }
             else if (rect1Height <= 230) {
-                doc.addImage(imgData, "JPEG", 465, 30, 100, 100, "Image of Faculty Member", "NUST");
+                doc.addImage(imgData, "JPEG", 450, 60, 150, 150, "Image of Faculty Member", "NUST");
             }
 
 

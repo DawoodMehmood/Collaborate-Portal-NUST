@@ -16,7 +16,6 @@ const Middle_Page = () => {
 
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
-
     // Nanomaterials
     const labsData1 = [
         {
@@ -84,6 +83,18 @@ const Middle_Page = () => {
         // Add more lab data as needed
     ];
 
+    const labsData5 = [
+        {
+            id: 1, title: 'No data found under this field.',
+            model: '', company: '', country: '',
+            capacity: '',
+            range: '',
+            venue: ''
+        }
+
+        // Add more lab data as needed
+    ];
+
 
     const industryData1 = [
         {
@@ -131,6 +142,14 @@ const Middle_Page = () => {
         },
     ]
 
+    const industryData5 = [
+        {
+            id: 1, title: 'No Industry found',
+ 
+        },
+        
+    ]
+
     const closeModal = () => {
         setIsModalOpen(false);
         setModalData(null);
@@ -145,21 +164,21 @@ const Middle_Page = () => {
     const handleModalClick = (keyword) => {
         // Set the modal data based on the keyword
         if (keyword === "labs") {
-            if (Parameter.search === "Nanomaterials") {
+            if (Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials") {
                 setModalData(labsData1);
                 setlabsData(labsData1)
-            } else if (Parameter.search === "Microwave") {
+            } else if (Parameter.search === "Microwave" || Parameter.search === "microwave") {
                 setModalData(labsData2);
                 setlabsData(labsData2)
-            } else if (Parameter.search === "Aeroacoustics") {
+            } else if (Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics") {
                 setModalData(labsData3);
                 setlabsData(labsData3)
-            } else if (Parameter.search === "Catalyst") {
+            } else if (Parameter.search === "Catalyst" || Parameter.search === "catalyst") {
                 setModalData(labsData4);
                 setlabsData(labsData4)
             } else {
-                setModalData([]);
-                setlabsData([]);
+                setModalData(labsData5);
+                setlabsData(labsData5);
             }
         }
 
@@ -170,21 +189,21 @@ const Middle_Page = () => {
     const handleModalClick2 = (keyword) => {
         // Set the modal data based on the keyword
         if (keyword === "industry") {
-            if (Parameter.search === "Nanomaterials") {
+            if (Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials") {
                 setModalData(industryData1);
                 setindustryData(industryData1)
-            } else if (Parameter.search === "Aeroacoustics") {
+            } else if (Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics") {
                 setModalData(industryData2);
                 setindustryData(industryData2)
-            } else if (Parameter.search === "Microwave") {
+            } else if (Parameter.search === "Microwave" || Parameter.search === "microwave") {
                 setModalData(industryData3);
                 setindustryData(industryData3)
-            } else if (Parameter.search === "Catalyst") {
+            } else if (Parameter.search === "Catalyst" || Parameter.search === "catalyst") {
                 setModalData(industryData4);
                 setindustryData(industryData4)
             } else {
-                setModalData([]);
-                setindustryData([]);
+                setModalData(industryData5);
+                setindustryData(industryData5);
             }
         }
 
@@ -233,6 +252,8 @@ const Middle_Page = () => {
 
     const [DisplayIPs, setDisplayIPs] = useState([]);
 
+    const [DisplaySchools, setDisplaySchools] = useState([]);
+
     const [DisplayExperts, setDisplayExperts] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -245,8 +266,6 @@ const Middle_Page = () => {
 
 
     const [sortedCards2, setSortedCards2] = useState([]);
-
-    const searchKeywords = ["Catalyst", "Aeroacoustics", "Microwave", "Nanomaterials"];
 
     const [islabsData, setlabsData] = useState('');
 
@@ -420,9 +439,10 @@ const Middle_Page = () => {
             return prevState + 1;
         });
     }
-
+    var schools = {}
     // This method is updating Profile State Array and adding new profile, when it is being retrieved
     async function UpdateProfileData(profile) {
+
         await setProfile(Profile => {
             return ([...Profile, profile])
         });
@@ -463,7 +483,7 @@ const Middle_Page = () => {
     async function fetchProfileWithID(cmsID) {
         incrementProfileCounter().then();
         const profile = getProfileObject();
-        await fetch(`http://127.0.0.1:8000/api/Profile/${cmsID}`)
+        await fetch(`http://localhost:8000/api/Profile/${cmsID}`)
             .then((response) => {
                 if (response.status === 200) {
                     return response.json();
@@ -502,7 +522,7 @@ const Middle_Page = () => {
 
         //To Fetch Profile of Faculty from API
         async function fetchProfile() {
-            await fetch("http://127.0.0.1:8000/api/Profile", {
+            await fetch("http://localhost:8000/api/Profile", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Accept": "application/json" },
                 body: JSON.stringify({ "name": `${Parameter.search}`, })
@@ -800,11 +820,11 @@ const Middle_Page = () => {
     //         console.log('Invalid Publications value:', profile.Publications);
     //     }
     // });
-
     //Card to sort projects
     const Cards1 = Profile.filter((profile) => {
         const author = AuthorIDs.current[profile.Code];
         const projectCount = author?.Projects;
+        schools = {}
         return projectCount > 0;
     }).map((profile, index) => {
         return (
@@ -996,6 +1016,31 @@ const Middle_Page = () => {
         );
     });
 
+
+    // Count the schools
+    const schoolCount = {};
+    Profile.forEach((profile) => {
+        const school = profile.School;
+        if (!schoolCount[school]) {
+            schoolCount[school] = 1;
+        } else {
+            schoolCount[school]++;
+        }
+    });
+
+    // Get the top 3 schools by count
+    const topSchools = Object.keys(schoolCount)
+        .sort((a, b) => schoolCount[b] - schoolCount[a])
+        .slice(0, 3);
+
+    // Render the row of top schools
+    const TopSchoolsRow = () => (
+        <div className="row">
+            {topSchools.map((school) => (
+                <div className="col-md top-schools" key={school} style={{backgroundColor: "rgb(106, 13, 173)", color: "white"}}>{school}: <b>{schoolCount[school]}</b></div>
+            ))}
+        </div>
+    );
     // Sort the Cards array in decreasing order if cards === "publications"
     const Cards = Profile.map((profile, index) => {
         return (
@@ -1041,25 +1086,22 @@ const Middle_Page = () => {
     })
     // const sortedCards = Cards.sort((a, b) => b.props.children[0].props.children[1].props.children.props.date - a.props.children[0].props.children[1].props.children.props.date);
 
-    console.log(islabsData)
-    // console.log(isindustryData)
     // If Research Area option is selected, only then show these tabs, otherwise don't show them
     return (
 
         //col-md
-
         <div className="middle-page">
             <SearchBar />
             {Parameter.option === "area_expertise" && (
                 <div className="result-stats row">
                     {Experts !== 0 && (
                         <button>
-                            Experts: <h6>{Profile ? Profile.length : 0}</h6>
+                            Experts: <h6>{Profile.length}</h6>
                         </button>
                     )}
                     {publications !== 0 && (
                         <button onClick={() => handleButtonClick(DisplayPublications)}>
-                            Publications: <h6>{DisplayPublications ? DisplayPublications.length : 0}</h6>
+                            Publications: <h6>{DisplayPublications.length}</h6>
                         </button>
                     )}
                     {projects !== 0 && (
@@ -1069,23 +1111,22 @@ const Middle_Page = () => {
                     )}
                     {ips !== 0 && (
                         <button onClick={() => handleButtonClick(DisplayIPs)}>
-                            Intellectual Property: <h6>{DisplayIPs ? DisplayIPs.length : 0}</h6>
+                            Intellectual Property: <h6>{DisplayIPs.length}</h6>
                         </button>
                     )}
-
                     {loading ? (
                         ""
                     ) : (
                         <>
                             <button onClick={() => handleModalClick("labs")}>
                                 Labs: <h6>
-                                    {Parameter.search === "Nanomaterials"
+                                    {Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials"
                                         ? labsData1.length
-                                        : Parameter.search === "Aeroacoustics"
-                                            ? labsData2.length
-                                            : Parameter.search === "Microwave"
-                                                ? labsData3.length
-                                                : Parameter.search === "Catalyst"
+                                        : Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics"
+                                            ? labsData3.length
+                                            : Parameter.search === "Microwave" || Parameter.search === "microwave"
+                                                ? labsData2.length
+                                                : Parameter.search === "Catalyst" || Parameter.search === "catalyst"
                                                     ? labsData4.length
                                                     : 0
                                     }
@@ -1094,13 +1135,13 @@ const Middle_Page = () => {
                             <button onClick={() => handleModalClick2("industry")}>
                                 Industry:
                                 <h6>
-                                    {Parameter.search === "Nanomaterials"
+                                    {Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials"
                                         ? industryData1.length
-                                        : Parameter.search === "Aeroacoustics"
+                                        : Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics"
                                             ? industryData2.length
-                                            : Parameter.search === "Microwave"
+                                            : Parameter.search === "Microwave" || Parameter.search === "microwave"
                                                 ? industryData3.length
-                                                : Parameter.search === "Catalyst"
+                                                : Parameter.search === "Catalyst" || Parameter.search === "catalyst"
                                                     ? industryData4.length
                                                     : 0
                                     }
@@ -1109,29 +1150,36 @@ const Middle_Page = () => {
                         </>
                     )}
 
+
                 </div>
             )}
-            <div className="button-container">
-                <button className={"dropdown-button"}>
 
-                    <div className={"Searching"}>
-                        <Form.Select className={""} name={"Sort"} onChange={handleSortingOptionChange}>
-                            <option className={""} value={""}>
-                                Sort By
-                            </option>
-                            <option className={""} value={"projects"}>
-                                Sort by project
-                            </option>
-                            <option className={""} value={"publications"} >
-                                Sort by publication
-                            </option>
-                            <option className={""} value={"IP"}>
-                                Sort by IP
-                            </option>
-                        </Form.Select>
-                    </div>
-                </button>
-            </div>
+            {cards !== "projects" && cards !== "publications" && cards !== "IP" &&
+                <div>
+                {Parameter.option === "area_expertise" && <TopSchoolsRow />}
+            </div>}
+            {Parameter.option !== "name" && Parameter.option !== "school" &&
+                <div className="button-container">
+                    <button className={"dropdown-button"}>
+
+                        <div className={"Searching"}>
+                            <Form.Select className={""} name={"Sort"} onChange={handleSortingOptionChange}>
+                                <option className={""} value={""}>
+                                    Sort By
+                                </option>
+                                <option className={""} value={"projects"}>
+                                    Sort by project
+                                </option>
+                                <option className={""} value={"publications"} >
+                                    Sort by publication
+                                </option>
+                                <option className={""} value={"IP"}>
+                                    Sort by IP
+                                </option>
+                            </Form.Select>
+                        </div>
+                    </button>
+                </div>}
 
             {/*Modal*/}
             <CustomModal
@@ -1186,10 +1234,10 @@ const Middle_Page = () => {
                             ) : (
                                 /* Default case: Render Cards */
                                 <>
+                                
                                     {Cards} {/* Render the Cards component */}
                                 </>
                             )}
-
                         </div> :
                     // If any error occurred, then show the error message.
                     <ErrorMessage Message={"Error in Fetching Data"} />
