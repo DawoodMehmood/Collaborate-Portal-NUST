@@ -237,6 +237,7 @@ const Middle_Page = () => {
     });
 
 
+
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
     const [DisplayPublications, setDisplayPublications] = useState([]);
 
@@ -380,34 +381,34 @@ const Middle_Page = () => {
     }
 
     //To fetch all Experts which are to be displayed in popup
-    async function displaySchoolFaculty() {
-        await fetch(`http://localhost:8000/api/schoolFaculty`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(
-                {
-                    "school": `${Parameter.school}`,
-                    "faculty": `${Parameter.search}`,
-                })
-        })
-            .then((response) => {
-                if (response.status === 200) {
-                    return response.json();
-                }
-                else {
-                    setSearchErrors(true);
-                }
-            })
-            .then((data) => {
-                separateProfiles(data)
-            })
-            .catch(() => {
-                changeLoading()
-            });
-    }
+    // async function displaySchoolFaculty() {
+    //     await fetch(`http://localhost:8000/api/schoolFaculty`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         },
+    //         body: JSON.stringify(
+    //             {
+    //                 "school": `${Parameter.school}`,
+    //                 "faculty": `${Parameter.search}`,
+    //             })
+    //     })
+    //         .then((response) => {
+    //             if (response.status === 200) {
+    //                 return response.json();
+    //             }
+    //             else {
+    //                 setSearchErrors(true);
+    //             }
+    //         })
+    //         .then((data) => {
+    //             separateProfiles(data)
+    //         })
+    //         .catch(() => {
+    //             changeLoading()
+    //         });
+    // }
 
     /*<<<<<<<<<<<<<<<<<<<--------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>*/
     // Different Objects to change state of Page
@@ -509,7 +510,9 @@ const Middle_Page = () => {
     async function changeLoading() {
         setLoading(false);
     }
+
     useEffect(() => {
+
 
         displayProjects();
         displayPublications();
@@ -718,6 +721,13 @@ const Middle_Page = () => {
 
         // To Fetch SchoolFaculty
         async function fetchSchoolFaculty() {
+            let school = Parameter.school;
+            if (school === "USPCASE") {
+                school = "USPCAS"
+            } else if (Parameter.school === "NBC-Quetta") {
+                school = "NBC"
+            }
+
             await fetch(`http://localhost:8000/api/schoolFaculty`, {
                 method: "POST",
                 headers: {
@@ -726,7 +736,7 @@ const Middle_Page = () => {
                 },
                 body: JSON.stringify(
                     {
-                        "school": `${Parameter.school}`,
+                        "school": `${school}`,
                         "faculty": `${Parameter.search}`,
                     })
             })
@@ -771,7 +781,7 @@ const Middle_Page = () => {
         //         fetchDiscipline().then(() => {});
         // }
         else if (Parameter.option === "school") { fetchSchoolFaculty().then(() => { }); }
-    }, [])
+    }, [Parameter])
 
     useEffect(() => {
         Profile.sort((a, b) => {
