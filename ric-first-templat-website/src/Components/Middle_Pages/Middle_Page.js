@@ -700,6 +700,7 @@ const Middle_Page = () => {
                     }
                 })
         }
+        
         // To Fetch Discipline
         async function fetchDiscipline() {
             await fetch(`http://localhost:8000/api/Discie`,

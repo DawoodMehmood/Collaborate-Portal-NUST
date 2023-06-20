@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import Modal from 'react-modal';
+import '../../CSS/Modal.css';
+
 
 // Add this line before rendering any modals
 Modal.setAppElement('#root');
 
 const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, DisplayProjects, DisplayIPs, islabsData, isindustryData }) => {
 
+
+    const closeModalwithicon = () => {
+        // setModalOpen(false);
+        closeModal();
+    }
 
 
     return (
@@ -15,9 +22,13 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Modal"
+                style={{ overflow: 'hidden' }}
             >
+
+                <i className="fa-solid fa-circle-xmark crossbuttonicon" onClick={closeModalwithicon}></i>
+
                 {modalData && (
-                    <div>
+                    <div className='modalData'>
                         {modalData === DisplayPublications && (
                             <div>
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Publications</h1>
@@ -109,18 +120,18 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Labs</h1>
                                 {modalData.map((lab) => (
                                     <Card key={lab.id} text="dark" style={{ width: '100%' }}>
-                                        <Card.Header style={{fontWeight:"bold"}}>{lab.title}</Card.Header>
+                                        <Card.Header style={{ fontWeight: "bold" }}>{lab.title}</Card.Header>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">
                                                 {lab.description && <p >{lab.description}</p>}
                                             </Card.Subtitle>
 
-                                            {lab.model && <p style={{fontWeight:"bold"}}>Model: {lab.model}</p>}
-                                            {lab.company && <p style={{fontWeight:"bold"}}>Company: {lab.company}</p>}
-                                            {lab.country && <p style={{fontWeight:"bold"}}>Country: {lab.country}</p>}
-                                            {lab.capacity && <p style={{fontWeight:"bold"}}>Capacity: {lab.capacity}</p>}
-                                            {lab.range && <p style={{fontWeight:"bold"}}>Range: {lab.range}</p>}
-                                            {lab.venue && <p style={{fontWeight:"bold"}}>Venue: {lab.venue}</p>}
+                                            {lab.model && <p style={{ fontWeight: "bold" }}>Model: {lab.model}</p>}
+                                            {lab.company && <p style={{ fontWeight: "bold" }}>Company: {lab.company}</p>}
+                                            {lab.country && <p style={{ fontWeight: "bold" }}>Country: {lab.country}</p>}
+                                            {lab.capacity && <p style={{ fontWeight: "bold" }}>Capacity: {lab.capacity}</p>}
+                                            {lab.range && <p style={{ fontWeight: "bold" }}>Range: {lab.range}</p>}
+                                            {lab.venue && <p style={{ fontWeight: "bold" }}>Venue: {lab.venue}</p>}
 
                                             {/* {lab.model && (
                                                 <p>
@@ -148,16 +159,16 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Industry</h1>
                                 {modalData.map((industry) => (
                                     <Card key={industry.id} text="dark" style={{ width: '100%' }}>
-                                        <Card.Header style={{fontWeight:"bold"}}>{industry.title}</Card.Header>
+                                        <Card.Header style={{ fontWeight: "bold" }}>{industry.title}</Card.Header>
                                         <Card.Body>
                                             {<img src={process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png"}></img>}
                                             {console.log(process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png")}
                                             <Card.Subtitle className="mb-2 text-muted">
-                                                {industry.description && <p style={{fontSize: "18px"}}>Description: {industry.description}</p>}
+                                                {industry.description && <p style={{ fontSize: "18px" }}>Description: {industry.description}</p>}
                                             </Card.Subtitle>
 
-                                            {industry.services && <p style={{fontWeight:"bold"}}>Services: {industry.services}</p>}
-                                            {industry.contact && <p style={{fontWeight:"bold"}}>Contact: {industry.contact}</p>}
+                                            {industry.services && <p style={{ fontWeight: "bold" }}>Services: {industry.services}</p>}
+                                            {industry.contact && <p style={{ fontWeight: "bold" }}>Contact: {industry.contact}</p>}
                                         </Card.Body>
                                     </Card>
                                 ))}

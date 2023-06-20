@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 body {
   margin: 0;
-  font-family: 'Popins', serif !important;
+  font-family: "Popins", serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(229, 228, 226, 0.3) !important;
@@ -9,16 +9,15 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
-.slick-prev{
+.slick-prev {
   left: 0.5% !important;
-
 }
-.slick-prev,.slick-next {
+.slick-prev,
+.slick-next {
   /*display: none !important;*/
   z-index: 1;
   width: 50px !important;
@@ -27,23 +26,45 @@ code {
 }
 .slick-next {
   right: 0.5% !important;
- }
+}
 .slick-arrow {
   background-color: lightgray !important;
 }
-.slick-arrow:hover{
-  background-color:  #6495ED !important;
+.slick-arrow:hover {
+  background-color: #6495ed !important;
 }
-.card{
+.card {
   width: 100%;
   height: max-content;
   color: gray !important;
   margin: 2% auto auto;
   padding-bottom: 20px;
 }
-.Card-slider .slick-next{
+.Card-slider .slick-next {
   display: none !important;
   /*z-index: -1 !important;*/
   right: unset !important;
   /*visibility: unset !important;*/
 }
+
+/* For Scrollbar  Design */
+/* For WebKit browsers (e.g., Chrome, Safari) */
+/* Note: This only applies to WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* For Scrollbar Design */
