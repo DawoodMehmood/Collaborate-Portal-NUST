@@ -12,6 +12,7 @@ import { Form } from "react-bootstrap";
 import CustomModal from "../Modal/Modal";
 
 const Middle_Page = () => {
+    const [sortedCardList, setSortedCardList] = useState([]);
     // Function to open a new window with the specified title.
 
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
@@ -206,15 +207,21 @@ const Middle_Page = () => {
     const handleSortingOptionChange = (event) => {
         const selectedOption = event.target.value;
         if (selectedOption === "projects") {
+            setSortedCardList(sortCards("Projects"));
+            setIsSorted(true);
             setCards("projects");
-        } else if (selectedOption === "publication") {
-            setCards("publications");
-            // Implement sorting logic based on publication
+        } else if (selectedOption === "publications") {
+            setSortedCardList(sortCards("Publications"));
+            setIsSorted(true);
+            setCards("publication");
         } else if (selectedOption === "IP") {
+            setSortedCardList(sortCards("IPs"));
+            setIsSorted(true);
             setCards("IP");
             // Implement sorting logic based on IP
         } else {
             // Handle default case or clear sorting
+            setIsSorted(false);
             setCards(Profile);
         }
 
@@ -256,6 +263,9 @@ const Middle_Page = () => {
     // const [sortingOption, setSortingOption] = useState("");
 
     const [cards, setCards] = useState([]);
+
+    // State that is used to check either show sorted card or full data of card in Profile variable
+    const [isSorted, setIsSorted] = useState(false);
 
 
     const [sortedCards2, setSortedCards2] = useState([]);
@@ -700,7 +710,7 @@ const Middle_Page = () => {
                     }
                 })
         }
-        
+
         // To Fetch Discipline
         async function fetchDiscipline() {
             await fetch(`http://localhost:8000/api/Discie`,
@@ -828,200 +838,211 @@ const Middle_Page = () => {
     //     }
     // });
     //Card to sort projects
-    const Cards1 = Profile.filter((profile) => {
-        const author = AuthorIDs.current[profile.Code];
-        const projectCount = author?.Projects;
-        schools = {}
-        return projectCount > 0;
-    }).map((profile, index) => {
-        return (
-            <>
-                <div className={"Card-Profile"} >
-                    <div className={"Card-Header"}>
-                        <div className={"Card-Image"}>
-                            <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
-                        </div>
-                        <div className={"Card-Button"}>
-                            <Button variant={"outline-primary"} onClick={() => {
-                                handleProfile(profile.Code, profile.Name);
-                            }}>Visit Profile</Button>
-                        </div>
-                    </div>
-                    <div className={"Card-Body"}>
-                        <div className={"Card-Title"}>
-                            <h2>{profile.Name}</h2>
-                        </div>
-                        <div className={"Card-Email"}>
-                            <h3>{profile.e_mail}</h3>
-                        </div>
-                        <div className={"Card-Text"}>
-                            <p>{profile.School}</p>
-                        </div>
-                        {Parameter.option === "name" || Parameter.option === "school" ? "" :
-                            <>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                        <span><i>Publications</i>: <h6
-                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-                                        style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
-                                </div>
-                            </>
-                        }
-                    </div>
-                </div>
-            </>
+    const sortCards = (x) => {
+        const sortedCards = Profile.filter((profile) => {
+            const author = AuthorIDs.current[profile.Code];
+            const projectCount = author?.[x];
+            schools = {}
+            return projectCount > 0;
+        }).sort((a, b) => {
+            const authorA = AuthorIDs.current[a.Code];
+            const authorB = AuthorIDs.current[b.Code];
+            const projectCountA = authorA?.[x];
+            const projectCountB = authorB?.[x];
 
-        )
-    })
-
-    //card to sort publications
-    const renderedCards2 = sortedCards2.map((profile, index) => {
-        return (
-            <>
-                <div className={"Card-Profile"}>
-                    <div className={"Card-Header"}>
-                        <div className={"Card-Image"}>
-                            <img
-                                src={
-                                    profile.Image_URL.trim() === ""
-                                        ? process.env.PUBLIC_URL +
-                                        "/Images/Profile Images/Profile_Vector.jpg"
-                                        : "data:image/png;base64," + atob(profile.Image_URL)
-                                }
-                                alt={"Avatar"}
-                            />
-                        </div>
-                        <div className={"Card-Button"}>
-                            <Button
-                                variant={"outline-primary"}
-                                onClick={() => {
+            // Sort in descending order
+            return projectCountB - projectCountA;
+        }).map((profile, index) => {
+            return (
+                <>
+                    <div className={"Card-Profile"} >
+                        <div className={"Card-Header"}>
+                            <div className={"Card-Image"}>
+                                <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+                            </div>
+                            <div className={"Card-Button"}>
+                                <Button variant={"outline-primary"} onClick={() => {
                                     handleProfile(profile.Code, profile.Name);
-                                }}
-                            >
-                                Visit Profile
-                            </Button>
+                                }}>Visit Profile</Button>
+                            </div>
                         </div>
-
-
-                    </div>
-                    <div className={"Card-Body"}>
-                        <div className={"Card-Title"}>
-                            <h2>{profile.Name}</h2>
-                        </div>
-                        <div className={"Card-Email"}>
-                            <h3>{profile.e_mail}</h3>
-                        </div>
-                        <div className={"Card-Text"}>
-                            <p>{profile.School}</p>
-                        </div>
-                        {Parameter.option === "name" || Parameter.option === "school" ? (
-                            ""
-                        ) : (
-                            <>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Publications === 0 ||
-                                        AuthorIDs.current[profile.Code].Publications === undefined ? (
-                                        ""
-                                    ) : (
-                                        <span>
-                                            <i>Publications</i>:{" "}
-                                            <h6
-                                                style={{ display: "inline" }}
-                                            >
-                                                {AuthorIDs.current[profile.Code].Publications}
-                                            </h6>
-                                        </span>
-                                    )}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Projects === 0 ||
-                                        AuthorIDs.current[profile.Code].Projects === undefined ? (
-                                        ""
-                                    ) : (
-                                        <span>
-                                            <i>Projects</i>:{" "}
-                                            <strong
-                                                style={{ display: "inline" }}
-                                            >
-                                                {AuthorIDs.current[profile.Code].Projects}
-                                            </strong>
-                                        </span>
-                                    )}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].IPs === 0 ||
-                                        AuthorIDs.current[profile.Code].IPs === undefined ? (
-                                        ""
-                                    ) : (
-                                        <span>
-                                            <i>IPs</i>:{" "}
-                                            <h6 style={{ display: "inline" }}>
-                                                {AuthorIDs.current[profile.Code].IPs}
-                                            </h6>
-                                        </span>
-                                    )}
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
-            </>
-        );
-    });
-
-
-    //card to sort IPs
-    const Cards3 = Profile.filter((profile) => {
-        const author = AuthorIDs.current[profile.Code];
-        const ipCount = author?.IPs;
-        return ipCount > 0;
-    }).map((profile, index) => {
-        return (
-            <>
-                <div className={"Card-Profile"} >
-                    <div className={"Card-Header"}>
-                        <div className={"Card-Image"}>
-                            <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
-                        </div>
-                        <div className={"Card-Button"}>
-                            <Button variant={"outline-primary"} onClick={() => {
-                                handleProfile(profile.Code, profile.Name);
-                            }}>Visit Profile</Button>
-                        </div>
-                    </div>
-                    <div className={"Card-Body"}>
-                        <div className={"Card-Title"}>
-                            <h2>{profile.Name}</h2>
-                        </div>
-                        <div className={"Card-Email"}>
-                            <h3>{profile.e_mail}</h3>
-                        </div>
-                        <div className={"Card-Text"}>
-                            <p>{profile.School}</p>
-                        </div>
-                        {Parameter.option === "name" || Parameter.option === "school" ? "" : <><div className={"Card-Text"}>
-                            {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                <span><i>Publications</i>: <h6
-                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
-                        </div>
-                            <div className={"Card-Text"}>
-                                {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                        <div className={"Card-Body"}>
+                            <div className={"Card-Title"}>
+                                <h2>{profile.Name}</h2>
+                            </div>
+                            <div className={"Card-Email"}>
+                                <h3>{profile.e_mail}</h3>
                             </div>
                             <div className={"Card-Text"}>
-                                {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
-                            </div></>}
+                                <p>{profile.School}</p>
+                            </div>
+                            {Parameter.option === "name" || Parameter.option === "school" ? "" :
+                                <>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+                                            <span><i>Publications</i>: <h6
+                                                style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
+                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                                    </div>
+                                </>
+                            }
+                        </div>
                     </div>
-                </div>
-            </>
-        );
-    });
+                </>
+
+            )
+        })
+        return sortedCards;
+    }
+
+    // //card to sort publications
+    // const renderedCards2 = sortedCards2.map((profile, index) => {
+    //     return (
+    //         <>
+    //             <div className={"Card-Profile"}>
+    //                 <div className={"Card-Header"}>
+    //                     <div className={"Card-Image"}>
+    //                         <img
+    //                             src={
+    //                                 profile.Image_URL.trim() === ""
+    //                                     ? process.env.PUBLIC_URL +
+    //                                     "/Images/Profile Images/Profile_Vector.jpg"
+    //                                     : "data:image/png;base64," + atob(profile.Image_URL)
+    //                             }
+    //                             alt={"Avatar"}
+    //                         />
+    //                     </div>
+    //                     <div className={"Card-Button"}>
+    //                         <Button
+    //                             variant={"outline-primary"}
+    //                             onClick={() => {
+    //                                 handleProfile(profile.Code, profile.Name);
+    //                             }}
+    //                         >
+    //                             Visit Profile
+    //                         </Button>
+    //                     </div>
+
+
+    //                 </div>
+    //                 <div className={"Card-Body"}>
+    //                     <div className={"Card-Title"}>
+    //                         <h2>{profile.Name}</h2>
+    //                     </div>
+    //                     <div className={"Card-Email"}>
+    //                         <h3>{profile.e_mail}</h3>
+    //                     </div>
+    //                     <div className={"Card-Text"}>
+    //                         <p>{profile.School}</p>
+    //                     </div>
+    //                     {Parameter.option === "name" || Parameter.option === "school" ? (
+    //                         ""
+    //                     ) : (
+    //                         <>
+    //                             <div className={"Card-Text"}>
+    //                                 {AuthorIDs.current[profile.Code].Publications === 0 ||
+    //                                     AuthorIDs.current[profile.Code].Publications === undefined ? (
+    //                                     ""
+    //                                 ) : (
+    //                                     <span>
+    //                                         <i>Publications</i>:{" "}
+    //                                         <h6
+    //                                             style={{ display: "inline" }}
+    //                                         >
+    //                                             {AuthorIDs.current[profile.Code].Publications}
+    //                                         </h6>
+    //                                     </span>
+    //                                 )}
+    //                             </div>
+    //                             <div className={"Card-Text"}>
+    //                                 {AuthorIDs.current[profile.Code].Projects === 0 ||
+    //                                     AuthorIDs.current[profile.Code].Projects === undefined ? (
+    //                                     ""
+    //                                 ) : (
+    //                                     <span>
+    //                                         <i>Projects</i>:{" "}
+    //                                         <strong
+    //                                             style={{ display: "inline" }}
+    //                                         >
+    //                                             {AuthorIDs.current[profile.Code].Projects}
+    //                                         </strong>
+    //                                     </span>
+    //                                 )}
+    //                             </div>
+    //                             <div className={"Card-Text"}>
+    //                                 {AuthorIDs.current[profile.Code].IPs === 0 ||
+    //                                     AuthorIDs.current[profile.Code].IPs === undefined ? (
+    //                                     ""
+    //                                 ) : (
+    //                                     <span>
+    //                                         <i>IPs</i>:{" "}
+    //                                         <h6 style={{ display: "inline" }}>
+    //                                             {AuthorIDs.current[profile.Code].IPs}
+    //                                         </h6>
+    //                                     </span>
+    //                                 )}
+    //                             </div>
+    //                         </>
+    //                     )}
+    //                 </div>
+    //             </div>
+    //         </>
+    //     );
+    // });
+
+
+    // //card to sort IPs
+    // const Cards3 = Profile.filter((profile) => {
+    //     const author = AuthorIDs.current[profile.Code];
+    //     const ipCount = author?.IPs;
+    //     return ipCount > 0;
+    // }).map((profile, index) => {
+    //     return (
+    //         <>
+    //             <div className={"Card-Profile"} >
+    //                 <div className={"Card-Header"}>
+    //                     <div className={"Card-Image"}>
+    //                         <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+    //                     </div>
+    //                     <div className={"Card-Button"}>
+    //                         <Button variant={"outline-primary"} onClick={() => {
+    //                             handleProfile(profile.Code, profile.Name);
+    //                         }}>Visit Profile</Button>
+    //                     </div>
+    //                 </div>
+    //                 <div className={"Card-Body"}>
+    //                     <div className={"Card-Title"}>
+    //                         <h2>{profile.Name}</h2>
+    //                     </div>
+    //                     <div className={"Card-Email"}>
+    //                         <h3>{profile.e_mail}</h3>
+    //                     </div>
+    //                     <div className={"Card-Text"}>
+    //                         <p>{profile.School}</p>
+    //                     </div>
+    //                     {Parameter.option === "name" || Parameter.option === "school" ? "" : <><div className={"Card-Text"}>
+    //                         {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+    //                             <span><i>Publications</i>: <h6
+    //                                 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+    //                     </div>
+    //                         <div className={"Card-Text"}>
+    //                             {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
+    //                                 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+    //                         </div>
+    //                         <div className={"Card-Text"}>
+    //                             {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+    //                         </div></>}
+    //                 </div>
+    //             </div>
+    //         </>
+    //     );
+    // });
 
 
     // Count the schools
@@ -1163,7 +1184,6 @@ const Middle_Page = () => {
 
                 </div>
             )}
-
             {cards !== "projects" && cards !== "publications" && cards !== "IP" &&
                 <div>
                     {Parameter.option === "area_expertise" && <TopSchoolsRow />}
@@ -1229,22 +1249,13 @@ const Middle_Page = () => {
                     // Else show the results.
                     Profile.length === 0 ? <ErrorMessage Message={"No Results Found"} /> :
                         <div className={"Search-Results"}>
-                            {cards === "projects" ? (
+                            {isSorted == true ? (
                                 <>
-                                    {Cards1} {/* Invoke the Cards1 function by adding parentheses */}
-                                </>
-                            ) : cards === "publications" ? (
-                                <>
-                                    {renderedCards2}
-                                </>
-                            ) : cards === "IP" ? (
-                                <>
-                                    {Cards3}
+                                    {sortedCardList} {/* Invoke the sortedCardList function by adding parentheses */}
                                 </>
                             ) : (
                                 /* Default case: Render Cards */
                                 <>
-
                                     {Cards} {/* Render the Cards component */}
                                 </>
                             )}
@@ -1253,7 +1264,7 @@ const Middle_Page = () => {
                     <ErrorMessage Message={"Error in Fetching Data"} />
             }
 
-        </div >
+        </div>
     );
 }
 
