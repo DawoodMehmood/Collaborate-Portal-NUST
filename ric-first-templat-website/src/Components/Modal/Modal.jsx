@@ -69,7 +69,8 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                                     <strong class={"strong-color"}>NUST</strong>
                                                     <br />
                                                     Project Status: {project.copi_ids[0]?.project_status !== undefined && project.copi_ids[0]?.project_status !== "" ? (
-                                                        <strong class={"strong-color"}>{`${project.copi_ids[0].project_status}`}</strong>
+                                                        <strong class={"strong-color"}>{`${project.copi_ids[0].project_status === "apprinprocess" ? "Approved / In-Progress" :
+                                                            project.copi_ids[0].project_status === "completd" ? "Completed" : project.copi_ids[0].project_status}`}</strong>
                                                     ) : (
                                                         project.copi_ids[0]?.project_status === "Approved / In-Progress" ? (
                                                             <strong class={"strong-color"}>Approved / In-Progress</strong>
