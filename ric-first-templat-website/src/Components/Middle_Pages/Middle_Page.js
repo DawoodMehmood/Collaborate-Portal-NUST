@@ -1195,7 +1195,7 @@ const Middle_Page = () => {
                         <div className={"Searching"}>
                             <Form.Select className={""} name={"Sort"} onChange={handleSortingOptionChange}>
                                 <option className={""} value={""}>
-                                    Sort By
+                                    Sort By Default
                                 </option>
                                 <option className={""} value={"projects"}>
                                     Sort by project
