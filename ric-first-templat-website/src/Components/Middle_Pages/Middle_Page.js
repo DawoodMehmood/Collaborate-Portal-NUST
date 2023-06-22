@@ -1191,7 +1191,6 @@ const Middle_Page = () => {
             {Parameter.option !== "name" && Parameter.option !== "school" &&
                 <div className="button-container">
                     <button className={"dropdown-button"}>
-
                         <div className={"Searching"}>
                             <Form.Select className={""} name={"Sort"} onChange={handleSortingOptionChange}>
                                 <option className={""} value={""}>
