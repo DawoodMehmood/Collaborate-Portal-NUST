@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Placeholder from "react-bootstrap/Placeholder";
 import { Form } from "react-bootstrap";
-
+import { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid } from "../../APIs/FacultyDatawithCms";
 import CustomModal from "../Modal/Modal";
 
 const Middle_Page = () => {
@@ -206,25 +206,48 @@ const Middle_Page = () => {
 
     const handleSortingOptionChange = (event) => {
         const selectedOption = event.target.value;
-        if (selectedOption === "projects") {
-            setSortedCardList(sortCards("Projects"));
-            setIsSorted(true);
-            setCards("projects");
-        } else if (selectedOption === "publications") {
-            setSortedCardList(sortCards("Publications"));
-            setIsSorted(true);
-            setCards("publication");
-        } else if (selectedOption === "IP") {
-            setSortedCardList(sortCards("IPs"));
-            setIsSorted(true);
-            setCards("IP");
-            // Implement sorting logic based on IP
-        } else {
-            // Handle default case or clear sorting
-            setIsSorted(false);
-            setCards(Profile);
+        if (params.option === "school") {
+            // sortCardsforschool
+            if (selectedOption === "projects") {
+                setSortedCardList(sortCardsforschool("no_of_projects"));
+                setIsSorted(true);
+                setCards("projects");
+            } else if (selectedOption === "publications") {
+                setSortedCardList(sortCardsforschool("no_of_publications"));
+                setIsSorted(true);
+                setCards("publication");
+            } else if (selectedOption === "IP") {
+                setSortedCardList(sortCardsforschool("no_of_IPs"));
+                setIsSorted(true);
+                setCards("IP");
+                // Implement sorting logic based on IP
+            } else {
+                // Handle default case or clear sorting
+                setIsSorted(false);
+                setCards(Profile);
+            }
         }
+        else {
 
+            if (selectedOption === "projects") {
+                setSortedCardList(sortCards("Projects"));
+                setIsSorted(true);
+                setCards("projects");
+            } else if (selectedOption === "publications") {
+                setSortedCardList(sortCards("Publications"));
+                setIsSorted(true);
+                setCards("publication");
+            } else if (selectedOption === "IP") {
+                setSortedCardList(sortCards("IPs"));
+                setIsSorted(true);
+                setCards("IP");
+                // Implement sorting logic based on IP
+            } else {
+                // Handle default case or clear sorting
+                setIsSorted(false);
+                setCards(Profile);
+            }
+        }
     };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
@@ -390,35 +413,7 @@ const Middle_Page = () => {
         }
     }
 
-    //To fetch all Experts which are to be displayed in popup
-    // async function displaySchoolFaculty() {
-    //     await fetch(`http://localhost:8000/api/schoolFaculty`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Accept": "application/json"
-    //         },
-    //         body: JSON.stringify(
-    //             {
-    //                 "school": `${Parameter.school}`,
-    //                 "faculty": `${Parameter.search}`,
-    //             })
-    //     })
-    //         .then((response) => {
-    //             if (response.status === 200) {
-    //                 return response.json();
-    //             }
-    //             else {
-    //                 setSearchErrors(true);
-    //             }
-    //         })
-    //         .then((data) => {
-    //             separateProfiles(data)
-    //         })
-    //         .catch(() => {
-    //             changeLoading()
-    //         });
-    // }
+
 
     /*<<<<<<<<<<<<<<<<<<<--------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>*/
     // Different Objects to change state of Page
@@ -429,7 +424,10 @@ const Middle_Page = () => {
             Name: "",
             e_mail: "",
             School: "",
-            Image_URL: ""
+            Image_URL: "",
+            no_of_publications: 0,
+            no_of_projects: 0,
+            no_of_IPs: 0,
         }
     }
 
@@ -477,6 +475,10 @@ const Middle_Page = () => {
             profile["School"] = data[j]["institute"];
             profile["Name"] = data[j]["name"];
             profile["Image_URL"] = data[j]["image_128"];
+            await fetchPublicationswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = data.length });
+            await fetchProjectswithid(data[j]["code"]).then((data) => { profile["no_of_projects"] = data.length });
+            await fetchIPwithid(data[j]["code"]).then((data) => { profile["no_of_IPs"] = data.length });
+
             ProfilesHolder.current.push(profile);
             UpdateProfileData(profile).then(() => {
                 UpdateExpertCounter().then();
@@ -806,13 +808,7 @@ const Middle_Page = () => {
             changeLoading().then(() => { });
         }
     }, [ProfileCounter])
-    // useEffect(() => {
-    //     Profile.sort((a, b) => {
-    //         const publicationsA = AuthorIDs.current[a.Code]?.Publications || 0;
-    //         const publicationsB = AuthorIDs.current[b.Code]?.Publications || 0;
-    //         return publicationsB - publicationsA;
-    //     });
-    // }, [Profile, AuthorIDs]);
+
 
     useEffect(() => {
         const sortedProfile = Profile.sort((a, b) => {
@@ -832,12 +828,86 @@ const Middle_Page = () => {
     const handleProfile = (cmsId, Name) => {
         window.open(`/profile/${Name}/${cmsId}`, "_blank");
     }
-    // Profile.forEach(profile => {
-    //     if (typeof profile.Publications !== 'number') {
-    //         console.log('Invalid Publications value:', profile.Publications);
-    //     }
-    // });
-    //Card to sort projects
+
+    // Sorting Card for School
+    const sortCardsforschool = (x) => {
+        const sortedCards = Profile.filter((profile) => {
+            const projectCount = profile?.[x];
+            schools = {}
+            return projectCount > 0;
+        }).sort((a, b) => {
+            const projectCountA = a?.[x];
+            const projectCountB = b?.[x];
+            // Sort in descending order
+            return projectCountB - projectCountA;
+        }).map((profile, index) => {
+            return (
+                <>
+                    <div className={"Card-Profile"} >
+                        <div className={"Card-Header"}>
+                            <div className={"Card-Image"}>
+                                <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+                            </div>
+                            <div className={"Card-Button"}>
+                                <Button variant={"outline-primary"} onClick={() => {
+                                    handleProfile(profile.Code, profile.Name);
+                                }}>Visit Profile</Button>
+                            </div>
+                        </div>
+                        <div className={"Card-Body"}>
+                            <div className={"Card-Title"}>
+                                <h2>{profile.Name}</h2>
+                            </div>
+                            <div className={"Card-Email"}>
+                                <h3>{profile.e_mail}</h3>
+                            </div>
+                            <div className={"Card-Text"}>
+                                <p>{profile.School}</p>
+                            </div>
+                            {Parameter.option === "name" ? "" :
+                                Parameter.option === "school" ?
+                                    <><div className={"Card-Text"}>
+                                        {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
+                                            <span><i>Publications</i>: <h6
+                                                style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
+                                        }
+                                    </div>
+                                        <div className={"Card-Text"}>
+                                            {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
+                                                <span><i>Projects</i>: <strong
+                                                    style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
+                                            }
+                                        </div>
+                                        <div className={"Card-Text"}>
+                                            {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
+                                                <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_IPs}</h6></span>
+                                            }
+                                        </div></>
+                                    :
+                                    <>
+                                        <div className={"Card-Text"}>
+                                            {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+                                                <span><i>Publications</i>: <h6
+                                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                                        </div>
+                                        <div className={"Card-Text"}>
+                                            {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
+                                                style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                                        </div>
+                                        <div className={"Card-Text"}>
+                                            {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                                        </div>
+                                    </>
+                            }
+                        </div>
+                    </div>
+                </>
+
+            )
+        })
+        return sortedCards;
+    }
+    // Sorting Card for Research Area
     const sortCards = (x) => {
         const sortedCards = Profile.filter((profile) => {
             const author = AuthorIDs.current[profile.Code];
@@ -901,148 +971,6 @@ const Middle_Page = () => {
         return sortedCards;
     }
 
-    // //card to sort publications
-    // const renderedCards2 = sortedCards2.map((profile, index) => {
-    //     return (
-    //         <>
-    //             <div className={"Card-Profile"}>
-    //                 <div className={"Card-Header"}>
-    //                     <div className={"Card-Image"}>
-    //                         <img
-    //                             src={
-    //                                 profile.Image_URL.trim() === ""
-    //                                     ? process.env.PUBLIC_URL +
-    //                                     "/Images/Profile Images/Profile_Vector.jpg"
-    //                                     : "data:image/png;base64," + atob(profile.Image_URL)
-    //                             }
-    //                             alt={"Avatar"}
-    //                         />
-    //                     </div>
-    //                     <div className={"Card-Button"}>
-    //                         <Button
-    //                             variant={"outline-primary"}
-    //                             onClick={() => {
-    //                                 handleProfile(profile.Code, profile.Name);
-    //                             }}
-    //                         >
-    //                             Visit Profile
-    //                         </Button>
-    //                     </div>
-
-
-    //                 </div>
-    //                 <div className={"Card-Body"}>
-    //                     <div className={"Card-Title"}>
-    //                         <h2>{profile.Name}</h2>
-    //                     </div>
-    //                     <div className={"Card-Email"}>
-    //                         <h3>{profile.e_mail}</h3>
-    //                     </div>
-    //                     <div className={"Card-Text"}>
-    //                         <p>{profile.School}</p>
-    //                     </div>
-    //                     {Parameter.option === "name" || Parameter.option === "school" ? (
-    //                         ""
-    //                     ) : (
-    //                         <>
-    //                             <div className={"Card-Text"}>
-    //                                 {AuthorIDs.current[profile.Code].Publications === 0 ||
-    //                                     AuthorIDs.current[profile.Code].Publications === undefined ? (
-    //                                     ""
-    //                                 ) : (
-    //                                     <span>
-    //                                         <i>Publications</i>:{" "}
-    //                                         <h6
-    //                                             style={{ display: "inline" }}
-    //                                         >
-    //                                             {AuthorIDs.current[profile.Code].Publications}
-    //                                         </h6>
-    //                                     </span>
-    //                                 )}
-    //                             </div>
-    //                             <div className={"Card-Text"}>
-    //                                 {AuthorIDs.current[profile.Code].Projects === 0 ||
-    //                                     AuthorIDs.current[profile.Code].Projects === undefined ? (
-    //                                     ""
-    //                                 ) : (
-    //                                     <span>
-    //                                         <i>Projects</i>:{" "}
-    //                                         <strong
-    //                                             style={{ display: "inline" }}
-    //                                         >
-    //                                             {AuthorIDs.current[profile.Code].Projects}
-    //                                         </strong>
-    //                                     </span>
-    //                                 )}
-    //                             </div>
-    //                             <div className={"Card-Text"}>
-    //                                 {AuthorIDs.current[profile.Code].IPs === 0 ||
-    //                                     AuthorIDs.current[profile.Code].IPs === undefined ? (
-    //                                     ""
-    //                                 ) : (
-    //                                     <span>
-    //                                         <i>IPs</i>:{" "}
-    //                                         <h6 style={{ display: "inline" }}>
-    //                                             {AuthorIDs.current[profile.Code].IPs}
-    //                                         </h6>
-    //                                     </span>
-    //                                 )}
-    //                             </div>
-    //                         </>
-    //                     )}
-    //                 </div>
-    //             </div>
-    //         </>
-    //     );
-    // });
-
-
-    // //card to sort IPs
-    // const Cards3 = Profile.filter((profile) => {
-    //     const author = AuthorIDs.current[profile.Code];
-    //     const ipCount = author?.IPs;
-    //     return ipCount > 0;
-    // }).map((profile, index) => {
-    //     return (
-    //         <>
-    //             <div className={"Card-Profile"} >
-    //                 <div className={"Card-Header"}>
-    //                     <div className={"Card-Image"}>
-    //                         <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
-    //                     </div>
-    //                     <div className={"Card-Button"}>
-    //                         <Button variant={"outline-primary"} onClick={() => {
-    //                             handleProfile(profile.Code, profile.Name);
-    //                         }}>Visit Profile</Button>
-    //                     </div>
-    //                 </div>
-    //                 <div className={"Card-Body"}>
-    //                     <div className={"Card-Title"}>
-    //                         <h2>{profile.Name}</h2>
-    //                     </div>
-    //                     <div className={"Card-Email"}>
-    //                         <h3>{profile.e_mail}</h3>
-    //                     </div>
-    //                     <div className={"Card-Text"}>
-    //                         <p>{profile.School}</p>
-    //                     </div>
-    //                     {Parameter.option === "name" || Parameter.option === "school" ? "" : <><div className={"Card-Text"}>
-    //                         {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-    //                             <span><i>Publications</i>: <h6
-    //                                 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
-    //                     </div>
-    //                         <div className={"Card-Text"}>
-    //                             {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-    //                                 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
-    //                         </div>
-    //                         <div className={"Card-Text"}>
-    //                             {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
-    //                         </div></>}
-    //                 </div>
-    //             </div>
-    //         </>
-    //     );
-    // });
 
 
     // Count the schools
@@ -1069,7 +997,7 @@ const Middle_Page = () => {
             ))}
         </div>
     );
-    // Sort the Cards array in decreasing order if cards === "publications"
+    // Cards data without sorting i.e default sorted
     const Cards = Profile.map((profile, index) => {
         return (
             <>
@@ -1094,18 +1022,40 @@ const Middle_Page = () => {
                         <div className={"Card-Text"}>
                             <p>{profile.School}</p>
                         </div>
-                        {Parameter.option === "name" || Parameter.option === "school" ? "" : <><div className={"Card-Text"}>
-                            {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                <span><i>Publications</i>: <h6
-                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
-                        </div>
-                            <div className={"Card-Text"}>
-                                {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
-                            </div>
-                            <div className={"Card-Text"}>
-                                {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
-                            </div></>}
+                        {Parameter.option === "name" ? "" :
+                            Parameter.option === "school" ?
+                                <><div className={"Card-Text"}>
+                                    {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
+                                        <span><i>Publications</i>: <h6
+                                            style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
+                                    }
+                                </div>
+                                    <div className={"Card-Text"}>
+                                        {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
+                                            <span><i>Projects</i>: <strong
+                                                style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
+                                        }
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
+                                            <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_IPs}</h6></span>
+                                        }
+                                    </div></>
+
+                                :
+
+                                <><div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+                                        <span><i>Publications</i>: <h6
+                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                                </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
+                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                                    </div></>}
                     </div>
                 </div>
             </>
@@ -1188,7 +1138,7 @@ const Middle_Page = () => {
                 <div>
                     {Parameter.option === "area_expertise" && <TopSchoolsRow />}
                 </div>}
-            {Parameter.option !== "name" && Parameter.option !== "school" &&
+            {Parameter.option !== "name" &&
                 <div className="button-container">
                     <button className={"dropdown-button"}>
                         <div className={"Searching"}>
@@ -1197,10 +1147,10 @@ const Middle_Page = () => {
                                     Sort By Default
                                 </option>
                                 <option className={""} value={"projects"}>
-                                    Sort by project
+                                    Sort by Project
                                 </option>
                                 <option className={""} value={"publications"} >
-                                    Sort by publication
+                                    Sort by Publication
                                 </option>
                                 <option className={""} value={"IP"}>
                                     Sort by IP

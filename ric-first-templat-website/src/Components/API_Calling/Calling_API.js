@@ -226,7 +226,7 @@ const Calling_API = () => {
         fetchPublications().then(() => {
             setPublications(All_Publications);
             setApiCallNo(prevState => prevState - 1)
-        });
+        }); 
         //--------------------------------------------------------------------------------------------------------------
         async function fetchProjects() {
             await fetch(`http://localhost:8000/api/Projects/${params.id}`)
