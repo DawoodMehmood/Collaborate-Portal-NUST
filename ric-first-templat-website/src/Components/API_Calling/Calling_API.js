@@ -226,7 +226,7 @@ const Calling_API = () => {
         fetchPublications().then(() => {
             setPublications(All_Publications);
             setApiCallNo(prevState => prevState - 1)
-        }); 
+        });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchProjects() {
             await fetch(`http://localhost:8000/api/Projects/${params.id}`)
@@ -234,7 +234,7 @@ const Calling_API = () => {
                     (data) => {
 
                         for (let j = 0; j < data.length; j++) {
-                            if (data[j]["project_status"].includes("Submitted") || data[j]["project_type"] === "Defence" || data[j]["application_sector"] === "Defence" || data[j]["project_status"].includes("Cancelled/Rejected")) {
+                            if (data[j]["project_status"].includes("Submitted") || data[j]["project_type"].includes("Defense") || data[j]["project_status"].includes("Cancelled/Rejected")) {
                                 continue;
                             }
                             let Each_Project_Data = getProjectObject();

@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Placeholder from "react-bootstrap/Placeholder";
 import { Form } from "react-bootstrap";
-import { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid } from "../../APIs/FacultyDatawithCms";
+import { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid, fetchConferenceswithid } from "../../APIs/FacultyDatawithCms";
 import CustomModal from "../Modal/Modal";
 
 const Middle_Page = () => {
@@ -476,6 +476,7 @@ const Middle_Page = () => {
             profile["Name"] = data[j]["name"];
             profile["Image_URL"] = data[j]["image_128"];
             await fetchPublicationswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = data.length });
+            await fetchConferenceswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = profile["no_of_publications"] + data.length });
             await fetchProjectswithid(data[j]["code"]).then((data) => { profile["no_of_projects"] = data.length });
             await fetchIPwithid(data[j]["code"]).then((data) => { profile["no_of_IPs"] = data.length });
 
