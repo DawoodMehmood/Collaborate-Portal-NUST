@@ -3900,8 +3900,10 @@ const New_Profile = ({ publications, projects, conferences, supervisions, editor
                                 <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faMapMarkerAlt} className={'font'} /><h3 className={"department"}>{profile[0].School}</h3></div>
                             </div>
                             <div className={window.innerWidth < 910 ? "row" : "fonts"}>
-                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faEnvelope} className={'font'} /><h3>{profile[0].e_mail}</h3></div>
-                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><h3> {profile[0].Work_Phone} </h3></div>
+                                <a className="emailMeButton" href={"mailto:" + profile[0].e_mail + "?cc=ddresearch@nust.edu.pk&subject=Hello%20from%20HTML&body=This%20is%20the%20body%20of%20the%20email."}>Send Email</a>
+
+                                {/* <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faEnvelope} className={'font'} /><h3>{profile[0].e_mail}</h3></div>
+                                <div style={{ fontSize: "1em" }} className="details col-sm"><FontAwesomeIcon icon={faPhoneFlip} className={'font'} /><h3> {profile[0].Work_Phone} </h3></div> */}
                             </div>
                         </div>
                     </div>
