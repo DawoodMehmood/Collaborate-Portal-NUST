@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import  background from "../../Background-Image/Final-Home.png";
 import  video from "../../Background-Video/NUST Campus.mp4";
+import slider_image from "../../Background-Video/Welcome slide.gif";
 // import YouTube from 'react-youtube';
 
 const slider = ()=> {
@@ -29,10 +30,22 @@ const slider = ()=> {
 
     return (
         <>
-            <div className="video-container">
+            <div>
+                <div className="row no-gutters">
+                    <div style={{padding: 0}} className="col-md-6 order-md-2">
+                        <img style={{width : "100%"}} src={slider_image} alt="NUST" className="img-fluid"/>
+                    </div>                
+                    <div style={{padding: 0}} className="col-md-6 order-md-1">
+                        <video  style={{width : "100%"}} autoPlay loop muted>
+                            <source src={video} type="video/mp4"/>
+                        </video>
+                    </div>
+                </div>  
+            </div>
+            {/* <div className="video-container">
                 <video autoPlay loop muted>
                     <source src={video} type="video/mp4"/>
-                </video>
+                </video> */}
             {/*    <div className={"slider-content"}>*/}
             {/*        <Slider {...settings}>*/}
             {/*            <div>*/}
@@ -246,7 +259,7 @@ const slider = ()=> {
             {/*    /!*</div>*!/*/}
             {/*</Slider>*/}
             {/*    </div>*/}
-            </div>
+            {/* </div> */}
         </>
     );
 }
