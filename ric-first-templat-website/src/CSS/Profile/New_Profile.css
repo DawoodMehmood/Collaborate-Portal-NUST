@@ -2,7 +2,7 @@
   display: block;
   margin: auto;
   margin-top: 20px;
-  height: 5%;
+  text-align: center;
   padding-top: 1%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
@@ -11,8 +11,8 @@
   color: white;
   border-bottom: 1px solid #000000;
   margin-bottom: 20px;
-  width: max-content;
-  padding: 10px;
+  width: 70%;
+  padding: 5px;
 }
 /* hover effect with size increase and gradient change */
 .emailMeButton:hover{

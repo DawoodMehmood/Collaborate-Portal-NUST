@@ -1,6 +1,9 @@
 /*
 Some Code is written in index.css for home slider, bring it here.
  */
+ body{
+    overflow-x: hidden;
+ }
 .Image-Header{
     margin-right: unset;
     width: 100%;
