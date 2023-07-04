@@ -479,7 +479,6 @@ const Middle_Page = () => {
             await fetchConferenceswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = profile["no_of_publications"] + data.length });
             await fetchProjectswithid(data[j]["code"]).then((data) => { profile["no_of_projects"] = data.length });
             await fetchIPwithid(data[j]["code"]).then((data) => { profile["no_of_IPs"] = data.length });
-
             ProfilesHolder.current.push(profile);
             UpdateProfileData(profile).then(() => {
                 UpdateExpertCounter().then();
@@ -798,14 +797,9 @@ const Middle_Page = () => {
     }, [Parameter])
 
     useEffect(() => {
-        Profile.sort((a, b) => {
-            if (a.Name < b.Name) return -1
-            if (a.Name > b.Name) return 1
-        })
-    }, [Profile])
-    useEffect(() => {
         if (ProfileCounter === 0) {
-            setProfile(ProfilesHolder.current.sort((a, b) => (a.Name > b.Name) ? 1 : -1));
+            ProfilesHolder.current.sort((a, b) => (b.no_of_publications - a.no_of_publications))
+            setProfile(ProfilesHolder.current);
             changeLoading().then(() => { });
         }
     }, [ProfileCounter])
