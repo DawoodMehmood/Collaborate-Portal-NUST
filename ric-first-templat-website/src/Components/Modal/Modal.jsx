@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import Modal from 'react-modal';
 import '../../CSS/Modal.css';
+import { useEffect } from 'react';
 
 
 // Add this line before rendering any modals
 Modal.setAppElement('#root');
 
-const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, DisplayProjects, DisplayIPs, islabsData, isindustryData }) => {
-
+const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, DisplayProjects, DisplayIPs, islabsData, isindustryData, dataToSend }) => {
 
     const closeModalwithicon = () => {
         // setModalOpen(false);
@@ -116,6 +116,90 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                             </div>
                         )}
 
+                        {modalData === "IP" && (
+                            <div>
+                                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Intellectual Property</h1>
+                                {dataToSend.map((displayIP, index) => (
+                                    <Card key={index} text="dark" style={{ width: '100%' }}>
+                                        <Card.Header>{(index + 1) + ". " + displayIP.title}</Card.Header>
+                                        <Card.Body>
+                                            <Card.Subtitle class="mb-2 text-muted">
+                                                Author: {displayIP.inventors === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.inventors} `}</strong>}
+                                                <br />
+                                                <strong class={"strong-color"}>NUST</strong>
+                                                <br />
+                                                Filing year: {displayIP.filing_year === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.filing_year} `}</strong>}  &nbsp; &nbsp; IP Type: {displayIP.ip_type === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.ip_type}`}</strong>}
+                                            </Card.Subtitle>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                            </div>
+                        )}
+
+                        {modalData === "projects" && (
+                            <div>
+                                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Projects</h1>
+                                {dataToSend
+                                    .filter(project => project.copi_ids[0]?.project_status !== "submitted") // Filter projects by project status
+                                    .map((project, index) => (
+                                        <Card key={project.id} text="dark" style={{ width: '100%' }}>
+                                            <Card.Header>{(index + 1) + ". " + project.title}</Card.Header>
+                                            <Card.Body>
+                                                <Card.Subtitle class="mb-2 text-muted">
+                                                    Author: {project.copi_ids[0]?.name !== undefined && project.copi_ids[0]?.name !== "" ? (
+                                                        <strong class={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>
+                                                    ) : (
+                                                        <strong class={"strong-color"}>0</strong>
+                                                    )}
+                                                    <br />
+                                                    <strong class={"strong-color"}>NUST</strong>
+                                                    <br />
+                                                    Project Status: {project.copi_ids[0]?.project_status !== undefined && project.copi_ids[0]?.project_status !== "" ? (
+                                                        <strong class={"strong-color"}>{`${project.copi_ids[0].project_status === "apprinprocess" ? "Approved / In-Progress" :
+                                                            project.copi_ids[0].project_status === "completd" ? "Completed" : project.copi_ids[0].project_status}`}</strong>
+                                                    ) : (
+                                                        project.copi_ids[0]?.project_status === "Approved / In-Progress" ? (
+                                                            <strong class={"strong-color"}>Approved / In-Progress</strong>
+                                                        ) : (
+                                                            <strong class={"strong-color"}>0</strong>
+                                                        )
+                                                    )}  &nbsp; &nbsp; Rs: {project.cost_in_pkr !== undefined && project.cost_in_pkr / 1000000 !== "" ? (
+                                                        <strong class={"strong-color"}>{`${project.cost_in_pkr / 1000000}M`}</strong>
+                                                    ) : (
+                                                        <strong class={"strong-color"}>0</strong>
+                                                    )}  &nbsp; &nbsp; Submission Date: {project.submission_date !== undefined && project.submission_date !== "" ? (
+                                                        <strong class={"strong-color"}>{`${project.submission_date}`}</strong>
+                                                    ) : (
+                                                        <strong class={"strong-color"}>0</strong>
+                                                    )}
+                                                </Card.Subtitle>
+                                            </Card.Body>
+                                        </Card>
+                                    ))}
+                            </div>
+                        )}
+
+                        {modalData === "publications" && (
+                            <div>
+                                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Publications</h1>
+                                {dataToSend.map((publication, index) => (
+                                    <Card key={publication.id} text="dark" style={{ width: '100%' }}>
+                                        <Card.Header>{(index + 1) + ". " + publication.title}</Card.Header>
+                                        <Card.Body>
+                                            <Card.Subtitle class="mb-2 text-muted">
+                                                All Authors: {publication.all_author_compute === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.all_author_compute} `}</strong>}
+                                                <br />
+                                                <i>{`${publication.journal_info}, `}</i>
+                                                <br />
+                                                Impact Factor: {publication.impact_factor === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.impact_factor} `}</strong>}  &nbsp; &nbsp; Citations: <strong class={"strong-color"}>0</strong>  &nbsp; &nbsp;  Quartiles: <strong class={"strong-color"}>1</strong>
+                                            </Card.Subtitle>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                            </div>
+                        )}
+
+
                         {modalData === islabsData && (
                             <div>
                                 <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Labs</h1>
@@ -163,7 +247,7 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                                         <Card.Header style={{ fontWeight: "bold" }}>{industry.title}</Card.Header>
                                         <Card.Body>
                                             {<img src={process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png"}></img>}
-                                            {console.log(process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png")}
+                                            {/* {console.log(process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png")} */}
                                             <Card.Subtitle className="mb-2 text-muted">
                                                 {industry.description && <p style={{ fontSize: "18px" }}>Description: {industry.description}</p>}
                                             </Card.Subtitle>

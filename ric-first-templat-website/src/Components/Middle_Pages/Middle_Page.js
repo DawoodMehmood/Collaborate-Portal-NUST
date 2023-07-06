@@ -16,6 +16,79 @@ const Middle_Page = () => {
     // Function to open a new window with the specified title.
 
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
+    /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
+    const [DisplayPublications, setDisplayPublications] = useState([]);
+
+    const [DisplayProjects, setDisplayProjects] = useState([]);
+
+    const [DisplayIPs, setDisplayIPs] = useState([]);
+
+    const [DisplaySchools, setDisplaySchools] = useState([]);
+
+    const [DisplayExperts, setDisplayExperts] = useState([]);
+
+    const [dataToSend, setdataToSend] = useState([])
+
+    
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalData, setModalData] = useState(null);
+
+
+    // const [sortingOption, setSortingOption] = useState("");
+
+    const [cards, setCards] = useState([]);
+
+    // State that is used to check either show sorted card or full data of card in Profile variable
+    const [isSorted, setIsSorted] = useState(false);
+
+
+    const [sortedCards2, setSortedCards2] = useState([]);
+
+    const [islabsData, setlabsData] = useState('');
+
+    const [isindustryData, setindustryData] = useState('');
+
+    /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
+
+    //State to indicate Error in fetching the data
+    const [searchErrors, setSearchErrors] = useState(false);
+
+    //State to monitor if any error occurred while doing search in "Research Area"
+    const [searchErrorsCounter, setSearchErrorsCounter] = useState(1);
+    // State to store all profiles retrieved from API
+    const [Profile, setProfile] = useState([]);
+
+    // To handle Loading Animation on Screen
+    const [loading, setLoading] = useState(true);
+
+    //To count total Publications
+    const [publications, setPublications] = useState(0);
+
+    //To count total Projects
+    const [projects, setProjects] = useState(0);
+
+    //To count total IPs
+    const [ips, setIps] = useState(0);
+
+    //To count total Experts Found
+    const [Experts, setExperts] = useState(0)
+
+    // State to monitor total number of Profiles being fetched till now, during Research Area search
+    const [ProfileCounter, setProfileCounter] = useState(Math.random() * 1000);
+
+    //To store Author CMS IDs
+    let AuthorIDs = useRef({});
+
+    // Storing Profiles in Temporary array for sorting out after retrieval
+    let ProfilesHolder = useRef([]);
+
+    // Showing the search word from the search bar
+    const location = useLocation();
+    const currentUrl = location.pathname;
+    const encodedWord = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
+    const searchWord = decodeURIComponent(encodedWord);
+    /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
     // Nanomaterials
     const labsData1 = [
@@ -153,6 +226,61 @@ const Middle_Page = () => {
         setIsModalOpen(true);
     };
 
+    const project_Publications_Ips_Faculty = (data, type) => {
+
+        // setdataToSend([]);
+        const datatosend = [];
+        if (type === "IP") {
+            for (let i = 0; i <= DisplayIPs.length; i++) {
+                if (DisplayIPs[i]?.initiator_cms_id === data) {
+                    datatosend.push(DisplayIPs[i]);
+                    continue;
+                }
+                for (let j = 0; j < DisplayIPs[i]?.inventor_ids?.length; j++) {
+                    if (DisplayIPs[i]?.inventor_ids?.co_author_faculty_staff_id?.includes(data)) {
+                        datatosend.push(DisplayIPs[i]);
+                    }
+                }
+            }
+            setdataToSend(datatosend);
+            setModalData("IP")
+        } else if (type === "publications") {
+            for (let i = 0; i <= DisplayPublications?.length; i++) {
+                for (let j = 0; j < DisplayPublications[i]?.author_ids?.length; j++) {
+                    if (DisplayPublications[i]?.author_ids[j]?.co_author_faculty_staff_id?.includes(data)
+                        || DisplayPublications[i]?.author_ids[j]?.combined_faculty_staff_id?.includes(data)
+                        || DisplayPublications[i]?.author_ids[j]?.faculty_student_author_compute?.includes(data)
+                    ) {
+                        datatosend.push(DisplayPublications[i]);
+                    }
+                }
+            }
+            setModalData("publications")
+            setdataToSend(datatosend);
+
+        } else if (type === "projects") {
+            for (let i = 0; i <= DisplayProjects.length; i++) {
+                for (let j = 0; j < DisplayProjects[i]?.copi_ids?.length; j++) {
+                    if (DisplayProjects[i]?.copi_ids[j]?.co_author_faculty_staff_id?.includes(data)) {
+                        datatosend.push(DisplayProjects[i]);
+                    }
+                }
+            }
+            setModalData("projects");
+            setdataToSend(datatosend);
+        }
+
+    };
+
+    useEffect(() => {
+        if (dataToSend.length > 0) {
+            setIsModalOpen(true);
+        }
+    }, [dataToSend])
+
+
+
+
     //function for data handling of labs and indurstry button (hard coded data)
     const handleModalClick = (keyword) => {
         // Set the modal data based on the keyword
@@ -251,6 +379,9 @@ const Middle_Page = () => {
     };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
+    const abc = () => {
+        console.log("Hello")
+    }
     //if anyone tries to change the length of keywords passed through URL, then move to Error Page
     const params = useParams();
     if (params.search.split(" ").length > 4 || params.search.length > 50) {
@@ -266,77 +397,6 @@ const Middle_Page = () => {
         school: params.school
     });
 
-
-
-    /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
-    const [DisplayPublications, setDisplayPublications] = useState([]);
-
-    const [DisplayProjects, setDisplayProjects] = useState([]);
-
-    const [DisplayIPs, setDisplayIPs] = useState([]);
-
-    const [DisplaySchools, setDisplaySchools] = useState([]);
-
-    const [DisplayExperts, setDisplayExperts] = useState([]);
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalData, setModalData] = useState(null);
-
-
-    // const [sortingOption, setSortingOption] = useState("");
-
-    const [cards, setCards] = useState([]);
-
-    // State that is used to check either show sorted card or full data of card in Profile variable
-    const [isSorted, setIsSorted] = useState(false);
-
-
-    const [sortedCards2, setSortedCards2] = useState([]);
-
-    const [islabsData, setlabsData] = useState('');
-
-    const [isindustryData, setindustryData] = useState('');
-
-    /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
-
-    //State to indicate Error in fetching the data
-    const [searchErrors, setSearchErrors] = useState(false);
-
-    //State to monitor if any error occurred while doing search in "Research Area"
-    const [searchErrorsCounter, setSearchErrorsCounter] = useState(1);
-    // State to store all profiles retrieved from API
-    const [Profile, setProfile] = useState([]);
-
-    // To handle Loading Animation on Screen
-    const [loading, setLoading] = useState(true);
-
-    //To count total Publications
-    const [publications, setPublications] = useState(0);
-
-    //To count total Projects
-    const [projects, setProjects] = useState(0);
-
-    //To count total IPs
-    const [ips, setIps] = useState(0);
-
-    //To count total Experts Found
-    const [Experts, setExperts] = useState(0)
-
-    // State to monitor total number of Profiles being fetched till now, during Research Area search
-    const [ProfileCounter, setProfileCounter] = useState(Math.random() * 1000);
-
-    //To store Author CMS IDs
-    let AuthorIDs = useRef({});
-
-    // Storing Profiles in Temporary array for sorting out after retrieval
-    let ProfilesHolder = useRef([]);
-
-    // Showing the search word from the search bar
-    const location = useLocation();
-    const currentUrl = location.pathname;
-    const encodedWord = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
-    const searchWord = decodeURIComponent(encodedWord);
-    /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
     //To fetch all publication which are to be displayed in popup
     async function displayPublications() {
@@ -479,6 +539,7 @@ const Middle_Page = () => {
             await fetchConferenceswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = profile["no_of_publications"] + data.length });
             await fetchProjectswithid(data[j]["code"]).then((data) => { profile["no_of_projects"] = data.length });
             await fetchIPwithid(data[j]["code"]).then((data) => { profile["no_of_IPs"] = data.length });
+
             ProfilesHolder.current.push(profile);
             UpdateProfileData(profile).then(() => {
                 UpdateExpertCounter().then();
@@ -797,9 +858,14 @@ const Middle_Page = () => {
     }, [Parameter])
 
     useEffect(() => {
+        Profile.sort((a, b) => {
+            if (a.Name < b.Name) return -1
+            if (a.Name > b.Name) return 1
+        })
+    }, [Profile])
+    useEffect(() => {
         if (ProfileCounter === 0) {
-            ProfilesHolder.current.sort((a, b) => (b.no_of_publications - a.no_of_publications))
-            setProfile(ProfilesHolder.current);
+            setProfile(ProfilesHolder.current.sort((a, b) => (a.Name > b.Name) ? 1 : -1));
             changeLoading().then(() => { });
         }
     }, [ProfileCounter])
@@ -863,34 +929,57 @@ const Middle_Page = () => {
                                 Parameter.option === "school" ?
                                     <><div className={"Card-Text"}>
                                         {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
-                                            <span><i>Publications</i>: <h6
-                                                style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                                <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
+                                            </button>
                                         }
                                     </div>
                                         <div className={"Card-Text"}>
                                             {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
-                                                <span><i>Projects</i>: <strong
-                                                    style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
+                                                <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+                                                    <span><i>Projects</i>: <strong style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
+                                                </button>
                                             }
                                         </div>
                                         <div className={"Card-Text"}>
                                             {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
-                                                <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_IPs}</h6></span>
+
+                                                <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+                                                    project_Publications_Ips_Faculty(profile.Code, "IP");
+                                                }}>
+                                                    <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
+                                                </button>
                                             }
                                         </div></>
                                     :
                                     <>
+
                                         <div className={"Card-Text"}>
                                             {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                                <span><i>Publications</i>: <h6
-                                                    style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                                                <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                                    <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
+                                                </button>
+                                            }
+                                        </div>
+
+                                        <div className={"Card-Text"}>
+                                            {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" :
+                                                <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+
+                                                    <span><i>Projects</i>: <strong style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
+                                                </button>
+                                            }
                                         </div>
                                         <div className={"Card-Text"}>
-                                            {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-                                                style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
-                                        </div>
-                                        <div className={"Card-Text"}>
-                                            {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                                            {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
+                                                ""
+                                            ) : (
+                                                <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+                                                    project_Publications_Ips_Faculty(profile.Code, "IP");
+                                                }}>
+                                                    <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
+                                                </button>
+                                            )}
                                         </div>
                                     </>
                             }
@@ -945,15 +1034,29 @@ const Middle_Page = () => {
                                 <>
                                     <div className={"Card-Text"}>
                                         {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                            <span><i>Publications</i>: <h6
-                                                style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                                <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
+                                            </button>
+                                        }
                                     </div>
                                     <div className={"Card-Text"}>
-                                        {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
+                                        {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" :
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+
+                                                <span><i>Projects</i>: <strong style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
+                                            </button>
+                                        }
                                     </div>
                                     <div className={"Card-Text"}>
-                                        {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
+                                        {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
+                                            ""
+                                        ) : (
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+                                                project_Publications_Ips_Faculty(profile.Code, "IP");
+                                            }}>
+                                                <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
+                                            </button>
+                                        )}
                                     </div>
                                 </>
                             }
@@ -996,7 +1099,7 @@ const Middle_Page = () => {
     const Cards = Profile.map((profile, index) => {
         return (
             <>
-                <div className={"Card-Profile"} >
+                <div className={"Card-Profile"}>
                     <div className={"Card-Header"}>
                         <div className={"Card-Image"}>
                             <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
@@ -1017,46 +1120,79 @@ const Middle_Page = () => {
                         <div className={"Card-Text"}>
                             <p>{profile.School}</p>
                         </div>
-                        {Parameter.option === "name" ? "" :
-                            Parameter.option === "school" ?
-                                <><div className={"Card-Text"}>
-                                    {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
-                                        <span><i>Publications</i>: <h6
-                                            style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
-                                    }
-                                </div>
-                                    <div className={"Card-Text"}>
-                                        {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
-                                            <span><i>Projects</i>: <strong
-                                                style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
-                                        }
-                                    </div>
-                                    <div className={"Card-Text"}>
-                                        {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
-                                            <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_IPs}</h6></span>
-                                        }
-                                    </div></>
 
-                                :
-
-                                <><div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                        <span><i>Publications</i>: <h6
-                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>}
+                        {Parameter.option === "name" ? (
+                            ""
+                        ) : Parameter.option === "school" ? (
+                            <>
+                                <div className={"Card-Text"}>
+                                    {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? (
+                                        ""
+                                    ) : (
+                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                            <span><i>Publications</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_publications}</h6></span>
+                                        </button>
+                                    )}
                                 </div>
-                                    <div className={"Card-Text"}>
-                                        {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" : <span><i>Projects</i>: <strong
-                                            style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>}
-                                    </div>
-                                    <div className={"Card-Text"}>
-                                        {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? "" : <span><i>IPs</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>}
-                                    </div></>}
+                                <div className={"Card-Text"}>
+                                    {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? (
+                                        ""
+                                    ) : (
+                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+                                            <span><i>Projects</i>: <strong style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_projects}</strong></span>
+                                        </button>
+                                    )}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? (
+                                        ""
+                                    ) : (
+                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "ips")}>
+                                            <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
+                                        </button>
+                                    )}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? (
+                                        ""
+                                    ) : (
+                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                            <span><i>Publications</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
+                                        </button>
+                                    )}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? (
+                                        ""
+                                    ) : (
+                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+                                            <span><i>Projects</i>: <strong style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
+                                        </button>
+                                    )}
+                                </div>
+                                <div className={"Card-Text"}>
+                                    {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
+                                        ""
+                                    ) : (
+                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+                                            project_Publications_Ips_Faculty(profile.Code, "IP");
+                                        }}>
+                                            <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
+                                        </button>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </>
+        );
+    });
 
-        )
-    })
+
     // const sortedCards = Cards.sort((a, b) => b.props.children[0].props.children[1].props.children.props.date - a.props.children[0].props.children[1].props.children.props.date);
 
 
@@ -1165,6 +1301,7 @@ const Middle_Page = () => {
                 DisplayIPs={DisplayIPs}
                 islabsData={islabsData}
                 isindustryData={isindustryData}
+                dataToSend={dataToSend}
             />
             {/*If the loading is true, then the loading animation is shown.*/}
             {loading ?
