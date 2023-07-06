@@ -227,7 +227,6 @@ const Middle_Page = () => {
     };
 
     const project_Publications_Ips_Faculty = (data, type) => {
-
         // setdataToSend([]);
         const datatosend = [];
         if (type === "IP") {
@@ -929,26 +928,17 @@ const Middle_Page = () => {
                                 Parameter.option === "school" ?
                                     <><div className={"Card-Text"}>
                                         {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
-                                            <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
                                                 <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
-                                            </button>
                                         }
                                     </div>
                                         <div className={"Card-Text"}>
                                             {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
-                                                <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
                                                     <span><i>Projects</i>: <strong style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
-                                                </button>
                                             }
                                         </div>
                                         <div className={"Card-Text"}>
                                             {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
-
-                                                <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
-                                                    project_Publications_Ips_Faculty(profile.Code, "IP");
-                                                }}>
                                                     <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
-                                                </button>
                                             }
                                         </div></>
                                     :

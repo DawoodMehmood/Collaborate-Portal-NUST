@@ -16,9 +16,9 @@ const Header = () =>{
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <a class="nav-link" href="https://research.nust.edu.pk/">About</a>
-                        </li>
+                        </li> */}
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact Us</a>
                         </li>
