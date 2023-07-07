@@ -22,8 +22,6 @@ const CustomModal = ({
     // setModalOpen(false);
     closeModal();
   };
-  console.log(modalData);
-
   return (
     <div>
       <Modal
@@ -128,7 +126,6 @@ const CustomModal = ({
                       text="dark"
                       style={{ width: "100%" }}
                     >
-                      {/* {console.log(project)} */}
                       <Card.Header>
                         {index + 1 + ". " + project.title}
                       </Card.Header>
@@ -768,7 +765,6 @@ const CustomModal = ({
                           }
                         ></img>
                       }
-                      {/* {console.log(process.env.PUBLIC_URL + "/Images/industry-images/" + industry.title + ".png")} */}
                       <Card.Subtitle className="mb-2 text-muted">
                         {industry.description && (
                           <p style={{ fontSize: "18px" }}>
