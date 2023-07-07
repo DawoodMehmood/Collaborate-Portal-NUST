@@ -32,10 +32,10 @@ const slider = ()=> {
         <>
             <div>
                 <div className="row no-gutters">
-                    <div style={{padding: 0}} className="col-md-6 order-md-2">
+                    <div style={{padding: 0}} className="col-md-6">
                         <img style={{width : "100%"}} src={slider_image} alt="NUST" className="img-fluid"/>
                     </div>                
-                    <div style={{padding: 0}} className="col-md-6 order-md-1">
+                    <div style={{padding: 0}} className="col-md-6">
                         <video  style={{width : "100%"}} autoPlay loop muted>
                             <source src={video} type="video/mp4"/>
                         </video>
