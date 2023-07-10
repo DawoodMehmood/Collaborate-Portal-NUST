@@ -331,9 +331,18 @@ const Middle_Page = () => {
         setIsModalOpen(true);
     };
 
-    const handleSortingOptionChange = (event) => {
+    const handleSortingOptionChange = (event,school) => {
         const selectedOption = event.target.value;
-        if (params.option === "school") {
+        if(school){
+            if(school === "remove"){
+                setIsSorted(false);
+                return;
+            }else{
+                setSortedCardList(filterTopSchools(school))
+                setIsSorted(true);
+            }    
+        }
+        else if (params.option === "school") {
             // sortCardsforschool
             if (selectedOption === "projects") {
                 setSortedCardList(sortCardsforschool("no_of_projects"));
@@ -1059,7 +1068,70 @@ const Middle_Page = () => {
         return sortedCards;
     }
 
-
+    // This method will filter the top schools
+    const filterTopSchools = (school) => {
+        const filteredCards = Profile.filter((profile) => {
+            return profile.School === school;
+        }).map((profile, index) => {
+            return (
+                <>
+                    <div className={"Card-Profile"} >
+                        <div className={"Card-Header"}>
+                            <div className={"Card-Image"}>
+                                <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+                            </div>
+                            <div className={"Card-Button"}>
+                                <Button variant={"outline-primary"} onClick={() => {
+                                    handleProfile(profile.Code, profile.Name);
+                                }}>Visit Profile</Button>
+                            </div>
+                        </div>
+                        <div className={"Card-Body"}>
+                            <div className={"Card-Title"}>
+                                <h2>{profile.Name}</h2>
+                            </div>  
+                            <div className={"Card-Email"}>
+                                <h3>{profile.e_mail}</h3>
+                            </div>
+                            <div className={"Card-Text"}>
+                                <p>{profile.School}</p>
+                            </div>
+                            {Parameter.option === "name" || Parameter.option === "school" ? "" :
+                                <>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                                <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
+                                            </button>
+                                        }
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" :
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+                                                <span><i>Projects</i>: <strong style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
+                                            </button>
+                                        }
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
+                                            ""
+                                        ) : (
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+                                                project_Publications_Ips_Faculty(profile.Code, "IP");
+                                            }}>
+                                                <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
+                                            </button>
+                                        )}
+                                    </div>
+                                </>
+                            }
+                        </div>
+                    </div>
+                </>
+            )
+        })
+        return filteredCards;
+    }
 
     // Count the schools
     const schoolCount = {};
@@ -1081,15 +1153,18 @@ const Middle_Page = () => {
     const TopSchoolsRow = () => (
         <div className="row">
             {topSchools.map((school) => (
-                <div className="col-md top-schools" key={school} style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
+                <div onClick={(event) => handleSortingOptionChange(event, school)} className="col-md top-schools" key={school} style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
             ))}
+            <div className="removesort" onClick={(event) => handleSortingOptionChange(event, "remove")}>
+                            <i className="fa-solid fa-house-user"></i>
+                        </div>
         </div>
     );
     // Cards data without sorting i.e default sorted
     const Cards = Profile.map((profile, index) => {
         return (
             <>
-                <div className={"Card-Profile"}>
+                <div className={"Card-Profile schoolcountcard"}>
                     <div className={"Card-Header"}>
                         <div className={"Card-Image"}>
                             <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />

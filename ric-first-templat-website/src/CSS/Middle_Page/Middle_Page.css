@@ -1,3 +1,14 @@
+.removesort {
+    font-size: 30px;
+    color: #6a0dad;
+    margin: 10px;
+  }
+  .removesort:hover {
+    color: #9661ca;
+    cursor: pointer;
+  }
+  
+
 .middle-page {
     background-color: #f5f5f5;
     padding: 0 0 50px 0;
@@ -10,13 +21,18 @@
 .top-schools{
     border-radius: 5px;
     padding: 0.3% 50px;
-    background-color: #FFFFFF;
     font-size: 1.1em;
     border: 1px solid #e1e4e8;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
     margin: 10px;
     cursor: pointer;
     margin-bottom: 0;
+}
+.top-schools:hover{
+        /* adding the hover effect on school cards */
+        transform: scale(1.01);
+        transition: transform 0.05s ease-in-out;
+        box-shadow: 0 1px 3px rgba(0, 0, 0.5, 0.5);    
 }
 
 .Search-Results {
