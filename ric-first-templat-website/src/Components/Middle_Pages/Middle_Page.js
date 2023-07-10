@@ -1155,9 +1155,9 @@ const Middle_Page = () => {
             {topSchools.map((school) => (
                 <div onClick={(event) => handleSortingOptionChange(event, school)} className="col-md top-schools" key={school} style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
             ))}
-            <div className="removesort" onClick={(event) => handleSortingOptionChange(event, "remove")}>
+            {topSchools?.length > 0 && <div className="removesort" onClick={(event) => handleSortingOptionChange(event, "remove")}>
                             <i className="fa-solid fa-house-user"></i>
-                        </div>
+                        </div>}
         </div>
     );
     // Cards data without sorting i.e default sorted
