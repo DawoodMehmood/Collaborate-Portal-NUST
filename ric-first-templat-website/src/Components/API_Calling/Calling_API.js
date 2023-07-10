@@ -297,6 +297,9 @@ const Calling_API = () => {
                     (data) => {
 
                         for (let j = 0; j < data.length; j++) {
+                            if(data?.supervisor_ids?.ssr_rs_super_type === "GEC"){
+                                continue;
+                            }
                             const supervision = getSupervisionsObject();
                             supervision["Title"] = data[j]["thesis_title"];
                             supervision["StudentName"] = data[j]["student_id"].split("-")[1].trim();
