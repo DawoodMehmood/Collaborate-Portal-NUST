@@ -201,6 +201,7 @@ const Calling_API = () => {
                             const Each_Publication_Data = getPublicationObject();
                             Each_Publication_Data['Title'] = data[j]["title"];
                             Each_Publication_Data['Affiliation'] = data[j]["affiliation"];
+                            Each_Publication_Data['sdgs'] = data[j]["sdgs"];
                             Each_Publication_Data['Category'] = data[j]["category"];
                             Each_Publication_Data['Indexation'] = data[j]["indexation"];
                             Each_Publication_Data['Journal_Title'] = data[j]["journal_title"];

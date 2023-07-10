@@ -33,5 +33,40 @@
             }
         ],
         "tests": []
+    },
+    {
+        "_id": "f2e41d73-7c70-4347-a80a-e4b8f2950f85",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&author_cmsid=00000147856",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&author_cmsid=00000147856",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-10T08:41:58.800Z",
+        "modified": "2023-07-10T08:41:58.800Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_journal_pub",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "fc22151322bfdd2c3f0626798c9198bc",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "1000",
+                "isPath": false
+            },
+            {
+                "name": "author_cmsid",
+                "value": "00000147856",
+                "isPath": false
+            }
+        ],
+        "tests": []
     }
 ]
