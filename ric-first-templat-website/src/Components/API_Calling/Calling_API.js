@@ -296,21 +296,23 @@ const Calling_API = () => {
             await fetch(`http://localhost:8000/api/supervision/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
-
-                        for (let j = 0; j < data.length; j++) {
-                            if(data?.supervisor_ids?.ssr_rs_super_type === "GEC"){
-                                continue;
-                            }
-                            const supervision = getSupervisionsObject();
-                            supervision["Title"] = data[j]["thesis_title"];
-                            supervision["StudentName"] = data[j]["student_id"].split("-")[1].trim();
-                            supervision["School"] = data[j]["student_institute"];
-                            supervision["Degree"] = data[j]["student_acad_career"];
-                            supervision["Program"] = data[j]["student_acad_program"];
-                            supervision["Date"] = data[j]["effdt"];
-                            setSupervisions((prev) => [...prev, supervision]);
-                            // All_Supervisions.push(supervision);
-                        }
+                        data.map((item) => {
+                            item?.supervisor_ids?.map((supervisor) => {
+                                if (supervisor?.faculty_staff_id.includes(params.id)){
+                                    if(supervisor?.ssr_rs_super_type !== "GEC"){
+                                        const supervision = getSupervisionsObject();
+                                        supervision["Title"] = item["thesis_title"];
+                                        supervision["StudentName"] = item["student_id"].split("-")[1].trim();
+                                        supervision["School"] = item["student_institute"];
+                                        supervision["Degree"] = item["student_acad_career"];
+                                        supervision["Program"] = item["student_acad_program"];
+                                        supervision["Date"] = item["effdt"];
+                                        setSupervisions((prev) => [...prev, supervision]);
+                                        // All_Supervisions.push(supervision);
+                                    }
+                                }
+                            })
+                        })
                     }
                 );
         }
