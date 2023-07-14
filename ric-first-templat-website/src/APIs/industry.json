@@ -1,0 +1,764 @@
+[
+ {
+  "id": 1,
+  "name": "TAI",
+  "Type": "SMEs",
+  "Sector": "Def",
+  "description": "The centre of technology in design, development, manufacturing and integration of aerospace systems, modernisation and after sales support in Turkey."
+ },
+ {
+  "id": 2,
+  "name": "LearnOBots",
+  "Type": "SMEs",
+  "Sector": "Edu",
+  "description": "Promotes STEAM education through Robotics Workshops and Learning Kits. It provides functional and affordable robots that can assist in teaching, learning and research, including 3D printed mobile robots, quad copters and humanoids."
+ },
+ {
+  "id": 3,
+  "name": "JHPEIGO",
+  "Type": "SMEs",
+  "Sector": "Health",
+  "description": "An international non-profit health organisation affiliated with Johns Hopkins University, Maryland, USA, catering to areas of Cervical and Breast Cancer, Family Planning and Reproductive Health, and Health Systems Strengthening in Pakistan."
+ },
+ {
+  "id": 4,
+  "name": "PenDC",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "PenDC a Turkish Data Center Services Company has been providing server rental, server maintenance and virtual server services. PenDC has built its own data center as of 2021 and set out with the guarantee of offering the most appropriate solutions to its customers at the most affordable costs. PenDC's R&D center at NSTP provides technical support for cyber security and products development for its data centers."
+ },
+ {
+  "id": 5,
+  "name": "Rapidev",
+  "Type": "SMEs",
+  "Sector": "Def",
+  "description": "Delivers cutting-edge technology software and telecom solutions based on clients' key business requirements; working presently on extensive R&D in telecommunication-related projects in the fields of Wireless Communication, Mobile Communication, Cellular Security, Surveillance, Voice Over IP and Power Systems."
+ },
+ {
+  "id": 6,
+  "name": "Hitachi",
+  "Type": "SMEs",
+  "Sector": "En",
+  "description": " Hitach Power grid workig on KASA project 1GW transmission line "
+ },
+ {
+  "id": 7,
+  "name": "ABB",
+  "Type": "SMEs",
+  "Sector": "En",
+  "description": "A Swiss-Swedish multinational corporation headquartered in Zurich, Switzerland, operating mainly in Robotics, Power, Heavy Electrical Equipment, and Automation Technology areas. ABB has been a Fortune Global 500 company for 24 years and was ranked 341st in the list of 2018."
+ },
+ {
+  "id": 8,
+  "name": "Hytera",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "A privately-run company headquartered in Shenzhen, China, is a global leading PMfR solution provider, dedicated to providing customised and complete professional communications solutions to government and public security, utility, transportation, enterprise & business to improve organisational efficiency and make the world safer.\nFocused on innovation, Hytera R&D investment accounts for 17% of its total revenue (2017) and 41% of its staff is R&D personnel. Hytera has established 10 R&D centres inside and outside China, including Shenzhen, Harbin, Nanjing, Hebi, Dongguan Songshan Lake, Bart Meade Germany, Cambridge UK, Zaragoza Spain, Vancouver Canada, and Toronto, with one more being established in Pakistan."
+ },
+ {
+  "id": 9,
+  "name": "Intelligent Learning Machines (ILM)",
+  "Type": "SMEs",
+  "Sector": "Auto",
+  "description": "ILM is currently incubated at Cube8 and working on development of High Voltage Battery Pack management system for Automobiles. Currently have gained business from US Automobile Industry for development of prototypes for autonomous system. Opportunity to bring embedded automotive technologies business in Pakistan. Strongly recommended for office space under SME Category to establish their lab."
+ },
+ {
+  "id": 10,
+  "name": "Vyro.ai",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "Vyro.ai is a mobile technology company specialising in deep learning-related products. Our goal is to move forward mobile photography to the next level using neural networks, deep learning and computer vision techniques. We aim to create new ways for people to express their emotions through the camera."
+ },
+ {
+  "id": 11,
+  "name": "Orbit",
+  "Type": "SMEs",
+  "Sector": "Edu",
+  "description": "A software development company, with their flagship product Orbit as an augmented reality-based educational application. Orbit presents 3D visualisations of the concepts taught to students in the real world."
+ },
+ {
+  "id": 12,
+  "name": "Artiares",
+  "Type": "SMEs",
+  "Sector": "Health",
+  "description": "Design, develop and market clinically backed robotics and AI solutions for exercise and rehabilitation of ageing population. Articares is a leader in innovative technologies that facilitate personalised rehabilitation."
+ },
+ {
+  "id": 13,
+  "name": "Software Productivity Strategists, Inc.",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "Software Productivity Strategists, Inc. (SPS) builds industry solutions leveraging AI and Cloud. As an enterprise-class innovator and solution creator with expertise across all phases of product design, development, deployment, security, operations, monitoring, and support"
+ },
+ {
+  "id": 14,
+  "name": "Hato Pakistan",
+  "Type": "SMEs",
+  "Sector": "Agri",
+  "description": "HATO creates innovative lighting solutions for the agricultural sector since 1974. lighting plays a key role in responsible and profitable farming.it fulfills the needs of both animal and farmer. Animal well-being and performances are improved, whilst the farmer’s life is made easier and costs are reduced."
+ },
+ {
+  "id": 15,
+  "name": "mimAR",
+  "Type": "SMEs",
+  "Sector": "Smart"
+ },
+ {
+  "id": 16,
+  "name": "SWAM Tech",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "SWAM Tech specializes in design and development of mobile applications and augmented reality based solutions.\nCheMystic is one of their product which is a mobile application designed for the students, especially in elementary school, to have better understanding of atoms, reactions on molecular level, electron revolution, electron shape and the interaction of of particles during experiment."
+ },
+ {
+  "id": 17,
+  "name": "CrewMate",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Well versed and skilled team of entrepreneurs (SEECS Grads 2018). Developing platform like remotebase. Team has already tested and validated their hypothesis through sizeable transactions. "
+ },
+ {
+  "id": 18,
+  "name": "TeleRelation",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " A company founded by NUST graduates provides solutions for Data Analytics, ERP and Financial Analytics "
+ },
+ {
+  "id": 19,
+  "name": "APIMatic",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "A developer experience platform for Web APIs. It allows automatic generation of SDKs, Code Samples, Test Cases and a lot more to make adoption rates for their APIs soar."
+ },
+ {
+  "id": 20,
+  "name": "Veeve Inc",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Veeve through Smart Shopping Cart delivers the most convenient shopping experience with the Veeve Intelligent Cart, giving customers the freedom to skip the line and simply scan, pay and go. "
+ },
+ {
+  "id": 21,
+  "name": "Tufail Group",
+  "Type": "SMEs",
+  "Sector": "Agri",
+  "description": "R&D office of Pakistan's leading chemical Industry Tufail Chemical Industries Limited prominent manufacturer of industrial chemicals in Pakistan and is involved in fulfilling the needs of diversified industrial chemicals, with quality and responsibility."
+ },
+ {
+  "id": 22,
+  "name": "PlusW",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Pak-Japan centre to facilitate in creating and enhancing knowledge about Japan and Japanese culture in Pakistan and offer job and tranining opertunities to NUST students in Japanes Market "
+ },
+ {
+  "id": 23,
+  "name": "ByteEvo",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Developing precision softwares for Cardio Fitness Equipment. "
+ },
+ {
+  "id": 24,
+  "name": "Hitit",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " A Turkish based Leading Airline IT Solutions Provider that has been in airline IT business for more than 25 years. Hitit provides solution to all travel industry players who are in need of change "
+ },
+ {
+  "id": 25,
+  "name": "AlfaBOlt",
+  "Type": "SMEs",
+  "Sector": "Fin",
+  "description": " NLP, matching algorithms, using in app behaviour to gauge personality, sentiment analysis "
+ },
+ {
+  "id": 26,
+  "name": "AKBL",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " R&D lab of Askari Bank for development of Fin Tech Applications for easy banking "
+ },
+ {
+  "id": 27,
+  "name": "AFMobi",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Chines Smart Tech company "
+ },
+ {
+  "id": 28,
+  "name": "Evamp & Saanga",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "Provides solution in Telecom and Mobile applications development. work with both server-based applications and client-based applications and have developed products that are running live at some of the largest Telecom operators in the world running mission-critical systems. Evamp & Saanga is also a pioneer within the Voice technology and IVR systems within Pakistan, running some of the largest deployments of IVR systems."
+ },
+ {
+  "id": 29,
+  "name": "Chemonics",
+  "Type": "SMEs",
+  "Sector": "Health",
+  "description": "Chemonics International, Inc. is a private international development firm based in Washington, D.C.  The company offers a variety of services globally and with more than $1.5 billion in USAID contracts in 2019 is the largest for-profit recipient of U.S. government foreign aid. As of 2019 the company has approximately 5,000 employees in 100 countries."
+ },
+ {
+  "id": 30,
+  "name": "Fides",
+  "Type": "SMEs",
+  "Sector": "Edu",
+  "description": "A global software development company leveraging analytics, mobility & digital to infuse agility, enhance operational efficiency & accelerate business outcomes."
+ },
+ {
+  "id": 31,
+  "name": "12th Analytics",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "Company has developed a product called Lense which analysis market research data for FMCGs which in then allows them to adopt to competing marketing strategy (customers behavior, pricing of goods etc.). Team has expert experience is good addition to NSTP for business analytics"
+ },
+ {
+  "id": 32,
+  "name": "ABCData",
+  "Type": "SMEs",
+  "Sector": "Fin",
+  "description": "Has expertise in the data management industry, offering high quality Big Data solutions to help clients achieve strategic objectives and maximise their competitive advantage. It delivers technology solutions that leverage data to enable business insights. Sarmaya an app developed by the company for stock industry"
+ },
+ {
+  "id": 33,
+  "name": "Cognitive Health",
+  "Type": "SMEs",
+  "Sector": "Health",
+  "description": "Cognitive Healthcare International (CHI) is mainly a healthcare provider that has utilized latest advances in information technology to enable remote patient monitoring, care and diagnostics. CHI began 4 years ago in 2016 with the idea of using technology to offer unmatched healthcare, breaking barriers of physical availability to provide real-time intervention to chronic and acute care issues from the comfort of one’s home."
+ },
+ {
+  "id": 34,
+  "name": "EEE Consultancy",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Civil Engineering and design consultancy firm "
+ },
+ {
+  "id": 35,
+  "name": "Sarmaya Financials",
+  "Type": "SMEs",
+  "Sector": "Fin",
+  "description": "2x Products, Main one is Gun Ctrl and Tracking device. Metaverse Blockchaing"
+ },
+ {
+  "id": 36,
+  "name": "Avionics Solution",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " Aircraft and Helicopter Upgrades, New Systems integration on legacy air platforms "
+ },
+ {
+  "id": 37,
+  "name": "Xylexa",
+  "Type": "SMEs",
+  "Sector": "Fin",
+  "description": "Xylexa provides diagnostic services to caregivers using AI and Image Processing techniques. Their platform serves as a decision support system for radiologists by providing medical image diagnosis and disease. In parallel to this, they are also involved in R&D for timely diagnosis of cancer."
+ },
+ {
+  "id": 38,
+  "name": "AMT",
+  "Type": "SMEs",
+  "Sector": "En",
+  "description": "Their aim and target is to build an IOT Platform and IOT Gateway where they can provide a system integrator to integrate or connect any type of device used in the different industries like Power Generation and distribution Plants, Energy Management, Smart Home\/Buildings, Industry 4.0\/Smart Factory. This Platform will be totally customize-able to other businesses\/SI. This idea will bring easiness to different mentioned industries in monitoring, controlling and analyzing their data"
+ },
+ {
+  "id": 39,
+  "name": "Optimyze Tech",
+  "Type": "SMEs",
+  "Sector": "Agri",
+  "description": " Interactive with a focus on real-time web and mobile applications "
+ },
+ {
+  "id": 40,
+  "name": "RapidSilicon",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": " R&D lab for designing FPGAs "
+ },
+ {
+  "id": 41,
+  "name": "Services Symphony",
+  "Type": "SMEs",
+  "Sector": "Fin",
+  "description": " Multi currency Payment Processing; Cloud computing ; Enterprise software development practices; Security Cameras and IOT "
+ },
+ {
+  "id": 42,
+  "name": "Birdy Ventures",
+  "Type": "SMEs",
+  "Sector": "Def",
+  "description": " Japanes based tech company doing research in Agri Tech "
+ },
+ {
+  "id": 43,
+  "name": "Owlsense",
+  "Type": "SMEs",
+  "Sector": "S",
+  "description": "A cutting-edge OSINT solution, an all in one intelligence monitoring system, to help uncovering online intelligence quickly and efficiently and turn the retrieved information into actionable intelligence by automatic analysis and processing."
+ },
+ {
+  "id": 44,
+  "name": "PriceOye",
+  "Type": "SMEs",
+  "Sector": "S",
+  "description": "retrieved information into actionable intelligence by automatic analysis and processing."
+ },
+ {
+  "id": 45,
+  "name": "Horizon Tech",
+  "Type": "SMEs",
+  "Sector": "Def",
+  "description": "Areas of R&D Embedded systems, FPGA, Information Security, Android Development, iOS Development and Network Security."
+ },
+ {
+  "id": 46,
+  "name": "Aarsol",
+  "Type": "SMEs",
+  "Sector": "S",
+  "description": "A company providing Education Management Systems, Enterprise Resource Planning Solutions and  Custom Software Developments"
+ },
+ {
+  "id": 47,
+  "name": "Zaytrics",
+  "Type": "SMEs",
+  "Sector": "Def",
+  "description": "Zaytrics is developing unique AI, Data Science & Blockchain Solutions. Trader Base uses the cryptocurrency data to guide the user in making trades. Chappie assists agent in calling on different marketing campaigns. OMNIS-BIT is a unique freelancer blockchain solution both on ETEHREUM and TRON blockchain."
+ },
+ {
+  "id": 48,
+  "name": "Block360",
+  "Type": "SMEs",
+  "Sector": "Fin",
+  "description": "Block360 is a fintech startup of choice for FinTech projects Global Stability Union, DES Coin, DES Exchange, Meritt and GSUExchange. They have developed cryptocurrencies using specialised blockchain platforms such as Ethereum and Quorum.\n"
+ },
+ {
+  "id": 49,
+  "name": "mimAR",
+  "Type": "SMEs",
+  "Sector": "Smart",
+  "description": "mimAR uses AR and VR technology to help conceptualise a building before its construction. It offers user-friendly interface and interactive features including Realistic 3D Views, Animations & Adverts, 360° Experience and 3D on Blueprint."
+ },
+ {
+  "id": 50,
+  "name": "Stocks Telegraph",
+  "Type": "Startup",
+  "Sector": "FinTech",
+  "description": "Stocks Telegraph helps investors and key players of Wall Street make better decisions. They do this by providing information through artificial intelligence for financial writers, traders and other key stake holders of US Financial Markets. Their AI based tool compiles information and provides financial analysis within seconds. Their products include: Daily Morning Brief, Writers Portal, Stocks Analysis Through AI and Stock Screener."
+ },
+ {
+  "id": 51,
+  "name": "Chattha Bio Care (CBC)",
+  "Type": "Startup",
+  "Sector": "AgriTech",
+  "description": "Chattha Bio Care is focusing on local nitrogen-fixing & phosphorous-solubalising bacteria and preparation of the inoculants that help improve growth of food and vegetable crops. Currently, CBC has five products in the market and the company is conducting research in other areas such as skin grafting."
+ },
+ {
+  "id": 52,
+  "name": "KytherTek",
+  "Type": "Startup",
+  "Sector": "EnergyTech",
+  "description": "KytherTek leverages AI and IoT capabilities to develop solutions that use real time data to make smart decisions for consumer and industrial markets. The startup has developed an IoT based Smart Geyser Controller with self ignition, mobile app for scheduling and monitoring and integration from factory production line."
+ },
+ {
+  "id": 53,
+  "name": "Zaheen Systems (Def Tech)",
+  "Type": "Startup",
+  "Sector": "DefTech",
+  "description": "Zaheen provides drones and drone maintenance services for agriculture, mining, inspection, insurance and defense industries. They also develop customized systems for land surveying, search and rescue and delivery. "
+ },
+ {
+  "id": 54,
+  "name": "Bill T Logistics",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Revolutionizing online trucking Marketplace in Pakistan by offering a Logistics Network with city wide offices and quality distribution facilities. "
+ },
+ {
+  "id": 55,
+  "name": "Thermalog",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Thermalog is a Smart Tech company working in the domains of Healthcare, Food Standards, Agri-based Temperature Monitoring and IOT based Home Automation\n"
+ },
+ {
+  "id": 56,
+  "name": "FlightSight AL Basirr",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Developing an AI based Golf Launch Monitor app that will help golf players improve their game by tracking their performance through information such as ball speed, launch angle, launch direction, max. height of ball, hang time and total carry distance at landing. "
+ },
+ {
+  "id": 57,
+  "name": "Insight Labs",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Startup is a spin off of Zaheen Systems but with a separate R&amp;D team. Lab will work on surveillance technologies through ML and AI."
+ },
+ {
+  "id": 58,
+  "name": "Al-Asar Technologies",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Al-Asar Technologies is developing IoT-based smart screens solutions for outdoor advertising replacing the conventional billboard. These help display advertisements with full control on air time and campaign duration.\n"
+ },
+ {
+  "id": 59,
+  "name": "Zambeel Machine Craft",
+  "Type": "Startup",
+  "Sector": "DefTech",
+  "description": "Zambeel creates quality design panels for interior and exterior décor through  computer-controlled cutting machine. They are also involved in making the innovative defense products including Engine Test Bench, Ground Support Equipment, Wireless Controlled Systems, Mechanical Fabrication of Equipment for the equipment parts in need of replacement and War Trophies for design and manufacturing."
+ },
+ {
+  "id": 60,
+  "name": "TechMedo ",
+  "Type": "Startup",
+  "Sector": "FinTech",
+  "description": "TechMedology (aka TechMedo)  is a rapidly growing Healthcare IT Consulting, Software Development and Managed Services Provider, delivering cutting-edge and innovative solutions that are tailored for customers business objectives. From its inception in 2019, TechMedo is on a mission to make healthcare affordable, accessible and equitable for all. \nWe are a global consulting and solutions firm focused on driving measurable business outcomes through the use of technology. We have the top industry leaders in our team over twenty years of experience in delivering technology solutions to clients around the world and its very attractive for us to expand our operations into the USA Health Tech Market."
+ },
+ {
+  "id": 61,
+  "name": "RADWI",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "RADWI is working on home automation projects that include wireless control of AC mains i.e., bulbs, fan switching & speed control. The most emerging project is “WI-FI Door Lock” is a universal gadget to fit on different home and office locks to automate them. "
+ },
+ {
+  "id": 62,
+  "name": "Vision RD",
+  "Type": "Startup",
+  "Sector": "AutoTech",
+  "description": "Vision RD is working on a product Inspection. AI is designed to help Automobile & Part manufacturing companies automate manual quality inspection process using AI. The AI dashboards provide detailed analytics related to quality issues of the parts that help in data-driven decision-making to improve the manufacturing processes."
+ },
+ {
+  "id": 63,
+  "name": "Fixfirst",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Accelerating Circularity The operating system for repair & maintenance in a circular economy."
+ },
+ {
+  "id": 64,
+  "name": "ApnaWifi",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Apnawifi is a technology company offering the most advanced WiFi marketing platform available in the market. Their technology enables clients (mainly restaurants) to target their audiences across all digital mediums and platforms, to create high impact ad campaigns with measurable ROI."
+ },
+ {
+  "id": 65,
+  "name": "Glowlogix",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Glowlogix is working in Software & Web Development domains since 2012. They’ve been building software & websites for small businesses, enterprises, and startups. HR Management System "
+ },
+ {
+  "id": 66,
+  "name": "PaakHealth",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "PaakHealth is providing the service of setting up appointments with doctors and hospitals, home delivery of prescribed medicines ordered through their app and emergency portal for finding blood donors."
+ },
+ {
+  "id": 67,
+  "name": "ERAYS Technologies Private Limited",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "Their product Smart Feet detects the diabetic foot ulcer earlier and also quantifies the level of ulcer \/ neuropathy in real time and sends notification via mobile app."
+ },
+ {
+  "id": 68,
+  "name": "Sparkleo (SMC PVT) LTD (Bluedash)",
+  "Type": "Startup",
+  "Sector": "Smart Tech  (BlockChain)",
+  "description": "Blockchain based store with streamlined royalty processing for Gaming Industry to  play to earn blockchain games."
+ },
+ {
+  "id": 69,
+  "name": "XpertFlow Technologies",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "XpertFlow is focused on developing decision support system for healthcare professionals. They are working on a deep tech product comprising of both software (AI Model) and hardware (Medical IOTs). Their product can predict Sepsis 6 hours before onset and other life-threatening medical conditions from a single wearable biosensor device. It offers real time remote monitoring, reduced mortality, cost of treatment and stay duration. "
+ },
+ {
+  "id": 70,
+  "name": "ZIR AI Inc. Victara ",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "ZIR AI, Inc. is developing an advanced cloud platform for information retrieval. The service can be used by uploading textual data to the platform, where it is first indexed, and can subsequently be queried. The platform uses advanced machine learning, natural language processing, and neural information retrieval techniques to perform semantic search over textual data. "
+ },
+ {
+  "id": 71,
+  "name": "TolktoAI",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Toktomy is working on 3 main products: AI based chatbot, Intelligent CV analyser, routAI - intelligent routing tool"
+ },
+ {
+  "id": 72,
+  "name": "QualvenTech",
+  "Type": "Startup",
+  "Sector": "AgriTech",
+  "description": "Qualven is BeeHive Information Management System - already have prototype of the product that needs to be converted into an industrial design."
+ },
+ {
+  "id": 73,
+  "name": "deepnostiX",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "deepnostiX supports biomedical researchers with cutting-edge analyses methods for their specific data. They develop systems and applications that can be directly integrated in the current health care system. This includes projects for the discovery of new drugs with pharmaceutical companies, but also smartphone applications, usable by anyone who wants to improve their personal health."
+ },
+ {
+  "id": 74,
+  "name": "GoProgs Technologies Pvt Ltd Elum.io",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "ELUM.io is An Ed-tech platform with the latest technologies to leverage aggregated data for career counseling having the below features. It is a cutting-edge Ed-tech platform harnessing the power of machine learning, data analytics, and advanced technologies to revolutionize career counseling and provide personalized assessments like never before."
+ },
+ {
+  "id": 75,
+  "name": "GIS Plus",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "GIS Plus specializes in GIS technologies that provide large scale GIS based software applications across multiple business domains such as real estate, energy sector, big data, utility networks, environmental variables, transportation, emergency services, and generic organizational decision making."
+ },
+ {
+  "id": 76,
+  "name": "Vialogic",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Vialogic is a technology company with experience in Cybersecurity and Digital Transformation. Their portfolio of cybersecurity services allows us to build the link between strategy, risk and compliance, governance, architecture, engineering, operations and resilience."
+ },
+ {
+  "id": 77,
+  "name": "Startify FunPulse",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Development of Safe Crypto Algorithams to safeguard IP "
+ },
+ {
+  "id": 78,
+  "name": "Brinytoons ",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "Brinytoons is and edutainment platform for improved cognitive skills & social grooming in Pakistani kids. Brinytoons  programs will educate and entertain the kids from 3 to 12 years through interactive, colorful animations in high-quality videos and learning modules in our Mobile App."
+ },
+ {
+  "id": 79,
+  "name": "Intelligent Learning Machines (ILM)",
+  "Type": "Startup",
+  "Sector": "AutoTech",
+  "description": "Working on Automotive AI enabled Algorithms for Battery Management System's State of Charge & State of Health. The AI-enabled Algorithms will provide a better State of Charge Estimation of Li Ion battery packs for EV\/PHEV Vehicles which will increase efficiency and reduce the overall cost."
+ },
+ {
+  "id": 80,
+  "name": "data BI",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Data BI helps the retail industry to optimize its processes and services by helping then stay abreast of the shopping trends though insights \/ reports derived through data analytics. The analysis helps retailers in terms of price optimization, cost effective development, future performance prediction, demand prediction, trend forecast and customer identification."
+ },
+ {
+  "id": 81,
+  "name": "Blockley",
+  "Type": "Startup",
+  "Sector": "FinTech",
+  "description": "Blockley is working on a solution called truID that facilitates in identitiy verification so that banks can remotely onboard customers. "
+ },
+ {
+  "id": 82,
+  "name": "Ecolad ",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "ECOLAD is a tech startup working on innovative eco-friendly products and services to fight climate crises. "
+ },
+ {
+  "id": 83,
+  "name": "Hactric",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "Hactric Solutions Technology driven and socially sound, Hactric Solutions (Pvt) Ltd. aims to find innovative solutions to society’s problems. ERP Systems, Software Development, Digital Marketing, Branding, SEO, Business Development, Website Development, and App development."
+ },
+ {
+  "id": 84,
+  "name": "DataSpecc",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Dataspecc is a B2B full-service digital marketing firm with a team working worldwide for SEO Management, Social Media Marketing\/Management, and Digital Content Marketing Services,\nCurrently working on our own SaaS product (everge.io) for real estate brokers and estate agents for online booking management, open house showing, and better lead qualification."
+ },
+ {
+  "id": 85,
+  "name": "Awaz",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "Aawaz is artificial intelligence based language learning and communication platform for non-verbal users. It is the next generation Augmentative and Alternate Communication (AAC) application that generates speech and encourages user to explore new vocabulary and sentences"
+ },
+ {
+  "id": 86,
+  "name": "inteligencey IT solutions pvt",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "Rapidev Games is a well-recognized unity 3D game development company hosting experts competent to fulfill your unique requirements in an extraordinary manner. At Rapidev Games, we develop impressive games, interactive visualizations rich in AR and VR experiences and deliver you the best-in-class gaming applications."
+ },
+ {
+  "id": 87,
+  "name": "Interstellus",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Smart AI driven application that lets you read the latest news content in only 5 sentences or less. High quality content belonging to diverse categories like Politics, Fashion and Technology."
+ },
+ {
+  "id": 88,
+  "name": "EDWIZ",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "EdWiz is offering digitalization pathways and solutions to academic institutions. Their innovative education solutions include SKIP Education Management Solution, online library, Web App Development, Mobile App Development, Database Management and E-learning solutions and research."
+ },
+ {
+  "id": 89,
+  "name": "RISETech Pvt Ltd",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "RISETech is specialize in products and services that span over several domains like healthcare, embedded systems, software applications, data analytics and artificial intelligence smart solutions with the unified goal of realizing the dreams of a better tomorrow through technology."
+ },
+ {
+  "id": 90,
+  "name": "Techvando",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Techvando is a software house dedicated to providing top-notch Web Development and Search engine Optimization. Moreover, developing an AI-Powered HR management system. "
+ },
+ {
+  "id": 91,
+  "name": "Doerz",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Doerz is a full stack services agency with expertise in Web Design and Development, App Design and Development, Digital Marketing, Graphic Design and Motion Graphics! We develop custom solutions for startups and small business across the globe with result oriented approach to the project. We leverage the power of AI, Computer vision and Machine learning to develop out of the box solutions to solve conventional problems. We are a team of professionals who believe in the power of Do."
+ },
+ {
+  "id": 92,
+  "name": "Adept IT",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Adept tech-solutions is a startup founded to help companies operate efficiently by building AI solutions to meet the increasing demand of complex processes resulting in effective and efficient operations. With their efficient, user-friendly, intelligent, scalable and sustainable operations anagement and optimization systems, companies can focus on human-driven aspects of operations to increase their revenue."
+ },
+ {
+  "id": 93,
+  "name": "Sentinel AI",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Sentinel AI is aiming to enhance capabilities in indigenously developed computer vision and video analytics solutions along with the implementation of Robotics in the future. The sector they are aiming to provide solutions in is Security. Sentinel AI is also aiming to enhance the transition of Pakistani society towards technology and Artificial Intelligence. Furthermore, "
+ },
+ {
+  "id": 94,
+  "name": "Fluency",
+  "Type": "Startup",
+  "Sector": "EdTech",
+  "description": "Fluency is a social media platform that aims to incentivise academic performance. We provide educational institutes the tools to leverage student attention in the age of social media. "
+ },
+ {
+  "id": 95,
+  "name": "Anon Association ",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "A social enterprise working to make mental health a felt need and to make it affordable affordable, accessible, and anonymous for all"
+ },
+ {
+  "id": 96,
+  "name": "Khidmat Aljanaza",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "Khidmat Aljinaza is a startup that offers a comprehensive range of funeral-related services, eliminating the need to coordinate with multiple vendors. The quality of funeral service in the market can be inconsistent and subpar, so the startup is committed to providing high-quality services at standard, affordable rates. The team will handle all aspects of the funeral process with professionalism and care, ensuring that families receive the support they need during this emotional time."
+ },
+ {
+  "id": 97,
+  "name": "Segresell",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "Segresell is water filter which is made of graphene oxide based on nanotechnology, our filter has ability to treat the saline water, and the USP of our product is its treat the water without any energy or electricity, it will remove 97% of salinity from water."
+ },
+ {
+  "id": 98,
+  "name": "EMRChains",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "EMRChains is a next-generation Electronic Medical Record (EMR) system that leverages blockchain technology to improve the security, efficiency & accuracy of patient data management. Our aim is to connect all hospitals under one system on the concept of a \"Single Patient Identifier\", enabling better data exchange & reducing the risk of medical errors."
+ },
+ {
+  "id": 99,
+  "name": "HOMS",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "HOMS (Home Operating Management System) is a ground-breaking software solution designed to streamline operations in housing societies and residential communities. This tool offers features such as customizable ticket management, full invoicing support, alert mechanisms, newsroom, and clearances, among others. HOMS empowers administrators with robust management capabilities and provides residents with a seamless, user-friendly platform for communication, requests, and tracking. The system has been built to cater to global standards, ensuring scalability and adaptability in diverse environments. Our vision is to enhance residential living experiences through technology, ensuring convenience, efficiency, and tranquility."
+ },
+ {
+  "id": 100,
+  "name": "EcoShapers",
+  "Type": "Startup",
+  "Sector": "SmartTech (CleanTech )",
+  "description": "EcoShapers aim to utilize plastic waste to make construction bricks which are stronger, lighter and cost effective than clay bricks. Following are the PRODUCT BENEFITS: • More durable than conventional bricks • Reduces environmental pollution • Reduces use of clay in bricks • Offer greater endurance  • Offer good heat insulating properties • Utilizes plastic waste from landfills • Contributes to construction of low-cost housing and disaster-relief shelters"
+ },
+ {
+  "id": 101,
+  "name": "SpoFlex",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "SpoFlex is a sports community hangout platform similar to LinkedIn, where a user, whether he\/she is a part of Player domain, Organizer domain, Sponsor domain or Recruiter domain, is provided with domain-specific specialized features, and both intradomain and interdomain connecting options. SpoFlex systematically builds domain-specific sports profile or resume for its users of all domains. "
+ },
+ {
+  "id": 102,
+  "name": "TapitCard",
+  "Type": "Startup",
+  "Sector": "Others",
+  "description": "TapitCard revolutionizing the traditional paper business cards by replacing it with TapitCard.  We use Near Field Communication technology to allow for a faster, more secure, and eco-friendly way of exchanging contact information with JUST A TAP. The elimination of manual data entry saves time and reduces the potential for errors, while the reduction in paper production and disposal is more environmentally sustainable. Additionally, TapitCard offers real-time updates and enhanced data security, ensuring the accuracy and safety of the contact information exchanged. With TapitCard, the user can add up more data which includes Social links, profile pictures, descriptions, and shop links and they can be shared in seconds. It is a Lead Generating Tool: The entire shop is shared with the other person along with the contacts and that person can shop Directly anytime. Users can build their brand with our customizable Tapit store according to their preferences including Themes, logo, Patterns, and text.  Moreover, the use of digital contact cards can also provide businesses with a competitive edge, as they offer an innovative and modern approach to networking. The personalized service offered by digital contact card providers, such as custom designs and branding, can also help businesses stand out in a crowded marketplace. By embracing this new technology, businesses can improve their networking efficiency, reduce their carbon footprint, and enhance their overall professional image."
+ },
+ {
+  "id": 103,
+  "name": "Bacti Sense",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "Bacti sense is a BioTech startup with the focus  of improving the detection of bacteria and analyzing the performance of anti bacterial drugs."
+ },
+ {
+  "id": 104,
+  "name": "DecentraX ",
+  "Type": "Startup",
+  "Sector": "Smart Tech (AI, ML, Robotics etc.)",
+  "description": "A web3 platform powered by IPFS and Blockchain. DecentraX allows you to decentrally store your data, share files and host your own websites on the decentralized network."
+ },
+ {
+  "id": 105,
+  "name": "Radon Energy ",
+  "Type": "Startup",
+  "Sector": "SmartTech (CleanTech )",
+  "description": "Solar Cleaning Brush is the product that can fulfill this particular cleaning need of the customer. The brush is designed to be user friendly. This will allow the user to operate it easily without requiring any special training. Through R&D, the fabrics are fabricated to be friendly to the panel’s glass thus cleaning it without any abrasion. Furthermore, its simple yet elegant design will allow it component to be joined together easily when needed and dismantling it after the job thus making it efficient in space usage. Most importantly for the manufacturing of this brush, all the components are being sourced completely from Pakistan. This will allow the local industry to be a part of this handy, helpful and convenient product."
+ },
+ {
+  "id": 106,
+  "name": "GrowUpTech Solutions ",
+  "Type": "Startup",
+  "Sector": "HealthTech",
+  "description": "We have developed a gaming controller that allows anyone to play games physically. It is completely software-based, which can improve health and provide a new gaming experience."
+ },
+ {
+  "id": 107,
+  "name": "Housing Managemet Softwares (HOMS) Private Ltd",
+  "Type": "Startup",
+  "Sector": "Smart Tech (AI, ML, Robotics etc.)",
+  "description": "HOMS, Housing Operations Management Solution, is a pioneering platform streamlining housing society operations. Equipped with innovative features, our product caters to administrative tasks, ticket management, invoicing, emergency alert mechanisms, news dissemination, and clearance systems. HOMS thrives on customizability, offering tailored functionalities to meet unique management requirements. The solution is designed to facilitate a seamless user experience for both residents and administrators. HOMS empowers societies with data-driven insights and automation, revolutionizing how housing societies function while enhancing resident satisfaction. Our mission is to foster safer, organized, and efficiently managed housing communities."
+ },
+ {
+  "id": 108,
+  "name": "SpoFlex",
+  "Type": "Startup",
+  "Sector": "SmartTech",
+  "description": "SpoFlex is a sports community hangout platform similar to LinkedIn, where a user, whether he\/she is a part of Player domain, Organizer domain, Sponsor domain or Recruiter domain, is provided with domain-specific specialized features, and both intradomain and interdomain connecting options."
+ },
+ {
+  "id": 109,
+  "name": "Vektor",
+  "Type": "Startup",
+  "Sector": "AutoTech",
+  "description": "Brief Introduction: A startup concentrated on innovative technology and design regarding automobiles such as active aerodynamics, suspension design differentiation, chassis design, powertrain and energy source design and fitment as well as body design. Concentrated on bringing new and non-existent technology to Pakistan, contributing to the uplift of the economy as well as giving back to the culture and society."
+ }
+]

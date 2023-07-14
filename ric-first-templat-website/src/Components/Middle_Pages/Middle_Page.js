@@ -10,11 +10,17 @@ import Placeholder from "react-bootstrap/Placeholder";
 import { Form } from "react-bootstrap";
 import { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid, fetchConferenceswithid } from "../../APIs/FacultyDatawithCms";
 import CustomModal from "../Modal/Modal";
+import industryData from "../../APIs/industry.json";
+import labData from "../../APIs/labs.json";
+
 
 const Middle_Page = () => {
     const [sortedCardList, setSortedCardList] = useState([]);
     // Function to open a new window with the specified title.
 
+
+    const [filteredIndustryData, setFilteredIndustryData] = useState([]);
+    const [filteredLabData, setFilteredLabData] = useState([]);
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
     const [DisplayPublications, setDisplayPublications] = useState([]);
@@ -29,7 +35,7 @@ const Middle_Page = () => {
 
     const [dataToSend, setdataToSend] = useState([])
 
-    
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
@@ -331,16 +337,16 @@ const Middle_Page = () => {
         setIsModalOpen(true);
     };
 
-    const handleSortingOptionChange = (event,school) => {
+    const handleSortingOptionChange = (event, school) => {
         const selectedOption = event.target.value;
-        if(school){
-            if(school === "remove"){
+        if (school) {
+            if (school === "remove") {
                 setIsSorted(false);
                 return;
-            }else{
+            } else {
                 setSortedCardList(filterTopSchools(school))
                 setIsSorted(true);
-            }    
+            }
         }
         else if (params.option === "school") {
             // sortCardsforschool
@@ -387,6 +393,17 @@ const Middle_Page = () => {
     };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
+    const labsAndIndustryData = (keyword, type) => {
+        if (type === 'industry') {
+            setModalData('industry')
+            setdataToSend(filteredIndustryData);
+
+        }
+        else if (type === "lab"){
+            setModalData('lab')
+            setdataToSend(filteredLabData);
+        }
+    }
     const abc = () => {
         console.log("Hello")
     }
@@ -599,6 +616,15 @@ const Middle_Page = () => {
         displayPublications();
         displayIPs();
 
+        setFilteredLabData(
+            labData.filter(
+                item =>
+                (item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())) ||
+                (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
+                )
+                );
+                
+            setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
 
         //To Fetch Profile of Faculty from API
         async function fetchProfile() {
@@ -937,17 +963,17 @@ const Middle_Page = () => {
                                 Parameter.option === "school" ?
                                     <><div className={"Card-Text"}>
                                         {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
-                                                <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
+                                            <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
                                         }
                                     </div>
                                         <div className={"Card-Text"}>
                                             {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
-                                                    <span><i>Projects</i>: <strong style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
+                                                <span><i>Projects</i>: <strong style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
                                             }
                                         </div>
                                         <div className={"Card-Text"}>
                                             {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
-                                                    <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
+                                                <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
                                             }
                                         </div></>
                                     :
@@ -1089,7 +1115,7 @@ const Middle_Page = () => {
                         <div className={"Card-Body"}>
                             <div className={"Card-Title"}>
                                 <h2>{profile.Name}</h2>
-                            </div>  
+                            </div>
                             <div className={"Card-Email"}>
                                 <h3>{profile.e_mail}</h3>
                             </div>
@@ -1156,8 +1182,8 @@ const Middle_Page = () => {
                 <div onClick={(event) => handleSortingOptionChange(event, school)} className="col-md top-schools" key={school} style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
             ))}
             {topSchools?.length > 0 && <div className="removesort" onClick={(event) => handleSortingOptionChange(event, "remove")}>
-                            <i className="fa-solid fa-house-user"></i>
-                        </div>}
+                <i className="fa-solid fa-house-user"></i>
+            </div>}
         </div>
     );
     // Cards data without sorting i.e default sorted
@@ -1295,33 +1321,15 @@ const Middle_Page = () => {
                         ""
                     ) : (
                         <>
-                            <button onClick={() => handleModalClick("labs")}>
+                            <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
                                 Labs: <h6>
-                                    {Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials"
-                                        ? labsData1.length
-                                        : Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics"
-                                            ? labsData3.length
-                                            : Parameter.search === "Microwave" || Parameter.search === "microwave"
-                                                ? labsData2.length
-                                                : Parameter.search === "Catalyst" || Parameter.search === "catalyst"
-                                                    ? labsData4.length
-                                                    : 0
-                                    }
+                                    {filteredLabData.length}
                                 </h6>
                             </button>
-                            <button onClick={() => handleModalClick2("industry")}>
+                            <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
                                 Industry:
                                 <h6>
-                                    {Parameter.search === "Nanomaterials" || Parameter.search === "nanomaterials"
-                                        ? industryData1.length
-                                        : Parameter.search === "Aeroacoustics" || Parameter.search === "aeroacoustics"
-                                            ? industryData3.length
-                                            : Parameter.search === "Microwave" || Parameter.search === "microwave"
-                                                ? industryData2.length
-                                                : Parameter.search === "Catalyst" || Parameter.search === "catalyst"
-                                                    ? industryData4.length
-                                                    : 0
-                                    }
+                                    {filteredIndustryData.length}
                                 </h6>
                             </button>
                         </>
