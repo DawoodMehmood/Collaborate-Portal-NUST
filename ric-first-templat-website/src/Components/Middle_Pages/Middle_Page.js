@@ -400,7 +400,7 @@ const Middle_Page = () => {
             setdataToSend(filteredIndustryData);
 
         }
-        else if (type === "lab"){
+        else if (type === "lab") {
             setModalData('lab')
             setdataToSend(filteredLabData);
         }
@@ -620,12 +620,12 @@ const Middle_Page = () => {
         setFilteredLabData(
             labData.filter(
                 item =>
-                (item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())) ||
-                (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
-                )
-                );
-                
-            setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
+                    (item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())) ||
+                    (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
+            )
+        );
+
+        setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
 
         //To Fetch Profile of Faculty from API
         async function fetchProfile() {
@@ -1322,17 +1322,17 @@ const Middle_Page = () => {
                         ""
                     ) : (
                         <>
-                            <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
+                            {filteredLabData.length && <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
                                 Labs: <h6>
                                     {filteredLabData.length}
                                 </h6>
-                            </button>
-                            <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
+                            </button>}
+                         {filteredIndustryData.length &&   <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
                                 Industry:
                                 <h6>
                                     {filteredIndustryData.length}
                                 </h6>
-                            </button>
+                            </button>}
                         </>
                     )}
 

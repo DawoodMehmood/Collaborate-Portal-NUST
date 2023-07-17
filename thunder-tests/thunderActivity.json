@@ -103,5 +103,40 @@
             }
         ],
         "tests": []
+    },
+    {
+        "_id": "eb4c9155-983b-481b-ae16-8b04250fec22",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&title=wireless",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&title=wireless",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-17T05:55:05.463Z",
+        "modified": "2023-07-17T05:55:05.463Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_journal_pub",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "fc22151322bfdd2c3f0626798c9198bc",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "1000",
+                "isPath": false
+            },
+            {
+                "name": "title",
+                "value": "wireless",
+                "isPath": false
+            }
+        ],
+        "tests": []
     }
 ]
