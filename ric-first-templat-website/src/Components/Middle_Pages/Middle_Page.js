@@ -1322,12 +1322,12 @@ const Middle_Page = () => {
                         ""
                     ) : (
                         <>
-                            {filteredLabData.length && <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
+                            {filteredLabData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
                                 Labs: <h6>
                                     {filteredLabData.length}
                                 </h6>
                             </button>}
-                         {filteredIndustryData.length &&   <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
+                         {filteredIndustryData.length >0  &&   <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
                                 Industry:
                                 <h6>
                                     {filteredIndustryData.length}
