@@ -223,6 +223,7 @@ const Middle_Page = () => {
     ]
 
     const closeModal = () => {
+        setdataToSend([]);
         setIsModalOpen(false);
         setModalData(null);
     };
