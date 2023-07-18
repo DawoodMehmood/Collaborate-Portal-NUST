@@ -181,6 +181,12 @@
 .result-stats>button:hover {
     background-color: #f4f4f4;
 }
+.result-stats.nonclickable>button {
+    cursor: default;
+}
+.result-stats.nonclickable>button:hover {
+    background-color: #FFFFFF;
+}
  
 .col-md{
     text-align: center;

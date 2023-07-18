@@ -109,11 +109,86 @@
         "colId": "history",
         "containerId": "",
         "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&title=wireless",
-        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&school=seecs",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&title=wireless",
         "method": "GET",
         "sortNum": 0,
         "created": "2023-07-17T05:55:05.463Z",
-        "modified": "2023-07-17T11:05:11.252Z",
+        "modified": "2023-07-18T05:33:33.800Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_journal_pub",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "fc22151322bfdd2c3f0626798c9198bc",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "1000",
+                "isPath": false
+            },
+            {
+                "name": "title",
+                "value": "wireless",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "d32d4e97-5b64-48d3-bcdf-8797fe2f55d6",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=1000&qf=Phd&institute=S3h",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty_cards&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=1000&qf=Phd&institute=UsPCAS",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-18T06:27:13.650Z",
+        "modified": "2023-07-18T06:59:50.211Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_faculty_cards",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "eda78c8a7d78ca83fcb02ff052179b9b",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "1000",
+                "isPath": false
+            },
+            {
+                "name": "qf",
+                "value": "Phd",
+                "isPath": false
+            },
+            {
+                "name": "institute",
+                "value": "UsPCAS",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "10d3ccc6-f825-4794-898b-8b2421063151",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&school=cips",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&school=cips",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-18T08:01:09.237Z",
+        "modified": "2023-07-18T08:01:09.237Z",
         "headers": [],
         "params": [
             {
@@ -133,7 +208,7 @@
             },
             {
                 "name": "school",
-                "value": "seecs",
+                "value": "cips",
                 "isPath": false
             }
         ],
