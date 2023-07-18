@@ -94,7 +94,7 @@ const Middle_Page = () => {
     const currentUrl = location.pathname;
     const encodedWord = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
     const searchWord = decodeURIComponent(encodedWord);
- 
+
     const closeModal = () => {
         setdataToSend([]);
         setIsModalOpen(false);
@@ -150,6 +150,19 @@ const Middle_Page = () => {
         }
 
     };
+    const lengthCalculator = (type) => {
+        let length = 0;
+        Profile.map((item) => {
+            if (type === "publications") {
+                length += item.no_of_publications;
+            } else if (type === "projects") {
+                length += item.no_of_projects;
+            } else if (type === " ") {
+                length += item.no_of_IPs;
+            }
+        })
+        return length;
+    }
 
     useEffect(() => {
         if (dataToSend.length > 0) {
@@ -435,13 +448,6 @@ const Middle_Page = () => {
         displayPublications();
         displayIPs();
 
-        setFilteredLabData(
-            labData.filter(
-                item =>
-                    (item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())) ||
-                    (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
-            )
-        );
 
         setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
 
@@ -687,6 +693,13 @@ const Middle_Page = () => {
             fetchProfile().then(() => { });
         }
         else if (Parameter.option === "area_expertise") {
+            setFilteredLabData(
+                labData.filter(
+                    item =>
+                        (item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())) ||
+                        (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
+                )
+            );
             fetchPublications().then(() => {
                 fetchProjects().then(() => {
                     fetchIPs().then(() => {
@@ -707,7 +720,15 @@ const Middle_Page = () => {
         // else if(Parameter.option === "discipline"){
         //         fetchDiscipline().then(() => {});
         // }
-        else if (Parameter.option === "school") { fetchSchoolFaculty().then(() => { }); }
+        else if (Parameter.option === "school") {
+            setFilteredLabData(
+                    labData.filter(
+                            item =>
+                                (item.school?.toLowerCase().includes(Parameter.school?.toLowerCase()))
+                        )
+                    );
+            fetchSchoolFaculty().then(() => { });
+        }
     }, [Parameter])
 
     useEffect(() => {
@@ -1114,6 +1135,45 @@ const Middle_Page = () => {
             <SearchBar />
 
             <h4 style={{ textAlign: "center" }}>Showing results for: {searchWord.toUpperCase()}</h4>
+            {Parameter.option === "school" && (
+                <>
+                    <div className="result-stats nonclickable row">
+                        {Profile.length > 0 && (
+                            <button>
+                                Experts: <h6>{Profile.length}</h6>
+                            </button>
+                        )}
+                        {lengthCalculator("publications") > 0 && (
+                            <button>
+                                Publications: <h6>{lengthCalculator("publications")}</h6>
+                            </button>
+                        )}
+                        {lengthCalculator("projects") > 0 && (
+                            <button>
+                                Projects: <h6>{lengthCalculator("projects")}</h6>
+                            </button>
+                        )}
+                        {lengthCalculator("ips") > 0 && (
+                            <button>
+                                Intellectual Property: <h6>{lengthCalculator("ips")}</h6>
+                            </button>
+                        )}
+                    </div>
+                    <div className="result-stats row">
+                        {filteredLabData.length > 0 && (
+                            <>
+                                {<button onClick={() => labsAndIndustryData(Parameter.school, 'lab')}>
+                                    Labs: <h6>
+                                        {filteredLabData.length}
+                                    </h6>
+                                </button>}
+                            </>
+                        )}
+                    </div>
+
+                </>
+
+            )}
             {Parameter.option === "area_expertise" && (
                 <div className="result-stats row">
                     {Experts !== 0 && (
@@ -1136,16 +1196,14 @@ const Middle_Page = () => {
                             Intellectual Property: <h6>{DisplayIPs.length}</h6>
                         </button>
                     )}
-                    {loading ? (
-                        ""
-                    ) : (
+                    {(
                         <>
                             {filteredLabData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
                                 Labs: <h6>
                                     {filteredLabData.length}
                                 </h6>
                             </button>}
-                         {filteredIndustryData.length >0  &&   <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
+                            {filteredIndustryData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
                                 Industry:
                                 <h6>
                                     {filteredIndustryData.length}
