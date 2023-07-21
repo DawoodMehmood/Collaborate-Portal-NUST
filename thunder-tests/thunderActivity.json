@@ -213,5 +213,1029 @@
             }
         ],
         "tests": []
+    },
+    {
+        "_id": "f1cac56b-c506-47bb-8862-95fc0df2c754",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=Hassaan Khaliq Qureshi",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=Hassaan Khaliq Qureshi",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T07:36:39.865Z",
+        "modified": "2023-07-19T07:36:39.865Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_editorial",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "e09d3d4b09c4e553fcb1901d4b555acf",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "500",
+                "isPath": false
+            },
+            {
+                "name": "author_name",
+                "value": "Hassaan Khaliq Qureshi",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "687591d7-e855-4eb7-a7b8-39eaa23361ce",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=\t40373fef0021a087dfd3fa9d2090a12a&issn=2327-4662",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=\t40373fef0021a087dfd3fa9d2090a12a&issn=2327-4662",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:25:58.314Z",
+        "modified": "2023-07-19T08:25:58.314Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "\t40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "issn",
+                "value": "2327-4662",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "02dd4132-3620-4568-a408-bb659d06fc76",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&issn=2327-4662",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&issn=2327-4662",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:26:06.451Z",
+        "modified": "2023-07-19T08:26:06.451Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "issn",
+                "value": "2327-4662",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "60e7e7dd-e4cd-4ecb-bdac-a76f9cc142c5",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ScopusSearch('issn ( 2327-4662 )')",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=AU-ID(\"36895158400\")&view=METRICS",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:31:48.245Z",
+        "modified": "2023-07-20T12:08:55.023Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "AU-ID(\"36895158400\")",
+                "isPath": false
+            },
+            {
+                "name": "view",
+                "value": "METRICS",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "5b5f69b1-9cb9-4812-8993-590d36603382",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=Search 'issn ( 2327-4662 )'",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=Search 'issn ( 2327-4662 )'",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:33:14.501Z",
+        "modified": "2023-07-19T08:33:14.501Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "Search 'issn ( 2327-4662 )'",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "0bc8271b-64c7-4e4c-b792-110cee90b5ec",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=\"ISSN (2327-4662)\"",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=\"AU-ID (36895158400)\"&row=METRICS",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:38:00.083Z",
+        "modified": "2023-07-21T06:41:42.144Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "\"AU-ID (36895158400)\"",
+                "isPath": false
+            },
+            {
+                "name": "row",
+                "value": "METRICS",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "640228bb-4ad5-43de-a1a9-0d174c4824a3",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=\"(ISSN (2327-4662))\"",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=\"(ISSN (2327-4662))\"",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:38:47.587Z",
+        "modified": "2023-07-19T08:38:47.587Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "\"(ISSN (2327-4662))\"",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "6605bf2b-fed5-4187-b51d-1b852408a943",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=\"{ISSN (2327-4662)}\"",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=\"{ISSN (2327-4662)}\"",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:38:59.629Z",
+        "modified": "2023-07-19T08:38:59.629Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "\"{ISSN (2327-4662)}\"",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "da322291-e0ea-4033-bca8-fa7582cfbdbf",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"2327-4662\")",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=AU-ID(26533904900)",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T08:42:48.134Z",
+        "modified": "2023-07-19T09:58:40.563Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "AU-ID(26533904900)",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "6c271b94-a6ec-40a4-92e3-ae40267f876e",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?query=DOI(\"10.2298/FIL2106977S\")&apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "url": "https://api.elsevier.com/content/search/scopus?query=DOI(\"10.2298/FIL2106977S\")&apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T09:00:13.807Z",
+        "modified": "2023-07-19T09:00:13.807Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "query",
+                "value": "DOI(\"10.2298/FIL2106977S\")",
+                "isPath": false
+            },
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "0159ccb1-d02d-4a79-8dda-9acfc4e6edc3",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/SCOPUS_ID_NUMBER?apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/SCOPUS_ID_NUMBER?apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T09:11:04.947Z",
+        "modified": "2023-07-19T09:11:04.947Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "0f49adb8-54c7-44f1-8ec3-f18dacecbc5a",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T09:11:15.100Z",
+        "modified": "2023-07-19T09:13:01.010Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "24f7bb39-a463-48c0-b7d9-d33cfb3d2168",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/ISSN/1542-4863?apiKey",
+        "url": "https://api.elsevier.com/content/abstract/ISSN/1542-4863?apiKey",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T09:29:24.734Z",
+        "modified": "2023-07-19T09:29:24.734Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "174fda97-5e88-404e-9d62-cc02bcf52aa1",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"1542-4863\")",
+        "url": "https://api.elsevier.com/content/search/scopus?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"1542-4863\")",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T09:32:15.125Z",
+        "modified": "2023-07-19T09:32:15.125Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "ISSN(\"1542-4863\")",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "0d2a336e-312f-454e-8e8e-3a0b2e85fdd7",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "url": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:05:38.925Z",
+        "modified": "2023-07-19T10:06:42.157Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "author_id",
+                "value": "36895158400",
+                "isPath": true
+            },
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "6b774154-6fc6-4c7b-843b-def8bb4abca1",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a&view=STANDARD",
+        "url": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a&view=STANDARD",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:10:02.549Z",
+        "modified": "2023-07-19T10:10:02.549Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "author_id",
+                "value": "36895158400",
+                "isPath": true
+            },
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "view",
+                "value": "STANDARD",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "1bfdd379-ccd8-4b6b-b0a4-e83e1e4247c3",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a&view=METRICS",
+        "url": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a&view=METRICS",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:11:35.447Z",
+        "modified": "2023-07-19T10:11:35.447Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "author_id",
+                "value": "36895158400",
+                "isPath": true
+            },
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "view",
+                "value": "METRICS",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "f1c38c27-2e87-4fef-8462-9950cff18d43",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_cmsid=00000003641",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_cmsid=00000003641",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:19:12.816Z",
+        "modified": "2023-07-19T10:19:12.816Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_editorial",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "e09d3d4b09c4e553fcb1901d4b555acf",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "500",
+                "isPath": false
+            },
+            {
+                "name": "author_cmsid",
+                "value": "00000003641",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "b96c2929-2770-4859-8a6a-0f0cb17c4c46",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=Noreen Sher Akbar",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=Noreen Sher Akbar",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:21:32.665Z",
+        "modified": "2023-07-19T10:21:32.665Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_editorial",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "e09d3d4b09c4e553fcb1901d4b555acf",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "500",
+                "isPath": false
+            },
+            {
+                "name": "author_name",
+                "value": "Noreen Sher Akbar",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "ae056066-784a-422c-9e57-eaa053e4b525",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/search/scopus?apiKey=myapi&query=ISSN(\"1542-4863\")",
+        "url": "https://api.elsevier.com/content/author/author_id/{author_id}?apiKey=40373fef0021a087dfd3fa9d2090a12a&view=METRICS",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:47:43.901Z",
+        "modified": "2023-07-21T07:22:25.473Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "author_id",
+                "value": "16643746200",
+                "isPath": true
+            },
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "view",
+                "value": "METRICS",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "9f2a42b5-661c-46cd-8303-70c1f86e2a7d",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"1542-4863\")",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"1542-4863\")",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:49:39.144Z",
+        "modified": "2023-07-19T10:49:39.144Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "ISSN(\"1542-4863\")",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "29c510a1-1664-4f5f-be47-21c0a3bbabbe",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"0360-5442\")",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"0360-5442\")",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:51:32.756Z",
+        "modified": "2023-07-19T10:51:32.756Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "ISSN(\"0360-5442\")",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "9acd9c24-5cac-4ba9-973f-c6b6fb652cf6",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"1879-2278\")",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"1879-2278\")",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:52:22.881Z",
+        "modified": "2023-07-19T10:52:22.881Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "ISSN(\"1879-2278\")",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "e416252b-6a30-4831-84af-faab91955789",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=Bilal Muhammad Khan",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=Hassaan Khaliq Qureshi",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:53:09.979Z",
+        "modified": "2023-07-20T09:34:53.225Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_editorial",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "e09d3d4b09c4e553fcb1901d4b555acf",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "500",
+                "isPath": false
+            },
+            {
+                "name": "author_name",
+                "value": "Hassaan Khaliq Qureshi",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "ef2b406b-baf0-4c9e-95f2-595f287dabb4",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"2169-3536\")",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/85120818119?apiKey=40373fef0021a087dfd3fa9d2090a12a&query=ISSN(\"2169-3536\")",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-19T10:53:27.444Z",
+        "modified": "2023-07-19T10:53:27.444Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [
+            {
+                "name": "apiKey",
+                "value": "40373fef0021a087dfd3fa9d2090a12a",
+                "isPath": false
+            },
+            {
+                "name": "query",
+                "value": "ISSN(\"2169-3536\")",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "ea331601-f69b-4fb5-b11b-f51368d24496",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=100&empid=00000360345",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_faculty&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=100&empid=00000360345",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T09:54:18.108Z",
+        "modified": "2023-07-20T09:54:18.108Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_faculty",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "eda78c8a7d78ca83fcb02ff052179b9b",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "100",
+                "isPath": false
+            },
+            {
+                "name": "empid",
+                "value": "00000360345",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "371339f5-2dc4-4a9c-9e36-4c7253ec3811",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://api.elsevier.com/content/abstract/scopus_id/85151355421",
+        "url": "https://api.elsevier.com/content/abstract/scopus_id/85151355421",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:01:59.434Z",
+        "modified": "2023-07-20T10:01:59.434Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "params": [],
+        "tests": []
+    },
+    {
+        "_id": "00576b76-58c4-4252-ade5-9affca326a71",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&author_cmsid=00000360355",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&author_cmsid=00000360355",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:08:20.962Z",
+        "modified": "2023-07-20T10:08:20.962Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_journal_pub",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "fc22151322bfdd2c3f0626798c9198bc",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "1000",
+                "isPath": false
+            },
+            {
+                "name": "author_cmsid",
+                "value": "00000360355",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "a2cafd28-7d5e-4568-a1ef-2cd556f54f1e",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&pi_copi_cmsid=00000360345",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&pi_copi_cmsid=00000360345",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:55:22.594Z",
+        "modified": "2023-07-20T10:55:22.594Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_project",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "d05a6d2391a1a4c25e0923034eadfc31",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "200",
+                "isPath": false
+            },
+            {
+                "name": "pi_copi_cmsid",
+                "value": "00000360345",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "239064d7-fb35-42fe-a54f-3305fe157fb4",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&pi_copi_cmsid=00000360355",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&pi_copi_cmsid=00000360355",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:55:47.634Z",
+        "modified": "2023-07-20T10:55:47.634Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_project",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "d05a6d2391a1a4c25e0923034eadfc31",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "200",
+                "isPath": false
+            },
+            {
+                "name": "pi_copi_cmsid",
+                "value": "00000360355",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "4642fec0-3cdc-4c49-94f1-5c9e5311230e",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000360345",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000360345",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:56:48.521Z",
+        "modified": "2023-07-20T10:56:48.521Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_project",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "d05a6d2391a1a4c25e0923034eadfc31",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "200",
+                "isPath": false
+            },
+            {
+                "name": "cmsid",
+                "value": "00000360345",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "95c5a214-1bb6-4530-9273-b0efa0159933",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000360355",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000360355",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:57:52.994Z",
+        "modified": "2023-07-20T10:57:52.994Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_project",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "d05a6d2391a1a4c25e0923034eadfc31",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "200",
+                "isPath": false
+            },
+            {
+                "name": "cmsid",
+                "value": "00000360355",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "de18ee44-a158-4d7e-9b89-496069c4af69",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000148158",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000148158",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:58:18.033Z",
+        "modified": "2023-07-20T10:58:18.033Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_project",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "d05a6d2391a1a4c25e0923034eadfc31",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "200",
+                "isPath": false
+            },
+            {
+                "name": "cmsid",
+                "value": "00000148158",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "86b81242-15a8-4a13-b46b-b4d02fc441e7",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000199432",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=200&cmsid=00000199432",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-20T10:59:04.129Z",
+        "modified": "2023-07-20T10:59:04.129Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_project",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "d05a6d2391a1a4c25e0923034eadfc31",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "200",
+                "isPath": false
+            },
+            {
+                "name": "cmsid",
+                "value": "00000199432",
+                "isPath": false
+            }
+        ],
+        "tests": []
     }
 ]

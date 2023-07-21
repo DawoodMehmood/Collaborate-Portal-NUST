@@ -352,6 +352,8 @@ const Calling_API = () => {
                             Editorial["Title"] = data[j]["title"];
                             Editorial["Impact_Factor"] = data[j]["impact_factor"];
                             Editorial["Reviewer_Type"] = data[j]["editor_reviewer_type"];
+                            Editorial["e_issn"] = data[j]["e_issn"];
+                            Editorial["p_issn"] = data[j]["p_issn"];
                             setEditorials((prev) => [...prev, Editorial]);
                             // All_Editorials.push(Editorial);
                         }

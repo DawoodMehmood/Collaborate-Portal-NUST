@@ -61,6 +61,33 @@ const New_Profile = ({
   profile,
   enable,
 }) => {
+
+
+  // This function is use to fetch H index from the scopus Api using {author id} fetched from the scopus api 
+  const fetchHIndex = (authorId) => {
+    // const authorId = 36895158400;
+    const apiKey = '40373fef0021a087dfd3fa9d2090a12a';
+    const view = 'METRICS';
+    const url = `https://api.elsevier.com/content/author/author_id/${authorId}?apiKey=${apiKey}&view=${view}`;
+    const headers = {
+      'Accept': 'application/json'
+    };
+    fetch(url, {
+      method: 'GET',
+      headers: headers
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response data here
+        // console.log(data);
+        sethIndex(data['author-retrieval-response'][0]['h-index']);
+      })
+      .catch(error => {
+        // Handle any errors that occurred during the request
+        console.error('Error:', error);
+      });
+  }
+
   const sdgsimgae = (id) => {
     if (id === "1") {
       return sdg1;
@@ -354,8 +381,8 @@ const New_Profile = ({
         Intellectual_Property.Patents
           ? Intellectual_Property.Patents.length
           : 0 > Intellectual_Property.International_Patents
-          ? Intellectual_Property.International_Patents.length
-          : 0
+            ? Intellectual_Property.International_Patents.length
+            : 0
       ) {
         setTabOptions({
           ...TabOptions,
@@ -490,6 +517,8 @@ const New_Profile = ({
 
   // bar charts modal
   const [modal, setModal] = useState(false);
+  const [hIndex, sethIndex] = useState(0);
+
 
   const toggleModal = (chart) => {
     setModal(!modal);
@@ -734,6 +763,7 @@ const New_Profile = ({
             new_name ===
             author["ce:given-name"] + " " + author["ce:surname"]
           ) {
+            fetchHIndex(author["@auid"]);
             setScopusID(() => {
               return author["@auid"];
             });
@@ -741,12 +771,13 @@ const New_Profile = ({
             new_name.includes(author["ce:given-name"]) ||
             new_name.includes(author["ce:surname"])
           ) {
+            fetchHIndex(author["@auid"]);
             setScopusID(() => {
               return author["@auid"];
             });
           }
         });
-      });
+      })
   };
 
   // THis function is responsible for updating the state variable, which holds data for Projects Pie Chart
@@ -1380,8 +1411,7 @@ const New_Profile = ({
           doc.setFontSize(11);
           doc.setTextColor(0, 0, 0);
           doc.text(
-            `${index + 1}. ${qualification.Degree}, ${
-              qualification.speciality
+            `${index + 1}. ${qualification.Degree}, ${qualification.speciality
             }`,
             heading_x_axis,
             lastFieldHeight,
@@ -1395,8 +1425,7 @@ const New_Profile = ({
                      */
           lastFieldHeight +=
             doc.splitTextToSize(
-              `${index + 1}. ${qualification.Degree}, ${
-                qualification.speciality
+              `${index + 1}. ${qualification.Degree}, ${qualification.speciality
               }`,
               450
             ).length * 10;
@@ -1429,7 +1458,7 @@ const New_Profile = ({
                 `${qualification.Institution} (${qualification.Starting_Year} - ${qualification.Ending_Year})`,
                 450
               ).length *
-                4 +
+              4 +
               18;
           }
         });
@@ -1460,9 +1489,8 @@ const New_Profile = ({
           } else {
             heading_x_axis = 40;
           }
-          printing_string = `${index + 1}. ${experience.job_description} ( ${
-            experience.Year_From
-          } - ${experience.Year_To})`
+          printing_string = `${index + 1}. ${experience.job_description} ( ${experience.Year_From
+            } - ${experience.Year_To})`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, heading_x_axis, lastFieldHeight, {
@@ -1472,8 +1500,7 @@ const New_Profile = ({
           doc.setTextColor(0, 0, 0);
           lastFieldHeight +=
             doc.splitTextToSize(
-              `${index + 1}. ${experience.job_description} ( ${
-                experience.Year_From
+              `${index + 1}. ${experience.job_description} ( ${experience.Year_From
               } - ${experience.Year_To})`,
               450
             ).length * 12;
@@ -1514,7 +1541,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -1545,9 +1572,8 @@ const New_Profile = ({
               )}`,
               450
             ).length * 12;
-          printing_string = `${award.Title} ${
-            award.Year === "" ? "" : `(${award.Year})`
-          }`
+          printing_string = `${award.Title} ${award.Year === "" ? "" : `(${award.Year})`
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
@@ -1568,7 +1594,7 @@ const New_Profile = ({
                 `${award.Title} ${award.Year === "" ? "" : `(${award.Year})`}`,
                 450
               ).length *
-                4 +
+              4 +
               18;
           }
         });
@@ -1594,7 +1620,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -1607,8 +1633,7 @@ const New_Profile = ({
             heading_x_axis = 40;
           }
           doc.text(
-            `${index + 1}. ${keyNotes.Location} ${
-              keyNotes.Year === "" ? "" : `(${keyNotes.Year})`
+            `${index + 1}. ${keyNotes.Location} ${keyNotes.Year === "" ? "" : `(${keyNotes.Year})`
             }`,
             heading_x_axis,
             lastFieldHeight,
@@ -1618,8 +1643,7 @@ const New_Profile = ({
           doc.setTextColor(0, 0, 0);
           lastFieldHeight +=
             doc.splitTextToSize(
-              `${index + 1}. ${keyNotes.Location} ${
-                keyNotes.Year === "" ? "" : `(${keyNotes.Year})`
+              `${index + 1}. ${keyNotes.Location} ${keyNotes.Year === "" ? "" : `(${keyNotes.Year})`
               }`,
               450
             ).length * 12;
@@ -1655,7 +1679,7 @@ const New_Profile = ({
             if (
               lastFieldHeight >
               doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-                100
+              100
             ) {
               doc.addPage("a4", "portrait");
               lastFieldHeight = 45;
@@ -1690,7 +1714,7 @@ const New_Profile = ({
                   `${index + 1 + ". Member of " + memberships.Name}`,
                   450
                 ).length *
-                  4 +
+                4 +
                 18;
             }
           }
@@ -1744,7 +1768,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -1769,19 +1793,18 @@ const New_Profile = ({
           printing_string = `${researchProject.Funding_Agency.replace(
             "+",
             ""
-          )}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${
-            researchProject["Project_Status"] === "Completed"
-              ? researchProject["Project_Status"] +
-                " ( " +
-                researchProject["Approval_Date"] +
-                " - " +
-                researchProject["Completion_Date"] +
-                " )"
-              : researchProject["Project_Status"].substring(11) +
-                " ( " +
-                researchProject["Approval_Date"] +
-                " )"
-          }`
+          )}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${researchProject["Project_Status"] === "Completed"
+            ? researchProject["Project_Status"] +
+            " ( " +
+            researchProject["Approval_Date"] +
+            " - " +
+            researchProject["Completion_Date"] +
+            " )"
+            : researchProject["Project_Status"].substring(11) +
+            " ( " +
+            researchProject["Approval_Date"] +
+            " )"
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
@@ -1815,7 +1838,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -1841,19 +1864,18 @@ const New_Profile = ({
           printing_string = `${researchProject.Funding_Agency.replace(
             "+",
             ""
-          )}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${
-            researchProject["Project_Status"] === "Completed"
-              ? researchProject["Project_Status"] +
-                " ( " +
-                researchProject["Approval_Date"] +
-                " - " +
-                researchProject["Completion_Date"] +
-                " )"
-              : researchProject["Project_Status"].substring(11) +
-                " ( " +
-                researchProject["Approval_Date"] +
-                " )"
-          }`
+          )}, Rs: ${(researchProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${researchProject["Project_Status"] === "Completed"
+            ? researchProject["Project_Status"] +
+            " ( " +
+            researchProject["Approval_Date"] +
+            " - " +
+            researchProject["Completion_Date"] +
+            " )"
+            : researchProject["Project_Status"].substring(11) +
+            " ( " +
+            researchProject["Approval_Date"] +
+            " )"
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
 
@@ -1911,7 +1933,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -1938,19 +1960,18 @@ const New_Profile = ({
           printing_string = `${industryProject.Funding_Agency.replace(
             "+",
             ""
-          )}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${
-            industryProject["Project_Status"] === "Completed"
-              ? industryProject["Project_Status"] +
-                " ( " +
-                industryProject["Approval_Date"] +
-                " - " +
-                industryProject["Completion_Date"] +
-                " )"
-              : industryProject["Project_Status"].substring(11) +
-                " ( " +
-                industryProject["Approval_Date"] +
-                " )"
-          }`
+          )}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${industryProject["Project_Status"] === "Completed"
+            ? industryProject["Project_Status"] +
+            " ( " +
+            industryProject["Approval_Date"] +
+            " - " +
+            industryProject["Completion_Date"] +
+            " )"
+            : industryProject["Project_Status"].substring(11) +
+            " ( " +
+            industryProject["Approval_Date"] +
+            " )"
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 53, lastFieldHeight, { maxWidth: 450 });
@@ -1984,7 +2005,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2009,19 +2030,18 @@ const New_Profile = ({
           printing_string = `${industryProject.Funding_Agency.replace(
             "+",
             ""
-          )}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${
-            industryProject["Project_Status"] === "Completed"
-              ? industryProject["Project_Status"] +
-                " ( " +
-                industryProject["Approval_Date"] +
-                " - " +
-                industryProject["Completion_Date"] +
-                " )"
-              : industryProject["Project_Status"].substring(11) +
-                " ( " +
-                industryProject["Approval_Date"] +
-                " )"
-          }`
+          )}, Rs: ${(industryProject.Cost_in_PKR / 1000000).toFixed(2)}M, ${industryProject["Project_Status"] === "Completed"
+            ? industryProject["Project_Status"] +
+            " ( " +
+            industryProject["Approval_Date"] +
+            " - " +
+            industryProject["Completion_Date"] +
+            " )"
+            : industryProject["Project_Status"].substring(11) +
+            " ( " +
+            industryProject["Approval_Date"] +
+            " )"
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
 
@@ -2058,7 +2078,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2130,7 +2150,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2158,9 +2178,8 @@ const New_Profile = ({
           doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
           lastFieldHeight +=
             doc.splitTextToSize(printing_string, 500).length * 11;
-          printing_string = `${
-            conference.Conference_Name + " (" + conference.Year + ")"
-          }`
+          printing_string = `${conference.Conference_Name + " (" + conference.Year + ")"
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
@@ -2195,7 +2214,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2225,11 +2244,10 @@ const New_Profile = ({
           });
           lastFieldHeight +=
             doc.splitTextToSize(printing_string, 500).length * 11;
-          printing_string = `${
-            editorial.Impact_Factor.trim() === ""
-              ? ""
-              : "IF: " + editorial.Impact_Factor
-          }`
+          printing_string = `${editorial.Impact_Factor.trim() === ""
+            ? ""
+            : "IF: " + editorial.Impact_Factor
+            }`
             .replace(/^\s*\n/gm, "")
             .trim();
 
@@ -2267,7 +2285,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2299,9 +2317,8 @@ const New_Profile = ({
           doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
           lastFieldHeight +=
             doc.splitTextToSize(printing_string, 500).length * 11;
-          printing_string = `${chapter.Journal_Title} ${
-            "(" + chapter.Journal_Info + ")"
-          } (${chapter.Publication_year})`
+          printing_string = `${chapter.Journal_Title} ${"(" + chapter.Journal_Info + ")"
+            } (${chapter.Publication_year})`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
@@ -2335,7 +2352,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2409,7 +2426,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2421,9 +2438,8 @@ const New_Profile = ({
           }
           doc.setFontSize(11);
           doc.setTextColor(0, 0, 0);
-          printing_string = `${index + 1}. ${training.Name} ( ${
-            training.Completions_Date
-          } )`
+          printing_string = `${index + 1}. ${training.Name} ( ${training.Completions_Date
+            } )`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, heading_x_axis, lastFieldHeight, {
@@ -2459,7 +2475,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2471,9 +2487,8 @@ const New_Profile = ({
           }
           doc.setFontSize(11);
           doc.setTextColor(0, 0, 0);
-          printing_string = `${index + 1}. ${training.Name} (${
-            training.Date_From
-          } ) - ( ${training.Date_To})`
+          printing_string = `${index + 1}. ${training.Name} (${training.Date_From
+            } ) - ( ${training.Date_To})`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, heading_x_axis, lastFieldHeight, {
@@ -2510,7 +2525,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2575,7 +2590,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2643,7 +2658,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2709,7 +2724,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2771,7 +2786,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2794,9 +2809,8 @@ const New_Profile = ({
 
           doc.setFontSize(8);
           doc.setTextColor(0, 0, 0);
-          printing_string = `${supervision.StudentName} - ${
-            supervision.Program.split(" - ")[0]
-          } - ${supervision.School}`
+          printing_string = `${supervision.StudentName} - ${supervision.Program.split(" - ")[0]
+            } - ${supervision.School}`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
@@ -2830,7 +2844,7 @@ const New_Profile = ({
           if (
             lastFieldHeight >
             doc.getCurrentPageInfo()["pageContext"]["mediaBox"]["topRightY"] -
-              100
+            100
           ) {
             doc.addPage("a4", "portrait");
             lastFieldHeight = 45;
@@ -2853,9 +2867,8 @@ const New_Profile = ({
           doc.setFontSize(8);
           doc.setTextColor(0, 0, 0);
 
-          printing_string = `${supervision.StudentName} - ${
-            supervision.Program.split(" - ")[0]
-          } - ${supervision.School}`
+          printing_string = `${supervision.StudentName} - ${supervision.Program.split(" - ")[0]
+            } - ${supervision.School}`
             .replace(/^\s*\n/gm, "")
             .trim();
           doc.text(printing_string, 40, lastFieldHeight, { maxWidth: 500 });
@@ -2993,7 +3006,7 @@ const New_Profile = ({
                 {article?.sdgs.map((sdg, index) => {
                   return (
                     <>
-                      <img key={index} style={{width:"80px" , height:"auto",marginRight:"20px"}} src={sdgsimgae(sdg.id)} />{" "}
+                      <img key={index} style={{ width: "80px", height: "auto", marginRight: "20px" }} src={sdgsimgae(sdg.id)} />{" "}
                     </>
                   );
                 })}
@@ -3019,9 +3032,8 @@ const New_Profile = ({
               )}`}
               <br />
               <i>{`${chapter.Journal_Title}: `}</i>
-              <strong className={"strong-color"}>{`${
-                "(" + chapter.Journal_Info + ")"
-              } (${chapter.Publication_year})`}</strong>
+              <strong className={"strong-color"}>{`${"(" + chapter.Journal_Info + ")"
+                } (${chapter.Publication_year})`}</strong>
               <br />
               Citations:{" "}
               {chapter.Citations === "" ? (
@@ -3034,26 +3046,26 @@ const New_Profile = ({
             </Card.Subtitle>
             <div className="row">
               <div className="col-md-6">
-              <Button
-              variant="primary"
-              onClick={() => {
-                window.open(chapter.DOI, "_blank");
-              }}
-            >
-              Open
-            </Button>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    window.open(chapter.DOI, "_blank");
+                  }}
+                >
+                  Open
+                </Button>
               </div>
               <div className="col-md-6">
                 {chapter?.sdgs.map((sdg, index) => {
                   return (
                     <>
-                      <img key={index} style={{width:"80px" , height:"auto",marginRight:"20px"}} src={sdgsimgae(sdg.id)} />{" "}
+                      <img key={index} style={{ width: "80px", height: "auto", marginRight: "20px" }} src={sdgsimgae(sdg.id)} />{" "}
                     </>
                   );
                 })}
               </div>
             </div>
-      
+
           </Card.Body>
         </Card>
       </>
@@ -3086,26 +3098,26 @@ const New_Profile = ({
             </Card.Subtitle>
             <div className="row">
               <div className="col-md-6">
-              <Button
-              variant="primary"
-              onClick={() => {
-                window.open(book.DOI, "_blank");
-              }}
-            >
-              Open
-            </Button>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    window.open(book.DOI, "_blank");
+                  }}
+                >
+                  Open
+                </Button>
               </div>
               <div className="col-md-6">
                 {book?.sdgs.map((sdg, index) => {
                   return (
                     <>
-                      <img key={index} style={{width:"80px" , height:"auto",marginRight:"20px"}} src={sdgsimgae(sdg.id)} />{" "}
+                      <img key={index} style={{ width: "80px", height: "auto", marginRight: "20px" }} src={sdgsimgae(sdg.id)} />{" "}
                     </>
                   );
                 })}
               </div>
             </div>
-  
+
           </Card.Body>
         </Card>
       </>
@@ -3368,25 +3380,23 @@ const New_Profile = ({
                 <strong className={"strong-color"}>Approval Date: </strong>
                 {`${ip.Approval_Date}`}
                 <br />
-                {`${
-                  ip.Inventors.length === 1
-                    ? ip.Inventors.map((inventor) => {
-                        return inventor;
-                      })
-                    : ip.Inventors.map((inventor) => {
-                        return " " + inventor;
-                      })
-                } \n`}
+                {`${ip.Inventors.length === 1
+                  ? ip.Inventors.map((inventor) => {
+                    return inventor;
+                  })
+                  : ip.Inventors.map((inventor) => {
+                    return " " + inventor;
+                  })
+                  } \n`}
                 <br />
-                {`${
-                  ip.Schools.length === 1
-                    ? ip.Schools.map((school) => {
-                        return school;
-                      })
-                    : ip.Schools.map((school) => {
-                        return " " + school;
-                      })
-                } \n`}
+                {`${ip.Schools.length === 1
+                  ? ip.Schools.map((school) => {
+                    return school;
+                  })
+                  : ip.Schools.map((school) => {
+                    return " " + school;
+                  })
+                  } \n`}
               </Card.Subtitle>
             </Card.Body>
           </Card>
@@ -3409,25 +3419,23 @@ const New_Profile = ({
               <strong className={"strong-color"}>Approval Date: </strong>
               {`${ip.Approval_Date}`}
               <br />
-              {`${
-                ip.Inventors.length === 1
-                  ? ip.Inventors.map((inventor) => {
-                      return inventor;
-                    })
-                  : ip.Inventors.map((inventor) => {
-                      return " " + inventor;
-                    })
-              } \n`}
+              {`${ip.Inventors.length === 1
+                ? ip.Inventors.map((inventor) => {
+                  return inventor;
+                })
+                : ip.Inventors.map((inventor) => {
+                  return " " + inventor;
+                })
+                } \n`}
               <br />
-              {`${
-                ip.Schools.length === 1
-                  ? ip.Schools.map((school) => {
-                      return school;
-                    })
-                  : ip.Schools.map((school) => {
-                      return " " + school;
-                    })
-              } \n`}
+              {`${ip.Schools.length === 1
+                ? ip.Schools.map((school) => {
+                  return school;
+                })
+                : ip.Schools.map((school) => {
+                  return " " + school;
+                })
+                } \n`}
             </Card.Subtitle>
           </Card.Body>
         </Card>
@@ -3449,25 +3457,23 @@ const New_Profile = ({
               <strong className={"strong-color"}>Approval Date: </strong>
               {`${ip.Approval_Date}`}
               <br />
-              {`${
-                ip.Inventors.length === 1
-                  ? ip.Inventors.map((inventor) => {
-                      return inventor;
-                    })
-                  : ip.Inventors.map((inventor) => {
-                      return " " + inventor;
-                    })
-              } \n`}
+              {`${ip.Inventors.length === 1
+                ? ip.Inventors.map((inventor) => {
+                  return inventor;
+                })
+                : ip.Inventors.map((inventor) => {
+                  return " " + inventor;
+                })
+                } \n`}
               <br />
-              {`${
-                ip.Schools.length === 1
-                  ? ip.Schools.map((school) => {
-                      return school;
-                    })
-                  : ip.Schools.map((school) => {
-                      return " " + school;
-                    })
-              } \n`}
+              {`${ip.Schools.length === 1
+                ? ip.Schools.map((school) => {
+                  return school;
+                })
+                : ip.Schools.map((school) => {
+                  return " " + school;
+                })
+                } \n`}
             </Card.Subtitle>
           </Card.Body>
         </Card>
@@ -3508,9 +3514,8 @@ const New_Profile = ({
           <Card.Body>
             <Card.Subtitle className="mb-2 text-muted">
               <i>{`${supervision.StudentName}`}</i>
-              {` - ${supervision.Program.split(" - ")[0]} - ${
-                supervision.School
-              }`}
+              {` - ${supervision.Program.split(" - ")[0]} - ${supervision.School
+                }`}
             </Card.Subtitle>
           </Card.Body>
         </Card>
@@ -3527,9 +3532,8 @@ const New_Profile = ({
           <Card.Body>
             <Card.Subtitle className="mb-2 text-muted">
               <i>{`${supervision.StudentName}`}</i>
-              {` - ${supervision.Program.split(" - ")[0]} - ${
-                supervision.School
-              }`}
+              {` - ${supervision.Program.split(" - ")[0]} - ${supervision.School
+                }`}
             </Card.Subtitle>
           </Card.Body>
         </Card>
@@ -3564,11 +3568,10 @@ const New_Profile = ({
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">
             {`${award.Title} 
-                                            ${
-                                              award.Year === ""
-                                                ? ""
-                                                : `(${award.Year})`
-                                            }`}
+                                            ${award.Year === ""
+                ? ""
+                : `(${award.Year})`
+              }`}
           </Card.Subtitle>
         </Card.Body>
       </Card>
@@ -3672,9 +3675,9 @@ const New_Profile = ({
 
   if (
     Research_Articles_List.length +
-      Books.length +
-      Book_Chapters.length +
-      Conferences.length !==
+    Books.length +
+    Book_Chapters.length +
+    Conferences.length !==
     0
   ) {
     divCount++;
@@ -3686,9 +3689,9 @@ const New_Profile = ({
 
   if (
     IPS_Patent.length +
-      IPS_Design.length +
-      IPS_CopyRight.length +
-      IPS_TradeMark.length !==
+    IPS_Design.length +
+    IPS_CopyRight.length +
+    IPS_TradeMark.length !==
     0
   ) {
     divCount++;
@@ -3724,7 +3727,7 @@ const New_Profile = ({
                 Books.length +
                 Book_Chapters.length +
                 conferences.length ===
-              0 ? (
+                0 ? (
                 ""
               ) : (
                 <PieChart
@@ -3742,7 +3745,7 @@ const New_Profile = ({
               {Research_Articles.length +
                 Books.length +
                 Book_Chapters.length ===
-              0 ? (
+                0 ? (
                 ""
               ) : (
                 <Line_Chart data={publications_data} title={"Publications"} />
@@ -4025,7 +4028,7 @@ const New_Profile = ({
                       ""
                     )}
                     {profile[0].Professional_Memberships_Registrations.length <=
-                    0 ? (
+                      0 ? (
                       ""
                     ) : (
                       <Button
@@ -4106,7 +4109,7 @@ const New_Profile = ({
                   <Collapse in={CollapseOptions.project_options}>
                     <div id={"Project-options-area"}>
                       {Project_Research.National.length === 0 &&
-                      Project_Research.International.length === 0 ? (
+                        Project_Research.International.length === 0 ? (
                         ""
                       ) : (
                         <Button
@@ -4223,7 +4226,7 @@ const New_Profile = ({
                         </div>
                       </Collapse>
                       {Project_Industry.National.length === 0 &&
-                      Project_Industry.International.length === 0 ? (
+                        Project_Industry.International.length === 0 ? (
                         ""
                       ) : (
                         <Button
@@ -4344,10 +4347,10 @@ const New_Profile = ({
                 </div>
               )}
               {Research_Articles.length === 0 &&
-              Books.length === 0 &&
-              Book_Chapters.length === 0 &&
-              conferences.length === 0 &&
-              editorials.length === 0 ? (
+                Books.length === 0 &&
+                Book_Chapters.length === 0 &&
+                conferences.length === 0 &&
+                editorials.length === 0 ? (
                 ""
               ) : (
                 <div className={"publications"}>
@@ -4615,7 +4618,7 @@ const New_Profile = ({
                   <Collapse in={CollapseOptions.ip_options}>
                     <div id={"IP-options-area"}>
                       {Intellectual_Property.Patents.length === 0 &&
-                      Intellectual_Property.Patents.length === 0 ? (
+                        Intellectual_Property.Patents.length === 0 ? (
                         ""
                       ) : (
                         <Button
@@ -5074,7 +5077,7 @@ const New_Profile = ({
                 src={
                   profile[0].Image_URL.trim() === ""
                     ? process.env.PUBLIC_URL +
-                      "/Images/Profile Images/Profile_Vector.jpg"
+                    "/Images/Profile Images/Profile_Vector.jpg"
                     : "data:image/png;base64," + atob(profile[0].Image_URL)
                 }
                 alt={"Avatar"}
@@ -5444,7 +5447,7 @@ const New_Profile = ({
                       ""
                     )}
                     {profile[0].Professional_Memberships_Registrations.length <=
-                    0 ? (
+                      0 ? (
                       ""
                     ) : (
                       <Button
@@ -5525,7 +5528,7 @@ const New_Profile = ({
                   <Collapse in={CollapseOptions.project_options}>
                     <div id={"Project-options-area"}>
                       {Project_Research.National.length === 0 &&
-                      Project_Research.International.length === 0 ? (
+                        Project_Research.International.length === 0 ? (
                         ""
                       ) : (
                         <Button
@@ -5642,7 +5645,7 @@ const New_Profile = ({
                         </div>
                       </Collapse>
                       {Project_Industry.National.length === 0 &&
-                      Project_Industry.International.length === 0 ? (
+                        Project_Industry.International.length === 0 ? (
                         ""
                       ) : (
                         <Button
@@ -5763,10 +5766,10 @@ const New_Profile = ({
                 </div>
               )}
               {Research_Articles.length === 0 &&
-              Books.length === 0 &&
-              Book_Chapters.length === 0 &&
-              conferences.length === 0 &&
-              editorials.length === 0 ? (
+                Books.length === 0 &&
+                Book_Chapters.length === 0 &&
+                conferences.length === 0 &&
+                editorials.length === 0 ? (
                 ""
               ) : (
                 <div className={"publications"}>
@@ -6034,7 +6037,7 @@ const New_Profile = ({
                   <Collapse in={CollapseOptions.ip_options}>
                     <div id={"IP-options-area"}>
                       {Intellectual_Property.Patents.length === 0 &&
-                      Intellectual_Property.Patents.length === 0 ? (
+                        Intellectual_Property.Patents.length === 0 ? (
                         ""
                       ) : (
                         <Button
@@ -6503,9 +6506,20 @@ const New_Profile = ({
             <div className={"analysis"}>
               <div className={"analysis_tab_header"}>
                 <div className={"about_heading"}>
-                  <h1>
-                    <span>{profile[0].Name}</span>
-                  </h1>
+                  <div className="row">
+                    <div className="col-lg-10">
+                      <h1>
+                        <span>{profile[0].Name}</span>
+                      </h1>
+                    </div>
+                    <div className="col-lg-2 mt-2">
+                      <p className="h4">H-Index: {hIndex === 0 ? <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                        : <b>{hIndex}</b>}</p>
+                    </div>
+                  </div>
+
                   <h6 className={"introduction"}>
                     <strong>Dr {profile[0].Name}</strong> is working as{" "}
                     <strong>{profile[0].Work_Position}</strong> in the{" "}
@@ -6542,48 +6556,47 @@ const New_Profile = ({
                 <hr />
               </div>
               <div
-                className={`work_details row ${
-                  divCount === 1
-                    ? "one"
-                    : divCount === 2
+                className={`work_details row ${divCount === 1
+                  ? "one"
+                  : divCount === 2
                     ? "two"
                     : divCount === 3
-                    ? "three"
-                    : divCount === 4
-                    ? "four"
-                    : divCount === 5
-                    ? "five"
-                    : "six"
-                }`}
+                      ? "three"
+                      : divCount === 4
+                        ? "four"
+                        : divCount === 5
+                          ? "five"
+                          : "six"
+                  }`}
               >
                 {Project_Research.National.length +
                   Project_Research.International.length !==
                   0 && (
-                  <div
-                    className={"detail_work_div col-lg"}
-                    onClick={showResearchProjects}
-                  >
-                    <h6>Research Projects</h6>
-                    <h1>
-                      {Project_Research.National.length +
-                        Project_Research.International.length}
-                    </h1>
-                  </div>
-                )}
+                    <div
+                      className={"detail_work_div col-lg"}
+                      onClick={showResearchProjects}
+                    >
+                      <h6>Research Projects</h6>
+                      <h1>
+                        {Project_Research.National.length +
+                          Project_Research.International.length}
+                      </h1>
+                    </div>
+                  )}
                 {Project_Industry.National.length +
                   Project_Industry.International.length !==
                   0 && (
-                  <div
-                    className={"detail_work_div col-lg"}
-                    onClick={showIndustrialProjects}
-                  >
-                    <h6>Industry Projects</h6>
-                    <h1>
-                      {Project_Industry.National.length +
-                        Project_Industry.International.length}
-                    </h1>
-                  </div>
-                )}
+                    <div
+                      className={"detail_work_div col-lg"}
+                      onClick={showIndustrialProjects}
+                    >
+                      <h6>Industry Projects</h6>
+                      <h1>
+                        {Project_Industry.National.length +
+                          Project_Industry.International.length}
+                      </h1>
+                    </div>
+                  )}
                 {AmountGranted != 0.0 && (
                   <div className={"detail_work_div col-lg"}>
                     <h6>Amount Granted</h6>
@@ -6595,19 +6608,19 @@ const New_Profile = ({
                   Book_Chapters.length +
                   Conferences.length !==
                   0 && (
-                  <div
-                    className={"detail_work_div col-lg"}
-                    onClick={showPublications}
-                  >
-                    <h6>Publications</h6>
-                    <h1>
-                      {Research_Articles_List.length +
-                        Books.length +
-                        Book_Chapters.length +
-                        Conferences.length}
-                    </h1>
-                  </div>
-                )}
+                    <div
+                      className={"detail_work_div col-lg"}
+                      onClick={showPublications}
+                    >
+                      <h6>Publications</h6>
+                      <h1>
+                        {Research_Articles_List.length +
+                          Books.length +
+                          Book_Chapters.length +
+                          Conferences.length}
+                      </h1>
+                    </div>
+                  )}
                 {Citations !== 0 && (
                   <div className={"detail_work_div col-lg"}>
                     <h6>Citations</h6>
@@ -6619,19 +6632,19 @@ const New_Profile = ({
                   IPS_CopyRight.length +
                   IPS_TradeMark.length !==
                   0 && (
-                  <div
-                    className={"detail_work_div col-lg"}
-                    onClick={showIntellectualProperties}
-                  >
-                    <h6>Intellectual Property</h6>
-                    <h1>
-                      {IPS_Patent.length +
-                        IPS_Design.length +
-                        IPS_CopyRight.length +
-                        IPS_TradeMark.length}
-                    </h1>
-                  </div>
-                )}
+                    <div
+                      className={"detail_work_div col-lg"}
+                      onClick={showIntellectualProperties}
+                    >
+                      <h6>Intellectual Property</h6>
+                      <h1>
+                        {IPS_Patent.length +
+                          IPS_Design.length +
+                          IPS_CopyRight.length +
+                          IPS_TradeMark.length}
+                      </h1>
+                    </div>
+                  )}
               </div>
               {!modal && enable ? (
                 <>
@@ -6640,7 +6653,7 @@ const New_Profile = ({
                       Books.length +
                       Book_Chapters.length +
                       conferences.length ===
-                    0 ? (
+                      0 ? (
                       ""
                     ) : (
                       <PieChart
@@ -6661,7 +6674,7 @@ const New_Profile = ({
                     {Research_Articles.length +
                       Books.length +
                       Book_Chapters.length ===
-                    0 ? (
+                      0 ? (
                       ""
                     ) : (
                       <Line_Chart

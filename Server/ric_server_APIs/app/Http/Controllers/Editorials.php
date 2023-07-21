@@ -16,9 +16,9 @@ class Editorials extends Controller
     static function getEditorials(string $Name): array
     {
         //----------------------------------------------------------------------------------------------API Link
-        //       https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=10&title=abc&author_name=abc
+        //       https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=a52e3b5eeab7ce74317b1634706b4930&rows=10&title=abc&author_name=abc
         //------------------------------------------------------------------------------------------------------
-        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=".$Name);
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=a52e3b5eeab7ce74317b1634706b4930&rows=500&author_name=".$Name);
 
         $decoded = $response->json();
         return $decoded["ric_expert_portal_editorial_json_data"];
