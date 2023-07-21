@@ -764,6 +764,7 @@ const New_Profile = ({
             author["ce:given-name"] + " " + author["ce:surname"]
           ) {
             fetchHIndex(author["@auid"]);
+
             setScopusID(() => {
               return author["@auid"];
             });
@@ -6509,14 +6510,12 @@ const New_Profile = ({
                   <div className="row">
                     <div className="col-lg-10">
                       <h1>
-                        <span>{profile[0].Name}</span>
+                        {profile[0].Name}
+                        <span className="h2"> [H-Index: {hIndex === 0 ? <div class="spinner-border spinner-border-sm" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                          : <b>{hIndex}</b>}]</span>
                       </h1>
-                    </div>
-                    <div className="col-lg-2 mt-2">
-                      <p className="h4">H-Index: {hIndex === 0 ? <div class="spinner-border spinner-border-sm" role="status">
-                        <span class="sr-only">Loading...</span>
-                      </div>
-                        : <b>{hIndex}</b>}</p>
                     </div>
                   </div>
 
