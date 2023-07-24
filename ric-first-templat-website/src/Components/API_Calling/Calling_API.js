@@ -533,6 +533,7 @@ const Calling_API = () => {
                         ips={IPs}
                         profile={Profile}
                         enable={downloadCV}
+                        name={Profile[0]["Name"]}
                     />
             }
         </>

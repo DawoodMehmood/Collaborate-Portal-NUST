@@ -32,6 +32,7 @@ import Placeholder from "react-bootstrap/Placeholder";
 import html2canvas from "html2canvas";
 import nustLogo from "../../Icons/nustLogo.png";
 import nustLogo2 from "../../Icons/nustLogo2.png";
+import webofscienceData from "../../APIs/webofscienceIds.json";
 import sdg1 from "../../Icons/sdgs/1.jpg";
 import sdg2 from "../../Icons/sdgs/2.jpg";
 import sdg3 from "../../Icons/sdgs/3.jpg";
@@ -60,8 +61,8 @@ const New_Profile = ({
   ips,
   profile,
   enable,
+  name
 }) => {
-
 
   // This function is use to fetch H index from the scopus Api using {author id} fetched from the scopus api 
   const fetchHIndex = (authorId) => {
@@ -518,6 +519,10 @@ const New_Profile = ({
   // bar charts modal
   const [modal, setModal] = useState(false);
   const [hIndex, sethIndex] = useState(0);
+  const [webOfScienceId, setWebOfScienceId] = useState("");
+
+
+
 
 
   const toggleModal = (chart) => {
@@ -606,6 +611,8 @@ const New_Profile = ({
   // This state array contains images of Universities, with whom faculty member has worked with.
   // This is only visible when Google Cloud API Key is added in the "fetchData" function.
   const [Research_Images, setResearch_Images] = useState([]); // Images for research projects
+
+  // State to store web of science id
 
   // There are two main types of Projects.
   // 1. Research
@@ -1104,7 +1111,19 @@ const New_Profile = ({
              */
     }
   }, [fetchedImagesComplete]);
+  useEffect(() => {
+    // This function is responsible for fetching Web of science id from json file
+    setWebOfScienceId(
+      webofscienceData.map((item) => {
+        if (item.name.slice(1).toLowerCase() === name.toLowerCase()) {
+          return item.id;
+        }
+      }).filter((value) => value !== undefined)
+    );
 
+  }, []);
+  // console.log("Web of Science ID: ", webOfScienceId);
+  // console.log(name);
   // This method is called whenever "Download CV" button is clicked on Profile Page and it is also responsible for creating PDF for CV
   const openCV = () => {
     const check = document.getElementById("roundImageFaculty");
@@ -5150,6 +5169,19 @@ const New_Profile = ({
                   </a>
                 </li>
               </ul>
+            </div>
+            <div className={"profile_links_1"}>
+              <a
+                href={`https://www.webofscience.com/wos/author/record/${webOfScienceId[0]}`}
+                className={
+                  webOfScienceId[0] === undefined
+                    ? "disabled"
+                    : "research-info"
+                }
+                target={"_blank"}
+              >
+                Web Of Science
+              </a>
             </div>
             <div className={"profile_links_1"}>
               <a
