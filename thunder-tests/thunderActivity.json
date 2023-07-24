@@ -1237,5 +1237,110 @@
             }
         ],
         "tests": []
+    },
+    {
+        "_id": "5dafd354-676b-4280-a7c5-adc01205c261",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&author_cmsid=00000003492",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=1000&author_cmsid=00000003492",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-24T10:07:57.468Z",
+        "modified": "2023-07-24T10:07:57.468Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_journal_pub",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "fc22151322bfdd2c3f0626798c9198bc",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "1000",
+                "isPath": false
+            },
+            {
+                "name": "author_cmsid",
+                "value": "00000003492",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "13299846-8447-4cc6-b450-e29a7efe667f",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=a52e3b5eeab7ce74317b1634706b4930&rows=500&author_name=hassan",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=a52e3b5eeab7ce74317b1634706b4930&rows=500&author_name=hassan",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-24T10:23:09.003Z",
+        "modified": "2023-07-24T10:23:09.003Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_editorial",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "a52e3b5eeab7ce74317b1634706b4930",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "500",
+                "isPath": false
+            },
+            {
+                "name": "author_name",
+                "value": "hassan",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "7764aabd-2dea-45e9-9124-4a2456d44d75",
+        "colId": "history",
+        "containerId": "",
+        "name": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=hassan",
+        "url": "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=500&author_name=hassan",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-07-24T10:24:20.613Z",
+        "modified": "2023-07-24T10:24:20.613Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "alias",
+                "value": "ric_expert_portal_editorial",
+                "isPath": false
+            },
+            {
+                "name": "auth",
+                "value": "e09d3d4b09c4e553fcb1901d4b555acf",
+                "isPath": false
+            },
+            {
+                "name": "rows",
+                "value": "500",
+                "isPath": false
+            },
+            {
+                "name": "author_name",
+                "value": "hassan",
+                "isPath": false
+            }
+        ],
+        "tests": []
     }
 ]
