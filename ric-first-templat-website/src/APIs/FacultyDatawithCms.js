@@ -38,6 +38,14 @@ async function fetchIPwithid(x) {
             }
         );
 }
+async function fetchFacultywithid(x) {
+    return await fetch(`http://localhost:8000/api/Profile/${x}`)
+        .then((response) => response.json()).then(
+            (data) => {
+                // console.log("data",data);
+                return data;
+            });
+}
 
 
-export { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid, fetchConferenceswithid }
+export { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid, fetchConferenceswithid,fetchFacultywithid }

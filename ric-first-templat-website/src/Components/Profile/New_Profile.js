@@ -34,6 +34,7 @@ import nustLogo from "../../Icons/nustLogo.png";
 import nustLogo2 from "../../Icons/nustLogo2.png";
 import webofscienceData from "../../APIs/webofscienceIds.json";
 import iconjson from "../../APIs/icon.json";
+import { fetchFacultywithid } from "../../APIs/FacultyDatawithCms";
 import sdg1 from "../../Icons/sdgs/1.jpg";
 import sdg2 from "../../Icons/sdgs/2.jpg";
 import sdg3 from "../../Icons/sdgs/3.jpg";
@@ -127,6 +128,49 @@ const New_Profile = ({
       return sdg17;
     }
   };
+
+
+  const visitprofile = (url) => {
+    console.log("url", url);
+    window.open(url, '_blank');
+  }
+  const [publicationIdsArray, setpublicationIdsArray] = useState([]);
+  const [fetchedData, setFetchedData] = useState([]);
+  // const displayedNames = new Set();
+
+  useEffect(() => {
+    // Extract and store the IDs from each object in the publications array
+    const extractedIds = publications.Article?.flatMap((publication) => {
+      const authorIdsAll = publication.Author_ids;
+      return authorIdsAll.map((authorIds) => {
+        const coAuthorFacultyStaffId = authorIds.co_author_faculty_staff_id?.split(" - ")[1];
+        return coAuthorFacultyStaffId;
+      });
+    });
+
+    // Filter out the undefined and duplicate values from the extracted IDs
+    const filteredIds = [...new Set(extractedIds)].filter((cmsid) => cmsid !== undefined && cmsid !== id);
+
+    // Update the publicationIdsArray state with the filtered IDs
+    setpublicationIdsArray(filteredIds);
+  }, []);
+
+
+  useEffect(() => {
+    // Fetch faculty data for the IDs in publicationIdsArray
+    if (publicationIdsArray.length > 0) {
+      Promise.all(publicationIdsArray.map((item) => fetchFacultywithid(item)))
+        .then((resolvedDataArray) => {
+          // console.log("fetchedDataArray", resolvedDataArray);
+          setFetchedData(resolvedDataArray);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [publicationIdsArray]);
+
+
   // This function is responsible for showing the ResearchProject of Faculty Member
   const showmainprofile = () => {
     setTabOptions({
@@ -4183,7 +4227,7 @@ const New_Profile = ({
                             });
                           }}
                         >
-                          Technology Icons{" "}
+                          Technology Transferred{" "}
                           <span className={"ips_cps"}>
                             {icondata?.length}
                           </span>
@@ -5113,7 +5157,7 @@ const New_Profile = ({
                             });
                           }}
                         >
-                          Technology Icons{" "}
+                          Technology Transferred{" "}
                           <span className={"ips_cps"}>
                             {icondata?.length}
                           </span>
@@ -5519,11 +5563,57 @@ const New_Profile = ({
                 </div>
               )}
 
+
+
+
+              {/* ajsfijwasfia ifj p */}
+
+              <div className={"about_heading"}>
+                <h1>
+                  <span style={{textDecoration: "underline"}}>NUST Research Collaborators:</span>
+                </h1>
+              </div>
+              <div className="slider-container" style={{ overflow: 'hidden', width: '1000px', display: 'flex' }}>
+                <div className="slider slideranimation">
+                  {fetchedData.map((data, index) => {
+                    const imageUrl = data[0]?.image_128 && data[0]?.image_128.trim() !== "" ? "data:image/png;base64," + atob(data[0]?.image_128) : process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg";
+
+                    // Check if the name exists and is not an empty string
+                    if (!data[0]?.name) {
+                      return null; // Skip rendering if the name is not available
+                    }
+
+                    return (
+                      <div onClick={() => { visitprofile(`/profile/${data[0]?.name}/${data[0]?.code}`) }} className={"collab-Profile schoolcountcard hovercard"}>
+                        <div className={"collab-Header"}>
+                          <div className={"collab-Image"}>
+                            <img src={imageUrl} alt="Avatar" />
+                          </div>
+                        </div>
+                        <div className={"collab-Body"}>
+                          <div className={"collab-Title"}>
+                            <h2>{data[0]?.name}</h2>
+                          </div>
+                          <div className={"Card-Text"}>
+                            <p>{data[0].institute}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              {/* ajsfijwasfia ifj p */}
+
+
+
+
+
               <div>
                 {Research_Images.length !== 0 ? (
                   <div className={"Research_Collaborations"}>
                     <h1 className={"Research-Collaborators"}>
-                      Research Collaborators
+                      University Collaborators
                     </h1>
                     <Slider {...research_settings}>
                       {Research_Images.map((image, index) => (

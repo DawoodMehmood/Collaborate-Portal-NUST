@@ -1,4 +1,4 @@
-.emailMeButton{
+.emailMeButton {
   display: block;
   margin: auto;
   margin-top: 20px;
@@ -14,8 +14,9 @@
   width: 70%;
   padding: 5px;
 }
+
 /* hover effect with size increase and gradient change */
-.emailMeButton:hover{
+.emailMeButton:hover {
   background: linear-gradient(#6a0dad, #6a0dad);
   transform: scale(1.05);
   transition: all 0.2s ease-in-out;
@@ -29,23 +30,28 @@
   margin: 10px;
   clear: both;
 }
+
 .gotoprofile:hover {
   color: #6a0dad;
   cursor: pointer;
 }
 
 .introduction {
-  font-size: 1.3rem; /* Adjust the font size as needed */
-  color: #333; /* Choose an appropriate text color */
+  font-size: 1.3rem;
+  /* Adjust the font size as needed */
+  color: #333;
+  /* Choose an appropriate text color */
   /* font-family: 'Open Sans', sans-serif; */
   text-align: left;
 }
+
 .User_Profile {
   margin: unset;
   display: flex;
   flex-direction: row;
   gap: 2%;
 }
+
 .faculty_info {
   top: 0;
   display: flex;
@@ -54,33 +60,45 @@
   background: linear-gradient(#9966cc, #6a0dad);
   overflow-y: scroll;
 }
+
 .faculty_profile_pic {
-  width: 210px; /* Adjust the width and height to set the desired circle size */
+  width: 210px;
+  /* Adjust the width and height to set the desired circle size */
   height: 210px;
-  border-radius: 50%; /* Makes the container a circle shape */
-  overflow: hidden; /* Clips the image to the circle boundaries */
-  position: relative; /* Enables positioning of the image */
+  border-radius: 50%;
+  /* Makes the container a circle shape */
+  overflow: hidden;
+  /* Clips the image to the circle boundaries */
+  position: relative;
+  /* Enables positioning of the image */
   margin: auto;
   margin-top: 25px;
   border: 2px solid rgba(0, 0, 0, 0.45);
   box-shadow: 5px 5px 5px 10px rgba(0, 0, 0, 0.15);
 }
+
 .faculty_img {
-  width: 110%; /* Ensures the image fills the circle container completely */
+  width: 110%;
+  /* Ensures the image fills the circle container completely */
   height: 110%;
-  object-fit: cover; /* Maintains aspect ratio and fills the available space */
-  position: absolute; /* Positions the image within the circle */
+  object-fit: cover;
+  /* Maintains aspect ratio and fills the available space */
+  position: absolute;
+  /* Positions the image within the circle */
   top: 50%;
   left: 50%;
-  transform: translate(-53%, -47%); /* Centers the image within the circle */
+  transform: translate(-53%, -47%);
+  /* Centers the image within the circle */
   /* mask-image: radial-gradient(circle at center, transparent 70%, black 100%); Creates the circular mask */
 }
+
 .faculty_personal_info {
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
 }
+
 .Name_Faculty {
   font-size: xx-large;
   text-align: center;
@@ -96,16 +114,20 @@
     flex-direction: row; */
   gap: 0;
 }
+
 .faculty_personal_info h3 {
   width: 90%;
   font-weight: normal;
 }
+
 .designation {
   margin-left: -1px;
 }
+
 .department {
   margin-left: 2.5%;
 }
+
 .Name_Faculty,
 .faculty_personal_info h3 {
   color: white;
@@ -114,6 +136,7 @@
   border: none;
   box-shadow: none;
 }
+
 h3 {
   padding: 5px;
   margin-top: 5px;
@@ -122,6 +145,7 @@ h3 {
   display: inline-block;
   font-size: 1.1em !important;
 }
+
 .profile_links {
   margin-top: 5%;
   width: 100%;
@@ -132,6 +156,7 @@ h3 {
   align-items: center;
   align-self: center;
 }
+
 .profile_links_1 {
   display: flex;
   flex-direction: row;
@@ -139,10 +164,12 @@ h3 {
   align-items: center;
   align-content: center;
 }
+
 .profile_links_2 {
   display: flex;
   flex-direction: column;
 }
+
 .research-info {
   display: block;
   text-decoration: none;
@@ -153,6 +180,7 @@ h3 {
   text-align: center;
   width: 150px;
 }
+
 button {
   background: none;
   margin: 10px;
@@ -161,12 +189,14 @@ button {
   font-size: large;
   border: 2px solid white;
 }
+
 .Options {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 5%;
 }
+
 .Options button {
   border: none;
   border-bottom: 1px solid rgba(249, 249, 249, 0.4);
@@ -179,12 +209,14 @@ button {
   width: 97%;
   text-align: left;
 }
+
 .profile_option {
   margin: 5px;
   width: 97%;
   text-align: left;
 }
-button > h5 {
+
+button>h5 {
   display: block;
   float: right;
   padding: unset;
@@ -192,36 +224,43 @@ button > h5 {
   font-weight: unset;
   margin: 0 5% 0 0;
 }
+
 .research-info:hover,
 .CV-button:hover {
   background-color: #6a0dad;
   border: 1px solid #6a0dad;
   cursor: pointer;
 }
+
 .font,
 .arrow {
   display: inline-block;
   color: white;
   padding: 10px;
 }
+
 .arrow {
   font-size: 20px;
   padding: unset;
 }
+
 .Main_Body {
   width: 72%;
   margin-bottom: 2%;
 }
+
 .Research_Collaborations {
   margin-top: 10%;
 }
+
 .profile_field {
   margin-top: 2.5%;
 }
-.profile_field > h1,
-.Industry_Collaborations > h1,
-.Research_Collaborations > h1,
-profile_field > h1 {
+
+.profile_field>h1,
+.Industry_Collaborations>h1,
+.Research_Collaborations>h1,
+profile_field>h1 {
   font-size: 2em;
   text-align: center;
   font-weight: bold;
@@ -234,6 +273,7 @@ profile_field > h1 {
   border-bottom: 4px solid #000000;
   color: black;
 }
+
 .Profile_Expertise h4,
 .Profile_Qualification h4 {
   font-size: 1.4em;
@@ -244,6 +284,7 @@ profile_field > h1 {
   box-shadow: none;
   color: #000000;
 }
+
 .Profile_Expertise p,
 .Profile_Qualification p {
   opacity: 0.8;
@@ -254,9 +295,11 @@ profile_field > h1 {
   border: none;
   box-shadow: none;
 }
+
 .strong-color {
   color: black;
 }
+
 #Project-options-area button,
 #Publications-options-area button,
 #Patent-options-area button,
@@ -267,6 +310,7 @@ profile_field > h1 {
   opacity: 0.7;
   border-bottom: 1px solid rgba(249, 249, 249, 0.7);
 }
+
 #Project-options-area button:hover,
 #Publications-options-area button:hover,
 #Patent-options-area button:hover,
@@ -288,18 +332,21 @@ profile_field > h1 {
   border-bottom: 1px solid rgba(249, 249, 249, 1) !important;
   cursor: pointer;
 }
+
 .card {
   padding-bottom: unset;
 }
 
-#research-project-options-area > button,
-#industrial-project-options-area > button,
-#Patent-options-area > button {
+#research-project-options-area>button,
+#industrial-project-options-area>button,
+#Patent-options-area>button {
   padding-left: 10%;
 }
+
 .project_header {
   font-weight: bold;
 }
+
 .disabled {
   pointer-events: none !important;
   cursor: default;
@@ -312,6 +359,7 @@ profile_field > h1 {
   text-align: center;
   width: 150px;
 }
+
 .links {
   display: flex;
   flex-direction: row;
@@ -322,6 +370,7 @@ profile_field > h1 {
   padding: unset;
   margin-bottom: 5%;
 }
+
 .featured-Icons {
   /*margin-left: 0.5%;*/
   /*margin-right: 10%;*/
@@ -334,21 +383,26 @@ profile_field > h1 {
   gap: 10%;
   justify-content: center;
 }
+
 .social_font {
   font-size: 200%;
 }
+
 .social_font:hover {
   color: #6a0dad;
 }
+
 .disabled_link {
   pointer-events: none !important;
   cursor: default;
   color: Gray !important;
 }
+
 .bold {
   font-weight: bold;
   color: black;
 }
+
 .Profile_Loading {
   display: block;
   margin: auto;
@@ -356,6 +410,7 @@ profile_field > h1 {
   height: 10%;
   padding-top: 1%;
 }
+
 .Loading_Div {
   top: 10%;
   left: 10%;
@@ -364,6 +419,7 @@ profile_field > h1 {
   padding-top: 7%;
   margin: auto auto 5%;
 }
+
 .internal-articles,
 .internal-chapter,
 .internal-book,
@@ -379,80 +435,100 @@ profile_field > h1 {
   text-align: right !important;
   margin-left: 10% !important;
 }
+
 .projects {
   margin-left: 20% !important;
 }
+
 .patents {
   margin-left: 56%;
 }
+
 .trainings_number-conducted {
   margin-left: 48%;
 }
+
 .ip_number {
   margin-left: 22%;
 }
+
 .ips_ids {
   width: 50px;
   text-align: right;
   display: inline-block;
 }
+
 .ips_cps {
   width: 100px;
   text-align: right;
   display: inline-block;
 }
+
 .ips_tds {
   width: 95px;
 }
+
 .trainings_number {
   width: 50px;
   text-align: right;
   display: inline-block;
   margin-left: 38%;
 }
+
 .supervisions-number {
   /*width: 50px;*/
   text-align: right;
   display: inline-block;
   margin-left: 40%;
 }
+
 .ips_tds,
 .ips_cps,
 .ips_ids {
   margin-left: 19%;
 }
+
 .internal-chapter {
   width: 100px;
 }
+
 .internal-book {
   width: 165px;
 }
+
 .internal-editorials {
   width: 70px;
 }
+
 .internal-conference {
   /*width: 35px;*/
   margin-left: 16%;
 }
+
 .internal-projects {
   margin-left: 10%;
   text-align: right;
 }
+
 .internal-supervisions {
   margin-left: 13.5%;
   text-align: right;
 }
+
 .internal-supervisions-ms {
   margin-left: 14.5%;
   text-align: right;
 }
+
 .internal_national {
   margin-left: 26%;
 }
+
 .internal_international {
   text-align: right;
   margin-left: 12%;
 }
+
 .internal-projects,
 .internal-supervisions,
 .internal_international,
@@ -462,12 +538,14 @@ profile_field > h1 {
   display: inline-block;
   width: 80px;
 }
+
 .profile-charts-div {
   display: flex;
   flex-direction: row;
   gap: 2%;
   padding: unset;
 }
+
 .Charts_Div {
   flex: 95%;
   display: flex;
@@ -477,17 +555,21 @@ profile_field > h1 {
   border: 1px solid #e1e4e8;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
+
 .chart {
   margin: auto;
   width: 85% !important;
 }
+
 .info {
   color: white;
 }
+
 .details {
   display: flex;
   flex-direction: row;
 }
+
 @media screen and (max-width: 1200px) {
   .User_Profile {
     flex-direction: column;
@@ -501,45 +583,54 @@ profile_field > h1 {
     box-shadow: 0 5px 5px;
     margin-bottom: 0;
   }
+
   .Main_Body {
     width: 100vw;
     padding: 15px;
   }
+
   .Options {
     width: 100%;
     margin-top: 0;
   }
+
   .faculty_personal_info {
     width: 100%;
     align-items: center;
     display: flex;
     flex-direction: column;
   }
+
   .profile_links {
     margin-top: 0;
     width: 70%;
   }
+
   .fonts {
     display: flex;
     flex-direction: row;
   }
 }
+
 @media screen and (max-width: 910px) {
   .User_Profile {
     flex-direction: column;
   }
+
   .faculty_info {
     flex-direction: column;
     width: 100vw;
     height: 20vh;
     overflow: scroll;
   }
+
   .faculty_info {
     flex-direction: column;
     width: 100vw;
     height: 600px;
     overflow: scroll;
   }
+
   .Options {
     width: 100%;
     margin-top: 0;
@@ -570,13 +661,114 @@ profile_field > h1 {
   align-items: center;
   width: 100%;
 }
-.iconjson{
+
+.iconjson {
   margin-top: 20px;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: start;
 }
+
 .iconjson ul li {
   text-align: left;
 }
+
+
+
+/* Zain */
+
+
+.collab-Profile {
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+  display: flex;
+  flex-direction: column;
+  width: 222px;
+  overflow: hidden;
+  margin: 10px;
+  height: 264px;
+}
+
+.collab-Header {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start; */
+  padding: 10px;
+  border-bottom: 1px solid #e1e4e8;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.collab-Image {
+  flex: 40% 1;
+  height: 113px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  border: 2px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 5px 5px 5px 10px rgba(0, 0, 0, .015);
+}
+
+.collab-Button {
+  flex: 60% 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.collab-Body {
+  margin: 1%;
+}
+
+.collab-Title>h2 {
+  width: 100%;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 2% 0 0 2%;
+  padding: 0 2% 0 0;
+}
+
+.collab-Image img {
+  width: 102%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -50%);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.hovercard:hover {
+  cursor: pointer;
+  background-color: #6a0dad;
+  border: 1px solid #6a0dad;
+  color: white;
+}
+
+.slideranimation {
+  display: flex ;
+  flex-direction: row ;
+  animation: slide 20s linear infinite;
+}
+
+.slideranimation:hover{
+  animation-play-state: paused;
+}
+/* Zain */

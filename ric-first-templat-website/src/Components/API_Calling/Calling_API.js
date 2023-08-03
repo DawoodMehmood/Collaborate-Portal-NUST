@@ -201,6 +201,7 @@ const Calling_API = () => {
                             const Each_Publication_Data = getPublicationObject();
                             Each_Publication_Data['Title'] = data[j]["title"];
                             Each_Publication_Data['Affiliation'] = data[j]["affiliation"];
+                            Each_Publication_Data['Author_ids'] = data[j]["author_ids"];    
                             Each_Publication_Data['sdgs'] = data[j]["sdgs"];
                             Each_Publication_Data['Category'] = data[j]["category"];
                             Each_Publication_Data['Indexation'] = data[j]["indexation"];
@@ -243,6 +244,7 @@ const Calling_API = () => {
                             Each_Project_Data['Cost_in_PKR'] = data[j]["cost_in_pkr"];
                             Each_Project_Data['Funding_Source_Country'] = data[j]["funding_source_country"];
                             Each_Project_Data['Funding_Agency'] = data[j]["funding_agency"];
+                            Each_Project_Data['Author_ids'] = data[j]["copi_ids"];
                             Each_Project_Data['Funding_From_Agency'] = data[j]["funding_from_agency"];
                             Each_Project_Data['Approval_Date'] = data[j]["approval_date"];
                             Each_Project_Data['Completion_Date'] = data[j]["completion_date"];
