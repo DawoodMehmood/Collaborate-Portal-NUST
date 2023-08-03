@@ -5,7 +5,7 @@
   "IPRs": 2,
   "Licensed": "Dec-21",
   "PI": "Dr. Seemab Latif ",
-  "CMS ID of PI": "00000002982",
+  "CMS ID of PI": "00000002982 ",
   "School": "SEECS ",
   "Industry \/Spinoff": "AWAAZ AI",
   " Sector": "IT & Edu"
@@ -37,8 +37,8 @@
   "Technology": "Industry Process Virtualization system",
   "IPRs": 2,
   "Licensed": "Sep-21",
-  "PI": "Dr. Farhan Riaz",
-  "CMS ID of PI": "00000002904",
+  "PI": "Dr. Farhan Riaz\nDr. Ali Hasan",
+  "CMS ID of PI": "00000002904 \n00000003230",
   "School": "CoEME",
   "Industry \/Spinoff": "Wisdom Wheel Wireless Pvt Ltd",
   " Sector": "IT"
@@ -81,7 +81,7 @@
   "Technology": "Resonant micro gyroscope and Micro Machine for thin film fatigue testing",
   "IPRs": 2,
   "Licensed": "Mar-21",
-  "PI": "Dr. Mubasher Saleem",
+  "PI": "Dr. Mubasher Saleem ",
   "CMS ID of PI": "00000147779",
   "School": "CoEME",
   "Industry \/Spinoff": "Tech Valley Private Limited ",
@@ -92,7 +92,7 @@
   "Technology": "N Safe",
   "IPRs": 2,
   "Licensed": "Apr-20",
-  "PI": "Dr. Nosheen Fatima",
+  "PI": "Dr. Nosheen Fatima ",
   "CMS ID of PI": "00000003433",
   "School": "SMME ",
   "Industry \/Spinoff": "Pharmatec Pvt. Ltd.",
@@ -103,7 +103,7 @@
   "Technology": "Sanitize",
   "IPRs": 2,
   "Licensed": "May-20",
-  "PI": "Dr. Nosheen Fatima",
+  "PI": "Dr. Nosheen Fatima ",
   "CMS ID of PI": "00000003433",
   "School": "SMME ",
   "Industry \/Spinoff": "Nutrabio Med SMC Pvt. Ltd.",
@@ -115,7 +115,7 @@
   "IPRs": 7,
   "Licensed": "Jun-20",
   "PI": "Dr. Sajid Gul Khawaja",
-  "CMS ID of PI": "00000003190",
+  "CMS ID of PI": "00000003190 ",
   "School": "CoEME",
   "Industry \/Spinoff": "Risetech Private Limited ",
   " Sector": "Health"
@@ -130,7 +130,7 @@
   "IPRs": 4,
   "Licensed": "Dec-20",
   "PI": "Dr. Sajid Gul Khawaja",
-  "CMS ID of PI": "00000003190",
+  "CMS ID of PI": "00000003190 ",
   "School": "CoEME",
   "Industry \/Spinoff": "Risetech Private Limited ",
   " Sector": "Health"
@@ -164,6 +164,9 @@
   "School": "CoEME ",
   "Industry \/Spinoff": "SRC Private Limited ",
   " Sector": "Leather Industry"
+ },
+ {
+  "CMS ID of PI": "00000003384"
  },
  {
   "Ser": 15,
@@ -274,7 +277,7 @@
   "IPRs": 4,
   "Licensed": "Nov-18",
   "PI": "Dr. Seemab Latif ",
-  "CMS ID of PI": "00000002982",
+  "CMS ID of PI": "00000002982 ",
   "School": "SEECS ",
   "Industry \/Spinoff": "AWAAZ AI Pvt Ltd",
   " Sector": "IT & Edu"
@@ -295,8 +298,8 @@
   "Technology": "Perforated Armour Plate",
   "IPRs": 1,
   "Licensed": "Oct-22",
-  "PI": "Aamir Mubashar",
-  "CMS ID of PI": "00000147622",
+  "PI": "Aamir Mubashar\nEmad Uddin",
+  "CMS ID of PI": "00000147622\n​00000147621",
   "School": "SMME ",
   "Industry \/Spinoff": "Faisal Engineering Services Pvt Ltd",
   " Sector": "Defence Engineering"
@@ -317,8 +320,8 @@
   "Technology": "Aquaponics System",
   "IPRs": 1,
   "Licensed": "Mar-23",
-  "PI": "Dr. Nosherwan Shoaib",
-  "CMS ID of PI": "00000199483",
+  "PI": "Dr. Nosherwan Shoaib\nMr. Hassan Abdullah",
+  "CMS ID of PI": "00000199483\n00000199543",
   "School": "RIMMS ",
   "Industry \/Spinoff": "Aquaponics Engineering",
   " Sector": "Engineering & manufacturing "
@@ -328,23 +331,23 @@
   "Technology": "Lead-mono-Oxide Manufacturing apparatus",
   "IPRs": 3,
   "Licensed": "Apr-23",
-  "PI": "Hamid Jabbar",
-  "CMS ID of PI": "00000278652",
+  "PI": "Hamid Jabbar\nMohsin Saleem",
+  "CMS ID of PI": "00000278652\n​00000241365",
   "School": "SMME ",
   "Industry \/Spinoff": "MatEntX Pvt. Ltd",
   " Sector": "Engineering & manufacturing "
  },
  {
-    "Ser": 30,
-    "Technology": "Bore and Pipeline Cleaning Robot",
-    "IPRs": 2,
-    "Licensed": "Apr-23",
-    "PI": "Dr. Mohsin Tiwana",
-    "CMS ID of PI": "00000147797",
-    "School": "CoEME",
-    "Industry \/Spinoff": "Tech Valley Private Limited ",
-    " Sector": "IT and AI"
-},
+  "Ser": 30,
+  "Technology": "Bore and Pipeline Cleaning Robot",
+  "IPRs": 2,
+  "Licensed": "Apr-23",
+  "PI": "Dr Imran Shafi\nDr. Mohsin Tiwana\nMuhammad Siddique Farooq\nSarmad Farooq",
+  "CMS ID of PI": "00000168946\n00000147797\nNA\nNA",
+  "School": "CoEME",
+  "Industry \/Spinoff": "Tech Valley Private Limited ",
+  " Sector": "IT and AI"
+ },
  {
   "Ser": 31,
   "Technology": "Development of Vacuum Forming Machine",
@@ -361,76 +364,40 @@
   "Technology": "Spot: Source Protect Obfuscator Tool",
   "IPRs": 1,
   "Licensed": "Jun-23",
-  "PI": "Haider Abbas",
-  "CMS ID of PI": "00000148070",
+  "PI": "Haider Abbas\nMuhammad Faisal Amjad",
+  "CMS ID of PI": "00000148070\n​00000148321",
   "School": "MCS",
   "Industry \/Spinoff": "Lynxinfosec Pvt. Ltd.",
   " Sector": "IT and AI"
  },
  {
-    "Ser": 33,
-    "Technology": "Industry Process Virtualization system",
-    "IPRs": 2,
-    "Licensed": "Sep-21",
-    "PI": "Dr. Ali Hasan",
-    "CMS ID of PI": "00000003230",
-    "School": "CoEME",
-    "Industry \/Spinoff": "Wisdom Wheel Wireless Pvt Ltd",
-    " Sector": "IT"
-},
-{
-    "Ser": 34,
-    "Technology": "Perforated Armour Plate",
-    "IPRs": 1,
-    "Licensed": "Oct-22",
-    "PI": "Emad Uddin",
-    "CMS ID of PI": "​00000147621",
-    "School": "SMME ",
-    "Industry \/Spinoff": "Faisal Engineering Services Pvt Ltd",
-    " Sector": "Defence Engineering"
-},
-{
-    "Ser": 35,
-    "Technology": "Aquaponics System",
-    "IPRs": 1,
-    "Licensed": "Mar-23",
-    "PI": "Mr. Hassan Abdullah",
-    "CMS ID of PI": "00000199543",
-    "School": "RIMMS ",
-    "Industry \/Spinoff": "Aquaponics Engineering",
-    " Sector": "Engineering & manufacturing "
-},
-{
-    "Ser": 36,
-    "Technology": "Lead-mono-Oxide Manufacturing apparatus",
-    "IPRs": 3,
-    "Licensed": "Apr-23",
-    "PI": "Mohsin Saleem",
-    "CMS ID of PI": "​00000241365",
-    "School": "SMME ",
-    "Industry \/Spinoff": "MatEntX Pvt. Ltd",
-    " Sector": "Engineering & manufacturing "
-},
-{
-    "Ser": 37,
-    "Technology": "Bore and Pipeline Cleaning Robot",
-    "IPRs": 2,
-    "Licensed": "Apr-23",
-    "PI": "Dr Imran Shafi",
-    "CMS ID of PI": "00000168946",
-    "School": "CoEME",
-    "Industry \/Spinoff": "Tech Valley Private Limited ",
-    " Sector": "IT and AI"
-},
-{
-    "Ser": 38,
-    "Technology": "Spot: Source Protect Obfuscator Tool",
-    "IPRs": 1,
-    "Licensed": "Jun-23",
-    "PI": "Muhammad Faisal Amjad",
-    "CMS ID of PI": "​00000148321",
-    "School": "MCS",
-    "Industry \/Spinoff": "Lynxinfosec Pvt. Ltd.",
-    " Sector": "IT and AI"
-   }
+  "Technology": "SVPN - Secure Virtual Private Network",
+  "IPRs": 1,
+  "Licensed": "Jun-23",
+  "PI": "Haider Abbas\nMuhammad Faisal Amjad",
+  "CMS ID of PI": "00000148070\n​00000148321",
+  "School": "MCS",
+  "Industry \/Spinoff": "Lynxinfosec Pvt. Ltd.",
+  " Sector": "IT and AI"
+ },
+ {
+  "Technology": "WebGuard",
+  "IPRs": 1,
+  "Licensed": "Jun-23",
+  "PI": "Haider Abbas\nMuhammad Faisal Amjad",
+  "CMS ID of PI": "00000148070\n​00000148321",
+  "School": "MCS",
+  "Industry \/Spinoff": "Lynxinfosec Pvt. Ltd.",
+  " Sector": "IT and AI"
+ },
+ {
+  "Technology": "Pasbaan",
+  "IPRs": 1,
+  "Licensed": "Jun-23",
+  "PI": "Haider Abbas\nMuhammad Faisal Amjad",
+  "CMS ID of PI": "00000148070\n​00000148321",
+  "School": "MCS",
+  "Industry \/Spinoff": "Lynxinfosec Pvt. Ltd.",
+  " Sector": "IT and AI"
+ }
 ]

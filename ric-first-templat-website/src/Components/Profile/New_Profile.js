@@ -130,29 +130,8 @@ const New_Profile = ({
   // This function is responsible for showing the ResearchProject of Faculty Member
   const showmainprofile = () => {
     setTabOptions({
-      ...TabOptions,
-      profile_tab: false,
+      
       analysis_tab: true,
-      allProjects_tab: false,
-      researchProjects_International_tab: false,
-      researchProjects_National_tab: false,
-      industrialProjects_National_tab: false,
-      industrialProjects_International_tab: false,
-      publications_Articles_tab: false,
-      publications_Books_tab: false,
-      publications_Chapters_tab: false,
-      Conference_tab: false,
-      Patents_National_tab: false,
-      Patents_International_tab: false,
-      Intellectual_Property_tab: false,
-      Supervision_PHD_tab: false,
-      Supervision_Masters_tab: false,
-      Editorial_Board_tab: false,
-      Copyright_tab: false,
-      Industrial_Design_tab: false,
-      Trade_Marks_tab: false,
-      Training_Conducted_tab: false,
-      Training_Attended_tab: false,
     });
   };
   // This function is responsible for showing the ResearchProject of Faculty Member
@@ -161,55 +140,14 @@ const New_Profile = ({
       Project_Research.National.length > Project_Research.International.length
     ) {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
-        researchProjects_International_tab: false,
+        
         researchProjects_National_tab: true,
-        industrialProjects_National_tab: false,
-        industrialProjects_International_tab: false,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
-        Copyright_tab: false,
-        Industrial_Design_tab: false,
-        Trade_Marks_tab: false,
       });
+      console.log("hello world")
     } else {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
+        
         researchProjects_International_tab: true,
-        researchProjects_National_tab: false,
-        industrialProjects_National_tab: false,
-        industrialProjects_International_tab: false,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
-        Copyright_tab: false,
-        Industrial_Design_tab: false,
-        Trade_Marks_tab: false,
       });
     }
   };
@@ -220,55 +158,13 @@ const New_Profile = ({
       Project_Industry.National.length > Project_Industry.International.length
     ) {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
-        researchProjects_International_tab: false,
-        researchProjects_National_tab: false,
+        
         industrialProjects_National_tab: true,
-        industrialProjects_International_tab: false,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
-        Copyright_tab: false,
-        Industrial_Design_tab: false,
-        Trade_Marks_tab: false,
       });
     } else {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
-        researchProjects_International_tab: false,
-        researchProjects_National_tab: false,
-        industrialProjects_National_tab: false,
+        
         industrialProjects_International_tab: true,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
-        Copyright_tab: false,
-        Industrial_Design_tab: false,
-        Trade_Marks_tab: false,
       });
     }
   };
@@ -276,29 +172,8 @@ const New_Profile = ({
   // This function is responsible for showing the Publications of Faculty Member
   const showPublications = () => {
     setTabOptions({
-      ...TabOptions,
-      profile_tab: false,
-      analysis_tab: false,
-      allProjects_tab: false,
-      researchProjects_International_tab: false,
-      researchProjects_National_tab: false,
-      industrialProjects_National_tab: false,
-      industrialProjects_International_tab: false,
+      
       publications_Articles_tab: true,
-      publications_Books_tab: false,
-      publications_Chapters_tab: false,
-      Conference_tab: false,
-      Patents_National_tab: false,
-      Patents_International_tab: false,
-      Intellectual_Property_tab: false,
-      Training_Conducted_tab: false,
-      Training_Attended_tab: false,
-      Supervision_PHD_tab: false,
-      Supervision_Masters_tab: false,
-      Editorial_Board_tab: false,
-      Copyright_tab: false,
-      Industrial_Design_tab: false,
-      Trade_Marks_tab: false,
     });
   };
 
@@ -307,29 +182,8 @@ const New_Profile = ({
     // largest Intellectual Property
 
     // setTabOptions({
-    //     ...TabOptions,
-    //     profile_tab: false,
-    //     analysis_tab: false,
-    //     allProjects_tab: false,
-    //     researchProjects_International_tab: false,
-    //     researchProjects_National_tab: false,
-    //     industrialProjects_National_tab: false,
-    //     industrialProjects_International_tab: false,
-    //     publications_Articles_tab: false,
-    //     publications_Books_tab: false,
-    //     publications_Chapters_tab: false,
-    //     Conference_tab: false,
+    //     
     //     Patents_National_tab: true,
-    //     Patents_International_tab: false,
-    //     Intellectual_Property_tab: false,
-    //     Training_Conducted_tab: false,
-    //     Training_Attended_tab: false,
-    //     Supervision_PHD_tab: false,
-    //     Supervision_Masters_tab: false,
-    //     Editorial_Board_tab: false,
-    //     Copyright_tab: false,
-    //     Industrial_Design_tab: false,
-    //     Trade_Marks_tab: false,
     // })
     // return
     let largestIntellectualProperty = "";
@@ -387,131 +241,28 @@ const New_Profile = ({
             : 0
       ) {
         setTabOptions({
-          ...TabOptions,
-          profile_tab: false,
-          analysis_tab: false,
-          allProjects_tab: false,
-          researchProjects_International_tab: false,
-          researchProjects_National_tab: false,
-          industrialProjects_National_tab: false,
-          industrialProjects_International_tab: false,
-          publications_Articles_tab: false,
-          publications_Books_tab: false,
-          publications_Chapters_tab: false,
-          Conference_tab: false,
+          
           Patents_National_tab: true,
-          Patents_International_tab: false,
-          Intellectual_Property_tab: false,
-          Training_Conducted_tab: false,
-          Training_Attended_tab: false,
-          Supervision_PHD_tab: false,
-          Supervision_Masters_tab: false,
-          Editorial_Board_tab: false,
-          Copyright_tab: false,
-          Industrial_Design_tab: false,
-          Trade_Marks_tab: false,
         });
       } else {
         setTabOptions({
-          ...TabOptions,
-          profile_tab: false,
-          analysis_tab: false,
-          allProjects_tab: false,
-          researchProjects_International_tab: false,
-          researchProjects_National_tab: false,
-          industrialProjects_National_tab: false,
-          industrialProjects_International_tab: false,
-          publications_Articles_tab: false,
-          publications_Books_tab: false,
-          publications_Chapters_tab: false,
-          Conference_tab: false,
-          Patents_National_tab: false,
+          
           Patents_International_tab: true,
-          Intellectual_Property_tab: false,
-          Training_Conducted_tab: false,
-          Training_Attended_tab: false,
-          Supervision_PHD_tab: false,
-          Supervision_Masters_tab: false,
-          Editorial_Board_tab: false,
-          Copyright_tab: false,
-          Industrial_Design_tab: false,
-          Trade_Marks_tab: false,
         });
       }
     } else if (largestIntellectualProperty === "Industrial Design") {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
-        researchProjects_International_tab: false,
-        researchProjects_National_tab: false,
-        industrialProjects_National_tab: false,
-        industrialProjects_International_tab: false,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
+        
         Industrial_Design_tab: true,
-        Trade_Marks_tab: false,
       });
     } else if (largestIntellectualProperty === "Copy Rights") {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
-        researchProjects_International_tab: false,
-        researchProjects_National_tab: false,
-        industrialProjects_National_tab: false,
-        industrialProjects_International_tab: false,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
+        
         Copyright_tab: true,
-        Industrial_Design_tab: false,
-        Trade_Marks_tab: false,
       });
     } else if (largestIntellectualProperty === "Trade Marks") {
       setTabOptions({
-        ...TabOptions,
-        profile_tab: false,
-        analysis_tab: false,
-        allProjects_tab: false,
-        researchProjects_International_tab: false,
-        researchProjects_National_tab: false,
-        industrialProjects_National_tab: false,
-        industrialProjects_International_tab: false,
-        publications_Articles_tab: false,
-        publications_Books_tab: false,
-        publications_Chapters_tab: false,
-        Conference_tab: false,
-        Patents_National_tab: false,
-        Patents_International_tab: false,
-        Intellectual_Property_tab: false,
-        Training_Conducted_tab: false,
-        Training_Attended_tab: false,
-        Supervision_PHD_tab: false,
-        Supervision_Masters_tab: false,
-        Editorial_Board_tab: false,
-        Industrial_Design_tab: false,
+        
         Trade_Marks_tab: true,
       });
     }
@@ -1118,7 +869,7 @@ const New_Profile = ({
         }
       }).filter((value) => value !== undefined)
     );
-    setIcon(iconjson.filter((item) => (item["CMS ID of PI"] === id)));
+    setIcon(iconjson.filter((item) => (item["CMS ID of PI"].includes(id))));
 
   }, []);
   // console.log("Web of Science ID: ", webOfScienceId);
@@ -3787,29 +3538,8 @@ const New_Profile = ({
                 <Button
                   onClick={() =>
                     setTabOptions({
-                      ...TabOptions,
-                      profile_tab: false,
+                      
                       analysis_tab: true,
-                      allProjects_tab: false,
-                      researchProjects_International_tab: false,
-                      researchProjects_National_tab: false,
-                      industrialProjects_National_tab: false,
-                      industrialProjects_International_tab: false,
-                      publications_Articles_tab: false,
-                      publications_Books_tab: false,
-                      publications_Chapters_tab: false,
-                      Conference_tab: false,
-                      Patents_National_tab: false,
-                      Patents_International_tab: false,
-                      Intellectual_Property_tab: false,
-                      Supervision_PHD_tab: false,
-                      Supervision_Masters_tab: false,
-                      Editorial_Board_tab: false,
-                      Copyright_tab: false,
-                      Industrial_Design_tab: false,
-                      Trade_Marks_tab: false,
-                      Training_Conducted_tab: false,
-                      Training_Attended_tab: false,
                     })
                   }
                 >
@@ -3834,29 +3564,8 @@ const New_Profile = ({
                       };
                     });
                     setTabOptions({
-                      ...TabOptions,
-                      analysis_tab: false,
+                      
                       profile_tab: true,
-                      allProjects_tab: false,
-                      researchProjects_International_tab: false,
-                      researchProjects_National_tab: false,
-                      industrialProjects_National_tab: false,
-                      industrialProjects_International_tab: false,
-                      publications_Articles_tab: false,
-                      publications_Books_tab: false,
-                      publications_Chapters_tab: false,
-                      Conference_tab: false,
-                      Patents_National_tab: false,
-                      Patents_International_tab: false,
-                      Intellectual_Property_tab: false,
-                      Training_Conducted_tab: false,
-                      Training_Attended_tab: false,
-                      Supervision_PHD_tab: false,
-                      Supervision_Masters_tab: false,
-                      Editorial_Board_tab: false,
-                      Copyright_tab: false,
-                      Industrial_Design_tab: false,
-                      Trade_Marks_tab: false,
                     });
                   }}
                   aria-controls="profile-options-area"
@@ -3885,29 +3594,8 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -3928,29 +3616,8 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -3972,29 +3639,8 @@ const New_Profile = ({
                           });
 
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -4015,29 +3661,8 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -4061,29 +3686,8 @@ const New_Profile = ({
                             Memberships: true,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -4172,29 +3776,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
+                                  
                                   researchProjects_National_tab: true,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -4210,29 +3793,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
+                                  
                                   researchProjects_International_tab: true,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  raining_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -4289,29 +3851,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
+                                  
                                   industrialProjects_National_tab: true,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -4327,29 +3868,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
+                                  
                                   industrialProjects_International_tab: true,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -4410,29 +3930,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
+                              
                               publications_Articles_tab: true,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4448,30 +3947,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
+                              
                               Conference_tab: true,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4487,30 +3964,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
+                              
                               Editorial_Board_tab: true,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4526,30 +3981,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
+                              
                               publications_Books_tab: true,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4565,30 +3998,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
+                              
                               publications_Chapters_tab: true,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4675,29 +4086,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
+                                  
                                   Patents_National_tab: true,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -4714,29 +4104,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
+                                  
                                   Patents_International_tab: true,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -4751,29 +4120,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
+                              
                               Industrial_Design_tab: true,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4787,29 +4135,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
+                              
                               Copyright_tab: true,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4825,29 +4152,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
+                              
                               Trade_Marks_tab: true,
                             });
                           }}
@@ -4899,29 +4204,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
+                              
                               Training_Attended_tab: true,
-                              Training_Conducted_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -4937,30 +4221,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Training_Attended_tab: false,
+                              
                               Training_Conducted_tab: true,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -5012,30 +4274,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_tab: false,
+                              
                               Supervision_PHD_tab: true,
-                              Supervision_Masters_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Editorial_Board_tab: false,
-                              Trade_Marks_tab: false,
-                              Industrial_Design_tab: false,
-                              Copyright_tab: false,
                             });
                           }}
                         >
@@ -5051,30 +4291,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_tab: false,
-                              Supervision_PHD_tab: false,
+                              
                               Supervision_Masters_tab: true,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Editorial_Board_tab: false,
-                              Trade_Marks_tab: false,
-                              Industrial_Design_tab: false,
-                              Copyright_tab: false,
                             });
                           }}
                         >
@@ -5234,29 +4452,8 @@ const New_Profile = ({
                 <Button
                   onClick={() =>
                     setTabOptions({
-                      ...TabOptions,
-                      profile_tab: false,
+                      
                       analysis_tab: true,
-                      allProjects_tab: false,
-                      researchProjects_International_tab: false,
-                      researchProjects_National_tab: false,
-                      industrialProjects_National_tab: false,
-                      industrialProjects_International_tab: false,
-                      publications_Articles_tab: false,
-                      publications_Books_tab: false,
-                      publications_Chapters_tab: false,
-                      Conference_tab: false,
-                      Patents_National_tab: false,
-                      Patents_International_tab: false,
-                      Intellectual_Property_tab: false,
-                      Supervision_PHD_tab: false,
-                      Supervision_Masters_tab: false,
-                      Editorial_Board_tab: false,
-                      Copyright_tab: false,
-                      Industrial_Design_tab: false,
-                      Trade_Marks_tab: false,
-                      Training_Conducted_tab: false,
-                      Training_Attended_tab: false,
                     })
                   }
                 >
@@ -5281,29 +4478,8 @@ const New_Profile = ({
                       };
                     });
                     setTabOptions({
-                      ...TabOptions,
-                      analysis_tab: false,
+                      
                       profile_tab: true,
-                      allProjects_tab: false,
-                      researchProjects_International_tab: false,
-                      researchProjects_National_tab: false,
-                      industrialProjects_National_tab: false,
-                      industrialProjects_International_tab: false,
-                      publications_Articles_tab: false,
-                      publications_Books_tab: false,
-                      publications_Chapters_tab: false,
-                      Conference_tab: false,
-                      Patents_National_tab: false,
-                      Patents_International_tab: false,
-                      Intellectual_Property_tab: false,
-                      Training_Conducted_tab: false,
-                      Training_Attended_tab: false,
-                      Supervision_PHD_tab: false,
-                      Supervision_Masters_tab: false,
-                      Editorial_Board_tab: false,
-                      Copyright_tab: false,
-                      Industrial_Design_tab: false,
-                      Trade_Marks_tab: false,
                     });
                   }}
                   aria-controls="profile-options-area"
@@ -5332,29 +4508,8 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -5375,29 +4530,8 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -5419,29 +4553,8 @@ const New_Profile = ({
                           });
 
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -5462,29 +4575,8 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -5508,29 +4600,8 @@ const New_Profile = ({
                             Memberships: true,
                           });
                           setTabOptions({
-                            ...TabOptions,
-                            analysis_tab: false,
+                            
                             profile_tab: true,
-                            allProjects_tab: false,
-                            researchProjects_International_tab: false,
-                            researchProjects_National_tab: false,
-                            industrialProjects_National_tab: false,
-                            industrialProjects_International_tab: false,
-                            publications_Articles_tab: false,
-                            publications_Books_tab: false,
-                            publications_Chapters_tab: false,
-                            Conference_tab: false,
-                            Patents_National_tab: false,
-                            Patents_International_tab: false,
-                            Intellectual_Property_tab: false,
-                            Training_Conducted_tab: false,
-                            Training_Attended_tab: false,
-                            Supervision_PHD_tab: false,
-                            Supervision_Masters_tab: false,
-                            Editorial_Board_tab: false,
-                            Copyright_tab: false,
-                            Industrial_Design_tab: false,
-                            Trade_Marks_tab: false,
                           });
                         }}
                       >
@@ -5619,29 +4690,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
+                                  
                                   researchProjects_National_tab: true,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -5657,29 +4707,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
+                                  
                                   researchProjects_International_tab: true,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  raining_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -5736,29 +4765,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
+                                  
                                   industrialProjects_National_tab: true,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -5774,29 +4782,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
+                                  
                                   industrialProjects_International_tab: true,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -5857,29 +4844,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
+                              
                               publications_Articles_tab: true,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -5895,30 +4861,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
+                              
                               Conference_tab: true,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -5934,30 +4878,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
+                              
                               Editorial_Board_tab: true,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -5973,30 +4895,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
+                              
                               publications_Books_tab: true,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -6012,30 +4912,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
+                              
                               publications_Chapters_tab: true,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -6122,29 +5000,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
+                                  
                                   Patents_National_tab: true,
-                                  Patents_International_tab: false,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -6161,29 +5018,8 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  ...TabOptions,
-                                  profile_tab: false,
-                                  analysis_tab: false,
-                                  allProjects_tab: false,
-                                  researchProjects_International_tab: false,
-                                  researchProjects_National_tab: false,
-                                  industrialProjects_National_tab: false,
-                                  industrialProjects_International_tab: false,
-                                  publications_Articles_tab: false,
-                                  publications_Books_tab: false,
-                                  publications_Chapters_tab: false,
-                                  Conference_tab: false,
-                                  Patents_National_tab: false,
+                                  
                                   Patents_International_tab: true,
-                                  Intellectual_Property_tab: false,
-                                  Training_Conducted_tab: false,
-                                  Training_Attended_tab: false,
-                                  Supervision_PHD_tab: false,
-                                  Supervision_Masters_tab: false,
-                                  Editorial_Board_tab: false,
-                                  Copyright_tab: false,
-                                  Industrial_Design_tab: false,
-                                  Trade_Marks_tab: false,
                                 });
                               }}
                             >
@@ -6198,29 +5034,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
+                              
                               Industrial_Design_tab: true,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -6234,29 +5049,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
+                              
                               Copyright_tab: true,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -6272,29 +5066,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
+                              
                               Trade_Marks_tab: true,
                             });
                           }}
@@ -6346,29 +5118,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
+                              
                               Training_Attended_tab: true,
-                              Training_Conducted_tab: false,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -6384,30 +5135,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Supervision_PHD_tab: false,
-                              Supervision_Masters_tab: false,
-                              Training_Attended_tab: false,
+                              
                               Training_Conducted_tab: true,
-                              Editorial_Board_tab: false,
-                              Copyright_tab: false,
-                              Industrial_Design_tab: false,
-                              Trade_Marks_tab: false,
                             });
                           }}
                         >
@@ -6459,30 +5188,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_tab: false,
+                              
                               Supervision_PHD_tab: true,
-                              Supervision_Masters_tab: false,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Editorial_Board_tab: false,
-                              Trade_Marks_tab: false,
-                              Industrial_Design_tab: false,
-                              Copyright_tab: false,
                             });
                           }}
                         >
@@ -6498,30 +5205,8 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              ...TabOptions,
-                              profile_tab: false,
-                              analysis_tab: false,
-                              allProjects_tab: false,
-                              researchProjects_International_tab: false,
-                              researchProjects_National_tab: false,
-                              industrialProjects_National_tab: false,
-                              industrialProjects_International_tab: false,
-                              publications_Articles_tab: false,
-                              publications_Books_tab: false,
-                              publications_Chapters_tab: false,
-                              Conference_tab: false,
-                              Patents_National_tab: false,
-                              Patents_International_tab: false,
-                              Intellectual_Property_tab: false,
-                              Training_tab: false,
-                              Supervision_PHD_tab: false,
+                              
                               Supervision_Masters_tab: true,
-                              Training_Conducted_tab: false,
-                              Training_Attended_tab: false,
-                              Editorial_Board_tab: false,
-                              Trade_Marks_tab: false,
-                              Industrial_Design_tab: false,
-                              Copyright_tab: false,
                             });
                           }}
                         >
