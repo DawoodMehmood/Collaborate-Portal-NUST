@@ -153,7 +153,7 @@ const New_Profile = ({
 
     // Update the publicationIdsArray state with the filtered IDs
     setpublicationIdsArray(filteredIds);
-  }, []);
+  }, [publications]);
 
 
   useEffect(() => {
