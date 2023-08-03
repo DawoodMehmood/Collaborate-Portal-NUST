@@ -130,7 +130,7 @@ const New_Profile = ({
   // This function is responsible for showing the ResearchProject of Faculty Member
   const showmainprofile = () => {
     setTabOptions({
-      
+
       analysis_tab: true,
     });
   };
@@ -140,13 +140,13 @@ const New_Profile = ({
       Project_Research.National.length > Project_Research.International.length
     ) {
       setTabOptions({
-        
+
         researchProjects_National_tab: true,
       });
       console.log("hello world")
     } else {
       setTabOptions({
-        
+
         researchProjects_International_tab: true,
       });
     }
@@ -158,12 +158,12 @@ const New_Profile = ({
       Project_Industry.National.length > Project_Industry.International.length
     ) {
       setTabOptions({
-        
+
         industrialProjects_National_tab: true,
       });
     } else {
       setTabOptions({
-        
+
         industrialProjects_International_tab: true,
       });
     }
@@ -172,7 +172,7 @@ const New_Profile = ({
   // This function is responsible for showing the Publications of Faculty Member
   const showPublications = () => {
     setTabOptions({
-      
+
       publications_Articles_tab: true,
     });
   };
@@ -241,28 +241,28 @@ const New_Profile = ({
             : 0
       ) {
         setTabOptions({
-          
+
           Patents_National_tab: true,
         });
       } else {
         setTabOptions({
-          
+
           Patents_International_tab: true,
         });
       }
     } else if (largestIntellectualProperty === "Industrial Design") {
       setTabOptions({
-        
+
         Industrial_Design_tab: true,
       });
     } else if (largestIntellectualProperty === "Copy Rights") {
       setTabOptions({
-        
+
         Copyright_tab: true,
       });
     } else if (largestIntellectualProperty === "Trade Marks") {
       setTabOptions({
-        
+
         Trade_Marks_tab: true,
       });
     }
@@ -272,7 +272,7 @@ const New_Profile = ({
   const [modal, setModal] = useState(false);
   const [hIndex, sethIndex] = useState(0);
   const [webOfScienceId, setWebOfScienceId] = useState("");
-  const [icon, setIcon] = useState("");
+  const [icondata, setIcondata] = useState("");
 
   const toggleModal = (chart) => {
     setModal(!modal);
@@ -355,6 +355,7 @@ const New_Profile = ({
     Copyright_tab: false,
     Industrial_Design_tab: false,
     Trade_Marks_tab: false,
+    Technology_Icons_tab: false,
   });
 
   // This state array contains images of Universities, with whom faculty member has worked with.
@@ -869,7 +870,7 @@ const New_Profile = ({
         }
       }).filter((value) => value !== undefined)
     );
-    setIcon(iconjson.filter((item) => (item["CMS ID of PI"].includes(id))));
+    setIcondata(iconjson.filter((item) => (item["CMS ID of PI"].includes(id))));
 
   }, []);
   // console.log("Web of Science ID: ", webOfScienceId);
@@ -3274,6 +3275,33 @@ const New_Profile = ({
       </>
     );
   });
+
+  const icon_cards = iconjson.filter((item) => (item["CMS ID of PI"].includes(id)))?.map((item, index) => {
+    return (
+      <>
+        <Card key={index} bg="light" text="dark" style={{ width: "100%" }}>
+          <Card.Header className={"project_header"}>
+            {index + 1 + ". " + item?.["Industry \/Spinoff"]}
+          </Card.Header>
+          <Card.Body>
+            <Card.Subtitle className="mb-2 text-muted">
+              <strong className={"strong-color"}>IPRs: </strong>{" "}
+              {`${item?.IPRs} `}
+              &nbsp; &nbsp; &nbsp;
+              <strong className={"strong-color"}>Licensed: </strong>
+              {`${item?.Licensed}`}
+              <br />
+              <br />
+              <p><b>PI: </b>{`${item?.PI}`}</p>
+              <p><b>Technology: </b>{`${item?.Technology}`}</p>
+              <p><b>School: </b>{`${item?.School}`}</p>
+              <p><b>Sector: </b>{`${item?.Sector}`}</p>
+            </Card.Subtitle>
+          </Card.Body>
+        </Card>
+      </>
+    );
+  });
   const Doctoral = Supervision.PHD.map((supervision, index) => {
     return (
       <>
@@ -3538,7 +3566,7 @@ const New_Profile = ({
                 <Button
                   onClick={() =>
                     setTabOptions({
-                      
+
                       analysis_tab: true,
                     })
                   }
@@ -3564,7 +3592,7 @@ const New_Profile = ({
                       };
                     });
                     setTabOptions({
-                      
+
                       profile_tab: true,
                     });
                   }}
@@ -3594,7 +3622,7 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -3616,7 +3644,7 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -3639,7 +3667,7 @@ const New_Profile = ({
                           });
 
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -3661,7 +3689,7 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -3686,7 +3714,7 @@ const New_Profile = ({
                             Memberships: true,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -3776,7 +3804,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   researchProjects_National_tab: true,
                                 });
                               }}
@@ -3793,7 +3821,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   researchProjects_International_tab: true,
                                 });
                               }}
@@ -3851,7 +3879,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   industrialProjects_National_tab: true,
                                 });
                               }}
@@ -3868,7 +3896,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   industrialProjects_International_tab: true,
                                 });
                               }}
@@ -3930,7 +3958,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               publications_Articles_tab: true,
                             });
                           }}
@@ -3947,7 +3975,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Conference_tab: true,
                             });
                           }}
@@ -3964,7 +3992,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Editorial_Board_tab: true,
                             });
                           }}
@@ -3981,7 +4009,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               publications_Books_tab: true,
                             });
                           }}
@@ -3998,7 +4026,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               publications_Chapters_tab: true,
                             });
                           }}
@@ -4086,7 +4114,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   Patents_National_tab: true,
                                 });
                               }}
@@ -4104,7 +4132,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   Patents_International_tab: true,
                                 });
                               }}
@@ -4120,7 +4148,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Industrial_Design_tab: true,
                             });
                           }}
@@ -4135,7 +4163,6 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
                               Copyright_tab: true,
                             });
                           }}
@@ -4146,13 +4173,29 @@ const New_Profile = ({
                           </span>
                         </Button>
                       )}
+                      {icondata?.length === 0 ? (
+                        ""
+                      ) : (
+                        <Button
+                          onClick={() => {
+                            setTabOptions({
+                              Technology_Icons_tab: true,
+                            });
+                          }}
+                        >
+                          Technology Icons{" "}
+                          <span className={"ips_cps"}>
+                            {icondata?.length}
+                          </span>
+                        </Button>
+                      )}
                       {Intellectual_Property.Trade_Marks.length === 0 ? (
                         ""
                       ) : (
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Trade_Marks_tab: true,
                             });
                           }}
@@ -4204,7 +4247,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Training_Attended_tab: true,
                             });
                           }}
@@ -4221,7 +4264,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Training_Conducted_tab: true,
                             });
                           }}
@@ -4274,7 +4317,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Supervision_PHD_tab: true,
                             });
                           }}
@@ -4291,7 +4334,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Supervision_Masters_tab: true,
                             });
                           }}
@@ -4429,7 +4472,7 @@ const New_Profile = ({
                 Download CV
               </button>
             </div>
-            {icon[0] &&
+            {/* {icon[0] &&
               <div className="iconjson">
                 <h3 className={"designation"}>Technologies Licensed
                   ICON</h3>
@@ -4442,7 +4485,7 @@ const New_Profile = ({
                   <li> Sector: {icon[0]?.Sector}</li>
                 </ul>
               </div>
-            }
+            } */}
 
           </div>
           {/* </div> */}
@@ -4452,7 +4495,7 @@ const New_Profile = ({
                 <Button
                   onClick={() =>
                     setTabOptions({
-                      
+
                       analysis_tab: true,
                     })
                   }
@@ -4478,7 +4521,7 @@ const New_Profile = ({
                       };
                     });
                     setTabOptions({
-                      
+
                       profile_tab: true,
                     });
                   }}
@@ -4508,7 +4551,7 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -4530,7 +4573,7 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -4553,7 +4596,7 @@ const New_Profile = ({
                           });
 
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -4575,7 +4618,7 @@ const New_Profile = ({
                             Memberships: false,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -4600,7 +4643,7 @@ const New_Profile = ({
                             Memberships: true,
                           });
                           setTabOptions({
-                            
+
                             profile_tab: true,
                           });
                         }}
@@ -4690,7 +4733,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   researchProjects_National_tab: true,
                                 });
                               }}
@@ -4707,7 +4750,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   researchProjects_International_tab: true,
                                 });
                               }}
@@ -4765,7 +4808,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   industrialProjects_National_tab: true,
                                 });
                               }}
@@ -4782,7 +4825,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   industrialProjects_International_tab: true,
                                 });
                               }}
@@ -4844,7 +4887,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               publications_Articles_tab: true,
                             });
                           }}
@@ -4861,7 +4904,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Conference_tab: true,
                             });
                           }}
@@ -4878,7 +4921,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Editorial_Board_tab: true,
                             });
                           }}
@@ -4895,7 +4938,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               publications_Books_tab: true,
                             });
                           }}
@@ -4912,7 +4955,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               publications_Chapters_tab: true,
                             });
                           }}
@@ -5000,7 +5043,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   Patents_National_tab: true,
                                 });
                               }}
@@ -5018,7 +5061,7 @@ const New_Profile = ({
                             <Button
                               onClick={() => {
                                 setTabOptions({
-                                  
+
                                   Patents_International_tab: true,
                                 });
                               }}
@@ -5034,7 +5077,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Industrial_Design_tab: true,
                             });
                           }}
@@ -5049,7 +5092,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Copyright_tab: true,
                             });
                           }}
@@ -5060,13 +5103,29 @@ const New_Profile = ({
                           </span>
                         </Button>
                       )}
+                      {icondata?.length === 0 ? (
+                        ""
+                      ) : (
+                        <Button
+                          onClick={() => {
+                            setTabOptions({
+                              Technology_Icons_tab: true,
+                            });
+                          }}
+                        >
+                          Technology Icons{" "}
+                          <span className={"ips_cps"}>
+                            {icondata?.length}
+                          </span>
+                        </Button>
+                      )}
                       {Intellectual_Property.Trade_Marks.length === 0 ? (
                         ""
                       ) : (
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Trade_Marks_tab: true,
                             });
                           }}
@@ -5118,7 +5177,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Training_Attended_tab: true,
                             });
                           }}
@@ -5135,7 +5194,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Training_Conducted_tab: true,
                             });
                           }}
@@ -5188,7 +5247,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Supervision_PHD_tab: true,
                             });
                           }}
@@ -5205,7 +5264,7 @@ const New_Profile = ({
                         <Button
                           onClick={() => {
                             setTabOptions({
-                              
+
                               Supervision_Masters_tab: true,
                             });
                           }}
@@ -5650,6 +5709,13 @@ const New_Profile = ({
           ) : (
             <div className={"Copyright_Tab"}>
               <div className={"Copyright_Tab_header"}>{IPS_CopyRight}</div>
+            </div>
+          )}
+          {!TabOptions.Technology_Icons_tab ? (
+            ""
+          ) : (
+            <div className={"Copyright_Tab"}>
+              <div className={"Copyright_Tab_header"}>{icon_cards}</div>
             </div>
           )}
           {!TabOptions.Training_Attended_tab ? (
