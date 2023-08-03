@@ -534,6 +534,7 @@ const Calling_API = () => {
                         profile={Profile}
                         enable={downloadCV}
                         name={Profile[0]["Name"]}
+                        id= {params.id}
                     />
             }
         </>

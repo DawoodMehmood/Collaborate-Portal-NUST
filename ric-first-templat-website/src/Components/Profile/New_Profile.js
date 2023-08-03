@@ -33,6 +33,7 @@ import html2canvas from "html2canvas";
 import nustLogo from "../../Icons/nustLogo.png";
 import nustLogo2 from "../../Icons/nustLogo2.png";
 import webofscienceData from "../../APIs/webofscienceIds.json";
+import iconjson from "../../APIs/icon.json";
 import sdg1 from "../../Icons/sdgs/1.jpg";
 import sdg2 from "../../Icons/sdgs/2.jpg";
 import sdg3 from "../../Icons/sdgs/3.jpg";
@@ -61,9 +62,9 @@ const New_Profile = ({
   ips,
   profile,
   enable,
-  name
+  name,
+  id,
 }) => {
-
   // This function is use to fetch H index from the scopus Api using {author id} fetched from the scopus api 
   const fetchHIndex = (authorId) => {
     // const authorId = 36895158400;
@@ -520,10 +521,7 @@ const New_Profile = ({
   const [modal, setModal] = useState(false);
   const [hIndex, sethIndex] = useState(0);
   const [webOfScienceId, setWebOfScienceId] = useState("");
-
-
-
-
+  const [icon, setIcon] = useState("");
 
   const toggleModal = (chart) => {
     setModal(!modal);
@@ -1102,7 +1100,7 @@ const New_Profile = ({
 
   // This useEffect is not complete yet.
   useEffect(() => {
-    console.log("Fetched Images: ", fetchedImagesComplete);
+    // console.log("Fetched Images: ", fetchedImagesComplete);
     if (fetchedImagesComplete && Research_Images.length < 3) {
       console.log("Fetched Images Copmleted: ", fetchedImagesComplete);
 
@@ -1120,6 +1118,7 @@ const New_Profile = ({
         }
       }).filter((value) => value !== undefined)
     );
+    setIcon(iconjson.filter((item) => (item["CMS ID of PI"] === id)));
 
   }, []);
   // console.log("Web of Science ID: ", webOfScienceId);
@@ -5212,6 +5211,21 @@ const New_Profile = ({
                 Download CV
               </button>
             </div>
+            {icon[0] &&
+              <div className="iconjson">
+                <h3 className={"designation"}>Technologies Licensed
+                  ICON</h3>
+                <ul>
+                  <li>Technology: {icon[0]?.Technology}</li>
+                  <li>IPRs: {icon[0]?.IPRs}</li>
+                  <li>Licensed: {icon[0]?.Licensed}</li>
+                  <li>School: {icon[0]?.School}</li>
+                  <li>Industry: {icon[0]?.["Industry \/Spinoff"]}</li>
+                  <li> Sector: {icon[0]?.Sector}</li>
+                </ul>
+              </div>
+            }
+
           </div>
           {/* </div> */}
           {!isiPadView ? (
