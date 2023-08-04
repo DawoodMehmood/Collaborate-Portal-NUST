@@ -83,7 +83,7 @@ const New_Profile = ({
       .then(data => {
         // Handle the response data here
         // console.log(data);
-        sethIndex(data['author-retrieval-response'][0]['h-index']);
+        sethIndex(data?.['author-retrieval-response']?.[0]?.['h-index']);
       })
       .catch(error => {
         // Handle any errors that occurred during the request
@@ -5567,42 +5567,47 @@ const New_Profile = ({
 
 
               {/* ajsfijwasfia ifj p */}
-
-              <div className={"about_heading"}>
-                <h1>
-                  <span style={{textDecoration: "underline"}}>NUST Research Collaborators:</span>
-                </h1>
-              </div>
-              <div className="slider-container" style={{ overflow: 'hidden', width: '1000px', display: 'flex' }}>
-                <div className="slider slideranimation">
-                  {fetchedData.map((data, index) => {
-                    const imageUrl = data[0]?.image_128 && data[0]?.image_128.trim() !== "" ? "data:image/png;base64," + atob(data[0]?.image_128) : process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg";
-
-                    // Check if the name exists and is not an empty string
-                    if (!data[0]?.name) {
-                      return null; // Skip rendering if the name is not available
-                    }
-
-                    return (
-                      <div onClick={() => { visitprofile(`/profile/${data[0]?.name}/${data[0]?.code}`) }} className={"collab-Profile schoolcountcard hovercard"}>
-                        <div className={"collab-Header"}>
-                          <div className={"collab-Image"}>
-                            <img src={imageUrl} alt="Avatar" />
-                          </div>
-                        </div>
-                        <div className={"collab-Body"}>
-                          <div className={"collab-Title"}>
-                            <h2>{data[0]?.name}</h2>
-                          </div>
-                          <div className={"Card-Text"}>
-                            <p>{data[0].institute}</p>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+              {fetchedData.length !== 0 ? (
+                <>
+                <div className={"about_heading"}>
+                  <h1>
+                    <span style={{ textDecoration: "underline" }}>NUST Research Collaborators:</span>
+                  </h1>
                 </div>
-              </div>
+                <div className="slider-container" style={{ overflow: 'hidden', width: '1000px', display: 'flex' }}>
+                  <div className="slider slideranimation">
+                    {fetchedData.map((data, index) => {
+                      const imageUrl = data[0]?.image_128 && data[0]?.image_128.trim() !== "" ? "data:image/png;base64," + atob(data[0]?.image_128) : process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg";
+
+                      // Check if the name exists and is not an empty string
+                      if (!data[0]?.name) {
+                        return null; // Skip rendering if the name is not available
+                      }
+
+                      return (
+                        <div onClick={() => { visitprofile(`/profile/${data[0]?.name}/${data[0]?.code}`) }} className={"collab-Profile schoolcountcard hovercard"}>
+                          <div className={"collab-Header"}>
+                            <div className={"collab-Image"}>
+                              <img src={imageUrl} alt="Avatar" />
+                            </div>
+                          </div>
+                          <div className={"collab-Body"}>
+                            <div className={"collab-Title"}>
+                              <h2>{data[0]?.name}</h2>
+                            </div>
+                            <div className={"Card-Text"}>
+                              <p>{data[0].institute}</p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </>
+              ) : (
+                ""
+              )}
               {/* ajsfijwasfia ifj p */}
 
 
