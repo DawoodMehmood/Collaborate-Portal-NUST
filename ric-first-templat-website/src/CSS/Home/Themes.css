@@ -22,9 +22,10 @@
     background-color:  rgba(106, 13, 173, 0.7);
     display: grid;
     margin: 2% 0 2% 0;
-    grid-template-columns: 0.8fr 0.8fr 0.8fr;
+    grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr;
     grid-template-rows: 0.8fr 0.8fr;
     height: max-content;
+    width: 90%;
 }
 .themes-div > div{
     background-color: white;
@@ -32,7 +33,7 @@
     border: 1px solid lightgray;
     border-radius: 20px;
     padding: unset;
-    height: 200px;
+    height: 16.667vw;
 }
 .theme-logo-div{
     margin: 2% auto auto;
@@ -48,10 +49,17 @@
     margin: 3% auto;
     border-top: 2px solid  #6495ED;
 }
+.Logo-description > p{
+    font-size: 2vw;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color:  #9452c2;
+}
 .Logo-description > h1{
     border-top:  #6495ED;
     margin-top: 2%;
-    font-size: 15px;
+    font-size: 1.5vw;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -65,11 +73,18 @@
         grid-template-columns: 0.8fr 0.8fr;
         grid-template-rows: 0.8fr 0.8fr 0.8fr;
     }
+    .themes-div > div{
+        height: 25vw;
+    }
+
 }
 @media screen and (max-width: 500px) {
     .themes-div{
         text-align: center;
-        grid-template-columns: 0.8fr;
+        grid-template-columns: 1fr;
         grid-template-rows: 0.8fr 0.8fr 0.8fr 0.8fr;
+    }
+    .themes-div > div{
+        height: 45vw;
     }
 }

@@ -23,7 +23,7 @@ const QualitiesPortion_Home = () => {
                         In 2021, NUST faculty won grants worth close to 0.5B PKR.</h5></div>
                 </div>
                 <div className="col-lg content-logo">
-                    <img src={process.env.PUBLIC_URL + "/Images/Qualities_Home_Images/GrantsImage.jpeg"} />
+                    <img src={process.env.PUBLIC_URL + "/Images/Qualities_Home_Images/GrantsImage.jpg"} />
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ const QualitiesPortion_Home = () => {
                     </div>
                 </div>
                 <div className="col-lg content-logo">
-                    <img src={process.env.PUBLIC_URL + "/Images/Qualities_Home_Images/Patents.jpeg"} />
+                    <img src={process.env.PUBLIC_URL + "/Images/Qualities_Home_Images/Patents.jpg"} />
                 </div>
             </div>
         </div>

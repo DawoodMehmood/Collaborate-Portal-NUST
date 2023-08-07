@@ -766,6 +766,8 @@ profile_field>h1 {
   display: flex ;
   flex-direction: row ;
   animation: slide 20s linear infinite;
+  width: fit-content;
+  padding-left: 75%;
 }
 
 .slideranimation:hover{

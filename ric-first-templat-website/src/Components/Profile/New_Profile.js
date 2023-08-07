@@ -5574,7 +5574,7 @@ const New_Profile = ({
                     <span style={{ textDecoration: "underline" }}>NUST Research Collaborators:</span>
                   </h1>
                 </div>
-                <div className="slider-container" style={{ overflow: 'hidden', width: '1000px', display: 'flex' }}>
+                <div className="slider-container" style={{ overflow: 'hidden', width: '100%', display: 'flex' }}>
                   <div className="slider slideranimation">
                     {fetchedData.map((data, index) => {
                       const imageUrl = data[0]?.image_128 && data[0]?.image_128.trim() !== "" ? "data:image/png;base64," + atob(data[0]?.image_128) : process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg";
