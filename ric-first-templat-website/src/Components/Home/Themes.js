@@ -9,7 +9,12 @@ const Themes = () => {
      function incEltNbr(id, speed) {
         const elt = document.getElementById(id);
         const endNbr = Number(document.getElementById(id)?.innerHTML);
-        incNbrRec(0, endNbr, elt, speed);
+        if (id === "publication") {
+        incNbrRec(14500, endNbr, elt, speed);
+        }
+        else{
+            incNbrRec(0, endNbr, elt, speed);
+        }
     }
 
     /* A recursive function to increase the number. */
@@ -24,10 +29,10 @@ const Themes = () => {
    
     useEffect(() => {
         incEltNbr("school", 40); // Increase speed for all elements
-        incEltNbr("expert", 2);
-        incEltNbr("publication", 0.01);
-        incEltNbr("project", 10);
-        incEltNbr("patent", 10);
+        incEltNbr("expert", 20);
+        incEltNbr("publication", 1);
+        incEltNbr("project", 15);
+        incEltNbr("patent", 15);
         incEltNbr("technology", 25);
         incEltNbr("lab", 15);
         incEltNbr("industry", 5);
@@ -39,7 +44,7 @@ const Themes = () => {
         <div className="main">
             {/* NUST Research Themes heading */}
             <div className={"SDG-heading"}>
-                <h1>NUST Research Themes</h1>
+                <h1>NUST Research Summary</h1>
             </div>
             {/* Div containing all the themes */}
             <div className={"themes-div"}>
@@ -109,7 +114,7 @@ const Themes = () => {
                         <img src={process.env.PUBLIC_URL + "/Images/Themes/Technology.png"} alt={"DIGITAL FUTURES"} />
                     </div>
                     <div className={"Logo-description"}>
-                        <h1>Technology Transfer</h1>
+                        <h1>Tech. Transfer</h1>
                         <p id="technology">70</p>
                     </div>
                 </div>

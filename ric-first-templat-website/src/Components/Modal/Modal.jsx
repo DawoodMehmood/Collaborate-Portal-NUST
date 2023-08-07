@@ -28,17 +28,71 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
           <div className='modalData'>
             {modalData === DisplayPublications && (
               <div>
-                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Publications</h1>
+                <h1 style={{ fontWeight: "bold", textAlign: "center" }}>
+                  Publications
+                </h1>
                 {DisplayPublications.map((publication, index) => (
-                  <Card key={publication.id} text="dark" style={{ width: '100%' }}>
-                    <Card.Header>{(index + 1) + ". " + publication.title}</Card.Header>
+                  <Card
+                    key={publication.id}
+                    text="dark"
+                    style={{ width: "100%" }}
+                  >
+                    <Card.Header>
+                      {index + 1 + ". " + publication.title}
+                    </Card.Header>
                     <Card.Body>
                       <Card.Subtitle class="mb-2 text-muted">
-                        Authors: {publication.all_author_compute === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.all_author_compute} `}</strong>}
+                        Authors:{" "}
+                        {publication?.author_ids?.map((author, index) => {
+                          if (author.co_author_faculty_staff_id === "") {
+                            return (
+                              <strong
+                                key={index}
+                                className={"strong-color"}
+                              >{`${author.name}, `}</strong>
+                            );
+                          } else {
+                            const pattern = /\b(\d{11})\b/;
+                            const matches =
+                              author?.co_author_faculty_staff_id.match(pattern);
+                            if (matches) {
+                              return (
+                                <a
+                                  key={index}
+                                  href={
+                                    "/profile/" + author.name + "/" + matches[0]
+                                  }
+                                  target="_blank"
+                                >
+                                  <strong
+                                    style={{ color: "#6a0dad" }}
+                                  >{`${author.name}, `}</strong>
+                                </a>
+                              );
+                            } else {
+                              return (
+                                <strong
+                                  key={index}
+                                  className={"strong-color"}
+                                >{`${author.name}, `}</strong>
+                              );
+                            }
+                          }
+                        })}
                         <br />
                         <i>{`${publication.journal_info}, `}</i>
                         <br />
-                        Impact Factor: {publication.impact_factor === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.impact_factor} `}</strong>}  &nbsp; &nbsp; Citations: <strong class={"strong-color"}>0</strong>  &nbsp; &nbsp;  Quartiles: <strong class={"strong-color"}>1</strong>
+                        Impact Factor:{" "}
+                        {publication.impact_factor === "" ? (
+                          <strong class={"strong-color"}>0</strong>
+                        ) : (
+                          <strong
+                            class={"strong-color"}
+                          >{`${publication.impact_factor} `}</strong>
+                        )}{" "}
+                        &nbsp; &nbsp; Citations:{" "}
+                        <strong class={"strong-color"}>0</strong> &nbsp; &nbsp;
+                        Quartiles: <strong class={"strong-color"}>1</strong>
                       </Card.Subtitle>
                     </Card.Body>
                   </Card>
@@ -46,40 +100,112 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
               </div>
             )}
 
-
             {modalData === DisplayProjects && (
               <div>
-                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Projects</h1>
-                {DisplayProjects
-                  .filter(project => project.copi_ids[0]?.project_status !== "submitted") // Filter projects by project status
+                <h1 style={{ fontWeight: "bold", textAlign: "center" }}>
+                  Projects
+                </h1>
+                {DisplayProjects.filter(
+                  (project) =>
+                    project.copi_ids[0]?.project_status !== "submitted"
+                ) // Filter projects by project status
                   .map((project, index) => (
-                    <Card key={project.id} text="dark" style={{ width: '100%' }}>
-                      <Card.Header>{(index + 1) + ". " + project.title}</Card.Header>
+                    <Card
+                      key={project.id}
+                      text="dark"
+                      style={{ width: "100%" }}
+                    >
+                      {/* {console.log(project)} */}
+                      <Card.Header>
+                        {index + 1 + ". " + project.title}
+                      </Card.Header>
                       <Card.Body>
                         <Card.Subtitle class="mb-2 text-muted">
-                          Author: {project.copi_ids[0]?.name !== undefined && project.copi_ids[0]?.name !== "" ? (
-                            <strong class={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>
-                          ) : (
-                            <strong class={"strong-color"}>0</strong>
-                          )}
+                          Author:{" "}
+                          {project.copi_ids?.length > 0
+                            ? project?.copi_ids?.map((author, index) => {
+                              if (author.co_author_faculty_staff_id === "") {
+                                return (
+                                  <strong
+                                    key={index}
+                                    className={"strong-color"}
+                                  >{`${author.name}, `}</strong>
+                                );
+                              } else {
+                                const pattern = /\b(\d{11})\b/;
+                                const matches =
+                                  author?.co_author_faculty_staff_id.match(
+                                    pattern
+                                  );
+                                const namePattern = /^([^-\d]+)/;
+                                const nameMatches =
+                                  author?.co_author_faculty_staff_id.match(
+                                    namePattern
+                                  );
+                                if (matches[0] && nameMatches[0]) {
+                                  return (
+                                    <a
+                                      key={index}
+                                      href={
+                                        "/profile/" +
+                                        nameMatches[0] +
+                                        "/" +
+                                        matches[0]
+                                      }
+                                      target="_blank"
+                                    >
+                                      <strong
+                                        style={{ color: "#6a0dad" }}
+                                      >{`${nameMatches[0]}, `}</strong>
+                                    </a>
+                                  );
+                                } else {
+                                  return (
+                                    <strong
+                                      key={index}
+                                      className={"strong-color"}
+                                    >{`${author.name}, `}</strong>
+                                  );
+                                }
+                              }
+                            })
+                            : "No Author Found"}
                           <br />
                           <strong class={"strong-color"}>NUST</strong>
                           <br />
-                          Project Status: {project.copi_ids[0]?.project_status !== undefined && project.copi_ids[0]?.project_status !== "" ? (
-                            <strong class={"strong-color"}>{`${project.copi_ids[0].project_status === "apprinprocess" ? "Approved / In-Progress" :
-                              project.copi_ids[0].project_status === "completd" ? "Completed" : project.copi_ids[0].project_status}`}</strong>
-                          ) : (
-                            project.copi_ids[0]?.project_status === "Approved / In-Progress" ? (
-                              <strong class={"strong-color"}>Approved / In-Progress</strong>
-                            ) : (
-                              <strong class={"strong-color"}>0</strong>
-                            )
-                          )}  &nbsp; &nbsp; Rs: {project.cost_in_pkr !== undefined && project.cost_in_pkr / 1000000 !== "" ? (
-                            <strong class={"strong-color"}>{`${project.cost_in_pkr / 1000000}M`}</strong>
+                          Project Status:{" "}
+                          {project.copi_ids[0]?.project_status !== undefined &&
+                            project.copi_ids[0]?.project_status !== "" ? (
+                            <strong class={"strong-color"}>{`${project.copi_ids[0].project_status ===
+                              "apprinprocess"
+                              ? "Approved / In-Progress"
+                              : project.copi_ids[0].project_status ===
+                                "completd"
+                                ? "Completed"
+                                : project.copi_ids[0].project_status
+                              }`}</strong>
+                          ) : project.copi_ids[0]?.project_status ===
+                            "Approved / In-Progress" ? (
+                            <strong class={"strong-color"}>
+                              Approved / In-Progress
+                            </strong>
                           ) : (
                             <strong class={"strong-color"}>0</strong>
-                          )}  &nbsp; &nbsp; Submission Date: {project.submission_date !== undefined && project.submission_date !== "" ? (
-                            <strong class={"strong-color"}>{`${project.submission_date}`}</strong>
+                          )}{" "}
+                          &nbsp; &nbsp; Rs:{" "}
+                          {project.cost_in_pkr !== undefined &&
+                            project.cost_in_pkr / 1000000 !== "" ? (
+                            <strong class={"strong-color"}>{`${project.cost_in_pkr / 1000000
+                              }M`}</strong>
+                          ) : (
+                            <strong class={"strong-color"}>0</strong>
+                          )}{" "}
+                          &nbsp; &nbsp; Submission Date:{" "}
+                          {project.submission_date !== undefined &&
+                            project.submission_date !== "" ? (
+                            <strong
+                              class={"strong-color"}
+                            >{`${project.submission_date}`}</strong>
                           ) : (
                             <strong class={"strong-color"}>0</strong>
                           )}
@@ -92,20 +218,133 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
 
 
 
-
             {modalData === DisplayIPs && (
               <div>
-                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Intellectual Property</h1>
+                <h1 style={{ fontWeight: "bold", textAlign: "center" }}>
+                  Intellectual Property
+                </h1>
                 {DisplayIPs.map((displayIP, index) => (
-                  <Card key={displayIP.id} text="dark" style={{ width: '100%' }}>
-                    <Card.Header>{(index + 1) + ". " + displayIP.title}</Card.Header>
+                  <Card
+                    key={displayIP.id}
+                    text="dark"
+                    style={{ width: "100%" }}
+                  >
+                    <Card.Header>
+                      {index + 1 + ". " + displayIP.title}
+                    </Card.Header>
                     <Card.Body>
                       <Card.Subtitle class="mb-2 text-muted">
-                        Author: {displayIP.inventors === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.inventors} `}</strong>}
+                        Author:{" "}
+                        {displayIP.inventor_ids?.length > 0 ? (
+                          displayIP?.inventor_ids?.map((author, index) => {
+                            if (author.co_author_faculty_staff_id === "") {
+                              return (
+                                <strong
+                                  key={index}
+                                  className={"strong-color"}
+                                >{`${author.name}, `}</strong>
+                              );
+                            } else {
+                              const pattern = /\b(\d{11})\b/;
+                              const matches =
+                                author?.co_author_faculty_staff_id.match(
+                                  pattern
+                                );
+                              const namePattern = /^([^-\d]+)/;
+                              const nameMatches =
+                                author?.co_author_faculty_staff_id.match(
+                                  namePattern
+                                );
+                              if (matches[0] && nameMatches[0]) {
+                                return (
+                                  <a
+                                    key={index}
+                                    href={
+                                      "/profile/" +
+                                      nameMatches[0] +
+                                      "/" +
+                                      matches[0]
+                                    }
+                                    target="_blank"
+                                  >
+                                    <strong
+                                      style={{ color: "#6a0dad" }}
+                                    >{`${nameMatches[0]}, `}</strong>
+                                  </a>
+                                );
+                              } else {
+                                return (
+                                  <strong
+                                    key={index}
+                                    className={"strong-color"}
+                                  >{`${author.name}, `}</strong>
+                                );
+                              }
+                            }
+                          })
+                        ) : displayIP.inventors === "" ? (
+                          "No Author Found"
+                        ) : (
+                          <strong className="strong-color">
+                            {(() => {
+                              const remainingNames = displayIP.inventors
+                                .split(",")
+                                .map((name) => name.trim())
+                                .filter(
+                                  (name) =>
+                                    name.toLowerCase() !==
+                                    displayIP.initiator_name.toLowerCase()
+                                );
+
+                              if (remainingNames.length > 0) {
+                                const remainingNamesString =
+                                  remainingNames.join(", ");
+
+                                return (
+                                  <>
+                                    <strong className="strong-color">{`${remainingNamesString}, `}</strong>
+                                    <a
+                                      href={`/profile/${displayIP.initiator_name}/${displayIP.initiator_cms_id}`}
+                                      target="_blank"
+                                    >
+                                      <strong style={{ color: "#6a0dad" }}>{`${displayIP.initiator_name}, `}</strong>
+                                    </a>
+                                  </>
+                                );
+                              } else {
+                                return (
+                                  <a
+                                    href={`/profile/${displayIP.initiator_name}/${displayIP.initiator_cms_id}`}
+                                    target="_blank"
+                                  >
+                                    <strong
+                                      style={{ color: "#6a0dad" }}
+                                    >{`-----------${displayIP.initiator_name}-----, `}</strong>
+                                  </a>
+                                );
+                              }
+                            })()}
+                          </strong>
+                        )}
                         <br />
                         <strong class={"strong-color"}>NUST</strong>
                         <br />
-                        Filing year: {displayIP.filing_year === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.filing_year} `}</strong>}  &nbsp; &nbsp; IP Type: {displayIP.ip_type === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.ip_type}`}</strong>}
+                        Filing year:{" "}
+                        {displayIP.filing_year === "" ? (
+                          <strong class={"strong-color"}>0</strong>
+                        ) : (
+                          <strong
+                            class={"strong-color"}
+                          >{`${displayIP.filing_year} `}</strong>
+                        )}{" "}
+                        &nbsp; &nbsp; IP Type:{" "}
+                        {displayIP.ip_type === "" ? (
+                          <strong class={"strong-color"}>0</strong>
+                        ) : (
+                          <strong
+                            class={"strong-color"}
+                          >{`${displayIP.ip_type}`}</strong>
+                        )}
                       </Card.Subtitle>
                     </Card.Body>
                   </Card>
@@ -216,7 +455,7 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                           <p><b style={{ color: "black", fontSize: "17px" }}>Equipment Specification: </b>{lab.specification}</p>
                         </div>
                         <div className="col-md-6">
-                            <img style={{maxHeight:"250px"}} src={require(`../../APIs/pictures/${lab.sr_no}.jpg`)} alt="Lab Picture" />
+                          <img style={{ maxHeight: "250px" }} src={require(`../../APIs/pictures/${lab.sr_no}.jpg`)} alt="Lab Picture" />
                         </div>
                       </div>
 
