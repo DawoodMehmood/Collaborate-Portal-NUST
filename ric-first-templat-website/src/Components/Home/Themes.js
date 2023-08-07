@@ -10,7 +10,7 @@ const Themes = () => {
         const elt = document.getElementById(id);
         const endNbr = Number(document.getElementById(id)?.innerHTML);
         if (id === "publication") {
-        incNbrRec(14500, endNbr, elt, speed);
+        incNbrRec(18500, endNbr, elt, speed);
         }
         else{
             incNbrRec(0, endNbr, elt, speed);
@@ -81,7 +81,7 @@ const Themes = () => {
                     <div className={"Logo-description"}>
                         {/* Health & Well-Being, Food & Agriculture theme heading */}
                         <h1>Publications</h1>
-                        <p id="publication">16500</p>
+                        <p id="publication">19600</p>
                     </div>
                 </div>
                 {/* Theme 4: Pakistani Society, Business, & Economy */}
@@ -93,7 +93,7 @@ const Themes = () => {
                     <div className={"Logo-description"}>
                         {/* Pakistani Society, Business, & Economy theme heading */}
                         <h1>Projects</h1>
-                        <p id="project">1000</p>
+                        <p id="project">1400</p>
                     </div>
                 </div>
                 {/* Theme 5: Transformative Technology, Innovation & Shared Value Creation */}
@@ -105,7 +105,7 @@ const Themes = () => {
                     <div className={"Logo-description"}>
                         {/* Transformative Technology, Innovation & Shared Value Creation theme heading */}
                         <h1>Patents</h1>
-                        <p id="patent">1000</p>
+                        <p id="patent">1200</p>
                     </div>
                 </div>
                 {/* Theme 6: Digital Futures */}
@@ -115,7 +115,7 @@ const Themes = () => {
                     </div>
                     <div className={"Logo-description"}>
                         <h1>Tech. Transfer</h1>
-                        <p id="technology">70</p>
+                        <p id="technology">26</p>
                     </div>
                 </div>
                 {/* Theme 6: Digital Futures */}
@@ -135,7 +135,7 @@ const Themes = () => {
                     </div>
                     <div className={"Logo-description"}>
                         <h1>Industry at NUST</h1>
-                        <p id="industry">300</p>
+                        <p id="industry">109</p>
                     </div>
                 </div>
             </div>
