@@ -12,6 +12,7 @@ import { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid, fetchConfe
 import CustomModal from "../Modal/Modal";
 import industryData from "../../APIs/industry.json";
 import labData from "../../APIs/labs.json";
+import schoolIcon from "../../Icons/school.png";
 
 
 const Middle_Page = () => {
@@ -254,6 +255,103 @@ const Middle_Page = () => {
         school: params.school
     });
 
+    // Function to handle the visit of school website
+    const handlevisitschool = () => {
+        if (params.school === "ASAB") {
+            window.open("https://asab.nust.edu.pk/", "_blank");
+        }
+         else if (params.school === "CIPS") {
+            window.open("https://cips.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCEE") {
+            window.open("https://scee.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "C3A") {
+            window.open("https://c3a.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "CES") {
+            window.open("https://uspcase.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "CAE") {
+            window.open("https://cae.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "CEME") {
+            window.open("https://ceme.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCEE-IESE") {
+            window.open("https://iese.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCEE-IGIS") {
+            window.open("https://igis.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "MCE") {
+            window.open("https://mce.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "NBC-Quetta") {
+            window.open("https://nbc.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "NBS") {
+            window.open("https://nbs.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCEE-NICE PG") {
+            window.open("https://scee.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCEE-NICE") {
+            window.open("https://scee.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "NIPCONS") {
+            window.open("https://nipcons.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "NSHS") {
+            window.open("https://nshs.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "NIT-Risalpur") {
+            window.open("https://nit.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "NIT-SCEE") {
+            window.open("https://nit.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "PNEC") {
+            window.open("https://pnec.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "RCMS") {
+            window.open("https://nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "RIMMS") {
+            window.open("https://nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "RIMMS") {
+            window.open("https://sada.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCME") {
+            window.open("https://scme.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SCME") {
+            window.open("https://scme.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SEECS") {
+            window.open("https://seecs.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SINES") {
+            window.open("https://sines.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SMME") {
+            window.open("https://smme.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "SNS") {
+            window.open("https://sns.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "S3H") {
+            window.open("https://s3h.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "USPCASE") {
+            window.open("https://uspcase.nust.edu.pk/", "_blank");
+        } 
+         else if (params.school === "UMO") {
+            window.open("https://nust.edu.pk/", "_blank");
+        } 
+
+    }
 
     //To fetch all publication which are to be displayed in popup
     async function displayPublications() {
@@ -442,15 +540,10 @@ const Middle_Page = () => {
     }
 
     useEffect(() => {
-
-
         displayProjects();
         displayPublications();
         displayIPs();
-
-
         setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
-
         //To Fetch Profile of Faculty from API
         async function fetchProfile() {
             await fetch("http://localhost:8000/api/Profile", {
@@ -471,7 +564,6 @@ const Middle_Page = () => {
                 );
             ;
         }
-
         // To Fetch Publications of Facu
         async function fetchPublications() {
             await fetch(`http://localhost:8000/api/Publications`, {
@@ -722,11 +814,11 @@ const Middle_Page = () => {
         // }
         else if (Parameter.option === "school") {
             setFilteredLabData(
-                    labData.filter(
-                            item =>
-                                (item.school?.toLowerCase().includes(Parameter.school?.toLowerCase()))
-                        )
-                    );
+                labData.filter(
+                    item =>
+                        (item.school?.toLowerCase().includes(Parameter.school?.toLowerCase()))
+                )
+            );
             fetchSchoolFaculty().then(() => { });
         }
     }, [Parameter])
@@ -1159,6 +1251,7 @@ const Middle_Page = () => {
                             </button>
                         )}
                     </div>
+
                     <div className="result-stats row">
                         {filteredLabData.length > 0 && (
                             <>
@@ -1169,6 +1262,9 @@ const Middle_Page = () => {
                                 </button>}
                             </>
                         )}
+                    </div>
+                    <div className="school_visit_icon">
+                        <img onClick={handlevisitschool} src={schoolIcon} alt="visit school icon" />
                     </div>
 
                 </>
