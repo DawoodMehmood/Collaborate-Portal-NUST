@@ -10,7 +10,7 @@ const Themes = () => {
         const elt = document.getElementById(id);
         const endNbr = Number(document.getElementById(id)?.innerHTML);
         if (id === "publication") {
-        incNbrRec(18500, endNbr, elt, speed);
+        incNbrRec(15000, endNbr, elt, speed);
         }
         else{
             incNbrRec(0, endNbr, elt, speed);

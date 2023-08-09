@@ -13,6 +13,7 @@ import CustomModal from "../Modal/Modal";
 import industryData from "../../APIs/industry.json";
 import labData from "../../APIs/labs.json";
 import schoolIcon from "../../Icons/school.png";
+import LoadingComponent from "../Loading/LoadingComponent";
 
 
 const Middle_Page = () => {
@@ -1351,23 +1352,24 @@ const Middle_Page = () => {
             />
             {/*If the loading is true, then the loading animation is shown.*/}
             {loading ?
-                <div className={"Loading_Div"}>
-                    <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                        <Placeholder xs={12} />
-                    </Placeholder>
-                    <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
-                        <Placeholder xs={12} />
-                    </Placeholder>
-                    <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                        <Placeholder xs={12} />
-                    </Placeholder>
-                    <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
-                        <Placeholder xs={12} />
-                    </Placeholder>
-                    <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                        <Placeholder xs={12} />
-                    </Placeholder>
-                </div>
+                // <div className={"Loading_Div"}>
+                //     <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                //         <Placeholder xs={12} />
+                //     </Placeholder>
+                //     <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
+                //         <Placeholder xs={12} />
+                //     </Placeholder>
+                //     <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                //         <Placeholder xs={12} />
+                //     </Placeholder>
+                //     <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
+                //         <Placeholder xs={12} />
+                //     </Placeholder>
+                //     <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                //         <Placeholder xs={12} />
+                //     </Placeholder>
+                // </div>
+                <LoadingComponent/>
                 // Fetching data from server is complete, now if any error occurred then the error message is shown.
                 // by changing the state of searchErrors to true.
                 : !searchErrors ?
