@@ -52,6 +52,8 @@ import sdg14 from "../../Icons/sdgs/14.jpg";
 import sdg15 from "../../Icons/sdgs/15.jpg";
 import sdg16 from "../../Icons/sdgs/16.jpg";
 import sdg17 from "../../Icons/sdgs/17.jpg";
+import LoadingComponent from "../Loading/LoadingComponent";
+
 
 const New_Profile = ({
   publications,
@@ -5523,44 +5525,45 @@ const New_Profile = ({
                   </div>
                 </>
               ) : (
-                <div className={"Loading_Div"}>
-                  <Placeholder
-                    as="p"
-                    animation="glow"
-                    className={"Profile_Loading"}
-                  >
-                    <Placeholder xs={12} />
-                  </Placeholder>
-                  <Placeholder
-                    as="p"
-                    animation="wave"
-                    className={"Profile_Loading"}
-                  >
-                    <Placeholder xs={12} />
-                  </Placeholder>
-                  <Placeholder
-                    as="p"
-                    animation="glow"
-                    className={"Profile_Loading"}
-                  >
-                    <Placeholder xs={12} />
-                  </Placeholder>
-                  <Placeholder
-                    as="p"
-                    animation="wave"
-                    className={"Profile_Loading"}
-                  >
-                    <Placeholder xs={12} />
-                  </Placeholder>
-                  <Placeholder
-                    as="p"
-                    animation="glow"
-                    className={"Profile_Loading"}
-                  >
-                    <Placeholder xs={12} />
-                  </Placeholder>
-                  {/*<Placeholder className="w-75" />*/}
-                </div>
+                <LoadingComponent/>
+                // <div className={"Loading_Div"}>
+                //   <Placeholder
+                //     as="p"
+                //     animation="glow"
+                //     className={"Profile_Loading"}
+                //   >
+                //     <Placeholder xs={12} />
+                //   </Placeholder>
+                //   <Placeholder
+                //     as="p"
+                //     animation="wave"
+                //     className={"Profile_Loading"}
+                //   >
+                //     <Placeholder xs={12} />
+                //   </Placeholder>
+                //   <Placeholder
+                //     as="p"
+                //     animation="glow"
+                //     className={"Profile_Loading"}
+                //   >
+                //     <Placeholder xs={12} />
+                //   </Placeholder>
+                //   <Placeholder
+                //     as="p"
+                //     animation="wave"
+                //     className={"Profile_Loading"}
+                //   >
+                //     <Placeholder xs={12} />
+                //   </Placeholder>
+                //   <Placeholder
+                //     as="p"
+                //     animation="glow"
+                //     className={"Profile_Loading"}
+                //   >
+                //     <Placeholder xs={12} />
+                //   </Placeholder>
+                //   {/*<Placeholder className="w-75" />*/}
+                // </div>
               )}
 
 

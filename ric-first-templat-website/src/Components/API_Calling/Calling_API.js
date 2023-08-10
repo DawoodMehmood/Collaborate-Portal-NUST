@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import New_Profile from "../Profile/New_Profile";
 import { useParams } from "react-router-dom";
 import Placeholder from 'react-bootstrap/Placeholder';
+import LoadingComponent from "../Loading/LoadingComponent";
 
 const All_Publications = [];
 const All_affiliations = [];
@@ -507,24 +508,27 @@ const Calling_API = () => {
         <>
             {
                 Profile.length === 0 ?
-                    <div className={"Loading_Div"}>
-                        <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
-                            <Placeholder xs={12} />
-                        </Placeholder>
-                        {/*<Placeholder className="w-75" />*/}
-                    </div> :
+                    <div className={"Loading_Div"} style={{"height":"60vh"}}>
+                        <LoadingComponent />
+                    </div>
+                    //     <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                    //         <Placeholder xs={12} />
+                    //     </Placeholder>
+                    //     <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
+                    //         <Placeholder xs={12} />
+                    //     </Placeholder>
+                    //     <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                    //         <Placeholder xs={12} />
+                    //     </Placeholder>
+                    //     <Placeholder as="p" animation="wave" className={"Profile_Loading"}>
+                    //         <Placeholder xs={12} />
+                    //     </Placeholder>
+                    //     <Placeholder as="p" animation="glow" className={"Profile_Loading"}>
+                    //         <Placeholder xs={12} />
+                    //     </Placeholder>
+                    //     {/*<Placeholder className="w-75" />*/}
+                    //div> 
+                    :
                     <New_Profile
                         publications={Publications}
                         projects={Projects}

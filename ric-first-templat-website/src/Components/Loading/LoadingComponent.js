@@ -18,7 +18,7 @@ const LoadingComponent = () => {
     <div className="loading-container">
       {isVisible && (
         <img
-          src={require('../../Icons/nustLogo2.png')} // Use require to import the image
+          src={require('../../Icons/riclogo.jpg')} // Use require to import the image
           alt="Loading..."
           className="blinking-image"
         />

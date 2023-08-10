@@ -438,7 +438,7 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
 
             {modalData === "lab" && (
               <div>
-                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Labs</h1>
+                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Lab Equipment</h1>
                 {dataToSend.map((lab) => (
                   <Card key={lab.id} text="dark" style={{ width: '100%' }}>
                     <Card.Header style={{ fontWeight: "bold" }}>{lab.name}</Card.Header>

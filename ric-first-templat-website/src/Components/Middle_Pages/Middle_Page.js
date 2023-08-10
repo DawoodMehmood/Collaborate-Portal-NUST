@@ -1257,7 +1257,7 @@ const Middle_Page = () => {
                         {filteredLabData.length > 0 && (
                             <>
                                 {<button onClick={() => labsAndIndustryData(Parameter.school, 'lab')}>
-                                    Labs: <h6>
+                                    Lab Equipment: <h6>
                                         {filteredLabData.length}
                                     </h6>
                                 </button>}
@@ -1296,7 +1296,7 @@ const Middle_Page = () => {
                     {(
                         <>
                             {filteredLabData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
-                                Labs: <h6>
+                                Lab Equipment: <h6>
                                     {filteredLabData.length}
                                 </h6>
                             </button>}
