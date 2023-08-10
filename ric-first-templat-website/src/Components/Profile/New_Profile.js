@@ -138,6 +138,7 @@ const New_Profile = ({
   }
   const [publicationIdsArray, setpublicationIdsArray] = useState([]);
   const [fetchedData, setFetchedData] = useState([]);
+  const [collaborationCounts, setCollaborationCounts] = useState({});
   // const displayedNames = new Set();
 
   useEffect(() => {
@@ -170,9 +171,28 @@ const New_Profile = ({
           console.error("Error fetching data:", error);
         });
     }
+
+    const counts = {};
+    publications.Article?.forEach((publication) => {
+      const authorIdsAll = publication.Author_ids;
+      authorIdsAll.forEach((authorIds) => {
+        const coAuthorFacultyStaffId = authorIds.co_author_faculty_staff_id?.split(" - ")[1];
+        if (coAuthorFacultyStaffId && coAuthorFacultyStaffId !== id) {
+          if (!counts[coAuthorFacultyStaffId]) {
+            counts[coAuthorFacultyStaffId] = 1;
+          } else {
+            counts[coAuthorFacultyStaffId]++;
+          }
+        }
+      });
+    });
+
+    setCollaborationCounts(counts);
   }, [publicationIdsArray]);
 
 
+  console.log("publicationIdsArray", publicationIdsArray);
+  console.log("fetchedData", fetchedData);
   // This function is responsible for showing the ResearchProject of Faculty Member
   const showmainprofile = () => {
     setTabOptions({
@@ -5525,7 +5545,7 @@ const New_Profile = ({
                   </div>
                 </>
               ) : (
-                <LoadingComponent/>
+                <LoadingComponent />
                 // <div className={"Loading_Div"}>
                 //   <Placeholder
                 //     as="p"
@@ -5572,42 +5592,43 @@ const New_Profile = ({
               {/* ajsfijwasfia ifj p */}
               {fetchedData.length !== 0 ? (
                 <>
-                <div className={"about_heading"}>
-                  <h1>
-                    <span style={{ textDecoration: "underline" }}>NUST Research Collaborators:</span>
-                  </h1>
-                </div>
-                <div className="slider-container" style={{ overflow: 'hidden', width: '100%', display: 'flex' }}>
-                  <div className="slider slideranimation">
-                    {fetchedData.map((data, index) => {
-                      const imageUrl = data[0]?.image_128 && data[0]?.image_128.trim() !== "" ? "data:image/png;base64," + atob(data[0]?.image_128) : process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg";
-
-                      // Check if the name exists and is not an empty string
-                      if (!data[0]?.name) {
-                        return null; // Skip rendering if the name is not available
-                      }
-
-                      return (
-                        <div onClick={() => { visitprofile(`/profile/${data[0]?.name}/${data[0]?.code}`) }} className={"collab-Profile schoolcountcard hovercard"}>
-                          <div className={"collab-Header"}>
-                            <div className={"collab-Image"}>
-                              <img src={imageUrl} alt="Avatar" />
-                            </div>
-                          </div>
-                          <div className={"collab-Body"}>
-                            <div className={"collab-Title"}>
-                              <h2>{data[0]?.name}</h2>
-                            </div>
-                            <div className={"Card-Text"}>
-                              <p>{data[0].institute}</p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                  <div className={"about_heading"}>
+                    <h1>
+                      <span style={{ textDecoration: "underline" }}>NUST Research Collaborators:</span>
+                    </h1>
                   </div>
-                </div>
-              </>
+                  <div className="slider-container" style={{ overflow: 'hidden', width: '100%', display: 'flex' }}>
+                    <div className="slider slideranimation">
+                      {fetchedData.map((data, index) => {
+                        const imageUrl = data[0]?.image_128 && data[0]?.image_128.trim() !== "" ? "data:image/png;base64," + atob(data[0]?.image_128) : process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg";
+
+                        // Check if the name exists and is not an empty string
+                        if (!data[0]?.name) {
+                          return null; // Skip rendering if the name is not available
+                        }
+
+                        return (
+                          <div onClick={() => { visitprofile(`/profile/${data[0]?.name}/${data[0]?.code}`) }} className={"collab-Profile schoolcountcard hovercard"}>
+                            <div className={"collab-Header"}>
+                              <div className={"collab-Image"}>
+                                <img src={imageUrl} alt="Avatar" />
+                              </div>
+                            </div>
+                            <div className={"collab-Body"}>
+                              <div className={"collab-Title"}>
+                                <h2>{data[0]?.name}</h2>
+                              </div>
+                              <div className={"Card-Text"}>
+                                <p>{data[0].institute}</p>
+                              </div>
+                              <p className="bold-text">Collaborations: {collaborationCounts[data[0]?.code] || 0}</p> {/* Display collaboration count */}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
               ) : (
                 ""
               )}

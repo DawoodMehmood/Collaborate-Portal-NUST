@@ -773,4 +773,8 @@ profile_field>h1 {
 .slideranimation:hover{
   animation-play-state: paused;
 }
+
+.bold-text{
+  font-weight: bold;
+}
 /* Zain */

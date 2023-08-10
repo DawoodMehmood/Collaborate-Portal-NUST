@@ -351,6 +351,12 @@ const Middle_Page = () => {
          else if (params.school === "UMO") {
             window.open("https://nust.edu.pk/", "_blank");
         } 
+         else if (params.school === "MCS") {
+            window.open("https://mcs.nust.edu.pk/", "_blank");
+        } 
+         else {
+            window.open("https://nust.edu.pk/", "_blank");
+        } 
 
     }
 
