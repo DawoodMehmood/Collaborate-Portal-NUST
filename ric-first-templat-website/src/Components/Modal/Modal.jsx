@@ -360,7 +360,97 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                     <Card.Header>{(index + 1) + ". " + displayIP.title}</Card.Header>
                     <Card.Body>
                       <Card.Subtitle class="mb-2 text-muted">
-                        Author: {displayIP.inventors === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${displayIP.inventors} `}</strong>}
+                        Author:  {displayIP.inventor_ids?.length > 0 ? (
+                          displayIP?.inventor_ids?.map((author, index) => {
+                            if (author.co_author_faculty_staff_id === "") {
+                              return (
+                                <strong
+                                  key={index}
+                                  className={"strong-color"}
+                                >{`${author.name}, `}</strong>
+                              );
+                            } else {
+                              const pattern = /\b(\d{11})\b/;
+                              const matches =
+                                author?.co_author_faculty_staff_id.match(
+                                  pattern
+                                );
+                              const namePattern = /^([^-\d]+)/;
+                              const nameMatches =
+                                author?.co_author_faculty_staff_id.match(
+                                  namePattern
+                                );
+                              if (matches[0] && nameMatches[0]) {
+                                return (
+                                  <a
+                                    key={index}
+                                    href={
+                                      "/profile/" +
+                                      nameMatches[0] +
+                                      "/" +
+                                      matches[0]
+                                    }
+                                    target="_blank"
+                                  >
+                                    <strong
+                                      style={{ color: "#6a0dad" }}
+                                    >{`${nameMatches[0]}, `}</strong>
+                                  </a>
+                                );
+                              } else {
+                                return (
+                                  <strong
+                                    key={index}
+                                    className={"strong-color"}
+                                  >{`${author.name}, `}</strong>
+                                );
+                              }
+                            }
+                          })
+                        ) : displayIP.inventors === "" ? (
+                          "No Author Found"
+                        ) : (
+                          <strong className="strong-color">
+                            {(() => {
+                              const remainingNames = displayIP.inventors
+                                .split(",")
+                                .map((name) => name.trim())
+                                .filter(
+                                  (name) =>
+                                    name.toLowerCase() !==
+                                    displayIP.initiator_name.toLowerCase()
+                                );
+
+                              if (remainingNames.length > 0) {
+                                const remainingNamesString =
+                                  remainingNames.join(", ");
+
+                                return (
+                                  <>
+                                    <strong className="strong-color">{`${remainingNamesString}, `}</strong>
+                                    <a
+                                      href={`/profile/${displayIP.initiator_name}/${displayIP.initiator_cms_id}`}
+                                      target="_blank"
+                                    >
+                                      <strong style={{ color: "#6a0dad" }}>{`${displayIP.initiator_name}, `}</strong>
+                                    </a>
+                                  </>
+                                );
+                              } else {
+                                return (
+                                  <a
+                                    href={`/profile/${displayIP.initiator_name}/${displayIP.initiator_cms_id}`}
+                                    target="_blank"
+                                  >
+                                    <strong
+                                      style={{ color: "#6a0dad" }}
+                                    >{`-----------${displayIP.initiator_name}-----, `}</strong>
+                                  </a>
+                                );
+                              }
+                            })()}
+                          </strong>
+                        )}
                         <br />
                         <strong class={"strong-color"}>NUST</strong>
                         <br />
@@ -382,11 +472,54 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                       <Card.Header>{(index + 1) + ". " + project.title}</Card.Header>
                       <Card.Body>
                         <Card.Subtitle class="mb-2 text-muted">
-                          Author: {project.copi_ids[0]?.name !== undefined && project.copi_ids[0]?.name !== "" ? (
-                            <strong class={"strong-color"}>{`${project.copi_ids[0].name} `}</strong>
-                          ) : (
-                            <strong class={"strong-color"}>0</strong>
-                          )}
+                          Author: {project.copi_ids?.length > 0
+                            ? project?.copi_ids?.map((author, index) => {
+                              if (author.co_author_faculty_staff_id === "") {
+                                return (
+                                  <strong
+                                    key={index}
+                                    className={"strong-color"}
+                                  >{`${author.name}, `}</strong>
+                                );
+                              } else {
+                                const pattern = /\b(\d{11})\b/;
+                                const matches =
+                                  author?.co_author_faculty_staff_id.match(
+                                    pattern
+                                  );
+                                const namePattern = /^([^-\d]+)/;
+                                const nameMatches =
+                                  author?.co_author_faculty_staff_id.match(
+                                    namePattern
+                                  );
+                                if (matches[0] && nameMatches[0]) {
+                                  return (
+                                    <a
+                                      key={index}
+                                      href={
+                                        "/profile/" +
+                                        nameMatches[0] +
+                                        "/" +
+                                        matches[0]
+                                      }
+                                      target="_blank"
+                                    >
+                                      <strong
+                                        style={{ color: "#6a0dad" }}
+                                      >{`${nameMatches[0]}, `}</strong>
+                                    </a>
+                                  );
+                                } else {
+                                  return (
+                                    <strong
+                                      key={index}
+                                      className={"strong-color"}
+                                    >{`${author.name}, `}</strong>
+                                  );
+                                }
+                              }
+                            })
+                            : "No Author Found"}
                           <br />
                           <strong class={"strong-color"}>NUST</strong>
                           <br />
@@ -423,7 +556,43 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
                     <Card.Header>{(index + 1) + ". " + publication.title}</Card.Header>
                     <Card.Body>
                       <Card.Subtitle class="mb-2 text-muted">
-                        All Authors: {publication.all_author_compute === "" ? <strong class={"strong-color"}>0</strong> : <strong class={"strong-color"}>{`${publication.all_author_compute} `}</strong>}
+                        All Authors:  Authors:{" "}
+                        {publication?.author_ids?.map((author, index) => {
+                          if (author.co_author_faculty_staff_id === "") {
+                            return (
+                              <strong
+                                key={index}
+                                className={"strong-color"}
+                              >{`${author.name}, `}</strong>
+                            );
+                          } else {
+                            const pattern = /\b(\d{11})\b/;
+                            const matches =
+                              author?.co_author_faculty_staff_id.match(pattern);
+                            if (matches) {
+                              return (
+                                <a
+                                  key={index}
+                                  href={
+                                    "/profile/" + author.name + "/" + matches[0]
+                                  }
+                                  target="_blank"
+                                >
+                                  <strong
+                                    style={{ color: "#6a0dad" }}
+                                  >{`${author.name}, `}</strong>
+                                </a>
+                              );
+                            } else {
+                              return (
+                                <strong
+                                  key={index}
+                                  className={"strong-color"}
+                                >{`${author.name}, `}</strong>
+                              );
+                            }
+                          }
+                        })}
                         <br />
                         <i>{`${publication.journal_info}, `}</i>
                         <br />
