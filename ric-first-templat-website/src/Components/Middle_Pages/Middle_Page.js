@@ -823,7 +823,7 @@ const Middle_Page = () => {
             setFilteredLabData(
                 labData.filter(
                     item =>
-                        (item.school?.toLowerCase().includes(Parameter.school?.toLowerCase()))
+                    (item.school && typeof item.school === "string" && item.school.toLowerCase().includes(Parameter.school && typeof Parameter.school === "string" && Parameter.school.toLowerCase()))
                 )
             );
             fetchSchoolFaculty().then(() => { });

@@ -1345,7 +1345,7 @@
   "sr_no": 138,
   "name": "Real-Time Polymerase Chain Reaction - PCR",
   "lab_incharge": "Dr. Rabia Liaquat",
-  "introduction": "It is used to rapidly make millions to billions of copies of a specific DNA sample thus amplify it to a large enough amount to study in detail.",
+  "introduction": "It is used to rapidly make millions to billions of copies of a species DNA sample thus amplify it to a large enough amount to study in detail.",
   "school": "USPCASE",
   "lab_name": "Bio fuels lab",
   "specification": "Temp. range: 4°C–99.9°C. ",
@@ -2983,5 +2983,2301 @@
   "lab_name": "Transportation Engineering Lab",
   "specification": "Local",
   "description": "Manual"
+ },
+ {
+  "sr_no": 307,
+  "name": "Cell Sorter with accessories and Computer System (Flow Cytometer)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Cell sorting allows the separation of cells based on their intra- or extracellular properties, including DNA, RNA, and protein interactions, size, and surface protein expression",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cell sorter: 49.5 x 55.9 x 48.3 cm (19.5 x 22 x 19 in.) ",
+  "description": "Flow cytometry (FCM) is a technique which enables rapid analysis of statistically significant number of cells at single cell level. The main principle of this technique is based on scattering of light and emission of fluorescence which occur when a laser beam hits the cells moving in a directed fluid stream."
+ },
+ {
+  "sr_no": 308,
+  "name": "·         Printer Aticio SP C311N",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "for Result Print",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "accurately quote and print",
+  "description": "In short, printers work by converting digital images and text into physical copies. They do this using a driver or specialised software that has been designed to convert the file into a language that the printer can understand. The image or text is then recreated on to the page using a series of miniscule dots."
+ },
+ {
+  "sr_no": 309,
+  "name": "Cell Counter",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "cell calculater",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " Automated Cell Counters ",
+  "description": "The Coulter Principle is based on the detection and measurement of changes in electrical resistance produced by a particle or cell suspended in a conductive liquid (diluent) traversing through a small aperture. When particles or cells are suspended in a conductive liquid, they function as discrete insulators."
+ },
+ {
+  "sr_no": 310,
+  "name": "CO2 Incubator",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " incubators to maintain the pH in the cell cultures. Combined with maintaining consistent temperature.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " It should come with minimum 4 adjustable height shelves & humidity reservoir (removable) ",
+  "description": "The carbon dioxide (henceforth referred to as CO2) incubator is laboratory equipment for cell culture. To provide the most ideal environment for cell growth, the prevention of contamination is not the sole focus during the process, but also the precise control of temperature, relative humidity and CO2 concentration in the incubator."
+ },
+ {
+  "sr_no": 311,
+  "name": "CO2 Incubator",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " incubators to maintain the pH in the cell cultures. Combined with maintaining consistent temperature.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " It should come with minimum 4 adjustable height shelves & humidity reservoir (removable) ",
+  "description": "Pressure will always try to equalize across connected regions as gas molecules flow from high to low to fill the entire area of that volume."
+ },
+ {
+  "sr_no": 312,
+  "name": "CO2 Incubator",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " incubators to maintain the pH in the cell cultures. Combined with maintaining consistent temperature.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " It should come with minimum 4 adjustable height shelves & humidity reservoir (removable) ",
+  "description": "The carbon dioxide (henceforth referred to as CO2) incubator is laboratory equipment for cell culture. To provide the most ideal environment for cell growth, the prevention of contamination is not the sole focus during the process, but also the precise control of temperature, relative humidity and CO2 concentration in the incubator."
+ },
+ {
+  "sr_no": 313,
+  "name": "Binocular Microscope with Computer System",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Binoculars are designed to give an upright view that is correctly oriented left-to-right.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "4x, 10x, 40x and 100x powers",
+  "description": "The working principle of a microscope is that when a sample is placed within the focus of the microscope, a virtual, erect and magnified image is obtained at the least distance of distinct vision from the eye that is held at the lens."
+ },
+ {
+  "sr_no": 314,
+  "name": "Vacuum Mini Pump",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " vacuum pumps are mechanical devices that enable the removal of air and gas molecules from a sealed area to create an area devoid of air and\/or gas",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " 680 mm of hg.",
+  "description": "A vacuum pump's main function is to change the pressure in a contained space to create a full or partial vacuum either mechanically or chemically. "
+ },
+ {
+  "sr_no": 315,
+  "name": "Mini Spin ",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Spin is a conserved quantity carried by elementary particles",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " 12 × 1.5\/2.0 mL",
+  "description": "short spin "
+ },
+ {
+  "sr_no": 316,
+  "name": "Mini Spin",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " centrifugal force to separate suspended particles from a liquid or to separate liquids of different densities. These liquids can include.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " 12 × 1.5\/2.0 mL",
+  "description": "A  works by using the principle of sedimentation: Under the influence of gravitational force (g-force), substances separate according to their density. Different types of separation are known, including isopycnic, ultrafiltration, density gradient, phase separation, and pelleting."
+ },
+ {
+  "sr_no": 317,
+  "name": "Safety Cabinet (Microbiological)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A safety cabinet or biological safety cabinet (BSC) is an enclosed and ventilated laboratory workspace to provide safety when working with materials that are contaminated by pathogens",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "835 x 600 x 640 mm 32.8 x 23.6 x 25.2″",
+  "description": "A biosafety cabinet provides three layers of protection: Personnel — Air curtain and HEPA filters protect users from biohazardous aerosols generated inside the chamber. Sample Protection — Recirculating and unidirectional HEPA filtered air protect samples from contamination from unsterile lab air."
+ },
+ {
+  "sr_no": 318,
+  "name": "Safety Cabinet (Microbiological)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A safety cabinet or biological safety cabinet (BSC) is an enclosed and ventilated laboratory workspace to provide safety when working with materials that are contaminated by pathogens",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "835 x 600 x 640 mm 32.8 x 23.6 x 25.2″",
+  "description": "A biosafety cabinet provides three layers of protection: Personnel — Air curtain and HEPA filters protect users from biohazardous aerosols generated inside the chamber. Sample Protection — Recirculating and unidirectional HEPA filtered air protect samples from contamination from unsterile lab air."
+ },
+ {
+  "sr_no": 319,
+  "name": "Biological Safety Cabinet",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A safety cabinet or biological safety cabinet (BSC) is an enclosed and ventilated laboratory workspace to provide safety when working with materials that are contaminated by pathogens",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "description": "A biosafety cabinet provides three layers of protection: Personnel — Air curtain and HEPA filters protect users from biohazardous aerosols generated inside the chamber. Sample Protection — Recirculating and unidirectional HEPA filtered air protect samples from contamination from unsterile lab air."
+ },
+ {
+  "sr_no": 320,
+  "name": "Biological Safety Cabinet",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A safety cabinet or biological safety cabinet (BSC) is an enclosed and ventilated laboratory workspace to provide safety when working with materials that are contaminated by pathogens",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "835 x 600 x 640 mm 32.8 x 23.6 x 25.2″",
+  "description": "A biosafety cabinet provides three layers of protection: Personnel — Air curtain and HEPA filters protect users from biohazardous aerosols generated inside the chamber. Sample Protection — Recirculating and unidirectional HEPA filtered air protect samples from contamination from unsterile lab air."
+ },
+ {
+  "sr_no": 321,
+  "name": "Water Bath",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "a system for the control of temperature in which a vessel containing the material to be heated is set into or over one containing water and receiving the heat directly. a bath of water.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "300 x 250 x 100 mm, 355 x 405 x 100 mm",
+  "description": "Working principle of water bath: The sensor transfer water temperature to resistance value, amplified and compared by integrated amplifier, then output the control signal, efficiently control the average heating power of electric heating tube and maintain water in constant temperature."
+ },
+ {
+  "sr_no": 322,
+  "name": "Vortex",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "The vortex flow gives rise to strong pressure gradients and shear forces",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "50\/60 Hz",
+  "description": "Vortex shedding is a phenomenon, when the wind blows across a structural member, vortices are shed alternately from one side to the other, and where alternating low-pressure zones are generated on the downwind side of the structure giving rise to a fluctuating force acting at right angles to the wind direction"
+ },
+ {
+  "sr_no": 323,
+  "name": "Chemical Resistant Vacuum Pump",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "High chemical resistance. - No air pollution and No need for maintenance -Silence",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "115V\/60Hz, 1 Phase or 230V\/50Hz",
+  "description": "\nVacuum pumps remove air molecules (and other gases) from the vacuum chamber (or the outlet side in the case of a higher vacuum pump connected in series). As the pressure in the chamber is reduced, removing additional molecules becomes increasingly harder to remove."
+ },
+ {
+  "sr_no": 324,
+  "name": "High Speed Micro Centrifuge",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " centrifugal force to separate suspended particles from a liquid or to separate liquids of different densities. These liquids can include.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Max speed (Angle rotor) : 15000 rpm.Max RCF : 20375 x g",
+  "description": "A centrifuge works by using the principle of sedimentation: Under the influence of gravitational force (g-force), substances separate according to their density. Different types of separation are known, including isopycnic, ultrafiltration, density gradient, phase separation, and pelleting."
+ },
+ {
+  "sr_no": 325,
+  "name": "Liquid Nitrogen  Container ",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Liquid nitrogen storge ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": ".18 L",
+  "description": "storege "
+ },
+ {
+  "sr_no": 326,
+  "name": "Mini-pump Variable ",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "manual flow control for continuously variable pumping speed adjustment",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "3386 Mini Variable Speed",
+  "description": "The system pressure flows against one side of an internal piston, which is being held by the heavy spring. When the force of the system pressure is high enough to move the piston and overcome the spring pressure, the swash plate angle is changed and the pump flow is reduced."
+ },
+ {
+  "sr_no": 327,
+  "name": "Pipette Stand",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A pipette stand is a holder designed to provide safe and convenient storage for   pipettes",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " hold 06 pipette",
+  "description": "hold pipeete for safty "
+ },
+ {
+  "sr_no": 328,
+  "name": "Pipette Stand ",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A pipette stand is a holder designed to provide safe and convenient storage for   pipettes",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "hold 6 pipeete",
+  "description": "hold pipeete for safty"
+ },
+ {
+  "sr_no": 329,
+  "name": "CO2 Regulator with Heater (Japan)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Carbon Dioxide Gas Heater (CO2 heater) is a type of gas regulator with a heater that can heat the CO2 . Or an equipment with heated function",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Diameter · 560 mm ; Height · 2 m",
+  "description": "Pressure regulators reduce a supply (or inlet) pressure to a lower outlet pressure and work to maintain this outlet pressure despite fluctuations in the inlet pressure. The reduction of the inlet pressure to a lower outlet pressure is the key characteristic of pressure regulators."
+ },
+ {
+  "sr_no": 330,
+  "name": "CO2 Regulator with Heater (Japan)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Carbon Dioxide Gas Heater (CO2 heater) is a type of gas regulator with a heater that can heat the CO2 . Or an equipment with heated function",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " Diameter · 560 mm ; Height · 2 m",
+  "description": "Pressure regulators reduce a supply (or inlet) pressure to a lower outlet pressure and work to maintain this outlet pressure despite fluctuations in the inlet pressure. The reduction of the inlet pressure to a lower outlet pressure is the key characteristic of pressure regulators."
+ },
+ {
+  "sr_no": 331,
+  "name": "Inverted Fluorescence Microscope with Cool CCD Camera",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "An inverted microscope is a microscope with its light source and condenser on the top, above the stage pointing down, while the objectives and turret are below the stage pointing up.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "10X \/ 22 extra wide field eyepieces",
+  "description": "Principle: In an inverted microscope, the source for transmitted light and the condenser are placed on the top of the stage, pointing down toward the stage. The objectives are located below the stage pointing up. The cells are observed through the bottom of the cell culture vessel."
+ },
+ {
+  "sr_no": 332,
+  "name": "●Tabulet",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "for result pix",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "imge ",
+  "description": "The most important principle is that the data should always be stored at the most detailed level, so that different tabulations"
+ },
+ {
+  "sr_no": 333,
+  "name": "ULT (-86 Freezer)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "An ultra low temperature (ULT) freezer is a refrigerator that stores contents at between −40 to −86 °C (−40 to −123 °F). An ultra low temperature ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "430×305×425 mm",
+  "description": "Long trem storge "
+ },
+ {
+  "sr_no": 334,
+  "name": "CO2 Incubator with Regulator and Cylinder ",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " incubators to maintain the pH in the cell cultures. Combined with maintaining consistent temperature.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " It should come with minimum 4 adjustable height shelves & humidity reservoir (removable) ",
+  "description": "The carbon dioxide (henceforth referred to as CO2) incubator is laboratory equipment for cell culture. To provide the most ideal environment for cell growth, the prevention of contamination is not the sole focus during the process, but also the precise control of temperature, relative humidity and CO2 concentration in the incubator."
+ },
+ {
+  "sr_no": 335,
+  "name": "Digital Camera Module for Microscope",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "digital microscope cameras allow you to capture high-quality images of samples",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "high-quality images of samples",
+  "description": "The working principle of a simple microscope is that when a sample is placed within the focus of the microscope, a virtual, erect and magnified image is obtained at the least distance of distinct vision from the eye that is held at the lens."
+ },
+ {
+  "sr_no": 336,
+  "name": "Haemocytometer",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "A hemocytometer consists of a thick glass microscope slide",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "6.25 nL",
+  "description": " After ficoll preparation, cells are collected and diluted in trypan blue for a live\/dead count under a hemocytometer to determine cell# per ml"
+ },
+ {
+  "sr_no": 337,
+  "name": "Micro Injection",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Microinjection is an essential approach in the study of mammalian oocytes and early embryos",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "1000 sample",
+  "description": "Microinjection is a technique of delivering foreign DNA into a living cell (a cell, egg, oocyte, embryos of animals) through a glass micropipette. One end of a glass micropipette is heated until the glass becomes somewhat liquified. It is quickly stretched which forms a very fine tip at the heated end."
+ },
+ {
+  "sr_no": 338,
+  "name": "Levo Plus Motorized Pipette Filler (1-100 ml)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " use serological pipette controller for use with 1-100mL",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "1-100ml",
+  "description": "The general principle of using a pipette is that the user will set a volume to aspirate (pull in) and dispense (push out). Liquid is pulled into an attached pipette tip, which is uniquely chosen for the volume being handled."
+ },
+ {
+  "sr_no": 339,
+  "name": "Levo Plus Motorized Pipette Filler (1-100 ml)",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": " use serological pipette controller for use with 1-100mL",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "1-100ml",
+  "description": "The general principle of using a pipette is that the user will set a volume to aspirate (pull in) and dispense (push out). Liquid is pulled into an attached pipette tip, which is uniquely chosen for the volume being handled."
+ },
+ {
+  "sr_no": 340,
+  "name": "Pipet-Aid",
+  "lab_incharge": "Dr. Maria Shabbir",
+  "introduction": "Pipette-aides or pipettors are suction devices that are used to either suck liquids into or expel liquids out of pipettes. ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "1-50ml",
+  "description": "The general principle of using a pipette is that the user will set a volume to aspirate (pull in) and dispense (push out). Liquid is pulled into an attached pipette tip, which is uniquely chosen for the volume being handled."
+ },
+ {
+  "sr_no": 341,
+  "name": "Multi 08 Channel Pipette 50-300ul",
+  "lab_incharge": "Dr Dilawar khan ",
+  "introduction": "Accurately and precisely place 96-, 384-, or 1536-well plates for your drug screenings or enzyme assays with a manual multi-channel pipette like the lightweight …",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "50-300ul",
+  "description": "The general principle of using a pipette is that the user will set a volume to aspirate (pull in) and dispense (push out). The liquid is drawn into an attached pipette tip, which is uniquely chosen for the volume being handled."
+ },
+ {
+  "sr_no": 342,
+  "name": "Vortex",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "A vortex is commonly associated with the rotating motion of fluid around a common centerline.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to mix",
+  "description": "Vortex flow meters measure fluid velocity using a principle of operation referred to as the von Kármán effect, which states that when flow passes by a bluff body, a repeating pattern of swirling vortices is generated."
+ },
+ {
+  "sr_no": 343,
+  "name": "Electric Timer",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "A time switch (also called a timer switch, or simply timer) is a timer that operates an electric switch controlled by the timing mechanism.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to set a specific time",
+  "description": "Preset time can be as low as milliseconds to hours and even days but usually, in the industrial control system, it is set to seconds and minutes. Once the coil of the timer is energized the timer starts to count from zero to the pre-set time, this count is known as the accumulated time."
+ },
+ {
+  "sr_no": 344,
+  "name": "Cages for Rats ",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "A pet rat will need a suitable cage, a balanced diet, and the opportunity for exercise and socialization with you in order to remain in good health.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to analyze mice",
+  "description": "In-cage shelters provide both mice and rats respite from the drafts of ventilated caging, the ability to withdraw from bright lights, a place of security or escape from cage mates, and a place to hide from perceived predators. "
+ },
+ {
+  "sr_no": 345,
+  "name": "Fiber Mice Cages (Imported)",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "A pet rat will need a suitable cage, a balanced diet, and the opportunity for exercise and socialization with you in order to remain in good health.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to analyze mice",
+  "description": "In-cage shelters provide both mice and rats respite from the drafts of ventilated caging, the ability to withdraw from bright lights, a place of security or escape from cage mates, and a place to hide from perceived predators. "
+ },
+ {
+  "sr_no": 346,
+  "name": "Mice Screen Fear Apparatus",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "A pet rat will need a suitable cage, a balanced diet, and the opportunity for exercise and socialization with you in order to remain in good health.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to analyze fear",
+  "description": "Fear can be acquired vicariously through social observation of others suffering from aversive stimuli. We found that mice (observers) developed freezing behavior by observing other mice (demonstrators) receive repetitive foot shocks."
+ },
+ {
+  "sr_no": 347,
+  "name": "Fear Conditioning System ",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "Fear conditioning refers to learning a certain environmental stimulus (conditioned stimulus) can predict the occurrence of an aversive stimulus (neutral stimulus)​2​. The fear results from this association is a conditioned response.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to analyze fear",
+  "description": "Fear can be acquired vicariously through social observation of others suffering from aversive stimuli. We found that mice (observers) developed freezing behavior by observing other mice (demonstrators) receive repetitive foot shocks."
+ },
+ {
+  "sr_no": 348,
+  "name": "Isolation Boxes (13x8x8 cm) Plastic Glass Sheet 3mm  ",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "This chamber provides biological isolation of mice or rats ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to isolated the animals",
+  "description": "It is working on behavoior of animal"
+ },
+ {
+  "sr_no": 349,
+  "name": "Dark and Light Box (52x22x26 cm) Plastic Glass Sheet 4mm",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "Its Features are high-contrast colors, non-reflecting surface, Options available, reasonably rough “warm” surface texture, quality materials. ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to (behavioural) exprimented on animals",
+  "description": "It is working on behavoior of animal"
+ },
+ {
+  "sr_no": 350,
+  "name": "Open Field Box (45x45x40) Plastic Glass Sheet 5mm",
+  "lab_incharge": "Dr Dilawar Khan",
+  "introduction": "The Open Field task is a simple sensorimotor test used to determine general activity levels, gross locomotor activity, and exploration habits in rodent models of CNS disorders.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "It can be use to (behavioural) exprimented on animals",
+  "description": "It is working on behavoior of animal"
+ },
+ {
+  "sr_no": 351,
+  "name": "Centrifuge (Spectrafuge 24D) ",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Allows you to spin fluid samples at uniform high speed",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Labnet",
+  "description": "Separate samples on the basis of centripetal force"
+ },
+ {
+  "sr_no": 352,
+  "name": "Centrifuge (CF-10)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Allows you to spin fluid samples at uniform high speed",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wise spin CF10080229044",
+  "description": "Separate samples on the basis of centripetal force"
+ },
+ {
+  "sr_no": 353,
+  "name": "Electro Porator (Micro Pulsar)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Enables safe and reproducible transformation of bacteria and yeast",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser#: 411BR7110",
+  "description": "High voltage electrical pulse is applied to a sample suspended in a small volume of high resistance media"
+ },
+ {
+  "sr_no": 354,
+  "name": "Gel Doc System",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Imaging of nucleic acid ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec Ser: IDD1105-2019USB",
+  "description": "Provide adjustable voltage and current"
+ },
+ {
+  "sr_no": 355,
+  "name": "Gel Electrophoresis Tank (Maxi)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": " Wealtec Ser#: GW09031051M",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 356,
+  "name": "Gel Electrophoresis Tank (Maxi)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec GW0701740M",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 357,
+  "name": "Gel Electrophoresis Tank (Maxi)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver  Model: 916",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 358,
+  "name": "Gel Electrophoresis Tank (Medi)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver  MS-08011575",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 359,
+  "name": "Gel Electrophoresis Tank (Mini)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec GMW08J894L",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 360,
+  "name": "Gel Electrophoresis Tank (Mini)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver  S\/N: 1012",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 361,
+  "name": "Gel Electrophoresis Tank (Vertical)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "GIBCOBRL S\/N: 00220455",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 362,
+  "name": "Gel Electrophoresis Tank (Vertical)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "GIBCOBRL S\/N: 00218470 ",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 363,
+  "name": "Gel Electrophoresis Tank (Vertical)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver S\/N: 399",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 364,
+  "name": "Gel Electrophoresis Tank (Vertical)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Whatman Inc. S\/N: 00260313",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 365,
+  "name": "Gel Electrophoresis Tank (Vertical)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Whatman Inc. S\/N: 00257755",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 366,
+  "name": "Gel Electrophoresis Tank (Vertical)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Whatman Inc. S\/N: 00260321",
+  "description": "Vertical gel electrophoresis contains stacking gel and resolving gel"
+ },
+ {
+  "sr_no": 367,
+  "name": "Heat Block",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "A microprocessor-controlled heating block with heater technology",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec EDW09J1407",
+  "description": "Works with precise temperature stability"
+ },
+ {
+  "sr_no": 368,
+  "name": "Heat Block ",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "A microprocessor-controlled heating block with heater technology",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec EDW09J1405",
+  "description": "Works with precise temperature stability"
+ },
+ {
+  "sr_no": 369,
+  "name": "Hot Plate with Pressure Cooker",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Heating solutions",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Unimax Ser: 0782QC\/ UM-2202HP",
+  "description": "May used for autoclave, for sterile consumables"
+ },
+ {
+  "sr_no": 370,
+  "name": "Incubator",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Place samples or solution at 65 degrees of temperature",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Memmert DIN EN 60529-IP-20",
+  "description": "Maintains constant and uniform temperature envirnment"
+ },
+ {
+  "sr_no": 371,
+  "name": "Mini Spin",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Spin reagents equally",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec S\/N: ECW09045385",
+  "description": "Apply equal force on sample mixing contents"
+ },
+ {
+  "sr_no": 372,
+  "name": "Mini Spin ",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Spin reagents equally",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Denville  Ser: 61111796",
+  "description": "Apply equal force on sample mixing contents"
+ },
+ {
+  "sr_no": 373,
+  "name": "PCR Machine",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Thermal cycler machine for PCR reaction",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "PEQLAB Ser: 90-264B10AT",
+  "description": "Amplifies nucleic acid in vitro"
+ },
+ {
+  "sr_no": 374,
+  "name": "Real Time PCR with Computer System",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Real-time PCR) is commonly used to measure gene expression",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Applied Biosciences 273001297",
+  "description": "The fluorometer detects that fluorescence in real time as the thermal cycler runs, giving readings throughout the amplification process of the PCR"
+ },
+ {
+  "sr_no": 375,
+  "name": "SDS (Mini) Power Pac Supply",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Power supply, gel tanks, accesories",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser: 041BR113965",
+  "description": "Separate proteins\/  nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 376,
+  "name": "Shaking Water Bath",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Some applications include hybridization, bacterial culturing, cell aeration and molecular biology assays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Memmert Model#:  SV 1422",
+  "description": "Shaking Water Baths are ideal for thawing, heating, mixing and shaking samples"
+ },
+ {
+  "sr_no": 377,
+  "name": "UV Transilluminator",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "View DNA or RNA that has been separated by electrophoresis through an agarose gel",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec S\/N: UBW250616",
+  "description": "Exposing the stained gel to a UV light source causes the DNA to fluoresce and become visible"
+ },
+ {
+  "sr_no": 378,
+  "name": "Vortex",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Mixing of samples equally",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Heidolph S\/N: 060831850",
+  "description": "Homogenization with high degrees of precision"
+ },
+ {
+  "sr_no": 379,
+  "name": "Western Blot (TRANS BOLT SD SEMI DRY)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Allows fast, efficient, and economical blotting without a buffer tank or gel cassettes",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser: 221BR44479",
+  "description": "Transfer sandwich is placed horizontally between two plate electrodes"
+ },
+ {
+  "sr_no": 380,
+  "name": "Mini Protean Tetra Cell Eqpt",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Power supply, gel tanks, accesories",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser: 552BR124675",
+  "description": "Separate proteins\/  nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 381,
+  "name": "Mini Protean Tetra Cell Eqpt",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Power supply, gel tanks, accesories",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser: 552BR016130",
+  "description": "Separate proteins\/  nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 382,
+  "name": "Gradient Thermal Cycler (Dual Block)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Thermal cycler machine for PCR reaction at different temperatures",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "G-Storm S\/N: 2067, Model: GS04822",
+  "description": "Amplifies nucleic acid in vitro"
+ },
+ {
+  "sr_no": 383,
+  "name": "Infrared sterilizer ",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Sterilizes loops and needles safely and conveniently ",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Technico Scientific Ser: AS-HM-1193",
+  "description": "Sterilizes by infrared heat-organic material that is incinerated deep in a ceramic funnel tube "
+ },
+ {
+  "sr_no": 384,
+  "name": "Thermal Printer",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Print thermally",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Seiko S\/N: 5004429",
+  "description": "Heated print on paper roll"
+ },
+ {
+  "sr_no": 385,
+  "name": "Western Blotting Image Analyzer with Analysis Software and Computer System + UPS",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Analyze western blot gels using imager and software",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Model: Universal Hood3III, Ser: 731BR02784",
+  "description": "View gels and save image"
+ },
+ {
+  "sr_no": 386,
+  "name": "Gel Doc System ",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "All-in-one DNA and protein imaging omniDOC",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver Scientific-UK Model: OMNI DOC, Ser: 130925001",
+  "description": "Nucleic acid and gel imager "
+ },
+ {
+  "sr_no": 387,
+  "name": "Refrigerated Centrifuge (High Speed)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "introduction": "Separation of microliter temperature-sensitive heterogeneous mixtures or samples",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Hermle Model: Z 326 K, Ser: 66170035",
+  "description": "This device works by spinning the samples loaded in a rotor at high speed."
+ },
+ {
+  "sr_no": 388,
+  "name": "Gel Electrophoresis Tank (Mini) with Comb, Gel Caster and Clips",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver Scientific Ser: 170406009, Model: MSMINI10"
+ },
+ {
+  "sr_no": 389,
+  "name": "Drying Incubator",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Thermo Scientific-USA Model: Herathrm OGS60, Ser: 42404340"
+ },
+ {
+  "sr_no": 390,
+  "name": "Gradient Thermal Cycler (Verti-96 well)",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Applied Bio System Model: Verti-96 Well, Ser: 2990237329"
+ },
+ {
+  "sr_no": 391,
+  "name": "Homogenizer ",
+  "lab_incharge": "Dr. Peter John\/ Dr. Attya Bhatti",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Scilogex Model: SCI-160  \nSer: DA212AC0000256 "
+ },
+ {
+  "sr_no": 392,
+  "name": "Digital Weight Balance ",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "To weigh minute amount of powdered chemicals",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Shimadzu Ser#D515709173",
+  "description": "Weighs the chemical"
+ },
+ {
+  "sr_no": 393,
+  "name": "Gel Electrophoresis Tank (Mini)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver Scientific Ser: CS150203009, Model: MSMINI10",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 394,
+  "name": "Mini Spin",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Spin reagents equally",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec Ser#: ecw09116286",
+  "description": "Apply equal force on sample mixing contents"
+ },
+ {
+  "sr_no": 395,
+  "name": "SDS (Mini) Power Pac Supply",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Power supply, gel tanks, accesories",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser: 041BR114097",
+  "description": "Separate proteins\/  nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 396,
+  "name": "Mini Protean Tetra Cell Eqpt",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Power supply, gel tanks, accesories",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Ser: 552BR120202",
+  "description": "Separate proteins\/  nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 397,
+  "name": "PCR Thermal Cycler ",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Thermal cycler machine for PCR reaction",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio-Rad Cat: 1861096 Ser: 621 BR 17595",
+  "description": "Amplifies nucleic acid in vitro"
+ },
+ {
+  "sr_no": 398,
+  "name": "High Speed Micro Centrifuge",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "A device that uses centrifugal force to separate various components of a fluid.",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Scielogex, USA DO3024\/ LW3B000800",
+  "description": "Spinning the fluid at high speed within a container, thereby separating fluids of different densities or liquids from solids."
+ },
+ {
+  "sr_no": 399,
+  "name": "Gel Electrophoresis (Vertical)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver Scientific VS20D\/ VS10031758",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 400,
+  "name": "Electrophoresis Power Supply ",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Gel electrophoresis power supply",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Nyxtechnik, USA V37\/ 110725024",
+  "description": "Used for separate nucleic acid"
+ },
+ {
+  "sr_no": 401,
+  "name": "Horizontal Gel Electrophoresis Midi",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Ser: 75-710\/ 018932",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 402,
+  "name": "Micro Plate Reader",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Read ELISA samples",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "AMP Austria AMP Platos R II\/ 64001562",
+  "description": "Measure chemical, biological or physical reactions, properties for ELISA"
+ },
+ {
+  "sr_no": 403,
+  "name": "Shaking Water Bath",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Some applications include hybridization, bacterial culturing, cell aeration and molecular biology assays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Ratek Australia Model: DFD-700",
+  "description": "Shaking Water Baths are ideal for thawing, heating, mixing and shaking samples"
+ },
+ {
+  "sr_no": 404,
+  "name": "Binocular (Digital Microscope with built in Camera and Compouter System (CPU+Mouse+Keyboard)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Optical microscope with two eyepieces to significantly ease viewing and cut down on eye strain",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Optika Model: B150DB, Ser: 412641",
+  "description": "Coaxial lighting simple operation microscope, compact and light, with a high degree of flexibility for viewing of microscopic organisms"
+ },
+ {
+  "sr_no": 405,
+  "name": "Incubator 65 Lit",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Place samples or solution at 65 degrees of temperature",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Bio Base Ser: FSF-2014",
+  "description": "Maintains constant and uniform temperature envirnment"
+ },
+ {
+  "sr_no": 406,
+  "name": "Electro Blotting Unit (20.5x20 cm, 4xcassettes)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Ideal for wet electro-blotting of proteins – Western blottin",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "SCIE-PLAS Model: TV400-EBK, Ser: 30046152",
+  "description": "A uniform electric field is provided by a high intensity coiled electrode and ensures uniform transfer across the blot surface"
+ },
+ {
+  "sr_no": 407,
+  "name": "Laminar Flow Hood",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Hoods protect the working environment from dust and other airborn contaminants",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Human Lab CB-V",
+  "description": "Maintains a constant, unidirectional flow of HEPA-filtered air over the work area"
+ },
+ {
+  "sr_no": 408,
+  "name": "Gradient Thermal Cycler (Verti-96 well)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Thermal cycler machine for PCR reaction",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Applied Bio System  Model: Verti-96 Well, Ser: 2990237327",
+  "description": "Amplifies nucleic acid in vitro"
+ },
+ {
+  "sr_no": 409,
+  "name": "Vortexer Multi Purpose",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Mixing of samples equally",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Heathrow Scientific, USA Ser: HSB 01561",
+  "description": "Homogenization with high degrees of precision"
+ },
+ {
+  "sr_no": 410,
+  "name": "Refrigerated Centrifuge Machine with Rotor Angle 44 x 1.5\/2 ml Rs. 137884.00)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Separation of microliter temperature-sensitive heterogeneous mixtures or samples",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Ohaus-Germany Model: FC5515R, Ser: 86B9230039",
+  "description": "This device works by spinning the samples loaded in a rotor at high speed."
+ },
+ {
+  "sr_no": 411,
+  "name": "Refrigerated Micro Centrifuge Machine (24-Plates Rotor included)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Separation of microliter temperature-sensitive heterogeneous mixtures or samples",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Scilogex-USA Ser: LK19CAC0000293, Model: CF11524R",
+  "description": "This device works by spinning the samples loaded in a rotor at high speed."
+ },
+ {
+  "sr_no": 412,
+  "name": "Autoclave Machine",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Machine that uses steam under pressure to kill harmful bacteria, viruses, fungi, and spores",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "China Model: LS-B50L-I-A, Ser: 20L-2274",
+  "description": "The items are heated to an appropriate sterilization temperature for a given amount of time"
+ },
+ {
+  "sr_no": 413,
+  "name": "UV Transilluminator",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "View DNA or RNA that has been separated by electrophoresis through an agarose gel",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Wealtec Ser: UBE202112030 \nModel: MD-20 ",
+  "description": "Exposing the stained gel to a UV light source causes the DNA to fluoresce and become visible"
+ },
+ {
+  "sr_no": 414,
+  "name": "Gel Electrophoresis Tank Horizontal (Mini)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver Scientific Ser: 210303032, Model: MSMINI10",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 415,
+  "name": "Gel Electrophoresis Tank Horizontal  (Medi)",
+  "lab_incharge": "Dr. Sobia Manzoor",
+  "introduction": "Gel tank, electrodes, gel casting trays",
+  "school": "ASAB",
+  "lab_name": "Healthcare Biotechnology",
+  "specification": "Cleaver Scientific Ser: 211027007 , \nModel: MSMIDI10 ",
+  "description": "Separate nucleic acid on basis of size and charge"
+ },
+ {
+  "sr_no": 416,
+  "name": "Incubator (32 L) (Digital )",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": " incubator is used for breeding, fermentation, microbial culture and various constant temperature tests, environmental tests, and storage of culture medium, serum, medicine, and other items.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Temperature Range:RT+5~65℃, Tmperature Fluctuation:≤0.5℃\nTemperature Resolution:0.1℃\nRegular Volume:15L~270L",
+  "description": "The principle of thermo-electricity. The incubator has a thermostat which maintains a constant temperature by creating a thermal gradient. When any conductor is subjected to a thermal gradient, it generates voltage called as thermo-electric effect."
+ },
+ {
+  "sr_no": 417,
+  "name": "Universal Oven-32 L (Incubator)",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "This oven is used in research, industry and medicine for a variety of applications: heating, drying, tempering, testing, ageing, sterilisation, burn-in test, annealing, curing, polymerisation, vulcanisation, heated storage and conditioning",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "32L\/1.1cuft, Natural Convection, 230v +, Temperature range up to +300 °C, 9 model sizes (32 to 1060 litres volume).",
+  "description": "Incubators generally control temperature between 30°C and 60°C. An oven will be required for temperatures 70°C up to 250°C. "
+ },
+ {
+  "sr_no": 418,
+  "name": "PCR Thermal Cycler with Gradiant Feature 96 Well ",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "Gradient PCR is a technique that allows the empirical determination of an optimal annealing temperature using the least number of steps.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "The Veriti 96-Well Fast Thermal Cycler (Model 9901, 0.2 mL) provides the reliability of Applied Biosystems’ GeneAmp® PCR Systems 9600 and 9700, combined with the added control of VeriFlex™ Blocks.",
+  "description": "The thermocycler raises and lowers the temperature of the samples in a holding block in discrete, pre-programmed steps, allowing for denaturation and reannealing of samples with various reagents. "
+ },
+ {
+  "sr_no": 419,
+  "name": "High Speed Micro Centrifuge",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "Device that uses centrifugal force to separate particles of different mass or densities suspended in a liquid. Rotating the solution in the tube at high speeds gives the angular momentum of each particle a centrifugal force proportional to its mass.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Maximum speed :15000rpm(200-15000rpm), increment: 10rpm Maximum RCF: 21380×g, increment: 10×g Maximum capacity :2ml×24, 0.5ml×36, 4-PCR8 serial tubes",
+  "description": "works by using the principle of sedimentation: Under the influence of gravitational force (g-force), substances separate according to their density. "
+ },
+ {
+  "sr_no": 420,
+  "name": "UV Transilluminator",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "UV transilluminators are used in molecular biology laboratories to view DNA or RNA that has been separated by electrophoresis through an agarose gel.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "AC\/DC input 115 V AC, 60 Hz",
+  "description": "The UV transilluminator works by emitting high levels of UV radiation through the viewing surface. The key application for a UV transilluminator is for visualization of DNA and protein agarose and polyacrylamide gels after electrophoresis."
+ },
+ {
+  "sr_no": 421,
+  "name": "Shaking Water Bath",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "Shaking water bath is designed to handle a wide variety of applications.These baths can be used in molecular biology protocols (such as hybridization), bacterial culturing, as well as in solubility ",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Temperature Range: Ambient +5° to 100°C, Temperature Uniformity: ±0.05°C\nTemperature Presets: 4\nChamber Material: 304 Stainless Steel.\n",
+  "description": " The sensor transfer water temperature to resistance value, amplified and compared by integrated amplifier, then output the control signal, efficiently control the average heating power of electric heating tube and maintain water in constant temperature."
+ },
+ {
+  "sr_no": 422,
+  "name": "ULT (-80 Freezer)",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "An ultra low temperature (ULT) freezer is a refrigerator that stores contents at between −40 to −86 °C (−40 to −123 °F). An ultra low temperature freezer is commonly referred to as a \"minus 80 freezer\" or a \"negative 80 freezer\", referring to the most common temperature standard.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "emperature uniformity ≤±5℃ (setting temperature at -80℃), Equipped with an intelligent temperature monitoring system.",
+  "description": "Deep Freezer works on Vapor Compression refrigeration cycle. The vapor-compression uses a circulating liquid refrigerant as the medium which absorbs and removes heat from the space to be cooled and subsequently rejects that heat elsewhere, depicts a typical, single-stage vapor-compression system."
+ },
+ {
+  "sr_no": 423,
+  "name": "PH Meter ",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "electric device used to measure hydrogen-ion activity (acidity or alkalinity) in solution",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Corresponding humidity: ≤85%, Power supply: Power adaptor (5185-8389)\nPower input: 100 to 240 VAC, 1 A",
+  "description": "During measurement, the LCD display shows the current state of the 3200P pH Meter"
+ },
+ {
+  "sr_no": 424,
+  "name": "Nano Drop",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "Full-spectrum, UV-Vis spectrophotometers used to quantify and assess purity of DNA, RNA, Protein and more.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "TypeUV-Vis, Wavelength Range\n190 to 840 nm, Wavelength Accuracy\n1 nm",
+  "description": "quantify nucleic acid like DNA, RNA and proteins. It has attached laptop system which helps you to see the quantification amount on screen"
+ },
+ {
+  "sr_no": 425,
+  "name": "Digital Microscope with built in Camera ",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "Digital Microscope with built in Camera is accessorized with tablets or monitors allow users to view specimens in real time without connecting to other equipment.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "It is equipped with a binocular and trinocular head with a digital camera, 55~75 mm interpupillary distance with diopter, plan eyepiece, achromatic objective, mechanical tube, focusing system, double-layer magnetic base, filter, and illuminator. It has a built-in LED adjustable light source with a charging system.",
+  "description": "The digital microscope uses optics and a digital camera to output captured images to a computer monitor. They range in complexity from simple handheld versions to advanced systems that offer a variety of observation methods and measurement functions."
+ },
+ {
+  "sr_no": 426,
+  "name": "Refrigerated Centrifuge  ",
+  "lab_incharge": "Dr. Muhammad Faraz Bhatti",
+  "introduction": "Refrigerated laboratory centrifuges temperature ranges as wide as -20C – 40C, making them perfect for DNA, RNA, PCR or antibody analysis.",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Max Speed : 25000rpm, Max Centrifugal Force : 64800Xg\n\nTemperature Range : -20℃~+40℃\n\nTemperature Accuracy : ±1℃\n\nSpeed Accuracy : ±10rpm",
+  "description": "The  centrifuge works by using the principle of sedimentation: Under the influence of gravitational force (g-force), substances separate according to their density. Different types of separation are known, including isopycnic, ultrafiltration, density gradient, phase separation, and pelleting."
+ },
+ {
+  "sr_no": 427,
+  "name": "Centrifuge",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Separate components of samples by rotation",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "50 to 10000 rpm",
+  "description": "Electronic rotation per min"
+ },
+ {
+  "sr_no": 428,
+  "name": "Digital Weight Balance",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Weighting  chemicals samples",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "1 grm to 100 grm",
+  "description": "Electronic digital"
+ },
+ {
+  "sr_no": 429,
+  "name": "Fume Hood",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Safely use chemicals volitileable",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Blower cabenet for solvent glass",
+  "description": "Electronic have blowere"
+ },
+ {
+  "sr_no": 430,
+  "name": "Gel Electrophoresis",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "DNA separation",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "8 student work",
+  "description": "Electric current conduct t"
+ },
+ {
+  "sr_no": 431,
+  "name": "Hot Plate Magnetic Stirrer",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Mixing and warming make chemicals at control temp",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Can 500ml sample mixing 100 C temp",
+  "description": "Electric Heat and rotation to mag rod"
+ },
+ {
+  "sr_no": 432,
+  "name": "Incubator",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Grow bacteria in control envirorment",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Temp humidity controle",
+  "description": "Eletic heat humfidity"
+ },
+ {
+  "sr_no": 433,
+  "name": "Microwave Oven",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Heat chemicals",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Microwave 220 V",
+  "description": "Electronic heat by microwave"
+ },
+ {
+  "sr_no": 434,
+  "name": "Mini Spin",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Separate protein smallest amount",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "10 samples can process 5000 rpm",
+  "description": "Electric rotation rpm"
+ },
+ {
+  "sr_no": 435,
+  "name": "Shaking Incubator",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Mixing samples control temp and speed",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "10 to 100 rpm 10 samples",
+  "description": "Electronic Rpm and temp control"
+ },
+ {
+  "sr_no": 436,
+  "name": "Tank Bio-Nitrogen Container",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Collect bio Liq Nitrogen from KRL",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "3*4 ft",
+  "description": "Container tank"
+ },
+ {
+  "sr_no": 437,
+  "name": "UV Transilluminator",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "View DNA bands under UV light",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "UV rod protection cover",
+  "description": "Electric UV rod light control"
+ },
+ {
+  "sr_no": 438,
+  "name": "Vortex",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Mix cascade chemical reactions",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "220V",
+  "description": "Electric vibrator"
+ },
+ {
+  "sr_no": 439,
+  "name": "Plant Growth Chamber",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Tissue culture under control climate temp humidity etc",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "Two side open and protective glass door inside",
+  "description": "Electric Humidifier heater cool"
+ },
+ {
+  "sr_no": 440,
+  "name": "Heat Block",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Rise temperature for reactions",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "description": "Electric heater"
+ },
+ {
+  "sr_no": 441,
+  "name": "Safety Cabinet",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Work under control environment",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "5*6 ft",
+  "description": "Electronic UV lamp blower"
+ },
+ {
+  "sr_no": 442,
+  "name": "Thermal Cycler",
+  "lab_incharge": "Dr M. Tahir",
+  "introduction": "Increase DNA\/RNA and proteins",
+  "school": "ASAB",
+  "lab_name": "Plant UG Lab",
+  "specification": "220 V with large display",
+  "description": "Electric DNA amplification"
+ },
+ {
+  "sr_no": 443,
+  "name": "Autoclaveable Fermenter ",
+  "lab_incharge": "Dr Sadaf Zaidi",
+  "introduction": "Up to 4 integrated pumps capable of operating in variable speed mode + additional externals brushless pumpsAutomatic gas mixing algorithms for simplified controls (4-gas, 3-gas, O2 enrichment, N2 enrichment)",
+  "school": 1,
+  "lab_name": "5L",
+  "specification": "Up to 4 integrated pumps capable of operating in variable speed mode + additional externals brushless pumpsAutomatic gas mixing algorithms for simplified controls (4-gas, 3-gas, O2 enrichment, N2 enrichment)",
+  "description": "HPLC System Agilent 1200 - YouTube"
+ },
+ {
+  "sr_no": 444,
+  "name": "NGC Scout 10 Plus Chromatography System ",
+  "lab_incharge": "Dr.Fazal Adnan",
+  "introduction": "A flexible, customizable chromatography system to suit medium throughput labs. it has automated 10 ml\/min pumps that provide accurate gradients for high-resolution separations for any application. This instrument may be used for creating automated buffer gradients with buffer blending for rapid scouting and purification of proteins, peptides, and nucleic acids.",
+  "school": 1,
+  "lab_name": "10 ml\/min pumps ",
+  "specification": "\n\n",
+  "description": "Chomatography"
+ },
+ {
+  "sr_no": 445,
+  "name": "HPLC System (Agilent Technologies)",
+  "lab_incharge": "Dr. Saadia Andleeb",
+  "introduction": "to confirm the identity of a drug and provide quantitative results ",
+  "school": 1,
+  "lab_name": "                                                                                                                                                                                                                                                                                                                                                                         600 bar 5 mL\/min (10 mL\/min at 200 bar) \nSpeed",
+  "specification": "Quaternary gradient pump (including degasser) • Standard Autosampler • Thermostatting subambient to 80° C Column Compartment",
+  "description": " separating components in a liquid mixture"
+ },
+ {
+  "sr_no": 446,
+  "name": "Electoprorator",
+  "lab_incharge": "Dr  Saadia Andleeb",
+  "introduction": "instrument that enables safe and reproducible transformation of bacteria, yeast, and other microorganisms.",
+  "description": "An electrical pulse at an optimized "
+ },
+ {
+  "sr_no": 447,
+  "name": "Incubat or (Dryer)",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Used for drying the lab utensils",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASALE00219"
+ },
+ {
+  "sr_no": 448,
+  "name": "Electrop horesis Power Supply",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Used for qualitative analysis of DNA\/RNA",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASALE00260\/\nSer#: E5W0864"
+ },
+ {
+  "sr_no": 449,
+  "name": "Gel Electrop horesis Tank (Medi)",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Used for qualitative analysis of DNA\/RNA",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASABLESF201 700001 M\/\nModel: BCMSMIDI 10,\nSer: 131216018"
+ },
+ {
+  "sr_no": 450,
+  "name": "Shaking Water Bath",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Shaking of solutions at a specified temperature for specified time in hot water",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASALE00356"
+ },
+ {
+  "sr_no": 451,
+  "name": "vortex",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Mixing of solutions",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASALE00314\/\nSer#: 080934497"
+ },
+ {
+  "sr_no": 452,
+  "name": "Vortex",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Mixing of solutions",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASALE00085\/\nSer#: 060831836"
+ },
+ {
+  "sr_no": 453,
+  "name": "Centrifu ge (Micro)",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Homogenous mixing of solutions and their separation on the basis of density",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "ASALE00088\/ TGL-16G (0519-\n82890842\n82890123)"
+ },
+ {
+  "sr_no": 454,
+  "name": "Refrigerated Shaking Incubat or (Orbital)",
+  "lab_incharge": "Dr. Amjad Ali",
+  "introduction": "Shaking of solutions at a specified temperature for specified time",
+  "school": "ASAB",
+  "lab_name": "Integrative Biology Lab",
+  "specification": "Model: I 3000, Ser: 2020111214"
+ },
+ {
+  "sr_no": 455,
+  "name": "Centrifuge",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "A centrifuge is device for separating particles from a solutin .",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "1.5ml",
+  "description": "a counteracting force is created to be compared to the unknown mass"
+ },
+ {
+  "sr_no": 456,
+  "name": "Refrigerated Centrifuge",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Ref Centrifuge is a high speed centriuge for medium capacity needs.",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "50ml",
+  "description": "(g-force), substances separate according to their density"
+ },
+ {
+  "sr_no": 457,
+  "name": "Concentrator",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Concentretor can quickly and and efficientiy concentrate DNA\/RNA nucleotides,proteins and samples.",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "1.5ml",
+  "description": "It uses the surrounding atmosphere to create oxygen-rich air"
+ },
+ {
+  "sr_no": 458,
+  "name": "Electrophoresis Power Supply",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Use to create the electcal current to power during experiment DNA\/RNA separations.",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "N\/A",
+  "description": "N\/A"
+ },
+ {
+  "sr_no": 459,
+  "name": "Incubator",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Incubator maintain optimal temp,humidity and other such as oxygen",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "200 l",
+  "description": "N\/A"
+ },
+ {
+  "sr_no": 460,
+  "name": "Mini Spin",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Mini spin use for quick & fast spin to the samples in maximum speed",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "1.5 ml",
+  "description": "Working under the sedimentation principle"
+ },
+ {
+  "sr_no": 461,
+  "name": "PCR Machine",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "PCR machine are use to amplify small segments of DNA or RNA.",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": " 0.2 ml, 0.5 ml",
+  "description": "Short segment of DNA is amplified using primer mediated enzymes"
+ },
+ {
+  "sr_no": 462,
+  "name": "Shaking Water Bath",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Shaking waterbath use for thawing, heating, mixing and shaking samples.",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "N\/A",
+  "description": "steadily shake and mix samples while maintaining a constant temp"
+ },
+ {
+  "sr_no": 463,
+  "name": "Spectrophotometer",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Spectrophotometer measure light intensity function of wavelength,measure concentration in solution ",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "0.5ml",
+  "description": "measure light intensity as a function of wavelength"
+ },
+ {
+  "sr_no": 464,
+  "name": "UV Transilluminator",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Use to view DNA or RNA in UV lightthat has been separated by electrophoresis through an agarose gel",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "1 x 302 nm",
+  "description": " Exposing the stained gel to a UV light source DNA become visible."
+ },
+ {
+  "sr_no": 465,
+  "name": "Nanodrop Spectrophotometer",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Nanodrop can measure the concentration of DNA, RNA and protein in a 2-ul drop on a pedestal",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "0.5 to 2.0 μL",
+  "description": "ultraviolet-visible spectrum (UV-Vis) absorbance"
+ },
+ {
+  "sr_no": 466,
+  "name": "Shaking Incubator",
+  "lab_incharge": "Dr. Saadia Andleeb & Dr. Sadaf Zaidi",
+  "introduction": "Shaking incubator are use to simultaneously incubate and shake or agitate samples.",
+  "school": "ASAB",
+  "lab_name": "Vaccine & Theraputic Lab",
+  "specification": "50 to 500ml",
+  "description": "ultraviolet-visible spectrum (UV-Vis) absorbance"
+ },
+ {
+  "sr_no": 467,
+  "name": "Centrifuge",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Separate particles suspended in liquid according to particle size&density,viscosity of medium&rotor speed",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "15ml ",
+  "description": "(g-force), substances separate according to their density"
+ },
+ {
+  "sr_no": 468,
+  "name": "Colony Counter",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Colony counter is used to count colonies of bacteria other microorganisms growing on an agar plate.",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\/A",
+  "description": "N\/A"
+ },
+ {
+  "sr_no": 469,
+  "name": "High Temp Muffle Furnace",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Muffle furnaces isolate the samples from fuel &combustion to eliminate contamination of the samples. ",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\/A",
+  "description": "N\/A"
+ },
+ {
+  "sr_no": 470,
+  "name": "Hot Plate Magnetic Stirrer",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Hot plate magnetic stirrer keeps liquids circulating as they are heated for a faster, more even reaction.",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\\A",
+  "description": "To stir and heat the solution simultaneously"
+ },
+ {
+  "sr_no": 471,
+  "name": "Hydraulic Press",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": " used to press out materials, aiding facilities in fabrication, assembly and maintenance. ",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\/A",
+  "description": "pressure change occurs throughout the entire fluid"
+ },
+ {
+  "sr_no": 472,
+  "name": "Oven Incubator",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Oven incubator are used for this process to ensure dry and sterile circumstances",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\/A",
+  "description": "N\/A"
+ },
+ {
+  "sr_no": 473,
+  "name": "PH Meter",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "pH meter is an instrument used to measure acidity or alkalinity of a solution. Range is 1-14",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "0.00-14.00pH",
+  "description": "used to determine the acidity or alkalinity of the solutio"
+ },
+ {
+  "sr_no": 474,
+  "name": "Vortex Mixer",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Vortex mixer use to mix small vials of liquid solutions.",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\/A",
+  "description": "mix various samples of liquids rapidly."
+ },
+ {
+  "sr_no": 475,
+  "name": "Ultrasonicator",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Sonicators are high-frequency sound generators used to disrupt cells or shear nucleic acids.",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "6l",
+  "description": " sound waves are used to stir particles in solution. It converts an electrical signal into vibration."
+ },
+ {
+  "sr_no": 476,
+  "name": "Mini Trans Blot Electrophoresis",
+  "lab_incharge": "Dr. Hussnain A. Janjua",
+  "introduction": "Mini Trans-Blot is useful for blotting either protein, nucleic acid from both agarose and acrylamide gels.",
+  "school": "ASAB",
+  "lab_name": "Nanobiotech Lab",
+  "specification": "N\/A",
+  "description": " Provide rapid transfers with high efficiency."
+ },
+ {
+  "sr_no": 477,
+  "name": "Jar Tester Apparatus                                                                                      ",
+  "lab_incharge": " OIC Lab",
+  "introduction": "Jar tester Apparatus is used for different projects and water purification processes e.g Coagulation. By this jar tester high turbid water can filtered \/ purified.",
+  "school": "MCE",
+  "lab_name": "PHE Lab",
+  "specification": "A built in LED floc illuminator,votage=220V, six beakers.",
+  "description": "stirring from top by spindles at low rpm"
+ },
+ {
+  "sr_no": 478,
+  "name": "Thickcylinder   ",
+  "lab_incharge": "OIC LAB",
+  "introduction": "The apparatus Consist of a thick cylinder  with out  rodis 70mm & inner rodis 20mm.The internul pressure Max 70 bar whil the safty pressure is 80 bar.The cylinder is made of Aluminum with E= 72000 N\/mm2 & poison ratio 0.33.The total Number of gaugers are 10.  ",
+  "school": "MCE",
+  "lab_name": "SOM LAB",
+  "specification": "used to study the variation of stresses and strain over the wall of a thick cyinder subjected to in internal presuure",
+  "description": "Procedure:\n1. Connect the apparatus to the computer through usb port and cable.\n2. With the help of hand lever, apply desired pressure and wait for some time for\nreading to become stable.\n3. Values of strain at different strain gauges are showing in software.\n4. With the help of formula, determine the stress and compare it with theoretical\nvalues.\n5. Draw Mohr’s Circle for radial and tangential stresses."
+ },
+ {
+  "sr_no": 479,
+  "name": "Thin Cylinder  ",
+  "lab_incharge": "OIC LAB",
+  "introduction": "The apparatus Consist of a thin cylinder  with Outer diameter of cylinder : 86mm\nInner diameter of cylinder : 80mm\nWall thickness of cylinder : 3mm\nNumber of gauges : 5\nPressure gauge range : 40 bar\nPressure safety : 30 bar\nGain of amplifier : 1000\nGauge factor : 2\nVoltage applied across bridge : 4.95 volts\nModulus of Elasticity : 70 GPa",
+  "school": "MCE",
+  "lab_name": "SOM LAB",
+  "specification": "To determine the young's modulas poison ratio of material and Mohr's strain circle under internal pressure",
+  "description": "Procedures:\n1. Familiarized yourself with the equipment by following the instructions, open\nthe pump release valve and screw in the hand wheel to set up the open ends\ncondition.\n2. Close the pump release valve and take the readings at desire pressure.\n3. Take the first set of readings (at zero) into the data table.\n4. Pump the handle slowly until a pressure of around 5 bar and record the\nreadings into the data table again. Wait a few seconds between pumps for the\ngauges to stabilize.\n5. Carefully increase the pressure in 5 bars increments, recording the readings\ninto the data table until you have reached a value of 30bar."
+ },
+ {
+  "sr_no": 480,
+  "name": "Standard Peenetration Needle ",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding Bitumen Grade",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for finding bitumen grade",
+  "description": "penetration value is measured by applying the needle with load of 100 grams that verticaly penetrates into the bitumen for 5 seconds at 25 degrees."
+ },
+ {
+  "sr_no": 481,
+  "name": "Vacuum pycnometer",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding maximum Specific Gravity of Premix",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for measuring Gmm of Asphalt",
+  "description": "Remove voids in the premix"
+ },
+ {
+  "sr_no": 482,
+  "name": "Ring and Ball Apparatus + Hot Plate With mangetic Stir (Qty -05)",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding of Softening Point of Bitumen",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "measuring  softening point of bitumen",
+  "description": "the Temperature at which the steel balls touch the bottom plate determines the softening point in degrees celsius."
+ },
+ {
+  "sr_no": 483,
+  "name": "Dynamic Cone Penetration (DCP) Test Apparatus",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding Bearing Capacity of Bitumen",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for measuring bearing capacity of soil",
+  "description": "find bearing capacity soil "
+ },
+ {
+  "sr_no": 484,
+  "name": "Ashalt Mixer Complete with Heating System Capacit",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Prepration of Premix",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used  for making fresh asphalt",
+  "description": "an asphalt mixing plant used to mix several aggregates with bitumen to make hot mix paving."
+ },
+ {
+  "sr_no": 485,
+  "name": "Elongation index test (Qty - 03)",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding elongated Partical in Aggregate",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for measuring elongation of coarse aggregate",
+  "description": "determined Elongated Particls in Materials"
+ },
+ {
+  "sr_no": 486,
+  "name": "Flaxiness index test (Qty  - 03)",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding Flaky Partical in Aggregate",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for measuring Flakiness of coarse aggregate",
+  "description": "determined Flaky Particls in Materials"
+ },
+ {
+  "sr_no": 487,
+  "name": "Cleaveland flash and fire point test apparatus (Qty - 03)",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Finding Flash&Fire Point of Bitumen",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for measuring flash & Fire point of Bitumen",
+  "description": "used to determined the Temperature at are above which any Liquid may are \/will catch fire exporsure to any kind of flame or arc"
+ },
+ {
+  "sr_no": 488,
+  "name": "Modified Compaction Hammer Weight 10 Ibs fall height 18\"",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Used for Compacted the sample",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for preparation of proctor & CBR test samples",
+  "description": "a Compaction hammer is a Tool Used for the Compaction of the soil sample determined their Maximum Dry density"
+ },
+ {
+  "sr_no": 489,
+  "name": "Buoyancy Balance 6 Kg x 0.1 gram",
+  "lab_incharge": "OIC Lab",
+  "introduction": "used for weightening material for Specific gravity",
+  "school": "MCE",
+  "lab_name": "TN Lab",
+  "specification": "used for measuring specific gravity of Asphalt & Coarse aggregate",
+  "description": "A Balance determined mass by balancing any unknown mass against a known mass"
+ },
+ {
+  "sr_no": 490,
+  "name": "Actuators",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To simulate  quasi-static\/ monotonic loadings on a  structural member under lateral\/ axial loading",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "500 mm stroke, max speed 0.25 mm\/s ",
+  "description": "hydraulic "
+ },
+ {
+  "sr_no": 491,
+  "name": "Uni Axial Shake Table ",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To Simulate real time earthquake ground motion to record the dynamic response of a given structure placed on the table",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "4 X 4 m, 2g , 700 mm stroke",
+  "description": "Hydraulic"
+ },
+ {
+  "sr_no": 492,
+  "name": "Universal Testing Machine",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Tensile, compressive and bending tests can be performed with various attachments available  ",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "700 mm stroke, 1.5 meter clearence, compression platens of 600 KN, tensile rebar grips upto 40 mm ",
+  "description": "Hydraulic"
+ },
+ {
+  "sr_no": 493,
+  "name": "Ferro Scanner ",
+  "lab_incharge": "OIC Lab",
+  "introduction": "2D or 3D scans are run over required element\/ member\/arear to detect rebars\/ conduits\/ voids in material",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "capable of 2D\/3D scan ",
+  "description": "GPR"
+ },
+ {
+  "sr_no": 494,
+  "name": "Compression Testing Machine ",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To determine the compressive strength of cylinders\/cores\/ blocks\/ tuff pavers\/ bricks. Mortar, split tensile and compressometer attachments are also available ",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "3000 KN, 0.1-2 mm\/min , ",
+  "description": "Hydraulic "
+ },
+ {
+  "sr_no": 495,
+  "name": "Corrosion rebar detector",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To examine the active corrosion in rebar buildings and structures and provide the capability to detect extent of corrosion in concrete structures ",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "description": "ultrasonic  waves"
+ },
+ {
+  "sr_no": 496,
+  "name": "3D Printer ",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To print small scale models using PLA filament",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "PLA type filament",
+  "description": "Layering method"
+ },
+ {
+  "sr_no": 497,
+  "name": "Autoclave",
+  "lab_incharge": "OIC Lab",
+  "introduction": "Applies combination of heat and pressure, mainly used to determine soundness of cement. ",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "pressure 600psi",
+  "description": "Pressure generated through heat"
+ },
+ {
+  "sr_no": 498,
+  "name": "LVDT",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To record deformation\/displacement of a specimen",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "strain based and potentiometers ",
+  "description": "Ressistance\/ strain based"
+ },
+ {
+  "sr_no": 499,
+  "name": "Data Acquisition System",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To synchronously log various transducers, strain guages , thermocouples",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "analog channels, sampling rate upto 1000 sps",
+  "description": "Quarter\/ Half\/ Full bridges with high llevel input as well"
+ },
+ {
+  "sr_no": 500,
+  "name": "Accelerometers",
+  "lab_incharge": "OIC Lab",
+  "introduction": "To measure the response of structure in terms of accelaration ",
+  "school": "MCE",
+  "lab_name": "Structure Dynamic Lab",
+  "specification": "sampling frequency upto 4096. All nodes can be connected at the same node ",
+  "description": "Lumped mass"
+ },
+ {
+  "sr_no": 501,
+  "name": "Air Enterainment Meter (USA)",
+  "lab_incharge": "OIC Lab",
+  "introduction": "used for  measuring entraped air in fresh concrete",
+  "school": "MCE",
+  "lab_name": "CT Lab",
+  "specification": "used for  measuring entraped air in fresh concrete",
+  "description": "The Air Entrainment Meter has a pressure chamber in which a predefined pressure is generated. When the overflow valve is opened, the pressure is compensated with respect to the test pot, "
+ },
+ {
+  "sr_no": 502,
+  "name": "50 KN Mini Flexural Machine Hand Operated supplied with upper and Lower bearers.",
+  "lab_incharge": "OIC Lab",
+  "introduction": "used for finding flexure or MOR of beam",
+  "school": "MCE",
+  "lab_name": "CT Lab",
+  "specification": "used for finding flexure or MOR of beam",
+  "description": "Flexural testing machine  measures the force required to bend a beam of plastic material and determines the resistance to flexing or stiffness of a material"
+ },
+ {
+  "sr_no": 503,
+  "name": "Analog Test Hammer",
+  "lab_incharge": "OIC Lab",
+  "introduction": "-",
+  "school": "MCE",
+  "lab_name": "CT Lab",
+  "specification": "used for caliberation of Test hammer",
+  "description": "The hammer measures the rebound of a spring-loaded mass impacting against the surface of a sample"
+ },
+ {
+  "sr_no": 504,
+  "name": "Motorized Drum Type Concrete Mixer, one bag Capacity, 7-10 cft, with a reverse Titing System for easy empting, Signle cyclinder Chinese 16  HP Diesel Engine.",
+  "lab_incharge": "OIC Lab",
+  "introduction": "used  for making fresh concrete",
+  "school": "MCE",
+  "lab_name": "CT Lab",
+  "specification": "used for tensile strength of cement",
+  "description": "It has a hydraulic driven drum that rotates at a high speed to mix the mixtures thoroughly. The drum can be easily lifted to discharge the concrete when it is ready."
+ },
+ {
+  "sr_no": 505,
+  "name": "Rota Test for Extraction of Water from Sand Capacity 3000-4000 gm Conformaing to ASTMD 2172 Complete with 100 lits discs Model Controls 075-Boo23\/C & 075 Boo23\/1",
+  "lab_incharge": "OIC Lab",
+  "introduction": "used for extraction of moisture from sand",
+  "school": "MCE",
+  "lab_name": "CT Lab",
+  "specification": "used for measuing water in  making fresh concrete.",
+  "description": "The bowl is placed in the apparatus and the machine is started to revolve. The speed of the revolution is gradually increased until it attains a maximum speed of 3600 rev\/min. 2. The machine is continuously revolved until the flow of mixture ceases from the drain outlet of the centrifuge apparatus."
+ },
+ {
+  "sr_no": 506,
+  "name": "Large Capacity sieve Shaker Model AO 510 Complete With Sieve Opening",
+  "lab_incharge": "OIC Lab",
+  "introduction": "used for sieving C\/agg & F\/Agg in Bulk.",
+  "school": "MCE",
+  "lab_name": "CT Lab",
+  "specification": "used for seiving of bulk sample used in making fresh concrete.",
+  "description": "A typical sieve shaker separates particles by passing them through a series of chambers with mesh filters and agitating the sample in order to obtain complete separation."
+ },
+ {
+  "sr_no": 507,
+  "name": "Compaction permeameter 4\"italy",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used in compaction test during lab",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used in compaction test during lab",
+  "description": "USED TO FIND MDD AND OMC OF SAMPLE DURING MODIFIED AND STANDARED COMPACTION TEST"
+ },
+ {
+  "sr_no": 508,
+  "name": "ASTM modified compaction hammer",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used for modifed proctor test",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used for modifed proctor test",
+  "description": "USED TO FIND MDD AND OMC OF SAMPLE DURING MODIFIED AND STANDARED COMPACTION TEST"
+ },
+ {
+  "sr_no": 509,
+  "name": "Depth micrometer 25mm (Qty - 02)",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used to find dia of sample",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used for find dia of sample",
+  "description": "Equipment Working Principle"
+ },
+ {
+  "sr_no": 510,
+  "name": " HYdrometer 152h",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used in hydrometer analysis test",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used in hydrometer analysis test",
+  "description": "USED TO SEPARATES THE SILT AND CLAY PARTICALS AND ALSO FIND CLSY SIZE FRACTION"
+ },
+ {
+  "sr_no": 511,
+  "name": "Relative density apparatus ",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used to find out the void ratio of sand ",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used to find out the void ratio of sand ",
+  "description": "USED TO FIND DENSITY OF SAND AND ALSO FINND E-MIN AND E-MAX ,  "
+ },
+ {
+  "sr_no": 512,
+  "name": "Cassaagranda apparatus",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used to find the classification of soil sample",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used to find the classification of soil sample",
+  "description": "USED TO FIND CLASSIFICATION OF SOIL WITH HELP OF LIQUID LIMIT AND PLASTIC LIMIT "
+ },
+ {
+  "sr_no": 513,
+  "name": "Dynamic Cone Penetration Test -Set                                             ",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used during spt test for soil classification and bearing capacity",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used during spt test for soil classification and bearing capacity",
+  "description": "used during spt test for soil classification and bearing capacity"
+ },
+ {
+  "sr_no": 514,
+  "name": "Halogen Moisture Contant Anayzar                                                          ",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used to find out dry weight of soil sample",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used to find out dry weight of soil sample",
+  "description": "USED TO FIND MOISTURE CXONTENT OF SAMPLE  "
+ },
+ {
+  "sr_no": 515,
+  "name": "Heavy duty penetrometer from ETI - Spain with 63.5",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used to find the strenght of soil for heavy loaded vehical",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used to find the strenght of soil for heavy loaded vehical",
+  "description": "USED TO FIND THE STRENGHT OF SITE ALSO HELP TO FIND BEARING CAPACITY FOR HEAVY LOAD MACHINE"
+ },
+ {
+  "sr_no": 516,
+  "name": "GILSON HM-395 F Presion Pneumatic Unconfined apparatus HP-683 Unconfined Component Set",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used during unconfined copression test",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used during unconfined copression test",
+  "description": "USED TO FIND THE SHEAR STRESS AND ALSO STRAIN OF SOIL  SAMPLE"
+ },
+ {
+  "sr_no": 517,
+  "name": "IMPACT SL 738 De-airing Block for I ransducer (Qty - 02)",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used with unconfined compression, consolidation and also with traiaxil testing machine",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used with unconfined compression, consolidation and also with traiaxil testing machine",
+  "description": "used with unconfined compression, consolidation and also with traiaxil testing machine"
+ },
+ {
+  "sr_no": 518,
+  "name": "IMPACT SL 735 Pressure I ransducer 1000KPA (Qty - 04)",
+  "lab_incharge": "OIC LAB",
+  "introduction": "used with unconfined compression, consolidation and also with traiaxil testing machine",
+  "school": "MCE",
+  "lab_name": "Soil Lab",
+  "specification": "used with unconfined compression, consolidation and also with traiaxil testing machine",
+  "description": "used with unconfined compression, consolidation and also with traiaxil testing machine"
+ },
+ {
+  "sr_no": 519,
+  "name": "Basic Hydraulic Bench ",
+  "lab_incharge": "Lab Manager",
+  "introduction": "Used as source of water to run the desired equipment\/practical",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Max head: 8.3m H2O, Max flow: 80 litres\/min (using volumetric tank), Max flow: 100 litres\/min (using appropriate accessory), Pump: centrifugal type, max. head 21m H2O, max. flow 1.35 litres\/sec, Motor rating: 0.37kW, Sump tank capacity: 250 litres, High flow volumetric tank: 40 litres,Low flow volumetric tank: 6 litres, Height of working surface: 1 metre above floor level",
+  "description": "gives a required quantity of flow"
+ },
+ {
+  "sr_no": 520,
+  "name": "Dead Weight Calibarator",
+  "lab_incharge": "Lab Manager",
+  "introduction": "Used for calibration of gauges",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Pressure gauge: Bourdon tube, range 0 to 200 KN\/m2 (KPa), Area of Piston: 244.8 x 10-6 m2, Mass of piston: 0.5kg, Ancillary masses: 2x 0.5kg, 1.0kg and 2.5kg",
+  "description": "pressure measurement in a conduit"
+ },
+ {
+  "sr_no": 521,
+  "name": "Metacentric Height",
+  "lab_incharge": "Lab Manager",
+  "introduction": "UsedtTo study the stability of a ship",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Max. angle of heel: ±13º, Corresponding linear dimension: ±90mm, Pontoon dimensions: length 350mm, width 200mm, overall height 475mm",
+  "description": "metacentric height of a ship at different angle of healmeasurement"
+ },
+ {
+  "sr_no": 522,
+  "name": "Hydrogen Bubble Flow Visualization System",
+  "lab_incharge": "Lab Manager",
+  "introduction": "To visualize the flow pattern around the submerged bodies and to visualize the laminar and turbulent flow pattern",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Self-contained flow visualization tank incorporating GRP flow visualization section, fluid drive unit and connecting leads for circular pump, 1-meter-long platinum wire, 1x Camel hair brush, 1x Model mounting pillar with clamping knob",
+  "description": "laminar and turbulent flow through hydrogen bubble generator"
+ },
+ {
+  "sr_no": 523,
+  "name": "Ground Water Flow Unit",
+  "lab_incharge": "Lab Manager",
+  "introduction": "To study the ground water flow and cone of depression against well abstraction",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Tank Length:0.999m, Width:0.490m, Depth:0.235m, Piezometer, Range:0 to 155mm, Calibrated: 1mm intervals",
+  "description": "ground water flow and cone of depression against well abstraction"
+ },
+ {
+  "sr_no": 524,
+  "name": " Turbine Service Unit  ",
+  "lab_incharge": "Lab Manager",
+  "introduction": "Turbine service unit used runs the turbine models serial no. 10, 11 & 12",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Turbine Service Unit Incorporating Reservoir, Circulating Pump, Pipe Work, Spw1 Differential Pressure Sensor, Reservoir Capacity: 28 liters, Maximum Flow Rate: 20 l\/m, Maximum Head: 30m",
+  "description": "runs the turbine models serial no. 10, 11 & 12"
+ },
+ {
+  "sr_no": 525,
+  "name": "Axial Flow Impulse Turbine",
+  "lab_incharge": "Lab Manager",
+  "introduction": "To study the characteristic curves for turbines",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Maximum Power: 35W, Maximum Speed: 7000rpm, Maximum Torque: 0.15Nm",
+  "description": "characteristic curves for turbines"
+ },
+ {
+  "sr_no": 526,
+  "name": "Radial Flow reaction Turbine",
+  "lab_incharge": "Lab Manager",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "Maximum Power: 25W, Maximum Speed: 8000rpm, Maximum Torque: 0.12Nm"
+ },
+ {
+  "sr_no": 527,
+  "name": "Mercury Manometer",
+  "lab_incharge": "Lab Manager",
+  "introduction": "Used for measuring pressuring pressure head difference between two points in a pipe",
+  "school": "MCE",
+  "lab_name": "HYD LAB",
+  "specification": "meter scale differential water over Mercury manometer – Range 12.6m H2O",
+  "description": "measuring pressuring pressure head difference between two points in a pipe"
+ },
+ {
+  "sr_no": 528,
+  "name": "Centre of Gravity Apparatus                                                                       (Qty -03)",
+  "lab_incharge": " OIC Lab",
+  "introduction": "Centre of Gravity Apparatuss is Consist of a horizontal & vertical steel plates.Vertical plate have a pin for hangining a plumb bob and Shape.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "To determine the Centre of Gravity of different shapes                                                               ",
+  "description": "Hange a required body and plumb bob with pin.Draw a plomb bob line on body.Repeat this step with different hanged point and draw a plumb bob lines for finding C.G of body"
+ },
+ {
+  "sr_no": 529,
+  "name": "Inertia in rotatin motion apparatus                                                        ",
+  "lab_incharge": " OIC Lab",
+  "introduction": "Inertia in rotatin motion apparatus  is Consist of a rotation body,Load hanger,Rotation xis with pully drum,Stand rod,Wall unit frame,Guide puly",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "Rod mass is 242g.Point mass is 102g,205g,408g.Ring mass is 1.27kg.Disc mass is 0.865g.",
+  "description": "Prallel axis theorem.Perpendicular axis theorem.Principal of moment of inertia about any axis."
+ },
+ {
+  "sr_no": 530,
+  "name": "Work done by variable force apparatus",
+  "lab_incharge": " OIC Lab",
+  "introduction": "Inertia in rotatin motion apparatus  is Consist of a fixed pully,Thred,Spring balance,Free pully,Load,,Effort,Leer armProctor.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "Rdius=385mm,                                 Spring balance=5kg,                         Radius of arrm=385mm.",
+  "description": "The apparatus is simple lifting mechanism with obvious non linear characteristics."
+ },
+ {
+  "sr_no": 531,
+  "name": "Single Phase AC Voltage regulator Variable Transformer Variac (4A) 2 Qty ",
+  "lab_incharge": " OIC Lab",
+  "introduction": "Single Phase AC Voltage regulator Variable Transformer . Single phase input 220V\/50-60 Hz Output 0-250 V.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "To furnish variable supply to electric circuit.(To verify Ohm 's law & Kirchoff 's law)                                           ",
+  "description": "Single Phase AC Voltage regulator is a device which convert fixed single phase alternating voltage directly to a variable alternating voltage without change in frequency"
+ },
+ {
+  "sr_no": 532,
+  "name": "Consulab CL-139-50 Auto Transformer Module 3 Phase  (Qty 01)",
+  "lab_incharge": " OIC Lab",
+  "introduction": "Measurement of electric power in three phase system.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "220\/380 VAC-  50Hz\n1\/3 HP with three input terminals and three output terminals\n",
+  "description": "The three phase auto transformer is used to provide three phase fixed supply to polyphase system under different load conditions with great accuracy."
+ },
+ {
+  "sr_no": 533,
+  "name": "Consulab CL- 313-50 Variable Capacitive Load Module (Qty 01)",
+  "lab_incharge": " OIC Lab",
+  "introduction": "To measure power in three phase AC system",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "In this variable capacitive load all the capacitors are connected in parallel in groups, installed in a container. Each group has capacitance 0.9mfd, 1.8mfd and 3.6 mfd. Having rated currents 0.0625 A, 0.125 A and 0.25 A respectively. ",
+  "description": "This load is connected in series with inductive load and voltmeter module. By applying this load in various steps power consumed is calculated easily."
+ },
+ {
+  "sr_no": 534,
+  "name": "Portable Ammerter, Range: 3-7-15-30A (AC\/DC) Cat 1963-02-007 (Qty - 03)",
+  "lab_incharge": " OIC Lab",
+  "introduction": "To measure power in single phase AC\/DC circuit ",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "To measure either direct (DC) or alternating (AC) electric current in amperes.",
+  "description": "An ammeter has a low resistance.The ammetwer is connected in series with the load to measure the electric current flowing through it."
+ },
+ {
+  "sr_no": 535,
+  "name": "Digital Tachormeter Rpm Measurement (Photoelectric Sensor or Tip)",
+  "lab_incharge": " OIC Lab",
+  "introduction": "For counting the number of revolution per minute (RPM) of a shaft or disk.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "This pocket radar device is accurate to +\/-0.05% and is capable of measuring at a distance from 2\"to 20\"",
+  "description": "The ignition device triggers a voltage pulse on the output of the tachometer electromechanical component whenever the spark plugs fires."
+ },
+ {
+  "sr_no": 536,
+  "name": "Portable 3 Phase Wattmeter, Range: 240-600-1200-2400 w",
+  "lab_incharge": " OIC Lab",
+  "introduction": "To measure power in three phase system.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "380 VAC-  50Hz  Two wattmeters\nRange – 0-300W\n",
+  "description": "The three phase wattmeter group is a module containing two watt meters. Sum of two watt meters readings gives the total power consumed in the three phase system"
+ },
+ {
+  "sr_no": 537,
+  "name": "Prony Brake",
+  "lab_incharge": " OIC Lab",
+  "introduction": "To measure the torque produced by an engine.",
+  "school": "MCE",
+  "lab_name": "PHY LAB",
+  "specification": "To measure the torque produced by an engine.",
+  "description": "It is composed of brake blocks that press against the rotating wheel attached to the motor .These blocks create a friction force, or Traction forceT,that slow the velocity (V) of the wheel"
+ },
+ {
+  "sr_no": 538,
+  "name": "Thin Client System",
+  "lab_incharge": " OIC Lab",
+  "introduction": "It can run BIM softwares (Revit & Navis work). It has 5 x servers.",
+  "school": "MCE",
+  "lab_name": "BIM LAB",
+  "specification": "-",
+  "description": "Server Based"
  }
 ]
