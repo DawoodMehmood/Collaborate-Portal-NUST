@@ -957,6 +957,15 @@ const New_Profile = ({
       // const pdf = new jsPDF("p", "mm", "a4");
       // Creating PDF Object
       const doc = new jsPDF("p", "pt", "a4");
+      // Function to add page numbers
+      function addPageNumbers() {
+        var totalPages = doc.internal.getNumberOfPages();
+        for (var i = 1; i <= totalPages; i++) {
+          doc.setPage(i);
+          doc.setFontSize(10);
+          doc.text("Page " + i + " of " + totalPages, 10, doc.internal.pageSize.height - 10);
+        }
+      }
       //Working on waterMark of page
       // for (let i = 1; i <= doc.getNumberOfPages(); i++) {
       //     doc.setPage(i);
@@ -2718,6 +2727,12 @@ const New_Profile = ({
           }
         });
       }
+
+      // Call the function to add page numbers
+      addPageNumbers();
+
+      // Save the PDF
+
 
       doc.save(`${profile[0].Name}.pdf`);
     });
