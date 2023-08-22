@@ -337,11 +337,12 @@ profile_field>h1 {
   padding-bottom: unset;
 }
 
-#research-project-options-area>button,
+/* #research-project-options-area>button,
 #industrial-project-options-area>button,
 #Patent-options-area>button {
   padding-left: 10%;
-}
+  padding-right: 12%;
+} */
 
 .project_header {
   font-weight: bold;
@@ -778,3 +779,18 @@ profile_field>h1 {
   font-weight: bold;
 }
 /* Zain */
+.Options h5{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  gap: 15px;
+}
+
+.collapse button{
+  display: flex;
+  justify-content: space-between;
+}
+
+

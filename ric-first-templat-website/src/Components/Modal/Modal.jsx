@@ -656,6 +656,27 @@ const CustomModal = ({ isModalOpen, closeModal, modalData, DisplayPublications, 
             )}
 
 
+            {modalData === 'mou' && (
+              <div>
+                <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>MOA-MOU</h1>
+                {dataToSend.map((mou) => (
+                  <Card key={mou.id} text="dark" style={{ width: '100%' }}>
+                    <Card.Header style={{ fontWeight: "bold", fontSize: "18px" }}>{mou.org_dte}</Card.Header>
+                    <Card.Body>
+                      <Card.Subtitle className="mb-2 text-muted">
+                        {mou.Title && <p style={{ fontSize: "18px" }}><b>Title:</b> {mou.Title}</p>}
+                      </Card.Subtitle>
+
+                      {mou.Signing_Date && <p style={{ fontSize: "18px" }}>Signing Date: <b>{mou.Signing_Date}</b></p>}
+                      {mou.Signing_Authority && <p style={{ fontSize: "18px" }}>Signing Authority: <b>{mou.Signing_Authority}</b></p>}
+                      {mou.Validity && <p style={{ fontSize: "18px" }}>Validity: <b>{mou.Validity}</b></p>}
+
+                    </Card.Body>
+                  </Card>
+                ))}
+              </div>
+            )}
+
           </div>
         )}
       </Modal>

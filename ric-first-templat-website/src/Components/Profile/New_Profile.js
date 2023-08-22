@@ -3689,7 +3689,7 @@ const New_Profile = ({
                     )}
                   </h5>
                 </Button>
-                <Collapse in={CollapseOptions.Profile_options}>
+                <Collapse className="collapse" in={CollapseOptions.Profile_options}>
                   <div id={"profile-options-area"}>
                     {profile[0].Qualifications.length > 0 ? (
                       <Button
@@ -3821,13 +3821,13 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.project_options}
                   >
                     Projects
-                    <span className={"number projects"}>
-                      {Research_national_List.length +
-                        Research_international_List.length +
-                        Industry_National_List.length +
-                        Industry_International_List.length}
-                    </span>
                     <h5>
+                      <span className={"number projects"}>
+                        {Research_national_List.length +
+                          Research_international_List.length +
+                          Industry_National_List.length +
+                          Industry_International_List.length}
+                      </span>
                       {CollapseOptions.project_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -3838,7 +3838,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.project_options}>
+                  <Collapse className="collapse" in={CollapseOptions.project_options}>
                     <div id={"Project-options-area"}>
                       {Project_Research.National.length === 0 &&
                         Project_Research.International.length === 0 ? (
@@ -3877,7 +3877,7 @@ const New_Profile = ({
                           </h5>
                         </Button>
                       )}
-                      <Collapse in={CollapseOptions.research_project_options}>
+                      <Collapse className="collapse" in={CollapseOptions.research_project_options}>
                         <div id={"research-project-options-area"}>
                           {Project_Research.National.length === 0 ? (
                             ""
@@ -3952,7 +3952,7 @@ const New_Profile = ({
                           </h5>
                         </Button>
                       )}
-                      <Collapse in={CollapseOptions.industrial_project_options}>
+                      <Collapse className="collapse" in={CollapseOptions.industrial_project_options}>
                         <div id={"industrial-project-options-area"}>
                           {Project_Industry.National.length === 0 ? (
                             ""
@@ -4014,13 +4014,13 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.publications_options}
                   >
                     Publications{" "}
+                      <h5>
                     <span className={"number"}>
                       {Research_Articles_List.length +
                         Books.length +
                         Book_Chapters.length +
                         Conferences.length}
                     </span>
-                    <h5>
                       {CollapseOptions.publications_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -4031,7 +4031,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.publications_options}>
+                  <Collapse className="collapse" in={CollapseOptions.publications_options}>
                     <div id={"Publications-options-area"}>
                       {Research_Articles.length === 0 ? (
                         ""
@@ -4137,13 +4137,13 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.ip_options}
                   >
                     Intellectual Property{" "}
+                      <h5>
                     <span className={"ip_number"}>
                       {IPS_Patent.length +
                         IPS_Design.length +
                         IPS_CopyRight.length +
                         IPS_TradeMark.length}
                     </span>
-                    <h5>
                       {CollapseOptions.ip_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -4154,7 +4154,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.ip_options}>
+                  <Collapse className="collapse" in={CollapseOptions.ip_options}>
                     <div id={"IP-options-area"}>
                       {Intellectual_Property.Patents.length === 0 &&
                         Intellectual_Property.Patents.length === 0 ? (
@@ -4187,7 +4187,7 @@ const New_Profile = ({
                           </h5>
                         </Button>
                       )}
-                      <Collapse in={CollapseOptions.patents_options}>
+                      <Collapse className="collapse" in={CollapseOptions.patents_options}>
                         <div id={"Patent-options-area"}>
                           {Intellectual_Property.Patents.length === 0 ? (
                             ""
@@ -4320,7 +4320,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.training_options}>
+                  <Collapse className="collapse" in={CollapseOptions.training_options}>
                     <div id={"trainings-options-area"}>
                       {profile[0].Trainings_Attended.length === 0 ? (
                         ""
@@ -4376,10 +4376,10 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.supervised_projects_options}
                   >
                     Supervisions{" "}
+                    <h5>
                     <span className={"supervisions-number"}>
                       {supervisions.length}
                     </span>
-                    <h5>
                       {CollapseOptions.supervised_projects_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -4390,7 +4390,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.supervised_projects_options}>
+                  <Collapse className="collapse" in={CollapseOptions.supervised_projects_options}>
                     <div id={"supervision-options-area"}>
                       {Supervision.PHD.length === 0 ? (
                         ""
@@ -4618,7 +4618,7 @@ const New_Profile = ({
                     )}
                   </h5>
                 </Button>
-                <Collapse in={CollapseOptions.Profile_options}>
+                <Collapse className="collapse" in={CollapseOptions.Profile_options}>
                   <div id={"profile-options-area"}>
                     {profile[0].Qualifications.length > 0 ? (
                       <Button
@@ -4750,13 +4750,13 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.project_options}
                   >
                     Projects
-                    <span className={"number projects"}>
-                      {Research_national_List.length +
-                        Research_international_List.length +
-                        Industry_National_List.length +
-                        Industry_International_List.length}
-                    </span>
                     <h5>
+                      <span className={"number projects"}>
+                        {Research_national_List.length +
+                          Research_international_List.length +
+                          Industry_National_List.length +
+                          Industry_International_List.length}
+                      </span>
                       {CollapseOptions.project_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -4767,7 +4767,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.project_options}>
+                  <Collapse className="collapse" in={CollapseOptions.project_options}>
                     <div id={"Project-options-area"}>
                       {Project_Research.National.length === 0 &&
                         Project_Research.International.length === 0 ? (
@@ -4787,11 +4787,11 @@ const New_Profile = ({
                           }
                         >
                           Research Projects
+                            <h5>
                           <span className={"internal-projects"}>
                             {Project_Research.National.length +
                               Project_Research.International.length}{" "}
                           </span>
-                          <h5>
                             {CollapseOptions.research_project_options ? (
                               <FontAwesomeIcon
                                 icon={faAngleUp}
@@ -4806,7 +4806,7 @@ const New_Profile = ({
                           </h5>
                         </Button>
                       )}
-                      <Collapse in={CollapseOptions.research_project_options}>
+                      <Collapse className="collapse" in={CollapseOptions.research_project_options}>
                         <div id={"research-project-options-area"}>
                           {Project_Research.National.length === 0 ? (
                             ""
@@ -4862,11 +4862,11 @@ const New_Profile = ({
                           }
                         >
                           Industrial Projects{" "}
+                            <h5>
                           <span className={"internal-projects"}>
                             {Project_Industry.National.length +
                               Project_Industry.International.length}
                           </span>
-                          <h5>
                             {CollapseOptions.industrial_project_options ? (
                               <FontAwesomeIcon
                                 icon={faAngleUp}
@@ -4881,7 +4881,7 @@ const New_Profile = ({
                           </h5>
                         </Button>
                       )}
-                      <Collapse in={CollapseOptions.industrial_project_options}>
+                      <Collapse className="collapse" in={CollapseOptions.industrial_project_options}>
                         <div id={"industrial-project-options-area"}>
                           {Project_Industry.National.length === 0 ? (
                             ""
@@ -4943,13 +4943,13 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.publications_options}
                   >
                     Publications{" "}
+                      <h5>
                     <span className={"number"}>
                       {Research_Articles_List.length +
                         Books.length +
                         Book_Chapters.length +
                         Conferences.length}
                     </span>
-                    <h5>
                       {CollapseOptions.publications_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -4960,7 +4960,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.publications_options}>
+                  <Collapse className="collapse" in={CollapseOptions.publications_options}>
                     <div id={"Publications-options-area"}>
                       {Research_Articles.length === 0 ? (
                         ""
@@ -5066,13 +5066,13 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.ip_options}
                   >
                     Intellectual Property{" "}
+                      <h5>
                     <span className={"ip_number"}>
                       {IPS_Patent.length +
                         IPS_Design.length +
                         IPS_CopyRight.length +
                         IPS_TradeMark.length}
                     </span>
-                    <h5>
                       {CollapseOptions.ip_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -5083,7 +5083,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.ip_options}>
+                  <Collapse className="collapse" in={CollapseOptions.ip_options}>
                     <div id={"IP-options-area"}>
                       {Intellectual_Property.Patents.length === 0 &&
                         Intellectual_Property.Patents.length === 0 ? (
@@ -5100,8 +5100,8 @@ const New_Profile = ({
                           aria-expanded={CollapseOptions.patents_options}
                         >
                           Patents{" "}
-                          <span className={"patents"}>{IPS_Patent.length}</span>
                           <h5>
+                          <span className={"patents"}>{IPS_Patent.length}</span>
                             {CollapseOptions.patents_options ? (
                               <FontAwesomeIcon
                                 icon={faAngleUp}
@@ -5116,7 +5116,7 @@ const New_Profile = ({
                           </h5>
                         </Button>
                       )}
-                      <Collapse in={CollapseOptions.patents_options}>
+                      <Collapse className="collapse" in={CollapseOptions.patents_options}>
                         <div id={"Patent-options-area"}>
                           {Intellectual_Property.Patents.length === 0 ? (
                             ""
@@ -5236,10 +5236,10 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.training_options}
                   >
                     Trainings{" "}
+                    <h5>
                     <span className={"trainings_number"}>
                       {Trainings.length + profile[0].Trainings_Attended.length}
                     </span>
-                    <h5>
                       {CollapseOptions.training_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -5250,7 +5250,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.training_options}>
+                  <Collapse className="collapse" in={CollapseOptions.training_options}>
                     <div id={"trainings-options-area"}>
                       {profile[0].Trainings_Attended.length === 0 ? (
                         ""
@@ -5306,10 +5306,10 @@ const New_Profile = ({
                     aria-expanded={CollapseOptions.supervised_projects_options}
                   >
                     Supervisions{" "}
+                    <h5>
                     <span className={"supervisions-number"}>
                       {supervisions.length}
                     </span>
-                    <h5>
                       {CollapseOptions.supervised_projects_options ? (
                         <FontAwesomeIcon icon={faAngleUp} className={"arrow"} />
                       ) : (
@@ -5320,7 +5320,7 @@ const New_Profile = ({
                       )}
                     </h5>
                   </Button>
-                  <Collapse in={CollapseOptions.supervised_projects_options}>
+                  <Collapse className="collapse" in={CollapseOptions.supervised_projects_options}>
                     <div id={"supervision-options-area"}>
                       {Supervision.PHD.length === 0 ? (
                         ""

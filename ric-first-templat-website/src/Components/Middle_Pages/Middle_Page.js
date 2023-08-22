@@ -12,6 +12,7 @@ import { fetchPublicationswithid, fetchProjectswithid, fetchIPwithid, fetchConfe
 import CustomModal from "../Modal/Modal";
 import industryData from "../../APIs/industry.json";
 import labData from "../../APIs/labs.json";
+import MouData from "../../APIs/mou.json";
 import schoolIcon from "../../Icons/school.png";
 import LoadingComponent from "../Loading/LoadingComponent";
 
@@ -23,6 +24,7 @@ const Middle_Page = () => {
 
     const [filteredIndustryData, setFilteredIndustryData] = useState([]);
     const [filteredLabData, setFilteredLabData] = useState([]);
+    const [filteredMouData, setFilteredMouData] = useState([]);
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
     const [DisplayPublications, setDisplayPublications] = useState([]);
@@ -229,6 +231,7 @@ const Middle_Page = () => {
     };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
+   
     const labsAndIndustryData = (keyword, type) => {
         if (type === 'industry') {
             setModalData('industry')
@@ -239,7 +242,11 @@ const Middle_Page = () => {
             setModalData('lab')
             setdataToSend(filteredLabData);
         }
-    }
+        else if(type === "mou"){
+            setModalData('mou')
+            setdataToSend(filteredMouData);
+        }
+    }
 
     //if anyone tries to change the length of keywords passed through URL, then move to Error Page
     const params = useParams();
@@ -799,6 +806,7 @@ const Middle_Page = () => {
                         (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
                 )
             );
+            setFilteredMouData(MouData );
             fetchPublications().then(() => {
                 fetchProjects().then(() => {
                     fetchIPs().then(() => {
@@ -1312,6 +1320,13 @@ const Middle_Page = () => {
                                     {filteredIndustryData.length}
                                 </h6>
                             </button>}
+                            {filteredMouData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'mou')}>
+                                MOUs:
+                                <h6>
+                                    {filteredMouData.length}
+                                </h6>
+                            </button>}
+
                         </>
                     )}
 
