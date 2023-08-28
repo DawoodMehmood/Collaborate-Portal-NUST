@@ -35,11 +35,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/Publications/{ID}',function ($ID){
     return Publications::getPublications($ID);
 });
+// Get publications by School Name
+Route::get('/Publications/school/{name}',function ($SchoolName){
+    return Publications::getPublicationsbyschool($SchoolName);
+});
 
 // Get projects by ID
 Route::get('/Projects/{ID}',function ($ID){
     return Projects::getProjects($ID);
 });
+
+// Get projects by School Name
+Route::get('/Projects/school/{name}',function ($SchoolName){
+    return Projects::getProjectsbyschool($SchoolName);
+});
+
 
 // Get conferences by ID
 Route::get('/Conferences/{ID}',function ($ID){
@@ -75,6 +85,11 @@ Route::get('/Editorials/{Name}',function ($Name){
 // Get IP by ID
 Route::get('/IP/{ID}',function ($ID){
     return IP::getIP($ID);
+});
+
+// Get IP by School Name
+Route::get('/IP/school/{name}',function ($SchoolName){
+    return IP::getIPbyschool($SchoolName);
 });
 
 // Get discipline

@@ -30,6 +30,13 @@ class Publications extends Controller
         // Return the JSON data for publications
         return $response->json()["ric_expert_portal_journal_pub_json_data"];
     }
+    static function getPublicationsbyschool(string $name): mixed
+    {
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=10000&institute=".$name);
+
+        // Return the JSON data for publications
+        return $response->json()["ric_expert_portal_journal_pub_json_data"];
+    }
 
     /**
      * Get publications by title from API
@@ -39,7 +46,7 @@ class Publications extends Controller
     function getPublicationsByTitle(Request $request): mixed
     {
         //----------------------------------------------------------------------------------------------API Link
-        // https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_publication&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=10&title=abc&author_name=abc
+        // https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=10&author_cmsid=abc&author_name=abc&title=abc&affiliation=abc&institute=abc
         //------------------------------------------------------------------------------------------------------
 
         // Validate the request input

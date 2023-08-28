@@ -24,6 +24,19 @@ class Projects extends Controller
         // Return the decoded JSON data for the projects
         return $response->json()["ric_expert_portal_project_json_data"];
     }
+    static function getProjectsbyschool(string $name): array
+    {
+        // API endpoint for project retrieval
+        $apiEndpoint = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=10000&institute=".$name;
+
+        // Send HTTP GET request to API endpoint to retrieve data
+        $response = Http::withoutVerifying()->get($apiEndpoint);
+
+        // Return the decoded JSON data for the projects
+        return $response->json()["ric_expert_portal_project_json_data"];
+    }
+
+    
     /**
      * Get project information by title.
      *
@@ -33,7 +46,7 @@ class Projects extends Controller
     function getProjectByTitle(Request $request): array
     {
         //----------------------------------------------------------------------------------------------API Link
-        //        https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=10&pi_copi_cmsid=abc&pi-copi_name=abc&title=abc
+        // https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=10&pi_copi_cmsid=abc&pi-copi_name=abc&title=abc&institute=abc
         //------------------------------------------------------------------------------------------------------
         // Validate the request parameter.
         $request->validate([

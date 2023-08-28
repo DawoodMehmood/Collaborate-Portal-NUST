@@ -26,6 +26,14 @@ class IP extends Controller
         // Return the array of intellectual property data.
         return $decoded["ric_expert_portal_intellectual_json_data"];
     }
+    static function getIPbyschool(string $name): array
+    {
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&institute".$name);
+        // Decode the JSON response from the API into an associative array.
+        $decoded = $response->json();
+        // Return the array of intellectual property data.
+        return $decoded["ric_expert_portal_intellectual_json_data"];
+    }
     /**
      * Get intellectual property data from API by title
      *
@@ -36,7 +44,7 @@ class IP extends Controller
     function getIPByTitle(Request $request): array
     {
         //----------------------------------------------------------------------------------------------API Link
-        //        https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10&title=abc&initiator_cmsid=abc&initiator_name=abc&inventor_cmsid=abc&inventor_name=abc
+        // https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10&title=abc&initiator_cmsid=abc&initiator_name=abc&inventor_cmsid=abc &inventor_name=abc&institute=abc
         //------------------------------------------------------------------------------------------------------
 
         // Validate that the "title" parameter is present in the request
