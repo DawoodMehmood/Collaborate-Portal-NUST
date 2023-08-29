@@ -99,6 +99,17 @@ const Middle_Page = () => {
     const encodedWord = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
     const searchWord = decodeURIComponent(encodedWord);
 
+
+    // To Return School Name
+    const getSchoolName = () => {
+        let school = Parameter.school;
+        if (school === "USPCASE") {
+            school = "USPCAS"
+        } else if (Parameter.school === "NBC-Quetta") {
+            school = "NBC"
+        }
+        return school;
+    }
     const closeModal = () => {
         setdataToSend([]);
         setIsModalOpen(false);
@@ -231,7 +242,7 @@ const Middle_Page = () => {
     };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
-   
+
     const labsAndIndustryData = (keyword, type) => {
         if (type === 'industry') {
             setModalData('industry')
@@ -242,11 +253,11 @@ const Middle_Page = () => {
             setModalData('lab')
             setdataToSend(filteredLabData);
         }
-        else if(type === "mou"){
+        else if (type === "mou") {
             setModalData('mou')
             setdataToSend(filteredMouData);
-        }
-    }
+        }
+    }
 
     //if anyone tries to change the length of keywords passed through URL, then move to Error Page
     const params = useParams();
@@ -268,102 +279,102 @@ const Middle_Page = () => {
         if (params.school === "ASAB") {
             window.open("https://asab.nust.edu.pk/", "_blank");
         }
-         else if (params.school === "CIPS") {
+        else if (params.school === "CIPS") {
             window.open("https://cips.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCEE") {
+        }
+        else if (params.school === "SCEE") {
             window.open("https://scee.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "C3A") {
+        }
+        else if (params.school === "C3A") {
             window.open("https://c3a.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "CES") {
+        }
+        else if (params.school === "CES") {
             window.open("https://uspcase.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "CAE") {
+        }
+        else if (params.school === "CAE") {
             window.open("https://cae.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "CEME") {
+        }
+        else if (params.school === "CEME") {
             window.open("https://ceme.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCEE-IESE") {
+        }
+        else if (params.school === "SCEE-IESE") {
             window.open("https://iese.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCEE-IGIS") {
+        }
+        else if (params.school === "SCEE-IGIS") {
             window.open("https://igis.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "MCE") {
+        }
+        else if (params.school === "MCE") {
             window.open("https://mce.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "NBC-Quetta") {
+        }
+        else if (params.school === "NBC-Quetta") {
             window.open("https://nbc.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "NBS") {
+        }
+        else if (params.school === "NBS") {
             window.open("https://nbs.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCEE-NICE PG") {
+        }
+        else if (params.school === "SCEE-NICE PG") {
             window.open("https://scee.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCEE-NICE") {
+        }
+        else if (params.school === "SCEE-NICE") {
             window.open("https://scee.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "NIPCONS") {
+        }
+        else if (params.school === "NIPCONS") {
             window.open("https://nipcons.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "NSHS") {
+        }
+        else if (params.school === "NSHS") {
             window.open("https://nshs.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "NIT-Risalpur") {
+        }
+        else if (params.school === "NIT-Risalpur") {
             window.open("https://nit.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "NIT-SCEE") {
+        }
+        else if (params.school === "NIT-SCEE") {
             window.open("https://nit.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "PNEC") {
+        }
+        else if (params.school === "PNEC") {
             window.open("https://pnec.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "RCMS") {
+        }
+        else if (params.school === "RCMS") {
             window.open("https://nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "RIMMS") {
+        }
+        else if (params.school === "RIMMS") {
             window.open("https://nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "RIMMS") {
+        }
+        else if (params.school === "RIMMS") {
             window.open("https://sada.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCME") {
+        }
+        else if (params.school === "SCME") {
             window.open("https://scme.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SCME") {
+        }
+        else if (params.school === "SCME") {
             window.open("https://scme.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SEECS") {
+        }
+        else if (params.school === "SEECS") {
             window.open("https://seecs.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SINES") {
+        }
+        else if (params.school === "SINES") {
             window.open("https://sines.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SMME") {
+        }
+        else if (params.school === "SMME") {
             window.open("https://smme.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "SNS") {
+        }
+        else if (params.school === "SNS") {
             window.open("https://sns.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "S3H") {
+        }
+        else if (params.school === "S3H") {
             window.open("https://s3h.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "USPCASE") {
+        }
+        else if (params.school === "USPCASE") {
             window.open("https://uspcase.nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "UMO") {
+        }
+        else if (params.school === "UMO") {
             window.open("https://nust.edu.pk/", "_blank");
-        } 
-         else if (params.school === "MCS") {
+        }
+        else if (params.school === "MCS") {
             window.open("https://mcs.nust.edu.pk/", "_blank");
-        } 
-         else {
+        }
+        else {
             window.open("https://nust.edu.pk/", "_blank");
-        } 
+        }
 
     }
 
@@ -454,9 +465,9 @@ const Middle_Page = () => {
             e_mail: "",
             School: "",
             Image_URL: "",
-            no_of_publications: 0,
-            no_of_projects: 0,
-            no_of_IPs: 0,
+            // no_of_publications: 0,
+            // no_of_projects: 0,
+            // no_of_IPs: 0,
         }
     }
 
@@ -504,10 +515,10 @@ const Middle_Page = () => {
             profile["School"] = data[j]["institute"];
             profile["Name"] = data[j]["name"];
             profile["Image_URL"] = data[j]["image_128"];
-            await fetchPublicationswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = data.length });
-            await fetchConferenceswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = profile["no_of_publications"] + data.length });
-            await fetchProjectswithid(data[j]["code"]).then((data) => { profile["no_of_projects"] = data.length });
-            await fetchIPwithid(data[j]["code"]).then((data) => { profile["no_of_IPs"] = data.length });
+            // await fetchPublicationswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = data.length });
+            // await fetchConferenceswithid(data[j]["code"]).then((data) => { profile["no_of_publications"] = profile["no_of_publications"] + data.length });
+            // await fetchProjectswithid(data[j]["code"]).then((data) => { profile["no_of_projects"] = data.length });
+            // await fetchIPwithid(data[j]["code"]).then((data) => { profile["no_of_IPs"] = data.length });     
 
             ProfilesHolder.current.push(profile);
             UpdateProfileData(profile).then(() => {
@@ -559,6 +570,8 @@ const Middle_Page = () => {
         displayIPs();
         setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
         //To Fetch Profile of Faculty from API
+
+        // To Fetch Profile of Faculty Based on Name from API
         async function fetchProfile() {
             await fetch("http://localhost:8000/api/Profile", {
                 method: "POST",
@@ -578,6 +591,7 @@ const Middle_Page = () => {
                 );
             ;
         }
+
         // To Fetch Publications of Facu
         async function fetchPublications() {
             await fetch(`http://localhost:8000/api/Publications`, {
@@ -627,6 +641,43 @@ const Middle_Page = () => {
                         }
                     }
                     setPublications(data.length)
+                })
+        }
+        // To Fetch Publications of School's Faculty
+        async function fetchPublicationsSchool(schoolFaculty) {
+            let school = getSchoolName();
+            await fetch(`http://localhost:8000/api/Publications/school/${school}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+                .then((response) => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    else {
+                        setSearchErrorsCounter(prevState => prevState + 1)
+                    }
+                })
+                .then((data) => {
+                    setPublications(data?.length)
+                    schoolFaculty.map((faculty) => {
+                        let profileData = {
+                            Publications: 0,
+                            Projects: 0,
+                            IPs: 0,
+                        }
+                        AuthorIDs.current[faculty.code] = profileData;
+                        data?.map((publication) => {
+                            publication.author_ids.map((author) => {
+                                if (author.co_author_faculty_staff_id.includes(faculty.code)) {
+                                    AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
+                                }
+                            })
+                        })
+                    });
                 })
         }
 
@@ -686,6 +737,44 @@ const Middle_Page = () => {
                     setProjects(project_counter)
                 })
         }
+        // To Fetch Projects of School's Faculty
+        async function fetchProjectsSchool(schoolFaculty) {
+            let school = getSchoolName();
+            await fetch(`http://localhost:8000/api/Projects/school/${school}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    }
+                })
+                .then((response) => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    else {
+                        setSearchErrorsCounter(prevState => prevState + 1)
+                    }
+                })
+                .then((data) => {
+                    let project_counter = 0;
+                    data.map((project) => {
+                        if (project["project_status"].includes("Submitted") || project["project_type"] === "Defense" || project["project_status"].includes("Cancelled/Rejected")) {
+                        }
+                        else {
+                            project_counter = project_counter + 1;
+                            project.copi_ids.map((author) => {
+                                schoolFaculty.map((faculty) => {
+                                    if (author.co_author_faculty_staff_id.includes(faculty.code)) {
+                                        AuthorIDs.current[faculty.code].Projects = AuthorIDs.current[faculty.code].Projects + 1;
+                                    }
+                                })
+                            })
+                        }
+                    })
+                    setProjects(project_counter);
+                })
+        }
 
         // To Fetch IPs
         async function fetchIPs() {
@@ -738,61 +827,87 @@ const Middle_Page = () => {
                     }
                 })
         }
-
-        // To Fetch Discipline
-        async function fetchDiscipline() {
-            await fetch(`http://localhost:8000/api/Discie`,
+        // To Fetch IPs of School's Faculty
+        async function fetchIPsSchool(schoolFaculty) {
+            let school = getSchoolName();
+            await fetch(`http://localhost:8000/api/IP/school/${school}`,
                 {
-                    method: "POST",
+                    method: "GET",
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json"
-                    },
-                    body: JSON.stringify({ "discipline": `${Parameter.search}`, })
+                    }
                 })
-                .then((response) => {
-                    if (response.status === 200) { return response.json(); }
-                    else { setSearchErrors(true); }
-                })
-                .then((data) => { separateProfiles(data) })
-                .catch(() => { changeLoading() });
-        }
-
-        // To Fetch SchoolFaculty
-        async function fetchSchoolFaculty() {
-            let school = Parameter.school;
-            if (school === "USPCASE") {
-                school = "USPCAS"
-            } else if (Parameter.school === "NBC-Quetta") {
-                school = "NBC"
-            }
-
-            await fetch(`http://localhost:8000/api/schoolFaculty`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(
-                    {
-                        "school": `${school}`,
-                        "faculty": `${Parameter.search}`,
-                    })
-            })
                 .then((response) => {
                     if (response.status === 200) {
                         return response.json();
                     }
                     else {
-                        setSearchErrors(true);
+                        setSearchErrorsCounter(prevState => prevState + 1)
                     }
                 })
                 .then((data) => {
-                    separateProfiles(data)
+                    data.map((ip) => {
+                        ip.inventor_ids.map((author) => {
+                            schoolFaculty.map((faculty) => {
+                                if (author.co_author_faculty_staff_id.includes(faculty.code)) {
+                                    AuthorIDs.current[faculty.code].IPs = AuthorIDs.current[faculty.code].IPs + 1;
+                                }
+                            })
+                        })
+                    })
+                    setIps(data.length);
                 })
-                .catch(() => {
-                    changeLoading()
+        }
+
+        // To Fetch Discipline
+        // async function fetchDiscipline() {
+        //     await fetch(`http://localhost:8000/api/Discie`,
+        //         {
+        //             method: "POST",
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //                 "Accept": "application/json"
+        //             },
+        //             body: JSON.stringify({ "discipline": `${Parameter.search}`, })
+        //         })
+        //         .then((response) => {
+        //             if (response.status === 200) { return response.json(); }
+        //             else { setSearchErrors(true); }
+        //         })
+        //         .then((data) => { separateProfiles(data) })
+        //         .catch(() => { changeLoading() });
+        // }
+
+        // To Fetch SchoolFaculty
+        async function fetchSchoolFaculty() {
+            try {
+                let school = getSchoolName();
+
+                const response = await fetch(`http://localhost:8000/api/schoolFaculty`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "school": `${school}`,
+                        "faculty": `${Parameter.search}`,
+                    })
                 });
+
+                if (response.status === 200) {
+                    const data = await response.json();
+                    separateProfiles(data);
+                    return data; // Return the data
+                } else {
+                    setSearchErrors(true);
+                    return null; // Return null or handle the error case as needed
+                }
+            } catch (error) {
+                changeLoading();
+                throw error; // Re-throw the error to be caught by the caller
+            }
         }
 
         if (Parameter.option === "name") {
@@ -806,7 +921,7 @@ const Middle_Page = () => {
                         (item.introduction?.toLowerCase().includes(Parameter.search?.toLowerCase()))
                 )
             );
-            setFilteredMouData(MouData );
+            setFilteredMouData(MouData);
             fetchPublications().then(() => {
                 fetchProjects().then(() => {
                     fetchIPs().then(() => {
@@ -831,10 +946,21 @@ const Middle_Page = () => {
             setFilteredLabData(
                 labData.filter(
                     item =>
-                    (item.school && typeof item.school === "string" && item.school.toLowerCase().includes(Parameter.school && typeof Parameter.school === "string" && Parameter.school.toLowerCase()))
+                        (item.school && typeof item.school === "string" && item.school.toLowerCase().includes(Parameter.school && typeof Parameter.school === "string" && Parameter.school.toLowerCase()))
                 )
             );
-            fetchSchoolFaculty().then(() => { });
+            fetchSchoolFaculty().then((schoolFaculty) => {
+                fetchPublicationsSchool(schoolFaculty).then(() => {
+                    fetchProjectsSchool(schoolFaculty).then(() => {
+                        fetchIPsSchool(schoolFaculty).then(() => {
+                            if (searchErrorsCounter === 4) {
+                                setSearchErrors(true);
+                            }
+                            changeLoading().then()
+                        });
+                    });
+                });
+            });
         }
     }, [Parameter])
 
@@ -885,7 +1011,7 @@ const Middle_Page = () => {
         }).map((profile, index) => {
             return (
                 <>
-                    <div className={"Card-Profile"} >
+                    <div key={index} className={"Card-Profile"} >
                         <div className={"Card-Header"}>
                             <div className={"Card-Image"}>
                                 <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
@@ -981,7 +1107,7 @@ const Middle_Page = () => {
         }).map((profile, index) => {
             return (
                 <>
-                    <div className={"Card-Profile"} >
+                    <div key={index} className={"Card-Profile"} >
                         <div className={"Card-Header"}>
                             <div className={"Card-Image"}>
                                 <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
@@ -1048,7 +1174,7 @@ const Middle_Page = () => {
         }).map((profile, index) => {
             return (
                 <>
-                    <div className={"Card-Profile"} >
+                    <div key={index} className={"Card-Profile"} >
                         <div className={"Card-Header"}>
                             <div className={"Card-Image"}>
                                 <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
@@ -1125,8 +1251,8 @@ const Middle_Page = () => {
     // Render the row of top schools
     const TopSchoolsRow = () => (
         <div className="row">
-            {topSchools.map((school) => (
-                <div onClick={(event) => handleSortingOptionChange(event, school)} className="col-md top-schools" key={school} style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
+            {topSchools.map((school, index) => (
+                <div key={index} onClick={(event) => handleSortingOptionChange(event, school)} className="col-md top-schools" style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>{school}: <b>{schoolCount[school]}</b></div>
             ))}
             {topSchools?.length > 0 && <div className="removesort" onClick={(event) => handleSortingOptionChange(event, "remove")}>
                 <i className="fa-solid fa-house-user"></i>
@@ -1137,7 +1263,7 @@ const Middle_Page = () => {
     const Cards = Profile.map((profile, index) => {
         return (
             <>
-                <div className={"Card-Profile schoolcountcard"}>
+                <div key={index} className={"Card-Profile schoolcountcard"}>
                     <div className={"Card-Header"}>
                         <div className={"Card-Image"}>
                             <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
@@ -1161,69 +1287,71 @@ const Middle_Page = () => {
 
                         {Parameter.option === "name" ? (
                             ""
-                        ) : Parameter.option === "school" ? (
-                            <>
-                                <div className={"Card-Text"}>
-                                    {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? (
-                                        ""
-                                    ) : (
-                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
-                                            <span><i>Publications</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_publications}</h6></span>
-                                        </button>
-                                    )}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? (
-                                        ""
-                                    ) : (
-                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
-                                            <span><i>Projects</i>: <strong style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_projects}</strong></span>
-                                        </button>
-                                    )}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? (
-                                        ""
-                                    ) : (
-                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "ips")}>
-                                            <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
-                                        </button>
-                                    )}
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? (
-                                        ""
-                                    ) : (
-                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
-                                            <span><i>Publications</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
-                                        </button>
-                                    )}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? (
-                                        ""
-                                    ) : (
-                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
-                                            <span><i>Projects</i>: <strong style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
-                                        </button>
-                                    )}
-                                </div>
-                                <div className={"Card-Text"}>
-                                    {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
-                                        ""
-                                    ) : (
-                                        <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
-                                            project_Publications_Ips_Faculty(profile.Code, "IP");
-                                        }}>
-                                            <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
-                                        </button>
-                                    )}
-                                </div>
-                            </>
-                        )}
+                        ) :
+                            //  Parameter.option === "school" ? (
+                            //     <>
+                            //         <div className={"Card-Text"}>
+                            //             {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? (
+                            //                 ""
+                            //             ) : (
+                            //                 <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                            //                     <span><i>Publications</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_publications}</h6></span>
+                            //                 </button>
+                            //             )}
+                            //         </div>
+                            //         <div className={"Card-Text"}>
+                            //             {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? (
+                            //                 ""
+                            //             ) : (
+                            //                 <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+                            //                     <span><i>Projects</i>: <strong style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_projects}</strong></span>
+                            //                 </button>
+                            //             )}
+                            //         </div>
+                            //         <div className={"Card-Text"}>
+                            //             {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? (
+                            //                 ""
+                            //             ) : (
+                            //                 <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "ips")}>
+                            //                     <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
+                            //                 </button>
+                            //             )}
+                            //         </div>
+                            //     </>
+                            // ) : 
+                            (
+                                <>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code]?.Publications === 0 || AuthorIDs.current[profile.Code]?.Publications === undefined ? (
+                                            ""
+                                        ) : (
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+                                                <span><i>Publications</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code]?.Publications}</h6></span>
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code]?.Projects === 0 || AuthorIDs.current[profile.Code]?.Projects === undefined ? (
+                                            ""
+                                        ) : (
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+                                                <span><i>Projects</i>: <strong style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code]?.Projects}</strong></span>
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div className={"Card-Text"}>
+                                        {AuthorIDs.current[profile.Code]?.IPs === 0 || AuthorIDs.current[profile.Code]?.IPs === undefined ? (
+                                            ""
+                                        ) : (
+                                            <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+                                                project_Publications_Ips_Faculty(profile.Code, "IP");
+                                            }}>
+                                                <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code]?.IPs}</h6></span>
+                                            </button>
+                                        )}
+                                    </div>
+                                </>
+                            )}
                     </div>
                 </div>
             </>
@@ -1390,7 +1518,7 @@ const Middle_Page = () => {
                 //         <Placeholder xs={12} />
                 //     </Placeholder>
                 // </div>
-                <LoadingComponent/>
+                <LoadingComponent />
                 // Fetching data from server is complete, now if any error occurred then the error message is shown.
                 // by changing the state of searchErrors to true.
                 : !searchErrors ?
