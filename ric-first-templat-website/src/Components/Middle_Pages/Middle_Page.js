@@ -165,19 +165,19 @@ const Middle_Page = () => {
         }
 
     };
-    const lengthCalculator = (type) => {
-        let length = 0;
-        Profile.map((item) => {
-            if (type === "publications") {
-                length += item.no_of_publications;
-            } else if (type === "projects") {
-                length += item.no_of_projects;
-            } else if (type === " ") {
-                length += item.no_of_IPs;
-            }
-        })
-        return length;
-    }
+    // const lengthCalculator = (type) => {
+    //     let length = 0;
+    //     Profile.map((item) => {
+    //         if (type === "publications") {
+    //             length += item.no_of_publications;
+    //         } else if (type === "projects") {
+    //             length += item.no_of_projects;
+    //         } else if (type === " ") {
+    //             length += item.no_of_IPs;
+    //         }
+    //     })
+    //     return length;
+    // }
 
     useEffect(() => {
         if (dataToSend.length > 0) {
@@ -197,53 +197,53 @@ const Middle_Page = () => {
                 setIsSorted(true);
             }
         }
-        else if (params.option === "school") {
-            // sortCardsforschool
-            if (selectedOption === "projects") {
-                setSortedCardList(sortCardsforschool("no_of_projects"));
-                setIsSorted(true);
-                setCards("projects");
-            } else if (selectedOption === "publications") {
-                setSortedCardList(sortCardsforschool("no_of_publications"));
-                setIsSorted(true);
-                setCards("publication");
-            } else if (selectedOption === "IP") {
-                setSortedCardList(sortCardsforschool("no_of_IPs"));
-                setIsSorted(true);
-                setCards("IP");
-                // Implement sorting logic based on IP
-            } else {
-                // Handle default case or clear sorting
-                setIsSorted(false);
-                setCards(Profile);
-            }
-        }
-        else {
+        // else if (params.option === "school") {
+        //     // sortCardsforschool
+        //     if (selectedOption === "projects") {
+        //         setSortedCardList(sortCardsforschool("no_of_projects"));
+        //         setIsSorted(true);
+        //         setCards("projects");
+        //     } else if (selectedOption === "publications") {
+        //         setSortedCardList(sortCardsforschool("no_of_publications"));
+        //         setIsSorted(true);
+        //         setCards("publication");
+        //     } else if (selectedOption === "IP") {
+        //         setSortedCardList(sortCardsforschool("no_of_IPs"));
+        //         setIsSorted(true);
+        //         setCards("IP");
+        //         // Implement sorting logic based on IP
+        //     } else {
+        //         // Handle default case or clear sorting
+        //         setIsSorted(false);
+        //         setCards(Profile);
+        //     }
+        // }
+        // else {
 
-            if (selectedOption === "projects") {
-                setSortedCardList(sortCards("Projects"));
-                setIsSorted(true);
-                setCards("projects");
-            } else if (selectedOption === "publications") {
-                setSortedCardList(sortCards("Publications"));
-                setIsSorted(true);
-                setCards("publication");
-            } else if (selectedOption === "IP") {
-                setSortedCardList(sortCards("IPs"));
-                setIsSorted(true);
-                setCards("IP");
-                // Implement sorting logic based on IP
-            } else {
-                // Handle default case or clear sorting
-                setIsSorted(false);
-                setCards(Profile);
-            }
+        if (selectedOption === "projects") {
+            setSortedCardList(sortCards("Projects"));
+            setIsSorted(true);
+            setCards("projects");
+        } else if (selectedOption === "publications") {
+            setSortedCardList(sortCards("Publications"));
+            setIsSorted(true);
+            setCards("publication");
+        } else if (selectedOption === "IP") {
+            setSortedCardList(sortCards("IPs"));
+            setIsSorted(true);
+            setCards("IP");
+            // Implement sorting logic based on IP
+        } else {
+            // Handle default case or clear sorting
+            setIsSorted(false);
+            setCards(Profile);
+            // }
         }
     };
     /*<<<<<<<<<<<<<<<<<<<----------------->>>>>>>>>>>>>>>>>>>>>>>*/
 
 
-    const labsAndIndustryData = (keyword, type) => {
+    const labsAndIndustryData = (type) => {
         if (type === 'industry') {
             setModalData('industry')
             setdataToSend(filteredIndustryData);
@@ -378,80 +378,80 @@ const Middle_Page = () => {
 
     }
 
-    //To fetch all publication which are to be displayed in popup
-    async function displayPublications() {
-        try {
-            const response = await fetch("http://localhost:8000/api/Publications", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    title: Parameter.search,
-                }),
-            });
+    // //To fetch all publication which are to be displayed in popup
+    // async function displayPublications() {
+    //     try {
+    //         const response = await fetch("http://localhost:8000/api/Publications", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Accept: "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 title: Parameter.search,
+    //             }),
+    //         });
 
-            if (response.status === 200) {
-                const data = await response.json();
-                setDisplayPublications(data);
-            } else {
-                setSearchErrorsCounter((prevState) => prevState + 1);
-            }
-        } catch (error) {
-            setSearchErrorsCounter((prevState) => prevState + 1);
-        }
-    }
+    //         if (response.status === 200) {
+    //             const data = await response.json();
+    //             setDisplayPublications(data);
+    //         } else {
+    //             setSearchErrorsCounter((prevState) => prevState + 1);
+    //         }
+    //     } catch (error) {
+    //         setSearchErrorsCounter((prevState) => prevState + 1);
+    //     }
+    // }
 
-    //To fetch all Projects which are to be displayed in popup
-    async function displayProjects() {
-        try {
-            const response = await fetch("http://localhost:8000/api/Projects", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    title: Parameter.search,
-                }),
-            });
+    // //To fetch all Projects which are to be displayed in popup
+    // async function displayProjects() {
+    //     try {
+    //         const response = await fetch("http://localhost:8000/api/Projects", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Accept: "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 title: Parameter.search,
+    //             }),
+    //         });
 
-            if (response.status === 200) {
-                const data = await response.json();
-                setDisplayProjects(data);
-            } else {
-                setSearchErrorsCounter((prevState) => prevState + 1);
-            }
-        } catch (error) {
-            setSearchErrorsCounter((prevState) => prevState + 1);
-        }
-    }
+    //         if (response.status === 200) {
+    //             const data = await response.json();
+    //             setDisplayProjects(data);
+    //         } else {
+    //             setSearchErrorsCounter((prevState) => prevState + 1);
+    //         }
+    //     } catch (error) {
+    //         setSearchErrorsCounter((prevState) => prevState + 1);
+    //     }
+    // }
 
-    //To fetch all IPs which are to be displayed in popup
-    async function displayIPs() {
-        try {
-            const response = await fetch("http://localhost:8000/api/IP", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: JSON.stringify({
-                    title: Parameter.search,
-                }),
-            });
+    // //To fetch all IPs which are to be displayed in popup
+    // async function displayIPs() {
+    //     try {
+    //         const response = await fetch("http://localhost:8000/api/IP", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Accept: "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 title: Parameter.search,
+    //             }),
+    //         });
 
-            if (response.status === 200) {
-                const data = await response.json();
-                setDisplayIPs(data);
-            } else {
-                setSearchErrorsCounter((prevState) => prevState + 1);
-            }
-        } catch (error) {
-            setSearchErrorsCounter((prevState) => prevState + 1);
-        }
-    }
+    //         if (response.status === 200) {
+    //             const data = await response.json();
+    //             setDisplayIPs(data);
+    //         } else {
+    //             setSearchErrorsCounter((prevState) => prevState + 1);
+    //         }
+    //     } catch (error) {
+    //         setSearchErrorsCounter((prevState) => prevState + 1);
+    //     }
+    // }
 
 
 
@@ -565,9 +565,10 @@ const Middle_Page = () => {
     }
 
     useEffect(() => {
-        displayProjects();
-        displayPublications();
-        displayIPs();
+        // displayProjects();
+        // displayPublications();
+        // displayIPs();
+
         setFilteredIndustryData(industryData.filter(item => item.description?.toLowerCase().includes(Parameter.search?.toLowerCase())));
         //To Fetch Profile of Faculty from API
 
@@ -615,6 +616,8 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
+                    setDisplayPublications(data);
+                    setPublications(data.length)
                     setProfileCounter(0)
                     for (let j = 0; j < data.length; j++) {
                         const authors = data[j]["author_ids"];
@@ -640,7 +643,6 @@ const Middle_Page = () => {
                             }
                         }
                     }
-                    setPublications(data.length)
                 })
         }
         // To Fetch Publications of School's Faculty
@@ -662,7 +664,9 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
-                    setPublications(data?.length)
+                    setDisplayPublications(data);
+                    // setPublications(data);
+                    setPublications(0);
                     schoolFaculty.map((faculty) => {
                         let profileData = {
                             Publications: 0,
@@ -671,11 +675,10 @@ const Middle_Page = () => {
                         }
                         AuthorIDs.current[faculty.code] = profileData;
                         data?.map((publication) => {
-                            publication.author_ids.map((author) => {
-                                if (author.co_author_faculty_staff_id.includes(faculty.code)) {
+                                if (publication.co_author_faculty_staff_id.includes(faculty.code)) {
                                     AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
+                                    setPublications(prevState => prevState + 1);
                                 }
-                            })
                         })
                     });
                 })
@@ -705,6 +708,7 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
+                    setDisplayProjects(data);
                     let project_counter = 0;
                     for (let j = 0; j < data.length; j++) {
                         if (data[j]["project_status"].includes("Submitted") || data[j]["project_type"] === "Defense" || data[j]["project_status"].includes("Cancelled/Rejected")) {
@@ -758,15 +762,16 @@ const Middle_Page = () => {
                 })
                 .then((data) => {
                     let project_counter = 0;
+                    setDisplayProjects(data);
                     data.map((project) => {
                         if (project["project_status"].includes("Submitted") || project["project_type"] === "Defense" || project["project_status"].includes("Cancelled/Rejected")) {
                         }
                         else {
-                            project_counter = project_counter + 1;
                             project.copi_ids.map((author) => {
                                 schoolFaculty.map((faculty) => {
                                     if (author.co_author_faculty_staff_id.includes(faculty.code)) {
                                         AuthorIDs.current[faculty.code].Projects = AuthorIDs.current[faculty.code].Projects + 1;
+                                        project_counter = project_counter + 1;
                                     }
                                 })
                             })
@@ -800,6 +805,7 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
+                    setDisplayIPs(data);
                     setIps(data.length)
                     for (let j = 0; j < data.length; j++) {
                         let authors_ip = data[j]["inventor_ids"];
@@ -847,16 +853,19 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
+                    setDisplayIPs(data);
+                    // setIps(data.length);
+                    setIps(0);
                     data.map((ip) => {
                         ip.inventor_ids.map((author) => {
                             schoolFaculty.map((faculty) => {
                                 if (author.co_author_faculty_staff_id.includes(faculty.code)) {
                                     AuthorIDs.current[faculty.code].IPs = AuthorIDs.current[faculty.code].IPs + 1;
+                                    setIps(prevState => prevState + 1);
                                 }
                             })
                         })
                     })
-                    setIps(data.length);
                 })
         }
 
@@ -898,7 +907,7 @@ const Middle_Page = () => {
 
                 if (response.status === 200) {
                     const data = await response.json();
-                    separateProfiles(data);
+                    // separateProfiles(data);
                     return data; // Return the data
                 } else {
                     setSearchErrors(true);
@@ -953,6 +962,7 @@ const Middle_Page = () => {
                 fetchPublicationsSchool(schoolFaculty).then(() => {
                     fetchProjectsSchool(schoolFaculty).then(() => {
                         fetchIPsSchool(schoolFaculty).then(() => {
+                            separateProfiles(schoolFaculty);
                             if (searchErrorsCounter === 4) {
                                 setSearchErrors(true);
                             }
@@ -998,97 +1008,97 @@ const Middle_Page = () => {
     }
 
     // Sorting Card for School
-    const sortCardsforschool = (x) => {
-        const sortedCards = Profile.filter((profile) => {
-            const projectCount = profile?.[x];
-            schools = {}
-            return projectCount > 0;
-        }).sort((a, b) => {
-            const projectCountA = a?.[x];
-            const projectCountB = b?.[x];
-            // Sort in descending order
-            return projectCountB - projectCountA;
-        }).map((profile, index) => {
-            return (
-                <>
-                    <div key={index} className={"Card-Profile"} >
-                        <div className={"Card-Header"}>
-                            <div className={"Card-Image"}>
-                                <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
-                            </div>
-                            <div className={"Card-Button"}>
-                                <Button variant={"outline-primary"} onClick={() => {
-                                    handleProfile(profile.Code, profile.Name);
-                                }}>Visit Profile</Button>
-                            </div>
-                        </div>
-                        <div className={"Card-Body"}>
-                            <div className={"Card-Title"}>
-                                <h2>{profile.Name}</h2>
-                            </div>
-                            <div className={"Card-Email"}>
-                                <h3>{profile.e_mail}</h3>
-                            </div>
-                            <div className={"Card-Text"}>
-                                <p>{profile.School}</p>
-                            </div>
-                            {Parameter.option === "name" ? "" :
-                                Parameter.option === "school" ?
-                                    <><div className={"Card-Text"}>
-                                        {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
-                                            <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
-                                        }
-                                    </div>
-                                        <div className={"Card-Text"}>
-                                            {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
-                                                <span><i>Projects</i>: <strong style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
-                                            }
-                                        </div>
-                                        <div className={"Card-Text"}>
-                                            {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
-                                                <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
-                                            }
-                                        </div></>
-                                    :
-                                    <>
+    // const sortCardsforschool = (x) => {
+    //     const sortedCards = Profile.filter((profile) => {
+    //         const projectCount = profile?.[x];
+    //         schools = {}
+    //         return projectCount > 0;
+    //     }).sort((a, b) => {
+    //         const projectCountA = a?.[x];
+    //         const projectCountB = b?.[x];
+    //         // Sort in descending order
+    //         return projectCountB - projectCountA;
+    //     }).map((profile, index) => {
+    //         return (
+    //             <>
+    //                 <div key={index} className={"Card-Profile"} >
+    //                     <div className={"Card-Header"}>
+    //                         <div className={"Card-Image"}>
+    //                             <img src={profile.Image_URL.trim() === "" ? process.env.PUBLIC_URL + "/Images/Profile Images/Profile_Vector.jpg" : "data:image/png;base64," + atob(profile.Image_URL)} alt={"Avatar"} />
+    //                         </div>
+    //                         <div className={"Card-Button"}>
+    //                             <Button variant={"outline-primary"} onClick={() => {
+    //                                 handleProfile(profile.Code, profile.Name);
+    //                             }}>Visit Profile</Button>
+    //                         </div>
+    //                     </div>
+    //                     <div className={"Card-Body"}>
+    //                         <div className={"Card-Title"}>
+    //                             <h2>{profile.Name}</h2>
+    //                         </div>
+    //                         <div className={"Card-Email"}>
+    //                             <h3>{profile.e_mail}</h3>
+    //                         </div>
+    //                         <div className={"Card-Text"}>
+    //                             <p>{profile.School}</p>
+    //                         </div>
+    //                         {Parameter.option === "name" ? "" :
+    //                             Parameter.option === "school" ?
+    //                                 <><div className={"Card-Text"}>
+    //                                     {profile?.no_of_publications === 0 || profile?.no_of_publications === undefined ? "" :
+    //                                         <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{profile?.no_of_publications}</h6></span>
+    //                                     }
+    //                                 </div>
+    //                                     <div className={"Card-Text"}>
+    //                                         {profile?.no_of_projects === 0 || profile?.no_of_projects === undefined ? "" :
+    //                                             <span><i>Projects</i>: <strong style={{ display: "inline" }}>{profile?.no_of_projects}</strong></span>
+    //                                         }
+    //                                     </div>
+    //                                     <div className={"Card-Text"}>
+    //                                         {profile?.no_of_IPs === 0 || profile?.no_of_IPs === undefined ? "" :
+    //                                             <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{profile?.no_of_IPs}</h6></span>
+    //                                         }
+    //                                     </div></>
+    //                                 :
+    //                                 <>
 
-                                        <div className={"Card-Text"}>
-                                            {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
-                                                <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
-                                                    <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
-                                                </button>
-                                            }
-                                        </div>
+    //                                     <div className={"Card-Text"}>
+    //                                         {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
+    //                                             <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "publications")}>
+    //                                                 <span><i>Publications</i>: <h6 style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Publications}</h6></span>
+    //                                             </button>
+    //                                         }
+    //                                     </div>
 
-                                        <div className={"Card-Text"}>
-                                            {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" :
-                                                <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
+    //                                     <div className={"Card-Text"}>
+    //                                         {AuthorIDs.current[profile.Code].Projects === 0 || AuthorIDs.current[profile.Code].Projects === undefined ? "" :
+    //                                             <button style={{ color: "black", margin: 0, padding: 0 }} className={"Button-Style"} onClick={() => project_Publications_Ips_Faculty(profile.Code, "projects")}>
 
-                                                    <span><i>Projects</i>: <strong style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
-                                                </button>
-                                            }
-                                        </div>
-                                        <div className={"Card-Text"}>
-                                            {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
-                                                ""
-                                            ) : (
-                                                <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
-                                                    project_Publications_Ips_Faculty(profile.Code, "IP");
-                                                }}>
-                                                    <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
-                                                </button>
-                                            )}
-                                        </div>
-                                    </>
-                            }
-                        </div>
-                    </div>
-                </>
+    //                                                 <span><i>Projects</i>: <strong style={{ display: "inline" }}>{AuthorIDs.current[profile.Code].Projects}</strong></span>
+    //                                             </button>
+    //                                         }
+    //                                     </div>
+    //                                     <div className={"Card-Text"}>
+    //                                         {AuthorIDs.current[profile.Code].IPs === 0 || AuthorIDs.current[profile.Code].IPs === undefined ? (
+    //                                             ""
+    //                                         ) : (
+    //                                             <button style={{ color: "black", margin: 0, padding: 0 }} onClick={() => {
+    //                                                 project_Publications_Ips_Faculty(profile.Code, "IP");
+    //                                             }}>
+    //                                                 <span><i>IPs</i>: <h6 style={{ display: "inline", margin: 0, padding: 0 }}>{AuthorIDs.current[profile.Code].IPs}</h6></span>
+    //                                             </button>
+    //                                         )}
+    //                                     </div>
+    //                                 </>
+    //                         }
+    //                     </div>
+    //                 </div>
+    //             </>
 
-            )
-        })
-        return sortedCards;
-    }
+    //         )
+    //     })
+    //     return sortedCards;
+    // }
     // Sorting Card for Research Area
     const sortCards = (x) => {
         const sortedCards = Profile.filter((profile) => {
@@ -1128,7 +1138,7 @@ const Middle_Page = () => {
                             <div className={"Card-Text"}>
                                 <p>{profile.School}</p>
                             </div>
-                            {Parameter.option === "name" || Parameter.option === "school" ? "" :
+                            {Parameter.option === "name" ? "" :
                                 <>
                                     <div className={"Card-Text"}>
                                         {AuthorIDs.current[profile.Code].Publications === 0 || AuthorIDs.current[profile.Code].Publications === undefined ? "" :
@@ -1372,7 +1382,7 @@ const Middle_Page = () => {
             <h4 style={{ textAlign: "center" }}>Showing results for: {searchWord.toUpperCase()}</h4>
             {Parameter.option === "school" && (
                 <>
-                    <div className="result-stats nonclickable row">
+                    {/* <div className="result-stats nonclickable row">
                         {Profile.length > 0 && (
                             <button>
                                 Experts: <h6>{Profile.length}</h6>
@@ -1393,9 +1403,9 @@ const Middle_Page = () => {
                                 Intellectual Property: <h6>{lengthCalculator("ips")}</h6>
                             </button>
                         )}
-                    </div>
+                    </div> */}
 
-                    <div className="result-stats row">
+                    {/* <div className="result-stats row">
                         {filteredLabData.length > 0 && (
                             <>
                                 {<button onClick={() => labsAndIndustryData(Parameter.school, 'lab')}>
@@ -1405,7 +1415,7 @@ const Middle_Page = () => {
                                 </button>}
                             </>
                         )}
-                    </div>
+                    </div> */}
                     <div className="school_visit_icon">
                         <img onClick={handlevisitschool} src={schoolIcon} alt="visit school icon" />
                     </div>
@@ -1413,7 +1423,7 @@ const Middle_Page = () => {
                 </>
 
             )}
-            {Parameter.option === "area_expertise" && (
+            {(Parameter.option === "area_expertise" || Parameter.option === "school") && (
                 <div className="result-stats row">
                     {Experts !== 0 && (
                         <button>
@@ -1422,33 +1432,33 @@ const Middle_Page = () => {
                     )}
                     {publications !== 0 && (
                         <button onClick={() => handleButtonClick(DisplayPublications)}>
-                            Publications: <h6>{DisplayPublications.length}</h6>
+                            Publications: <h6>{publications}</h6>
                         </button>
                     )}
                     {projects !== 0 && (
                         <button onClick={() => handleButtonClick(DisplayProjects)}>
-                            Projects: <h6>{DisplayProjects.filter(project => project.copi_ids[0]?.project_status !== "submitted").length}</h6>
+                            Projects: <h6>{projects}</h6>
                         </button>
                     )}
                     {ips !== 0 && (
                         <button onClick={() => handleButtonClick(DisplayIPs)}>
-                            Intellectual Property: <h6>{DisplayIPs.length}</h6>
+                            Intellectual Property: <h6>{ips}</h6>
                         </button>
                     )}
                     {(
                         <>
-                            {filteredLabData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'lab')}>
+                            {filteredLabData.length > 0 && <button onClick={() => labsAndIndustryData('lab')}>
                                 Lab Equipment: <h6>
                                     {filteredLabData.length}
                                 </h6>
                             </button>}
-                            {filteredIndustryData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'industry')}>
+                            {filteredIndustryData.length > 0 && <button onClick={() => labsAndIndustryData('industry')}>
                                 Industry:
                                 <h6>
                                     {filteredIndustryData.length}
                                 </h6>
                             </button>}
-                            {filteredMouData.length > 0 && <button onClick={() => labsAndIndustryData(Parameter.search, 'mou')}>
+                            {filteredMouData.length > 0 && <button onClick={() => labsAndIndustryData('mou')}>
                                 MOUs:
                                 <h6>
                                     {filteredMouData.length}
