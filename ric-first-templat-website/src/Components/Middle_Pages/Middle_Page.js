@@ -15,6 +15,7 @@ import labData from "../../APIs/labs.json";
 import MouData from "../../APIs/mou.json";
 import schoolIcon from "../../Icons/school.png";
 import LoadingComponent from "../Loading/LoadingComponent";
+import { counter } from "@fortawesome/fontawesome-svg-core";
 
 
 const Middle_Page = () => {
@@ -117,6 +118,10 @@ const Middle_Page = () => {
     };
 
     const handleButtonClick = (data) => {
+        if(data === undefined || data === null || data?.length === 0){
+            return;
+        }
+
         setModalData(data);
         setIsModalOpen(true);
     };
@@ -664,9 +669,14 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
-                    setDisplayPublications(data);
-                    // setPublications(data);
-                    setPublications(0);
+                    const pulicationarray = [];
+                    data.forEach((publication) => {
+                        if (!pulicationarray.includes(publication.journal_paper_id)) {
+                            pulicationarray.push(publication.journal_paper_id);
+                        }
+                    })
+                    setPublications(pulicationarray.length);
+
                     schoolFaculty.map((faculty) => {
                         let profileData = {
                             Publications: 0,
@@ -675,12 +685,12 @@ const Middle_Page = () => {
                         }
                         AuthorIDs.current[faculty.code] = profileData;
                         data?.map((publication) => {
-                                if (publication.co_author_faculty_staff_id.includes(faculty.code)) {
+                                if (publication.cmsid.includes(faculty.code)) {
                                     AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
-                                    setPublications(prevState => prevState + 1);
                                 }
                         })
                     });
+
                 })
         }
 
@@ -767,11 +777,11 @@ const Middle_Page = () => {
                         if (project["project_status"].includes("Submitted") || project["project_type"] === "Defense" || project["project_status"].includes("Cancelled/Rejected")) {
                         }
                         else {
+                            project_counter = project_counter + 1;
                             project.copi_ids.map((author) => {
                                 schoolFaculty.map((faculty) => {
                                     if (author.co_author_faculty_staff_id.includes(faculty.code)) {
                                         AuthorIDs.current[faculty.code].Projects = AuthorIDs.current[faculty.code].Projects + 1;
-                                        project_counter = project_counter + 1;
                                     }
                                 })
                             })
@@ -854,14 +864,14 @@ const Middle_Page = () => {
                 })
                 .then((data) => {
                     setDisplayIPs(data);
-                    // setIps(data.length);
-                    setIps(0);
+                    setIps(data.length);
+                    // setIps(0);
                     data.map((ip) => {
                         ip.inventor_ids.map((author) => {
                             schoolFaculty.map((faculty) => {
                                 if (author.co_author_faculty_staff_id.includes(faculty.code)) {
                                     AuthorIDs.current[faculty.code].IPs = AuthorIDs.current[faculty.code].IPs + 1;
-                                    setIps(prevState => prevState + 1);
+                                    // setIps(prevState => prevState + 1);
                                 }
                             })
                         })

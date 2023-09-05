@@ -28,7 +28,7 @@ class IP extends Controller
     }
     static function getIPbyschool(string $name): array
     {
-        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&institute".$name);
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&institute=".$name);
         // Decode the JSON response from the API into an associative array.
         $decoded = $response->json();
         // Return the array of intellectual property data.
