@@ -386,7 +386,7 @@ const Middle_Page = () => {
     // //To fetch all publication which are to be displayed in popup
     // async function displayPublications() {
     //     try {
-    //         const response = await fetch("http://localhost:8000/api/Publications", {
+    //         const response = await fetch("https://apix.collaborate.nust.edu.pk/api/Publications", {
     //             method: "POST",
     //             headers: {
     //                 "Content-Type": "application/json",
@@ -411,7 +411,7 @@ const Middle_Page = () => {
     // //To fetch all Projects which are to be displayed in popup
     // async function displayProjects() {
     //     try {
-    //         const response = await fetch("http://localhost:8000/api/Projects", {
+    //         const response = await fetch("https://apix.collaborate.nust.edu.pk/api/Projects", {
     //             method: "POST",
     //             headers: {
     //                 "Content-Type": "application/json",
@@ -436,7 +436,7 @@ const Middle_Page = () => {
     // //To fetch all IPs which are to be displayed in popup
     // async function displayIPs() {
     //     try {
-    //         const response = await fetch("http://localhost:8000/api/IP", {
+    //         const response = await fetch("https://apix.collaborate.nust.edu.pk/api/IP", {
     //             method: "POST",
     //             headers: {
     //                 "Content-Type": "application/json",
@@ -538,7 +538,7 @@ const Middle_Page = () => {
     async function fetchProfileWithID(cmsID) {
         incrementProfileCounter().then();
         const profile = getProfileObject();
-        await fetch(`http://localhost:8000/api/Profile/${cmsID}`)
+        await fetch(`https://apix.collaborate.nust.edu.pk/api/Profile/${cmsID}`)
             .then((response) => {
                 if (response.status === 200) {
                     return response.json();
@@ -579,7 +579,7 @@ const Middle_Page = () => {
 
         // To Fetch Profile of Faculty Based on Name from API
         async function fetchProfile() {
-            await fetch("http://localhost:8000/api/Profile", {
+            await fetch("https://apix.collaborate.nust.edu.pk/api/Profile", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Accept": "application/json" },
                 body: JSON.stringify({ "name": `${Parameter.search}`, })
@@ -600,7 +600,7 @@ const Middle_Page = () => {
 
         // To Fetch Publications of Facu
         async function fetchPublications() {
-            await fetch(`http://localhost:8000/api/Publications`, {
+            await fetch(`https://apix.collaborate.nust.edu.pk/api/Publications`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -653,7 +653,7 @@ const Middle_Page = () => {
         // To Fetch Publications of School's Faculty
         async function fetchPublicationsSchool(schoolFaculty) {
             let school = getSchoolName();
-            await fetch(`http://localhost:8000/api/Publications/school/${school}`, {
+            await fetch(`https://apix.collaborate.nust.edu.pk/api/Publications/school/${school}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -696,7 +696,7 @@ const Middle_Page = () => {
 
         // To Fetch Projects
         async function fetchProjects() {
-            await fetch(`http://localhost:8000/api/Projects`,
+            await fetch(`https://apix.collaborate.nust.edu.pk/api/Projects`,
                 {
                     method: "POST",
                     headers: {
@@ -754,7 +754,7 @@ const Middle_Page = () => {
         // To Fetch Projects of School's Faculty
         async function fetchProjectsSchool(schoolFaculty) {
             let school = getSchoolName();
-            await fetch(`http://localhost:8000/api/Projects/school/${school}`,
+            await fetch(`https://apix.collaborate.nust.edu.pk/api/Projects/school/${school}`,
                 {
                     method: "GET",
                     headers: {
@@ -793,7 +793,7 @@ const Middle_Page = () => {
 
         // To Fetch IPs
         async function fetchIPs() {
-            await fetch(`http://localhost:8000/api/IP`,
+            await fetch(`https://apix.collaborate.nust.edu.pk/api/IP`,
                 {
                     method: "POST",
                     headers: {
@@ -846,7 +846,7 @@ const Middle_Page = () => {
         // To Fetch IPs of School's Faculty
         async function fetchIPsSchool(schoolFaculty) {
             let school = getSchoolName();
-            await fetch(`http://localhost:8000/api/IP/school/${school}`,
+            await fetch(`https://apix.collaborate.nust.edu.pk/api/IP/school/${school}`,
                 {
                     method: "GET",
                     headers: {
@@ -881,7 +881,7 @@ const Middle_Page = () => {
 
         // To Fetch Discipline
         // async function fetchDiscipline() {
-        //     await fetch(`http://localhost:8000/api/Discie`,
+        //     await fetch(`https://apix.collaborate.nust.edu.pk/api/Discie`,
         //         {
         //             method: "POST",
         //             headers: {
@@ -903,7 +903,7 @@ const Middle_Page = () => {
             try {
                 let school = getSchoolName();
 
-                const response = await fetch(`http://localhost:8000/api/schoolFaculty`, {
+                const response = await fetch(`https://apix.collaborate.nust.edu.pk/api/schoolFaculty`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

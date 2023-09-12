@@ -1,5 +1,5 @@
 async function fetchPublicationswithid(x) {
-    return await fetch(`http://localhost:8000/api/Publications/${x}`)
+    return await fetch(`https://apix.collaborate.nust.edu.pk/api/Publications/${x}`)
         .then((response) => response.json())
         .then((data) => {
 
@@ -7,7 +7,7 @@ async function fetchPublicationswithid(x) {
         });
 }
 async function fetchConferenceswithid(x) {
-    return await fetch(`http://localhost:8000/api/Conferences/${x}`)
+    return await fetch(`https://apix.collaborate.nust.edu.pk/api/Conferences/${x}`)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -15,7 +15,7 @@ async function fetchConferenceswithid(x) {
 }
 
 async function fetchProjectswithid(x) {
-    return await fetch(`http://localhost:8000/api/Projects/${x}`)
+    return await fetch(`https://apix.collaborate.nust.edu.pk/api/Projects/${x}`)
         .then((response) => response.json()).then(
             (data) => {
                 const temp = [];
@@ -31,7 +31,7 @@ async function fetchProjectswithid(x) {
 }
 
 async function fetchIPwithid(x) {
-    return await fetch(`http://localhost:8000/api/IP/${x}`)
+    return await fetch(`https://apix.collaborate.nust.edu.pk/api/IP/${x}`)
         .then((response) => response.json()).then(
             (data) => {
                 return data;
@@ -39,7 +39,7 @@ async function fetchIPwithid(x) {
         );
 }
 async function fetchFacultywithid(x) {
-    return await fetch(`http://localhost:8000/api/Profile/${x}`)
+    return await fetch(`https://apix.collaborate.nust.edu.pk/api/Profile/${x}`)
         .then((response) => response.json()).then(
             (data) => {
                 // console.log("data",data);

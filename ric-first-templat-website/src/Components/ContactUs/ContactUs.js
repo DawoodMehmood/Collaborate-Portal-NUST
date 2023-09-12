@@ -1,11 +1,18 @@
 /*
 This file contains code for Contact Us page.
  */
-import {useState} from "react";
-import {Form, Button} from "react-bootstrap";
-import {faMapMarkerAlt, faEnvelope} from "@fortawesome/free-solid-svg-icons";
+
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import { faMapMarkerAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import AddressDiv from "./AddressDiv";
 export default function ContactUs() {
+
+    const form = useRef();
     const MAX_FILE_SIZ = 25000000
     const [formValues, setFormValues] = useState({
         name: "",
@@ -19,32 +26,31 @@ export default function ContactUs() {
         email: false,
         subject: false,
         message: false,
-        fileError:false,
+        fileError: false,
     });
     const [emailSentFlags, setEmailSentFlags] = useState({
-        showDiv:false,
-        showOKMessage:false,
-        showErrorMessage:false
+        showDiv: false,
+        showOKMessage: false,
+        showErrorMessage: false
     })
 
-    const handleFileUpload = (e) =>{
+    const handleFileUpload = (e) => {
         const upFile = e.target.files[0];
-        if(!(upFile.type === 'application/pdf' || upFile.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
-            setFormErrors((prevState)=>({...prevState,fileError: true}))
+        if (!(upFile.type === 'application/pdf' || upFile.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")) {
+            setFormErrors((prevState) => ({ ...prevState, fileError: true }))
             e.target.value = null;
         }
-        else if(upFile.size > MAX_FILE_SIZ)
-        {
-            setFormErrors((prevState)=>({...prevState,fileError: true}))
+        else if (upFile.size > MAX_FILE_SIZ) {
+            setFormErrors((prevState) => ({ ...prevState, fileError: true }))
             e.target.value = null;
         }
-        else{
-                setFormErrors((prevState)=> ({...prevState,fileError: false}))
-                setFormValues(prevState => ({...prevState, file: upFile.name}))
+        else {
+            setFormErrors((prevState) => ({ ...prevState, fileError: false }))
+            setFormValues(prevState => ({ ...prevState, file: upFile.name }))
         }
     }
     const handleSubmit = async (event) => {
-        setEmailSentFlags({showDiv: true, showOKMessage: false, showErrorMessage: false})
+        setEmailSentFlags({ showDiv: true, showOKMessage: false, showErrorMessage: false })
         event.preventDefault();
         let errors = {
             name: false,
@@ -52,27 +58,27 @@ export default function ContactUs() {
             subject: false,
             message: false,
         };
-        if(formValues.name === ""){
+        if (formValues.name === "") {
             errors.name = true;
         }
-        if(formValues.email === ""){
+        if (formValues.email === "") {
             errors.email = true;
         }
-        else{
+        else {
             let email = formValues.email;
             let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            if(!emailRegex.test(email)){
+            if (!emailRegex.test(email)) {
                 errors.email = true;
             }
         }
-        if(formValues.subject === ""){
+        if (formValues.subject === "") {
             errors.subject = true;
         }
-        if(formValues.message === ""){
+        if (formValues.message === "") {
             errors.message = true;
         }
         setFormErrors(errors);
-        if(!errors.name && !errors.email && !errors.subject && !errors.message){
+        if (!errors.name && !errors.email && !errors.subject && !errors.message) {
             // send data to server
             fetch(`http://localhost:8000/api/sendEmail`,
                 {
@@ -83,21 +89,21 @@ export default function ContactUs() {
                     },
                     body: JSON.stringify(
                         {
-                            "name":`${formValues.name}`,
-                            "email":`${formValues.email}`,
-                            "subject":`${formValues.subject}`,
-                            "message":`${formValues.message}`,
+                            "name": `${formValues.name}`,
+                            "email": `${formValues.email}`,
+                            "subject": `${formValues.subject}`,
+                            "message": `${formValues.message}`,
                             // "file":`${formValues.file}`
                         }
                     )
-                }).then((response)=>response.json())
-                .then((data)=>{
+                }).then((response) => response.json())
+                .then((data) => {
                     console.log(data)
-                    if(data.Status === "OK"){
-                        setEmailSentFlags(prevState => ({...prevState, showOKMessage: true, showErrorMessage: false}))
+                    if (data.Status === "OK") {
+                        setEmailSentFlags(prevState => ({ ...prevState, showOKMessage: true, showErrorMessage: false }))
                     }
-                    else{
-                        setEmailSentFlags(prevState => ({...prevState, showOKMessage: false, showErrorMessage: true}))
+                    else {
+                        setEmailSentFlags(prevState => ({ ...prevState, showOKMessage: false, showErrorMessage: true }))
                     }
                 })
 
@@ -105,8 +111,36 @@ export default function ContactUs() {
         }
     }
 
+    const sendEmail = (e) => {
+        e.preventDefault();
 
-    return(
+        emailjs.sendForm('service_3cyqppx', 'template_c5pk7uw', form.current, 'SDspFi_DLdHTR9boF')
+            .then((result) => {
+                console.log(result.text);
+                console.log("Email Sent Successfully")
+                toast.success("Email Sent Successfully", {
+                    style: {
+                        backgroundColor: "#4CAF50",
+                        color: "#ffffff",
+                        fontSize: "14px",
+                    },
+                }); // Show success toast
+                // making empty the form after sending the email
+                form.current.reset();
+            }, (error) => {
+                console.log(error.text);
+                console.log("Email Not Sent")
+                toast.error("Email Not Sent", {
+                    style: {
+                        backgroundColor: "#f44336",
+                        color: "#ffffff",
+                        fontSize: "14px",
+                    },
+                }); // Show error toast
+            });
+    };
+
+    return (
         // Renders a contact form component
         <div className={"ContactUs-div"}>
             <h1>Contact Us</h1>
@@ -116,7 +150,7 @@ export default function ContactUs() {
                 <p>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d293.5880568180212!2d72.98312032430579!3d33.64239765161877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRIC%2C%20NUST!5e0!3m2!1sen!2s!4v1677131633999!5m2!1sen!2s"
-                        width="400" height="300" style = {{border: "0;"}} allowFullScreen="" loading="lazy"
+                        width="400" height="300" style={{ border: "0;" }} allowFullScreen="" loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade">
                     </iframe>
                 </p>
@@ -124,17 +158,17 @@ export default function ContactUs() {
 
             {/* Displays contact information */}
             <div className={"contact-info"}>
-                <AddressDiv icon={faMapMarkerAlt} text={"Research Innovation & Commercialization Center (RIC), H-12, Islamabad"}/>
-                <AddressDiv icon={faEnvelope} text={"collaborate@nust.edu.pk"}/>
+                <AddressDiv icon={faMapMarkerAlt} text={"Research Innovation & Commercialization Center (RIC), H-12, Islamabad"} />
+                <AddressDiv icon={faEnvelope} text={"collaborate@nust.edu.pk"} />
             </div>
 
-            {emailSentFlags.showDiv?<div>
-                {emailSentFlags.showOKMessage?<h3 className={"email-sent-flag"}>Email Sent Successfully</h3>:""}
-                {emailSentFlags.showErrorMessage?<h3 className={"email-sent-flag email-sent-flag-false"}>Could Not Send Email. Try Again</h3>:""}
-            </div>:""}
+            {emailSentFlags.showDiv ? <div>
+                {emailSentFlags.showOKMessage ? <h3 className={"email-sent-flag"}>Email Sent Successfully</h3> : ""}
+                {emailSentFlags.showErrorMessage ? <h3 className={"email-sent-flag email-sent-flag-false"}>Could Not Send Email. Try Again</h3> : ""}
+            </div> : ""}
             {/* Displays a contact form */}
             <div className={"contact-form"}>
-                <Form onSubmit={handleSubmit}>
+                <Form ref={form} onSubmit={sendEmail}>
                     <div className={"contact-form-personal"}>
                         {/* Form field for the user's name */}
                         <Form.Group controlId="formBasicName" className={"formFields"}>
@@ -142,13 +176,14 @@ export default function ContactUs() {
                                 Enter Your Name <span className={"required-symbol"}>*</span>
                                 &nbsp; &nbsp;
                                 {/* Displays an error message if the user hasn't entered their name */}
-                                {!formErrors.name?"":<span className={"error-message"}>Name Required</span>}
+                                {!formErrors.name ? "" : <span className={"error-message"}>Name Required</span>}
                             </Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Enter Your Name"
-                                onChange={async (event)=>{await setFormValues({...formValues, name: event.target.value});}}
-                                value={formValues.name}
+                                name='from_name'
+                            // onChange={async (event) => { await setFormValues({ ...formValues, name: event.target.value }); }}
+                            // value={formValues.name}
                             />
                         </Form.Group>
 
@@ -158,13 +193,14 @@ export default function ContactUs() {
                                 Email address <span className={"required-symbol"}>*</span>
                                 &nbsp; &nbsp;
                                 {/* Displays an error message if the user hasn't entered a valid email */}
-                                {!formErrors.email?"":<span className={"error-message"}>Valid E-Mail Required</span>}
+                                {!formErrors.email ? "" : <span className={"error-message"}>Valid E-Mail Required</span>}
                             </Form.Label>
                             <Form.Control
                                 type="email"
                                 placeholder="Enter email"
-                                onChange={async (event)=>{await setFormValues({...formValues, email: event.target.value});}}
-                                value={formValues.email}
+                                name='user_email'
+                            // onChange={async (event) => { await setFormValues({ ...formValues, email: event.target.value }); }}
+                            // value={formValues.email}
                             />
                         </Form.Group>
                     </div>
@@ -174,25 +210,27 @@ export default function ContactUs() {
                             Message Subject <span className={"required-symbol"}>*</span>
                             &nbsp; &nbsp;
                             {/* Displays an error message if the user hasn't entered a subject */}
-                            {!formErrors.subject?"":<span className={"error-message"}>Subject Required</span>}
+                            {!formErrors.subject ? "" : <span className={"error-message"}>Subject Required</span>}
                         </Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Subject"
-                            onChange={async (event)=>{await setFormValues({...formValues, subject: event.target.value});}}
-                            value={formValues.subject}
+                            name='subject'
+                        // onChange={async (event) => { await setFormValues({ ...formValues, subject: event.target.value }); }}
+                        // value={formValues.subject}
                         />
                     </Form.Group>
                     {/*Message for sending to the server*/}
                     <Form.Group controlId="formBasicMessage" className={"formFields"}>
                         <Form.Label>Message <span className={"required-symbol"}>*</span>
-                            &nbsp; &nbsp;{!formErrors.message?"":<span className={"error-message"}>Message is Empty</span>}
+                            &nbsp; &nbsp;{!formErrors.message ? "" : <span className={"error-message"}>Message is Empty</span>}
                         </Form.Label>
                         <Form.Control
                             as={"textarea"}
                             placeholder="Enter Message"
-                            onChange={async (event)=>{await setFormValues({...formValues, message: event.target.value});}}
-                            value={formValues.message}
+                            name='message'
+                        // onChange={async (event) => { await setFormValues({ ...formValues, message: event.target.value }); }}
+                        // value={formValues.message}
                         />
                     </Form.Group>
                     {/*<Form.Group controlId="formBasicSubject" className={"formFields"}>*/}
@@ -210,6 +248,15 @@ export default function ContactUs() {
                         <Button variant="primary" type="submit" className={"Form-Button"}> Send Message</Button>
                     </Form.Group>
                 </Form>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    closeButton={false} // Remove the close button
+                    style={{
+                        width: "300px", // Apply custom styles to the ToastContainer
+                    }}
+                />
             </div>
 
         </div>
