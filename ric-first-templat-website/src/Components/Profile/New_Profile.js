@@ -545,7 +545,7 @@ const New_Profile = ({
     // let returnValue=false;
 
     // This link is calling the backend and that backend will fetch the Scopus ID of Faculty Member
-    fetch("https://apix.collaborate.nust.edu.pk/api/Author", {
+    fetch("http://localhost:8000/api/Author", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

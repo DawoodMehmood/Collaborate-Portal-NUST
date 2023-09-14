@@ -191,7 +191,7 @@ const Calling_API = () => {
     useEffect(() => {
         // --------------------------------------------------------------------------------------------------------------
         async function fetchPublications() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/Publications/${params.id}`,)
+            await fetch(`http://localhost:8000/api/Publications/${params.id}`,)
                 .then((response) => response.json()).then(
                     (data) => {
 
@@ -232,7 +232,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchProjects() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/Projects/${params.id}`)
+            await fetch(`http://localhost:8000/api/Projects/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
 
@@ -270,7 +270,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchConferences() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/Conferences/${params.id}`)
+            await fetch(`http://localhost:8000/api/Conferences/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
 
@@ -296,7 +296,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchSupervision() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/supervision/${params.id}`)
+            await fetch(`http://localhost:8000/api/supervision/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
                         data.map((item) => {
@@ -324,7 +324,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchTrainings() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/trainings/${params.id}`)
+            await fetch(`http://localhost:8000/api/trainings/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
 
@@ -347,7 +347,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchEditorials() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/Editorials/${params.id}`)
+            await fetch(`http://localhost:8000/api/Editorials/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
                         for (let j = 0; j < data.length; j++) {
@@ -369,7 +369,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchIP() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/IP/${params.id}`)
+            await fetch(`http://localhost:8000/api/IP/${params.id}`)
                 .then((response) => response.json()).then(
                     (data) => {
 
@@ -396,7 +396,7 @@ const Calling_API = () => {
         });
         //--------------------------------------------------------------------------------------------------------------
         async function fetchProfile() {
-            await fetch(`https://apix.collaborate.nust.edu.pk/api/Profile/${params.id}`,)
+            await fetch(`http://localhost:8000/api/Profile/${params.id}`,)
                 .then((response) => response.json()).then(
                     (data) => {
                         for (let j = 0; j < data.length; j++) {

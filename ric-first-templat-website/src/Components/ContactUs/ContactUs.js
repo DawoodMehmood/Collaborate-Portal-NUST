@@ -113,8 +113,16 @@ export default function ContactUs() {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        toast.info("Sending Email", {
+            style: {
+                backgroundColor: "#2196F3",
+                color: "#ffffff",
+                fontSize: "14px",
+            },
+        });
 
         emailjs.sendForm('service_3cyqppx', 'template_c5pk7uw', form.current, 'SDspFi_DLdHTR9boF')
+        // showing toast that email is sending
             .then((result) => {
                 console.log(result.text);
                 console.log("Email Sent Successfully")
