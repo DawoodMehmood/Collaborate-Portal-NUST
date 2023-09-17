@@ -55,6 +55,10 @@ Route::get('/Projects/school/{name}',function ($SchoolName){
 Route::get('/Conferences/{ID}',function ($ID){
     return Conferences::getConferences($ID);
 });
+// Get conferences by School Name
+Route::get('/Conferences/school/{name}',function ($SchoolName){
+    return Conferences::getConferencesbySchool($SchoolName);
+});
 
 // Get profile
 Route::post('/Profile',[Profile::class,'getProfile']);
