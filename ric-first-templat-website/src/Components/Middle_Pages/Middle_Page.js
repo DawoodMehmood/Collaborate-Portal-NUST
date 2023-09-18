@@ -118,7 +118,7 @@ const Middle_Page = () => {
     };
 
     const handleButtonClick = (data) => {
-        if(data === undefined || data === null || data?.length === 0){
+        if (data === undefined || data === null || data?.length === 0) {
             return;
         }
 
@@ -600,8 +600,8 @@ const Middle_Page = () => {
 
 
 
-         // To Fetch Publications of Facu
-         async function fetchPublications() {
+        // To Fetch Publications of Facu
+        async function fetchPublications() {
             await fetch(`http://localhost:8000/api/Publications`, {
                 method: "POST",
                 headers: {
@@ -653,7 +653,7 @@ const Middle_Page = () => {
                 })
         }
         // To Fetch Conferences of School's Faculty
-        async function fetchConferencesSchool(pulicationarray,schoolFaculty) {
+        async function fetchConferencesSchool(pulicationarray, schoolFaculty) {
             let school = getSchoolName();
             await fetch(`http://localhost:8000/api/Conferences/school/${school}`, {
                 method: "GET",
@@ -679,10 +679,12 @@ const Middle_Page = () => {
                     setPublications(pulicationarray.length);
 
                     schoolFaculty.map((faculty) => {
+                        const conferenceCheck = [];
                         data?.map((publication) => {
-                                if (publication.cmsid.includes(faculty.code)) {
-                                    AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
-                                }
+                            if (publication.cmsid.includes(faculty.code) && !conferenceCheck.includes(publication.conf_publication_id)) {
+                                AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
+                                conferenceCheck.push(publication.conf_publication_id);
+                            }
                         })
                     });
                 })
@@ -774,15 +776,15 @@ const Middle_Page = () => {
                         }
                         AuthorIDs.current[faculty.code] = profileData;
                         data?.map((publication) => {
-                                if (publication.cmsid.includes(faculty.code)) {
-                                    AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
-                                }
+                            if (publication.cmsid.includes(faculty.code)) {
+                                AuthorIDs.current[faculty.code].Publications = AuthorIDs.current[faculty.code].Publications + 1;
+                            }
                         })
                     });
                     return pulicationarray;
 
                 }).then((pulicationarray) => {
-                    fetchConferencesSchool(pulicationarray,schoolFaculty);
+                    fetchConferencesSchool(pulicationarray, schoolFaculty);
                 })
         }
 
