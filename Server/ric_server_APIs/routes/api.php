@@ -40,6 +40,11 @@ Route::get('/Publications/school/{name}',function ($SchoolName){
     return Publications::getPublicationsbyschool($SchoolName);
 });
 
+// Get publications for Outside Nust School
+Route::get('/Publications/outside/{name}',function ($SchoolName){
+    return Publications::getPublicationsbyoutsie($SchoolName);
+});
+
 // Get projects by ID
 Route::get('/Projects/{ID}',function ($ID){
     return Projects::getProjects($ID);
@@ -58,6 +63,10 @@ Route::get('/Conferences/{ID}',function ($ID){
 // Get conferences by School Name
 Route::get('/Conferences/school/{name}',function ($SchoolName){
     return Conferences::getConferencesbySchool($SchoolName);
+});
+// Get conferences for Outside Nust School Name
+Route::get('/Conferences/outside/{name}',function ($SchoolName){
+    return Conferences::getConferencesbyoutside($SchoolName);
 });
 
 // Get profile

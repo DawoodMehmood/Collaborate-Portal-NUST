@@ -26,5 +26,13 @@ class Conferences extends Controller
         // Returning the desired data from the json response
         return $response->json()['ric_expert_portal_conference_pub_author_cms_json_data'];
     }
+    static function getConferencesbyoutside($name){
+        // https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_conference_pub_author_cms&auth=fc22151322bfdd2c3f0626798c9198fg&rows=10&institute=abc&outsideinstitute=abc
+        // Http request to get data from the API
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_conference_pub_author_cms&auth=fc22151322bfdd2c3f0626798c9198fg&rows=10000&outsideinstitute=".$name);
+
+        // Returning the desired data from the json response
+        return $response->json()['ric_expert_portal_conference_pub_author_cms_json_data'];
+    }
 
 }
