@@ -689,20 +689,15 @@ const Middle_Page = () => {
                     });
                 })
         }
-
-        // To Fetch Publications of Facu
-        async function fetchPublications() {
-            await fetch(`http://localhost:8000/api/Publications`, {
-                method: "POST",
+        // To Fetch Conferences of School's that are outside nust
+        async function fetchConferencesOutside(pulicationarray, schoolFaculty) {
+            let school = params.search;
+            await fetch(`http://localhost:8000/api/Conferences/outside/${school}`, {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
-                },
-                body: JSON.stringify(
-                    {
-                        "title": `${Parameter.search}`,
-                    }
-                )
+                }
             })
                 .then((response) => {
                     if (response.status === 200) {
@@ -713,35 +708,34 @@ const Middle_Page = () => {
                     }
                 })
                 .then((data) => {
-                    setDisplayPublications(data);
-                    setPublications(data.length)
-                    setProfileCounter(0)
-                    for (let j = 0; j < data.length; j++) {
-                        const authors = data[j]["author_ids"];
-                        for (let i = 0; i < authors.length; i++) {
-                            if (authors[i]["affiliation"] === "nust") {
-                                const CmsId = authors[i]["co_author_faculty_staff_id"].split(" - ")[1];
-                                if (CmsId === undefined) continue;
-                                let profileData = {
-                                    Publications: 1,
-                                    Projects: 0,
-                                    IPs: 0,
-                                }
-                                if (AuthorIDs.current.hasOwnProperty(CmsId)) {
-                                    let currentValues = AuthorIDs.current[CmsId];
-                                    currentValues.Publications = currentValues.Publications + 1
-                                    AuthorIDs.current[CmsId] = currentValues;
-                                }
-                                else {
-                                    AuthorIDs.current[CmsId] = profileData;
-                                    fetchProfileWithID(CmsId);
-
-                                }
-                            }
+                    data.forEach((publication) => {
+                        if (!pulicationarray.includes(publication.conf_publication_id)) {
+                            pulicationarray.push(publication.conf_publication_id);
                         }
-                    }
+                    })
+                    setPublications(pulicationarray.length);
+                    
+
+                    data?.map((publication) => {
+                        let profileData = {
+                            Publications: 1,
+                            Projects: 0,
+                            IPs: 0,
+                        }
+                        if (AuthorIDs.current.hasOwnProperty(publication.cmsid) ) {
+                            let currentValues = AuthorIDs.current[publication.cmsid];
+                            currentValues.Publications = currentValues.Publications + 1
+                            AuthorIDs.current[publication.cmsid] = currentValues;
+                        }
+                        else {
+                            AuthorIDs.current[publication.cmsid] = profileData;
+                            fetchProfileWithID(publication.cmsid);
+                        }
+                    })
+
                 })
         }
+
         // To Fetch Publications of School's Faculty
         async function fetchPublicationsSchool(schoolFaculty) {
             let school = getSchoolName();
@@ -785,6 +779,53 @@ const Middle_Page = () => {
 
                 }).then((pulicationarray) => {
                     fetchConferencesSchool(pulicationarray, schoolFaculty);
+                })
+        }
+        // To Fetch Publications of School's Faculty
+        async function fetchPublicationsOutside(schoolFaculty) {
+            let school = params.search;
+            await fetch(`http://localhost:8000/api/Publications/outside/${school}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+                .then((response) => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    else {
+                        setSearchErrorsCounter(prevState => prevState + 1)
+                    }
+                })
+                .then((data) => {
+                    const pulicationarray = [];
+                    data.forEach((publication) => {
+                        if (!pulicationarray.includes(publication.journal_paper_id)) {
+                            pulicationarray.push(publication.journal_paper_id);
+                        }
+                    })
+                    data?.map((publication) => {
+                        let profileData = {
+                            Publications: 1,
+                            Projects: 0,
+                            IPs: 0,
+                        }
+                        if (AuthorIDs.current.hasOwnProperty(publication.cmsid)) {
+                            let currentValues = AuthorIDs.current[publication.cmsid];
+                            currentValues.Publications = currentValues.Publications + 1
+                            AuthorIDs.current[publication.cmsid] = currentValues;
+                        }
+                        else {
+                            AuthorIDs.current[publication.cmsid] = profileData;
+                            fetchProfileWithID(publication.cmsid);
+                        }
+                    });
+                    return pulicationarray;
+
+                }).then((pulicationarray) => {
+                    fetchConferencesOutside(pulicationarray);
                 })
         }
 
@@ -1050,6 +1091,14 @@ const Middle_Page = () => {
                         changeLoading().then()
                     });
                 });
+            });
+        }
+        else if (Parameter.option === "outside") {
+            fetchPublicationsOutside().then(() => {
+                if (searchErrorsCounter === 3) {
+                    setSearchErrors(true);
+                }
+                changeLoading().then()
             });
         }
         // else if(Parameter.option === "discipline"){

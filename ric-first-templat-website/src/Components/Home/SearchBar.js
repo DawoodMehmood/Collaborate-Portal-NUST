@@ -39,6 +39,8 @@ const SearchBar = () => {
             placeholder = "Enter faculty name (optional)";
         } else if (selectedOption === "area_expertise") {
             placeholder = "Keyword(s)";
+        }else if (selectedOption === "outside") {
+            placeholder = "Enter University Name";
         }
 
 
@@ -96,6 +98,10 @@ const SearchBar = () => {
                 navigation(`/search/${search.option}/${search.search}/${search.schoolOption}`);
                 window.location.reload();
             }
+        }
+        else if (search.option === "outside") {
+            navigation(`/find/outside/${search.search}`);
+            window.location.reload();
         }
         else if (search.search === "") {
             return "";
@@ -166,6 +172,9 @@ const SearchBar = () => {
                         </option>
                         <option className={"option"} value={"school"}>
                             School
+                        </option>
+                        <option className={"option"} value={"outside"}>
+                            Outside Nust
                         </option>
                     </Form.Select>
 

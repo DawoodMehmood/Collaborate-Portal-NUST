@@ -42,7 +42,7 @@ Route::get('/Publications/school/{name}',function ($SchoolName){
 
 // Get publications for Outside Nust School
 Route::get('/Publications/outside/{name}',function ($SchoolName){
-    return Publications::getPublicationsbyoutsie($SchoolName);
+    return Publications::getPublicationsbyoutside($SchoolName);
 });
 
 // Get projects by ID
