@@ -74,5 +74,10 @@ class Publications extends Controller
         return $decoded["ric_expert_portal_journal_pub_json_data"];
     }
 
-
+    static function getPublicationsbysdg(string $name): mixed
+    {
+        $response = Http::withoutVerifying()->get("https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub_author_cms&auth=fc22151322bfdd2c3f0626798c9198cd&rows=10000&sdg=".$name);
+        // Return the JSON data for publications
+        return $response->json()["ric_expert_portal_journal_pub_author_cms_json_data"];
+    }
 }

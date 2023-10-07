@@ -45,6 +45,11 @@ Route::get('/Publications/outside/{name}',function ($SchoolName){
     return Publications::getPublicationsbyoutside($SchoolName);
 });
 
+// Get publications With respect to SDG Name
+Route::get('/Publications/sdg/{name}',function ($sdgName){
+    return Publications::getPublicationsbysdg($sdgName);
+});
+
 // Get projects by ID
 Route::get('/Projects/{ID}',function ($ID){
     return Projects::getProjects($ID);
