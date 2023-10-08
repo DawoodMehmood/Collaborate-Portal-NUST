@@ -23,9 +23,9 @@
     gap: unset;
     flex:80%;
 }
-.Searching option{
+/* .Searching option{
     text-align: center;
-}
+} */
 .searchButtonDiv{
     flex: 5%;
     height: max-content;

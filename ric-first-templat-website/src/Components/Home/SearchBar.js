@@ -21,15 +21,25 @@ const SearchBar = () => {
 
 
     const [showSchool, setShowSchool] = useState(false) // Default value of showSchool flag
+    const [showSDG, setShowSDG] = useState(false) // Default value of showSchool flag
     const [placeholderValue, setPlaceholderValue] = useState("Keyword"); // Placeholder value for the search input
+    const [disableSearch, setdisableSearch] = useState(false); // Placeholder value for the search input
 
     // Function to handle search option change
     async function handleOptionChange(e) {
+        setdisableSearch(false) // Hide school selector for other options
         const selectedOption = e.target.value;
         if (e.target.value === "school") {
             setShowSchool(true) // Show school selector if school option is selected
-        } else {
+            setShowSDG(false) // Hide school selector for other options
+        }
+        else if (e.target.value === "sdg") {
+            setShowSDG(true) // Show school selector if school option is selected
             setShowSchool(false) // Hide school selector for other options
+        }
+        else {
+            setShowSchool(false) // Hide school selector for other options
+            setShowSDG(false) // Hide school selector for other options
         }
 
         let placeholder = "Keyword";
@@ -39,8 +49,12 @@ const SearchBar = () => {
             placeholder = "Enter faculty name (optional)";
         } else if (selectedOption === "area_expertise") {
             placeholder = "Keyword(s)";
-        }else if (selectedOption === "outside") {
+        } else if (selectedOption === "outside") {
             placeholder = "Enter University Name";
+        }
+        else if (selectedOption === "sdg") {
+            placeholder = "";
+            setdisableSearch(true);
         }
 
 
@@ -99,6 +113,15 @@ const SearchBar = () => {
                 window.location.reload();
             }
         }
+        else if (search.option === "sdg") {
+            if (search.schoolOption === "select") {
+                return "";
+            }
+            // Navigate to search results page with selected search option and school option
+            navigation(`/search/${search.option}/Result/${search.schoolOption}`);
+            window.location.reload();
+
+        }
         else if (search.option === "outside") {
             navigation(`/find/outside/${search.search}`);
             window.location.reload();
@@ -154,6 +177,32 @@ const SearchBar = () => {
         )
     });
 
+    const sdgNames = [
+        "No poverty",
+        "Zero Hunger",
+        "Good Health and Well-being",
+        "Quality Education",
+        "Gender Equality",
+        "Clean Water and Sanitation",
+        "Affordable and Clean Energy",
+        "Decent Work and Economic Growth",
+        "Industry, Innovation and Infrastructure",
+        "Reduced Inequality",
+        "Sustainable cities and Communities",
+        "Responsible Consumption and Production",
+        "Climate Action",
+        "Life Below Water",
+        "Life on Land",
+        "Peace and Justice Strong Institutions",
+        "Partnerships to achieve the Goal"
+    ].sort().map((sdgNames, index) => {
+        return (
+            <option className={"option"} value={sdgNames} key={index}>
+                {index + 1}-{sdgNames}
+            </option>
+        )
+    });
+
     return (
         <div className={"SearchBar"}>
             {/*Form to handle search query*/}
@@ -176,19 +225,37 @@ const SearchBar = () => {
                         <option className={"option"} value={"outside"}>
                             Outside Nust
                         </option>
+                        <option className={"option"} value={"sdg"}>
+                            SDG
+                        </option>
                     </Form.Select>
 
                     {/*Dropdown to select school*/}
-                    {!showSchool ? "" :
+                    {showSchool ?
                         <Form.Select className={"option_selector school_selector"} name={"school_option"} onChange={handleSchoolOptionChange}>
                             <option className={"options"} defaultValue={"select"} value={"select"}>
                                 Select School
                             </option>
                             {schoolNames}
-                        </Form.Select>}
+                        </Form.Select>
+                        : ""
+                    }
+
+                    {/*Dropdown to select by SDG*/}
+                    {showSDG ?
+                        <Form.Select className={"option_selector school_selector"} name={"sdg_option"} onChange={handleSchoolOptionChange}>
+                            <option className={"options"} defaultValue={"select"} value={"select"}>
+                                Select Sdg
+                            </option>
+                            {sdgNames}
+                        </Form.Select>
+                        : ""
+                    }
 
                     {/*Input field to enter search keyword*/}
-                    <Form.Control className={"search"} type="text" placeholder={placeholderValue} onChange={handleSearchChange} value={search.search} />
+                    {disableSearch ? <Form.Control className={"search"} type="text" placeholder={placeholderValue} onChange={handleSearchChange} value={search.search} disabled /> :
+                        <Form.Control className={"search"} type="text" placeholder={placeholderValue} onChange={handleSearchChange} value={search.search} />
+                    }
                 </div>
                 {/*Button to submit search query*/}
                 <div className={"searchButtonDiv"}>

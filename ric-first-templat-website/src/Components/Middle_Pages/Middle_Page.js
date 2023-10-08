@@ -714,7 +714,7 @@ const Middle_Page = () => {
                         }
                     })
                     setPublications(pulicationarray.length);
-                    
+
 
                     data?.map((publication) => {
                         let profileData = {
@@ -722,7 +722,7 @@ const Middle_Page = () => {
                             Projects: 0,
                             IPs: 0,
                         }
-                        if (AuthorIDs.current.hasOwnProperty(publication.cmsid) ) {
+                        if (AuthorIDs.current.hasOwnProperty(publication.cmsid)) {
                             let currentValues = AuthorIDs.current[publication.cmsid];
                             currentValues.Publications = currentValues.Publications + 1
                             AuthorIDs.current[publication.cmsid] = currentValues;
@@ -781,7 +781,7 @@ const Middle_Page = () => {
                     fetchConferencesSchool(pulicationarray, schoolFaculty);
                 })
         }
-        // To Fetch Publications of School's Faculty
+        // To Fetch Publications of School's Faculty From outside nust
         async function fetchPublicationsOutside(schoolFaculty) {
             let school = params.search;
             await fetch(`http://localhost:8000/api/Publications/outside/${school}`, {
@@ -806,6 +806,53 @@ const Middle_Page = () => {
                             pulicationarray.push(publication.journal_paper_id);
                         }
                     })
+                    data?.map((publication) => {
+                        let profileData = {
+                            Publications: 1,
+                            Projects: 0,
+                            IPs: 0,
+                        }
+                        if (AuthorIDs.current.hasOwnProperty(publication.cmsid)) {
+                            let currentValues = AuthorIDs.current[publication.cmsid];
+                            currentValues.Publications = currentValues.Publications + 1
+                            AuthorIDs.current[publication.cmsid] = currentValues;
+                        }
+                        else {
+                            AuthorIDs.current[publication.cmsid] = profileData;
+                            fetchProfileWithID(publication.cmsid);
+                        }
+                    });
+                    return pulicationarray;
+
+                }).then((pulicationarray) => {
+                    fetchConferencesOutside(pulicationarray);
+                })
+        }
+        // To Fetch Publications of School's Faculty From outside nust
+        async function fetchPublicationsSdg() {
+            await fetch(`http://localhost:8000/api/Publications/sdg/${Parameter.school}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+                .then((response) => {
+                    if (response.status === 200) {
+                        return response.json();
+                    }
+                    else {
+                        setSearchErrorsCounter(prevState => prevState + 1)
+                    }
+                })
+                .then((data) => {
+                    const pulicationarray = [];
+                    data.forEach((publication) => {
+                        if (!pulicationarray.includes(publication.journal_paper_id)) {
+                            pulicationarray.push(publication.journal_paper_id);
+                        }
+                    })
+                    setPublications(pulicationarray.length);
                     data?.map((publication) => {
                         let profileData = {
                             Publications: 1,
@@ -1095,6 +1142,14 @@ const Middle_Page = () => {
         }
         else if (Parameter.option === "outside") {
             fetchPublicationsOutside().then(() => {
+                if (searchErrorsCounter === 3) {
+                    setSearchErrors(true);
+                }
+                changeLoading().then()
+            });
+        }
+        else if (Parameter.option === "sdg") {
+            fetchPublicationsSdg().then(() => {
                 if (searchErrorsCounter === 3) {
                     setSearchErrors(true);
                 }
