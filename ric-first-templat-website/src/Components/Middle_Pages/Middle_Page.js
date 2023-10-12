@@ -827,9 +827,7 @@ const Middle_Page = () => {
                                 AuthorIDs.current[cmsid] = profileData;
                                 fetchProfileWithID(cmsid);
                             }
-
                         })
-
                     });
                     setPublications(pulicationarray.length);
 

@@ -191,8 +191,6 @@ const New_Profile = ({
   }, [publicationIdsArray]);
 
 
-  console.log("publicationIdsArray", publicationIdsArray);
-  console.log("fetchedData", fetchedData);
   // This function is responsible for showing the ResearchProject of Faculty Member
   const showmainprofile = () => {
     setTabOptions({
@@ -209,7 +207,6 @@ const New_Profile = ({
 
         researchProjects_National_tab: true,
       });
-      console.log("hello world")
     } else {
       setTabOptions({
 
@@ -920,7 +917,6 @@ const New_Profile = ({
   useEffect(() => {
     // console.log("Fetched Images: ", fetchedImagesComplete);
     if (fetchedImagesComplete && Research_Images.length < 3) {
-      console.log("Fetched Images Copmleted: ", fetchedImagesComplete);
 
       /*
             Update This Portion
@@ -939,8 +935,7 @@ const New_Profile = ({
     setIcondata(iconjson.filter((item) => (item["CMS ID of PI"].includes(id))));
 
   }, []);
-  // console.log("Web of Science ID: ", webOfScienceId);
-  // console.log(name);
+
   // This method is called whenever "Download CV" button is clicked on Profile Page and it is also responsible for creating PDF for CV
   const openCV = () => {
     const check = document.getElementById("roundImageFaculty");
@@ -974,7 +969,6 @@ const New_Profile = ({
 
       // Calculate the width of the text field based on the length of the profile name
       const nameTextWidth = doc.getTextWidth(profile[0].Name);
-      console.log("nameTextWidth:", nameTextWidth);
 
       // Assume profile[0] contains user data including email and Twitter handle
       let hasEmail = profile[0].e_mail.trim() !== "";
