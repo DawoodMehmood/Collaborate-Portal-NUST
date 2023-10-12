@@ -801,32 +801,44 @@ const Middle_Page = () => {
                 })
                 .then((data) => {
                     const pulicationarray = [];
+                    const publicationid = [];
+
                     data.forEach((publication) => {
-                        if (!pulicationarray.includes(publication.journal_paper_id)) {
-                            pulicationarray.push(publication.journal_paper_id);
+                        if (!publicationid.includes(publication.id)) {
+                            publicationid.push(publication.id);
+                            pulicationarray.push(publication);
                         }
                     })
-                    data?.map((publication) => {
+                    pulicationarray?.map((publication) => {
                         let profileData = {
                             Publications: 1,
                             Projects: 0,
                             IPs: 0,
                         }
-                        if (AuthorIDs.current.hasOwnProperty(publication.cmsid)) {
-                            let currentValues = AuthorIDs.current[publication.cmsid];
-                            currentValues.Publications = currentValues.Publications + 1
-                            AuthorIDs.current[publication.cmsid] = currentValues;
-                        }
-                        else {
-                            AuthorIDs.current[publication.cmsid] = profileData;
-                            fetchProfileWithID(publication.cmsid);
-                        }
+                        publication?.author_ids?.map((author) => {
+                            const cmsid = author?.co_author_faculty_staff_id?.split(" - ")[1];
+                            if( cmsid === undefined) return;
+                            if (AuthorIDs.current.hasOwnProperty(cmsid)) {
+                                let currentValues = AuthorIDs.current[cmsid];
+                                currentValues.Publications = currentValues.Publications + 1
+                                AuthorIDs.current[cmsid] = currentValues;
+                            }
+                            else {
+                                AuthorIDs.current[cmsid] = profileData;
+                                fetchProfileWithID(cmsid);
+                            }
+
+                        })
+
                     });
+                    setPublications(pulicationarray.length);
+
                     return pulicationarray;
 
-                }).then((pulicationarray) => {
-                    fetchConferencesOutside(pulicationarray);
                 })
+            // .then((pulicationarray) => {
+            //     fetchConferencesOutside(pulicationarray);
+            // })
         }
         // To Fetch Publications of School's Faculty From outside nust
         async function fetchPublicationsSdg() {
