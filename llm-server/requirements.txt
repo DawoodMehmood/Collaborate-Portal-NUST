@@ -1,0 +1,5 @@
+
+!pip install OpenAI
+!pip install langchain
+!pip install flask
+!pip install flask-cors

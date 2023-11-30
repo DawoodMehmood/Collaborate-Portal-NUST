@@ -42,6 +42,16 @@ function App() {
                         <Middle_Page />
                     </>
                 } />
+                <Route path={"/find/:option/:chatbotOption/:search/:thing/:chatbotSearch"} element={
+                    <>
+                        <Middle_Page />
+                    </>
+                } />
+                {/* <Route path={"/find/:option/:chatbotOption/:school/:thing/:chatbotSearch"} element={
+                    <>
+                        <Middle_Page />
+                    </>
+                } /> */}
                 <Route path={"/search/:option/:search/:school"} element={
                     <>
                         <Middle_Page />
