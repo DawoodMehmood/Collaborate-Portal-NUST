@@ -6,10 +6,11 @@ from langchain.chat_models import ChatOpenAI
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from key import OpenApikey
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the entire app
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = OpenApikey
 
 
 def getAPIURL(input_json):
