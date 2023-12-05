@@ -15,9 +15,9 @@ const SearchBar = () => {
     option: "select", // Default value of search option
     search: "", // Default value of search text
     schoolOption: "select", // Default value of school option
-    chatbotOption: 'select',
-    thing: 'select',
-    chatbotSearch:''
+    chatbotOption: "select",
+    thing: "select",
+    chatbotSearch: "",
   });
 
   const [showSchool, setShowSchool] = useState(false); // Default value of showSchool flag
@@ -77,8 +77,8 @@ const SearchBar = () => {
       option: e.target.value,
       schoolOption: "select", // Reset school option to default
       search: "", // Reset the search text when the option changes
-      thing: 'select',
-      chatbotOption: 'select'
+      thing: "select",
+      chatbotOption: "select",
     });
     setPlaceholderValue(placeholder);
   }
@@ -99,7 +99,7 @@ const SearchBar = () => {
 
     await setSearch({
       ...search,
-      thing: e.target.value
+      thing: e.target.value,
     });
   }
 
@@ -110,7 +110,7 @@ const SearchBar = () => {
 
     if (e.target.value === "School") {
       setShowSchool(true); // Show school selector if school option is selected
-    } else if(e.target.value === "University"){
+    } else if (e.target.value === "University" || e.target.value === "Area") {
       setShowSchool(false);
     }
 
@@ -121,14 +121,17 @@ const SearchBar = () => {
     } else if (selectedChatbotOption === "University") {
       placeholder = "Enter university name in collaboration with NUST";
       setdisableSearch(false);
-    } else if(selectedChatbotOption === "select"){
+    } else if (selectedChatbotOption === "Area") {
+      placeholder = "Enter some keyword";
+      setdisableSearch(false);
+    } else if (selectedChatbotOption === "select") {
       setdisableSearch(true);
     }
 
     setPlaceholderValue(placeholder);
     await setSearch({
       ...search,
-      search: '',
+      search: "",
       // thing: 'select',
       chatbotOption: e.target.value,
     });
@@ -195,21 +198,23 @@ const SearchBar = () => {
       navigation(`/find/outside/${search.search}`);
       window.location.reload();
     } else if (search.option === "chatbot") {
-      if(search.chatbotOption === 'select' || search.thing === 'select'){
-        return '';
-      } 
-      if(search.chatbotOption === 'School'){
-        if (search.schoolOption === "select" || search.thing === 'select') {
+      if (search.chatbotOption === "select" || search.thing === "select") {
+        return "";
+      }
+      if (search.chatbotOption === "School") {
+        if (search.schoolOption === "select" || search.thing === "select") {
           return "";
         }
-      } 
-      if(search.chatbotOption === 'University'){
-        if (search.thing === 'select') {
+      }
+      if (
+        search.chatbotOption === "University" ||
+        search.chatbotOption === "Area"
+      ) {
+        if (search.thing === "select") {
           return "";
         }
       }
       setDisplayChatbotSearch(true);
-      
     } else if (search.search === "") {
       return "";
     } else {
@@ -224,16 +229,23 @@ const SearchBar = () => {
   function handlechatbotSubmit(e) {
     console.log("searching", search.option);
     e.preventDefault();
-    if(search.chatbotOption === 'University'){
-      navigation(`/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`);
+    if (search.chatbotOption === "University") {
+      navigation(
+        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
+      );
       window.location.reload();
-    } else if(search.chatbotOption === 'School'){
-      navigation(`/find/${search.option}/${search.chatbotOption}/${search.schoolOption}/${search.thing}/${search.chatbotSearch}`);
+    } else if (search.chatbotOption === "School") {
+      navigation(
+        `/find/${search.option}/${search.chatbotOption}/${search.schoolOption}/${search.thing}/${search.chatbotSearch}`
+      );
+      window.location.reload();
+    } else if (search.chatbotOption === "Area") {
+      navigation(
+        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
+      );
       window.location.reload();
     }
-
   }
-
 
   const schoolNames = [
     "School of Electrical Engineering and Computer Science (SEECS)",
@@ -281,27 +293,37 @@ const SearchBar = () => {
       );
     });
 
-
-    const chatbotOption = ["Affiliated University", "NUST School"]
+  const chatbotOption = [
+    "Affiliated University",
+    "NUST School",
+    "Research Area",
+  ]
     .sort()
     .map((chatbotOption, index) => {
       return (
-        <option className={"option"} value={chatbotOption.split(" ")[1]} key={index}>
+        <option
+          className={"option"}
+          value={chatbotOption.split(" ")[1]}
+          key={index}
+        >
           {chatbotOption}
         </option>
       );
     });
 
-
-  const things = (search.chatbotOption === 'University' ? ["Projects"] : ["Publications", "Projects", "IP"])
-  .sort()
-  .map((thing, index) => {
-    return (
-      <option className={"option"} value={thing} key={index}>
-        {thing}
-      </option>
-    );
-  });
+  const things = (
+    search.chatbotOption === "University"
+      ? ["Projects"]
+      : ["Publications", "Projects", "IP"]
+  )
+    .sort()
+    .map((thing, index) => {
+      return (
+        <option className={"option"} value={thing} key={index}>
+          {thing}
+        </option>
+      );
+    });
 
   const sdgNames = [
     "No poverty",
@@ -333,177 +355,178 @@ const SearchBar = () => {
 
   return (
     <>
-        <div className={"SearchBar"}>
-      {/*Form to handle search query*/}
-      <Form className={"Form"} onSubmit={handleSubmit}>
-        {/*Dropdown to select search option*/}
-        <div className={"Searching"}>
-          <Form.Select
-            className={"option_selector"}
-            name={"option"}
-            onChange={handleOptionChange}
-          >
-            <option className={"options"} defaultValue={"select"}>
-              Search By
-            </option>
-            <option className={"option"} value={"name"}>
-              Name
-            </option>
-            <option className={"option"} value={"area_expertise"}>
-              Research Area
-            </option>
-            <option className={"option"} value={"school"}>
-              School
-            </option>
-            <option className={"option"} value={"outside"}>
-              Outside Nust
-            </option>
-            <option className={"option"} value={"sdg"}>
-              SDG
-            </option>
-            <option className={"option"} value={"chatbot"}>
-              Chatbot
-            </option>
-          </Form.Select>
-
-
-          {showChatbotOptions ? (
+      <div className={"SearchBar"}>
+        {/*Form to handle search query*/}
+        <Form className={"Form"} onSubmit={handleSubmit}>
+          {/*Dropdown to select search option*/}
+          <div className={"Searching"}>
             <Form.Select
-              className={"option_selector school_selector"}
-              name={"chatbot_option"}
-              onChange={handleChatbotOptionChange}
+              className={"option_selector"}
+              name={"option"}
+              onChange={handleOptionChange}
             >
-              <option
-                className={"options"}
-                defaultValue={'select'}
-                value={'select'}
-              >
-                Select
+              <option className={"options"} defaultValue={"select"}>
+                Search By
               </option>
-              {chatbotOption}
-            </Form.Select>
-          ) : (
-            ""
-          )}
-
-          {/*Dropdown to select school*/}
-          {showSchool ? (
-            <Form.Select
-              className={"option_selector school_selector"}
-              name={"school_option"}
-              onChange={handleSchoolOptionChange}
-            >
-              <option
-                className={"options"}
-                defaultValue={"select"}
-                value={"select"}
-              >
-                Select School
+              <option className={"option"} value={"name"}>
+                Name
               </option>
-              {schoolNames}
-            </Form.Select>
-          ) : (
-            ""
-          )}
-
-          {showThings ? (
-            <Form.Select
-              className={"option_selector school_selector"}
-              name={"things_option"}
-              onChange={handleThingsOptionChange}
-            >
-              <option
-                className={"options"}
-                defaultValue={'select'}
-                value={'select'}
-              >
-                Select
+              <option className={"option"} value={"area_expertise"}>
+                Research Area
               </option>
-              {things}
-            </Form.Select>
-          ) : (
-            ""
-          )}
-
-          {/*Dropdown to select by SDG*/}
-          {showSDG ? (
-            <Form.Select
-              className={"option_selector school_selector"}
-              name={"sdg_option"}
-              onChange={handleSchoolOptionChange}
-            >
-              <option
-                className={"options"}
-                defaultValue={"select"}
-                value={"select"}
-              >
-                Select Sdg
+              <option className={"option"} value={"school"}>
+                School
               </option>
-              {sdgNames}
+              <option className={"option"} value={"outside"}>
+                Outside Nust
+              </option>
+              <option className={"option"} value={"sdg"}>
+                SDG
+              </option>
+              <option className={"option"} value={"chatbot"}>
+                Chatbot
+              </option>
             </Form.Select>
-          ) : (
-            ""
-          )}
 
-          {/*Input field to enter search keyword*/}
-          {disableSearch ? (
-            <Form.Control
-              className={"search"}
-              type="text"
-              placeholder={placeholderValue}
-              onChange={handleSearchChange}
-              value={search.search}
-              disabled
-            />
-          ) : (
-            <Form.Control
-              className={"search"}
-              type="text"
-              placeholder={placeholderValue}
-              onChange={handleSearchChange}
-              value={search.search}
-              required={search.option === 'chatbot'}
-            />
-          )}
-        </div>
-        {/*Button to submit search query*/}
-        <div className={"searchButtonDiv"}>
-          <Button type={"submit"} className={"search-button"}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </Button>
-        </div>
-      </Form>
-    </div>
+            {showChatbotOptions ? (
+              <Form.Select
+                className={"option_selector school_selector"}
+                name={"chatbot_option"}
+                onChange={handleChatbotOptionChange}
+              >
+                <option
+                  className={"options"}
+                  defaultValue={"select"}
+                  value={"select"}
+                >
+                  Select
+                </option>
+                {chatbotOption}
+              </Form.Select>
+            ) : (
+              ""
+            )}
 
-    {displayChatbotSearch ? (
-      <>
-      {/* chatbot search bar */}
-    <div className={"SearchBar"}>
-    {/*Form to handle search query*/}
-    <Form className={"Form"} onSubmit={handlechatbotSubmit}>
-      {/*Dropdown to select search option*/}
-      <div className={"Searching"}>
-        {/*Input field to enter chatbot search question*/}
-          <Form.Control
-            className={"search"}
-            type="text"
-            placeholder='Enter your question'
-            onChange={handleChatbotSearchChange}
-            value={search.chatbotSearch}
-            required={search.option === 'chatbot'}
-          />
+            {/*Dropdown to select school*/}
+            {showSchool ? (
+              <Form.Select
+                className={"option_selector school_selector"}
+                name={"school_option"}
+                onChange={handleSchoolOptionChange}
+              >
+                <option
+                  className={"options"}
+                  defaultValue={"select"}
+                  value={"select"}
+                >
+                  Select School
+                </option>
+                {schoolNames}
+              </Form.Select>
+            ) : (
+              ""
+            )}
+
+            {showThings ? (
+              <Form.Select
+                className={"option_selector school_selector"}
+                name={"things_option"}
+                onChange={handleThingsOptionChange}
+              >
+                <option
+                  className={"options"}
+                  defaultValue={"select"}
+                  value={"select"}
+                >
+                  Select
+                </option>
+                {things}
+              </Form.Select>
+            ) : (
+              ""
+            )}
+
+            {/*Dropdown to select by SDG*/}
+            {showSDG ? (
+              <Form.Select
+                className={"option_selector school_selector"}
+                name={"sdg_option"}
+                onChange={handleSchoolOptionChange}
+              >
+                <option
+                  className={"options"}
+                  defaultValue={"select"}
+                  value={"select"}
+                >
+                  Select Sdg
+                </option>
+                {sdgNames}
+              </Form.Select>
+            ) : (
+              ""
+            )}
+
+            {/*Input field to enter search keyword*/}
+            {disableSearch ? (
+              <Form.Control
+                className={"search"}
+                type="text"
+                placeholder={placeholderValue}
+                onChange={handleSearchChange}
+                value={search.search}
+                disabled
+              />
+            ) : (
+              <Form.Control
+                className={"search"}
+                type="text"
+                placeholder={placeholderValue}
+                onChange={handleSearchChange}
+                value={search.search}
+                required={search.option === "chatbot"}
+              />
+            )}
+          </div>
+          {/*Button to submit search query*/}
+          <div className={"searchButtonDiv"}>
+            <Button type={"submit"} className={"search-button"}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Button>
+          </div>
+        </Form>
       </div>
-      {/*Button to submit search query*/}
-      <div className={"searchButtonDiv"}>
-        <Button type={"submit"} className={"search-button"}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </Button>
-      </div>
-    </Form>
-  </div></>
-    ):(<></>)}
-  </>
 
+      {displayChatbotSearch ? (
+        <>
+          {/* chatbot search bar */}
+          <div className={"SearchBar"}>
+            {/*Form to handle search query*/}
+            <Form className={"Form"} onSubmit={handlechatbotSubmit}>
+              {/*Dropdown to select search option*/}
+              <div className={"Searching"}>
+                {/*Input field to enter chatbot search question*/}
+                <Form.Control
+                  className={"search"}
+                  type="text"
+                  placeholder="Enter your question"
+                  onChange={handleChatbotSearchChange}
+                  value={search.chatbotSearch}
+                  required={search.option === "chatbot"}
+                />
+              </div>
+              {/*Button to submit search query*/}
+              <div className={"searchButtonDiv"}>
+                <Button type={"submit"} className={"search-button"}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </Button>
+              </div>
+            </Form>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

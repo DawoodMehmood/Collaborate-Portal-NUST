@@ -595,7 +595,10 @@ const Middle_Page = () => {
           thing: Parameter.thing,
           chatbotSearch: Parameter.chatbotSearch,
         };
-        if (Parameter.chatbotOption === "University") {
+        if (
+          Parameter.chatbotOption === "University" ||
+          Parameter.chatbotOption === "Area"
+        ) {
           requestData.query = Parameter.search;
         } else if (Parameter.chatbotOption === "School") {
           let school = Parameter.search;
