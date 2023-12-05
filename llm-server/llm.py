@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -202,7 +203,7 @@ def createDataframe(flattened_data):
 
 
 def getAnswer(query, df):
-    davinci_agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
+    davinci_agent = create_pandas_dataframe_agent(ChatOpenAI(model_name="text-davinci-003", temperature=0), df, verbose=True)
     return davinci_agent.run(query)
 
 
