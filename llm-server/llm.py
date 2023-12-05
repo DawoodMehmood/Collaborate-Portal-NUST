@@ -27,7 +27,7 @@ def getAPIURL(input_json):
         elif input_json["thing"] == 'IP':
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&institute=" + input_json["schoolOption"]
 
-    elif input_json["chatbotOption"] == 'Research':
+    elif input_json["chatbotOption"] == 'Area':
         if input_json["thing"] == 'Publications':
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=10000&title="+ input_json["query"]
 
@@ -137,7 +137,7 @@ def flattenData(input_json):
             # nested_keys = ["discipline", "inventor_ids", "ip_status", "school"]
             nested_keys = ["inventor_ids", "school"]
     
-    elif input_json["chatbotOption"] == 'Research':
+    elif input_json["chatbotOption"] == 'Area':
         if input_json["thing"] == 'Publications':
             nested_keys = ["author_ids", "findet_ids", "sdgs"] 
 
@@ -185,7 +185,7 @@ def modifyData(input_json, data):
 
 
     #------------------------------Search By Research----------------------------------------
-    elif input_json["chatbotOption"] == 'Research':
+    elif input_json["chatbotOption"] == 'Area':
         if input_json["thing"] == 'Publications':
             columns_to_delete = ["abstract", "activity_exception_decoration",  "affiliation", "author_ids_autohr_sequence_compute", "author_ids_co_author_student_id", "author_ids_combined_faculty_staff_id", "author_ids_country", "author_ids_faculty_student_author_compute", "author_ids_id", "author_ids_institute_other_than_nust_temp", "author_ids_is_corresponding_author", "author_ids_is_sole_author", "author_ids_journal_paper_id", "author_ids_nust_auth_faculty_staff_id", "author_ids_school", "author_ids_student_school", "author_ids_journal_publication_year_compute", "citation_count_scopus_opd_on", "citation_count_wos", "collaboration_type", "fin_date_of_approval", "findet_ids_currency_id", "findet_ids_fin_date_of_approval", "findet_ids_fin_e_min_sheet_no", "findet_ids_fin_faculy_staff_id", "findet_ids_fin_remarks", "findet_ids_fin_share_of_author", "findet_ids_autohr_sequence", "findet_ids_designation", "findet_ids_fin_total_finance_award", "findet_ids_journal_publication_id", "findet_ids_id", "findet_ids_pc_applicant_name", "findet_ids_pc_date_of_approval_pub_charg", "findet_ids_pc_e_min_sheet_no", "findet_ids_pc_faculy_staff_id", "findet_ids_pc_name_of_currancy", "findet_ids_pc_share_of_author", "findet_ids_pc_total_pub_charges", "fin_e_min_sheet_no", "hec_jpi", "hec_medallion", "hec_rank_pos_of_journal", "hec_total_journals_in_category", "h_index", "id", "impact_factor_hjrs", "title", "int_h_index", "int_quartiles", "int_rank_pos_of_journal", "int_total_journals_in_category", "int_webofscience_scopus", "paid_open_ended", "pc_approval_date", "pc_e_min_sheet_no", "print_published", "publisher_address", "sdgs", "site_score", "findet_ids"]
             column_rename_dict = {"g_r_count": "Serial number", "all_author_compute": "Authors", "author_ids_affiliation": "Author Affiliation Type", "author_ids_autohr_sequence": "Author sequence", "author_ids_co_author_faculty_staff_id": "Author Details", "author_ids_country_disp_compute": "Author country", "author_ids_designation":"Author designation", "author_ids_faculty_school":"Author School", "author_ids_institute":"Author International Affiliation", "author_ids_journal_publication_id":"Publication Title", "author_ids_name":"Author Names", "author_ids_school_disp_compute":"Author affiliation", "category":"Publication Location", "citation_count_scopus":"Scopus Citation", "country":"Publication Country", "discipline":"Publication Discipline", "doi_info":"DOI", "findet_ids_institute_id":"NUST Institute Affiliation", "hec_hec_category":"HEC Category", "impact_factor":"Impact Factor", "indexation":"Indexation", "journal_info":"Journal Info", "journal_title":"Journal Name", "online_publication_date":"Online Publication Date", "publication_date":"Publication Date", "publication_year_compute":"Publication Year", "publisher_name":"Publisher Name", "school":"NUST School", "state_123":"Publication Status", "type":"Publication Type", "website_link":"Website Link", "sdgs_id":"SDG ID", "sdgs_name":"SDG Name"}
