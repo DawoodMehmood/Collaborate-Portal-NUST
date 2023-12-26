@@ -42,6 +42,8 @@ def getAPIURL(input_json):
         if input_json["thing"] == 'Publications':
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_journal_pub&auth=fc22151322bfdd2c3f0626798c9198bc&rows=10000&author_name="+ input_json["query"]
 
+        elif input_json["thing"] == 'Projects':
+            api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=10000&pi-copi_name=" + input_json["query"]
 
     return api_url
 
