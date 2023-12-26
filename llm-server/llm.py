@@ -48,6 +48,9 @@ def getAPIURL(input_json):
         elif input_json["thing"] == 'IP':
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&inventor_name" + input_json["query"]
 
+        elif input_json["thing"] == 'Supervisors':
+            api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_rttm&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=10000&supervisoer_name=" + input_json["query"]
+
     return api_url
 
 def getData(input_json):
