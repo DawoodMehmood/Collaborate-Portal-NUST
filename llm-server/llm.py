@@ -304,7 +304,7 @@ def stringToNumber(df):
     return df
 
 def stringToDate(df):
-    columns_to_modify = ["Supervision Start Date", "IP Approval Date", "Effective School Date", "Project Approval Date", "IP Licensing Date", "IP Awarding Date", "Project Completion Date", "Project Submission Date", "Print Publication Date", "Publication year"]
+    columns_to_modify = ["Award Date", "Faculty employed from", "Experience Date From", "Experience Date To", "Education Time From", "Education Time To", "HR Designation Scale", "Experience From", "Experience To", "Scholarship Date From", "Scholarship Date To", "Supervision Start Date", "IP Approval Date", "Effective School Date", "Project Approval Date", "IP Licensing Date", "IP Awarding Date", "Project Completion Date", "Project Submission Date", "Print Publication Date", "Publication year"]
 
     # Convert specified columns to datetime
     for col in columns_to_modify:
