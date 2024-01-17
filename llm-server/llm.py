@@ -276,6 +276,15 @@ def extractNames(df):
 
     return df
 
+def extractStudentNames(df):
+    columns_for_extraction = ["Supervision Student Name"]  
+
+    for column_name in columns_for_extraction:
+        if column_name in df.columns:
+            df[column_name] = df[column_name].str.split(" - ").str[1]
+
+    return df
+
 def stringToNumber(df):
     columns_to_modify = ["Serial number", "Author sequence", "Scopus Citation", "Impact Factor", "IP Filing Year", "NRP ID", "CMS ID of Author", "Year", "Project Approved Amount (PKR)","Project Approved Amount","Project Total Amount", "Project Duration (months)", "Project Submitted Amount (PKR)", "initiator_cms_id", "cmsid", "id", "Project Cost", "Project Amount", "Publication Year", "Web of Science Quartiles", "Web of Science Rank of Journal", "Web of Science Total Journals", "Financial Award Amount", "Author sequence", "Scopus Cite Score"]
 
@@ -300,6 +309,7 @@ def createDataframe(flattened_data):
     # Create a DataFrame from the flattened data
     df = pd.DataFrame(flattened_data)
     df = extractNames(df)
+    df = extractStudentNames(df)
     df = stringToNumber(df)
     df = stringToDate(df)
     return df
