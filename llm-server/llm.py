@@ -252,6 +252,10 @@ def modifyData(input_json, data):
             columns_to_delete = ["supervisor_ids_activity_date_deadline", "supervisor_ids_activity_exception_decoration", "supervisor_ids_activity_exception_icon", "supervisor_ids_activity_state", "supervisor_ids_activity_summary", "supervisor_ids_activity_type_id", "supervisor_ids_activity_user_id", "supervisor_ids_id", "supervisor_ids_message_attachment_count", "supervisor_ids_message_has_error", "supervisor_ids_message_has_error_counter", "supervisor_ids_message_has_sms_error", "supervisor_ids_message_is_follower", "supervisor_ids_message_main_attachment_id", "supervisor_ids_message_needaction", "supervisor_ids_message_needaction_counter", "supervisor_ids_message_unread", "supervisor_ids_message_unread_counter"]
             column_rename_dict = {"g_r_count": "Serial number", "effdt": "Supervision Start Date", "student_acad_career": "Supervision level", "student_acad_program": "Supervision Academic (Program/Course)", "student_id": "Supervision Student Name", "student_institute": "Student School", "supervisor_ids_faculty_school": "Supervisor School", "supervisor_ids_faculty_staff_id":"Supervisor Name", "supervisor_ids_ssr_rs_super_type":"Supervisor Role", "thesis_title":"Thesis Title"}
 
+        elif input_json["thing"] == 'Editorials':
+            columns_to_delete = []
+            column_rename_dict = {"g_r_count": "Serial number", "cite_score": "Scopus Cite Score", "country": "Country of Journal", "editor_reviewer_type": "Review Type", "e_issn": "Journal e-ISSN", "id": "NRP ID", "impact_factor": "Impact Factor", "journal_name":"Journal Name", "p_issn":"Journal p-ISSN", "title":"Reviewed Paper Title", "type":"Publication Type"}
+
 
     # Delete the specified columns
     for column in columns_to_delete:
