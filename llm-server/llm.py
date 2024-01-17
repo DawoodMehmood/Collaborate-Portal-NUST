@@ -268,7 +268,7 @@ def modifyData(input_json, data):
     return modified_data
 
 def extractNames(df):
-    columns_for_extraction = ["Project Author name", "Inventor name", "Publication Author Name", "Financial award recipient name", "Project PI Name", "Project CoPI Name"]  
+    columns_for_extraction = ["Supervisor Name", "Project Author name", "Inventor name", "Publication Author Name", "Financial award recipient name", "Project PI Name", "Project CoPI Name"]  
 
     for column_name in columns_for_extraction:
         if column_name in df.columns:
