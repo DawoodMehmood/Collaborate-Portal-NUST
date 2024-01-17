@@ -277,7 +277,7 @@ def extractNames(df):
     return df
 
 def stringToNumber(df):
-    columns_to_modify = ["Serial number", "Author sequence", "Scopus Citation", "Impact Factor", "IP Filing Year", "NRP Paper ID", "CMS ID of Author", "Year", "Project Approved Amount (PKR)","Project Approved Amount","Project Total Amount", "Project Duration (months)", "Project Submitted Amount (PKR)", "initiator_cms_id", "cmsid", "id", "Project Cost", "Project Amount", "Publication Year", "Web of Science Quartiles", "Web of Science Rank of Journal", "Web of Science Total Journals", "Financial Award Amount", "Author sequence"]
+    columns_to_modify = ["Serial number", "Author sequence", "Scopus Citation", "Impact Factor", "IP Filing Year", "NRP ID", "CMS ID of Author", "Year", "Project Approved Amount (PKR)","Project Approved Amount","Project Total Amount", "Project Duration (months)", "Project Submitted Amount (PKR)", "initiator_cms_id", "cmsid", "id", "Project Cost", "Project Amount", "Publication Year", "Web of Science Quartiles", "Web of Science Rank of Journal", "Web of Science Total Journals", "Financial Award Amount", "Author sequence", "Scopus Cite Score"]
 
     # Convert specified columns to numeric
     for col in columns_to_modify:
