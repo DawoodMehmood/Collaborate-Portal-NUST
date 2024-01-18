@@ -597,7 +597,8 @@ const Middle_Page = () => {
         };
         if (
           Parameter.chatbotOption === "University" ||
-          Parameter.chatbotOption === "Area"
+          Parameter.chatbotOption === "Area" ||
+          Parameter.chatbotOption === "Name"
         ) {
           requestData.query = Parameter.search;
         } else if (Parameter.chatbotOption === "School") {
