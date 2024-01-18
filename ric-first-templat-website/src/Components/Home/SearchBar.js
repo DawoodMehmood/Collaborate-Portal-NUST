@@ -110,7 +110,11 @@ const SearchBar = () => {
 
     if (e.target.value === "School") {
       setShowSchool(true); // Show school selector if school option is selected
-    } else if (e.target.value === "University" || e.target.value === "Area") {
+    } else if (
+      e.target.value === "University" ||
+      e.target.value === "Area" ||
+      e.target.value === "Name"
+    ) {
       setShowSchool(false);
     }
 
@@ -122,7 +126,10 @@ const SearchBar = () => {
       placeholder = "Enter university name in collaboration with NUST";
       setdisableSearch(false);
     } else if (selectedChatbotOption === "Area") {
-      placeholder = "Enter some keyword";
+      placeholder = "Enter some keyword for research area";
+      setdisableSearch(false);
+    } else if (selectedChatbotOption === "Name") {
+      placeholder = "Enter faculty name";
       setdisableSearch(false);
     } else if (selectedChatbotOption === "select") {
       setdisableSearch(true);
@@ -208,7 +215,8 @@ const SearchBar = () => {
       }
       if (
         search.chatbotOption === "University" ||
-        search.chatbotOption === "Area"
+        search.chatbotOption === "Area" ||
+        search.chatbotOption === "Name"
       ) {
         if (search.thing === "select") {
           return "";
@@ -240,6 +248,11 @@ const SearchBar = () => {
       );
       window.location.reload();
     } else if (search.chatbotOption === "Area") {
+      navigation(
+        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
+      );
+      window.location.reload();
+    } else if (search.chatbotOption === "Name") {
       navigation(
         `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
       );
@@ -297,6 +310,7 @@ const SearchBar = () => {
     "Affiliated University",
     "NUST School",
     "Research Area",
+    "Faculty Name",
   ]
     .sort()
     .map((chatbotOption, index) => {
@@ -314,6 +328,15 @@ const SearchBar = () => {
   const things = (
     search.chatbotOption === "University"
       ? ["Projects"]
+      : search.chatbotOption === "Name"
+      ? [
+          "Projects",
+          "Publications",
+          "IP",
+          "Supervisors",
+          "Editorials",
+          "Education",
+        ]
       : ["Publications", "Projects", "IP"]
   )
     .sort()
