@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
-from langchain.agents import create_pandas_dataframe_agent
+from langchain.agents import create_pandas_dataframe_agent,create_csv_agent
+from langchain.agents.agent_types import AgentType
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 import os
@@ -46,7 +47,7 @@ def getAPIURL(input_json):
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_project&auth=d05a6d2391a1a4c25e0923034eadfc31&rows=10000&pi-copi_name=" + input_json["query"]
 
         elif input_json["thing"] == 'IP':
-            api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&inventor_name" + input_json["query"]
+            api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_intellectual&auth=a05ea7fb84932d6ccc233e8f818e3e33&rows=10000&inventor_name=" + input_json["query"]
 
         elif input_json["thing"] == 'Supervisors':
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_rttm&auth=eda78c8a7d78ca83fcb02ff052179b9b&rows=10000&supervisoer_name=" + input_json["query"]
@@ -56,7 +57,6 @@ def getAPIURL(input_json):
 
         elif input_json["thing"] == 'Editorials':
             api_url = "https://qalam.nust.edu.pk/odoocms_api?alias=ric_expert_portal_editorial&auth=e09d3d4b09c4e553fcb1901d4b555acf&rows=10000&author_name=" + input_json["query"]
-
     return api_url
 
 def getData(input_json):
@@ -334,7 +334,6 @@ def createDataframe(flattened_data):
 
 # agent = create_csv_agent(ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0), "output.csv", verbose=True)
 
-# davinci_agent = create_csv_agent(OpenAI(temperature=0), "output.csv", verbose=True)
 
 
 def getAnswer(query, df):
@@ -347,12 +346,11 @@ def processclaim():
     try:
         input_json = request.get_json()
         print(input_json)
-
         flattenedData = flattenData(input_json)
         modifiedData = modifyData(input_json, flattenedData)
         df = createDataframe(modifiedData)
         print(df)
-        df.to_csv('ResearchByIP-new.csv', index=False)
+        # df.to_csv('ResearchByIP-new.csv', index=False)
 
         if (df.empty):
             print("Dataframe is empty")
@@ -361,7 +359,6 @@ def processclaim():
             question = input_json['chatbotSearch']
             output = getAnswer(question, df)
 
-        # output=getAnswer(question, df)
         # output = 'Chatbot turned off temporarily for development purposes'
         print(output)
         return jsonify({"Answer":output})
