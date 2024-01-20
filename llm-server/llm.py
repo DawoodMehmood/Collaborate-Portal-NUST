@@ -337,7 +337,7 @@ def createDataframe(flattened_data):
 
 
 def getAnswer(query, df):
-    davinci_agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=True)
+    davinci_agent = create_pandas_dataframe_agent(ChatOpenAI(temperature=0), df, verbose=True)
     return davinci_agent.run(query)
 
 
