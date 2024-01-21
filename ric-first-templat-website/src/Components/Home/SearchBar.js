@@ -234,12 +234,12 @@ const SearchBar = () => {
   }
 
   // Function to handle search form submission
-  function handlechatbotSubmit(e) {
+  async function handlechatbotSubmit(e) {
     console.log("searching", search.option);
     e.preventDefault();
     let string = search.chatbotSearch;
     string = string.replace(/\//g, "-");
-    setSearch({
+    await setSearch({
       ...search,
       chatbotSearch: string,
     });
