@@ -237,6 +237,12 @@ const SearchBar = () => {
   function handlechatbotSubmit(e) {
     console.log("searching", search.option);
     e.preventDefault();
+    let string = search.chatbotSearch;
+    string = string.replace(/\//g, "-");
+    setSearch({
+      ...search,
+      chatbotSearch: string,
+    });
     if (search.chatbotOption === "University") {
       navigation(
         `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
