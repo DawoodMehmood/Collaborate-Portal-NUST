@@ -1858,7 +1858,9 @@ const Middle_Page = () => {
       {displayChatbotResult ? (
         <>
           <h5 style={{ textAlign: "center" }}>
-            <div>Question: {Parameter.chatbotSearch}</div>
+            <div>
+              <strong>Question:</strong> {Parameter.chatbotSearch}
+            </div>
           </h5>
           <br></br>
           <br></br>
@@ -1870,10 +1872,12 @@ const Middle_Page = () => {
               backgroundColor: "white",
               margin: "0 50px",
               padding: "20px",
-              height: "100px",
+              minHeight: "100px",
             }}
           >
-            <h5>Chatbot Answer: {chatbotAnswer}</h5>
+            <h5>
+              <strong>Chatbot Answer:</strong> {chatbotAnswer}
+            </h5>
           </div>
         </>
       ) : (
