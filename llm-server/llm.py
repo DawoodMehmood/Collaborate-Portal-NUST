@@ -344,7 +344,7 @@ def getAnswer(query, df):
     agent_type=AgentType.OPENAI_FUNCTIONS,
     agent_executor_kwargs={"handle_parsing_errors":True}
     )
-    return davinci_agent.run(query)
+    return davinci_agent.run(query + " , always return unique and fully complete answers")
 
 
 @app.route('/llm',methods = ["POST"])
