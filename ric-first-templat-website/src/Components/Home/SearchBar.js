@@ -237,30 +237,27 @@ const SearchBar = () => {
   async function handlechatbotSubmit(e) {
     console.log("searching", search.option);
     e.preventDefault();
-    let string = search.chatbotSearch;
-    string = string.replace(/\//g, "-");
-    await setSearch({
-      ...search,
-      chatbotSearch: string,
-    });
+    let botSearch = search.chatbotSearch;
+    botSearch = botSearch.replace(/\//g, "-");
+
     if (search.chatbotOption === "University") {
       navigation(
-        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
+        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${botSearch}`
       );
       window.location.reload();
     } else if (search.chatbotOption === "School") {
       navigation(
-        `/find/${search.option}/${search.chatbotOption}/${search.schoolOption}/${search.thing}/${search.chatbotSearch}`
+        `/find/${search.option}/${search.chatbotOption}/${search.schoolOption}/${search.thing}/${botSearch}`
       );
       window.location.reload();
     } else if (search.chatbotOption === "Area") {
       navigation(
-        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
+        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${botSearch}`
       );
       window.location.reload();
     } else if (search.chatbotOption === "Name") {
       navigation(
-        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${search.chatbotSearch}`
+        `/find/${search.option}/${search.chatbotOption}/${search.search}/${search.thing}/${botSearch}`
       );
       window.location.reload();
     }
