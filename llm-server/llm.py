@@ -344,7 +344,7 @@ def getAnswer(query, df):
     agent_type=AgentType.OPENAI_FUNCTIONS,
     agent_executor_kwargs={"handle_parsing_errors":True}
     )
-    return davinci_agent.run(query + " , always return unique and fully complete answers")
+    return davinci_agent.run("I will pass a question to you alongwith data. Answer the question and always use unique() function. Special instructions: 1- Only for questions where sum or average is needed to be found out, remove the duplicate entries using the column 'Serial number'. 2- For questions where you need to search for some string, always consider it case insensitive and use str.contains() function.  Question: " + query + " , return unique and complete answer.")
 
 
 @app.route('/llm',methods = ["POST"])
