@@ -299,6 +299,7 @@ def stringToNumber(df):
     # Convert specified columns to numeric
     for col in columns_to_modify:
         if col in df.columns:
+            df[col] = df[col].replace('-', '0')
             df[col] = pd.to_numeric(df[col], errors='coerce')
 
     return df
